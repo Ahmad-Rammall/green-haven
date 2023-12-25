@@ -1,10 +1,11 @@
 const User = require("../models/user.model");
+const Seller = require("../models/seller.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
-  const { email, password, name } = req.body;
-  if (!email || !password || !name) {
+  const { email, password, name, role } = req.body;
+  if (!email || !password || !name ) {
     return res.status(400).json({ message: "all fields are required" });
   }
 
@@ -20,6 +21,13 @@ const register = async (req, res) => {
 
     await user.save();
 
+    if(role === "seller"){
+      const seller = new Seller({
+        user,
+      })
+      await seller.save()
+    }
+    
     res.status(200).json({ user });
   } catch (e) {
     res.status(500).json({ error: e });
