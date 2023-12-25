@@ -36,6 +36,28 @@ const addPlant = async (req, res) => {
   }
 };
 
+const removePlant = async (req, res) => {
+  const user = req.user;
+  const plantId = req.body.plantId;
+
+  try {
+    // Find the index of the plant in the user's garden array
+    const plantIndex = user.garden.findIndex((plant) => plant._id == plantId);
+
+    if (plantIndex === -1) {
+      return res.status(404).json({ error: "Plant not found in the garden" });
+    }
+
+    // Remove the plant from the user's garden array
+    user.garden.splice(plantIndex, 1);
+    await user.save();
+
+    res.json({ message: "Plant deleted from the garden successfully", user });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
+
 module.exports = {
   getAllUserPlants,
   addPlant,
