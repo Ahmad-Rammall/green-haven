@@ -1,8 +1,9 @@
 const express = require("express");
-const { getAllPlants, addPlant, removePlant} = require("../controllers/garden.controllers");
+const { getAllUserPlants, addPlant, removePlant} = require("../controllers/garden.controllers");
 const router = express.Router();
 
-router.post("/register", register);
-router.post("/login", login);
+router.get("/", getAllUserPlants);
+router.post("/", addPlant);
+router.delete("/", removePlant);
 
 module.exports = router;
