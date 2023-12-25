@@ -17,6 +17,10 @@ app.use("/auth", authRoutes);
 const gardenRoutes = require("./routes/garden.routes");
 app.use("/garden", authMiddleware, gardenRoutes);
 
+// Product Routes
+const productRoutes = require("./routes/product.routes");
+app.use("/product", authMiddleware, productRoutes);
+
 app.listen(8000, () => {
   console.log("Server listining on PORT: ", 8000);
   connectToMongoDB();
