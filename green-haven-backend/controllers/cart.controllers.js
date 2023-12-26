@@ -45,7 +45,27 @@ const addProductToCart = async (req, res) => {
   }
 };
 
-const removeProductFromCart = async (req, res) => {};
+const removeProductFromCart = async (req, res) => {
+  const user = req.user;
+  const productId = req.body.productId;
+
+  try {
+    // Find the index of the product in the user's cart array
+    const productIndex = user.cart.findIndex((product) => product._id == productId);
+
+    if (productIndex === -1) {
+      return res.status(404).json({ error: "Product not found in the cart" });
+    }
+
+    // Remove the plant from the user's garden array
+    user.cart.splice(productIndex, 1);
+    await user.save();
+
+    res.json({ message: "Product deleted from the cart successfully", user });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
 
 module.exports = {
   removeProductFromCart,
