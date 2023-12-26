@@ -158,7 +158,35 @@ const updateComment = async (req, res) => {
   }
 };
 
-const deleteComment = async (req, res) => {};
+const deleteComment = async (req, res) => {
+  const { commentId, postId } = req.body;
+
+  const post = await Post.findOne({ _id: postId });
+
+  if (!post) {
+    return res.status(400).json({ message: "Post Not Found" });
+  }
+
+  const comment = post.comments.find(
+    (comment) => comment._id.toString() === commentId
+  );
+
+  if (!comment) {
+    return res.status(400).json({ message: "Comment Not Found" });
+  }
+
+  if (String(comment.user) !== String(req.user._id)) {
+    return res.status(403).json({ message: "Can't Change Other's Comments" });
+  }
+
+  try {
+    post.comments.pull({ _id: commentId });
+    await post.save();
+    return res.status(200).json({ message: "Comment Deleted", comment });
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+};
 
 const likeComment = async (req, res) => {};
 
