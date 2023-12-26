@@ -110,6 +110,14 @@ const getFollowingPosts = async (req, res) => {
   }
 };
 
+const addComment = async(req,res) => {};
+
+const updateComment = async(req,res) => {};
+
+const deleteComment = async(req,res) => {};
+
+const likeComment = async(req,res) => {};
+
 module.exports = {
   addPost,
   updatePost,
@@ -117,4 +125,8 @@ module.exports = {
   likePost,
   getUserPosts,
   getFollowingPosts,
+  addComment,
+  updateComment,
+  deleteComment,
+  likeComment,
 };
