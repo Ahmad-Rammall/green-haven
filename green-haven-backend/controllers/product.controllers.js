@@ -44,12 +44,43 @@ const addProduct = async (req, res) => {
     });
     await product.save({ new: true, runValidators: true });
 
-    return res.status(200).json({ message: "Product Added", product })
+    return res.status(200).json({ message: "Product Added", product });
   } catch (error) {
     return res.status(500).send(error);
   }
 };
-const updateProduct = async (req, res) => {};
+
+const updateProduct = async (req, res) => {
+
+  if (req.user.role != "seller") {
+    return res.status(403).json({ message: "You are not a seller" });
+  }
+  const { productId, name, description, image, price } = req.body;
+
+  if (!productId) {
+    return res.status(400).json({ message: "productId required" });
+  }
+
+  try {
+    const product = await Product.findOne({ _id: productId });
+
+    // Seller can change only his own products
+    if (String(product.user) !== String(req.user._id)) {
+      return res.status(403).send("You can't change other's products");
+    }
+
+    // Find the product and update it
+    const updated_product = await Product.findOneAndUpdate(
+      { _id: productId },
+      { name, description, image, price },
+      { new: true, runValidators: true }
+    );
+    return res.status(200).json({ message: "Product Updated", updated_product });
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+};
+
 const deleteProduct = async (req, res) => {};
 
 module.exports = {
