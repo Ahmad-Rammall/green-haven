@@ -110,13 +110,28 @@ const getFollowingPosts = async (req, res) => {
   }
 };
 
-const addComment = async(req,res) => {};
+const addComment = async (req, res) => {
+  try {
+    const { text, postId } = req.body;
+    const post = await Post.findOne({ _id: postId });
 
-const updateComment = async(req,res) => {};
+    if (!post) {
+      return res.status(400).json("Post Doesn't Exist");
+    }
 
-const deleteComment = async(req,res) => {};
+    post.comments.push({ user: req.user, text });
+    await post.save({ new: true, runValidators: true });
+    return res.status(200).json({ message: "Comment Added" });
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+};
 
-const likeComment = async(req,res) => {};
+const updateComment = async (req, res) => {};
+
+const deleteComment = async (req, res) => {};
+
+const likeComment = async (req, res) => {};
 
 module.exports = {
   addPost,
