@@ -1,12 +1,15 @@
 const User = require("../models/user.model");
-const Seller = require("../models/seller.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
   const { email, password, name, role } = req.body;
-  if (!email || !password || !name ) {
+  if (!email || !password || !name || !role) {
     return res.status(400).json({ message: "all fields are required" });
+  }
+
+  if(role != "user" && role != "seller"){
+    return res.status(403).json(`Can't register as ${role}`);
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -17,17 +20,14 @@ const register = async (req, res) => {
       email,
       password: hashedPassword,
       name,
+      role,
     });
 
-    await user.save();
+    await user.save({
+      new: true,
+      runValidators: true,
+    });
 
-    if(role === "seller"){
-      const seller = new Seller({
-        user,
-      })
-      await seller.save()
-    }
-    
     res.status(200).json({ user });
   } catch (e) {
     res.status(500).json({ error: e });
