@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema(
     },
     phone_number: {
       type: String,
-      unique: true,
       default: "",
     },
     profile_picture: {

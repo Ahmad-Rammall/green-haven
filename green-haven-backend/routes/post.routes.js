@@ -14,6 +14,6 @@ router.post("/", addPost);
 router.put("/", updatePost);
 router.delete("/", deletePost);
 router.get("/:userId", getUserPosts);
-router.put("/:postId/like", likePost);
+router.put("/like", likePost);
 
 module.exports = router;

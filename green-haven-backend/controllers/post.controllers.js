@@ -1,4 +1,5 @@
 const Post = require("../models/post.model");
+const mongoose = require("mongoose");
 
 const addPost = async (req, res) => {
   const { description, image } = req.body;
@@ -58,7 +59,33 @@ const deletePost = async (req, res) => {
   }
 };
 
-const likePost = async (req, res) => {};
+const likePost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.body.postId);
+    const user = req.user;
+
+    // Test if product exists in the user's cart
+    const postLiked = post.likes.find((userElement) =>
+      userElement._id.equals(user._id)
+    );
+
+    if (!postLiked) {
+      await post.updateOne({ $push: { likes: user } });
+      res.status(200).json("You liked this post");
+    } else if (postLiked) {
+      post.likes = post.likes.filter(
+        (like) => String(like._id) !== String(user._id)
+      );
+      console.log(post.likes);
+      await post.save();
+      res.status(200).json("You disliked this post");
+    } else {
+      res.status(403).json("User Not Found");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
 const getUserPosts = async (req, res) => {
   const userId = req.params.userId;
@@ -70,7 +97,18 @@ const getUserPosts = async (req, res) => {
   }
 };
 
-const getFollowingPosts = async (req, res) => {};
+const getFollowingPosts = async (req, res) => {
+  try {
+    const followingPosts = await Promise.all(
+      req.user.following.map((followingId) => {
+        return Post.find({ user: followingId });
+      })
+    );
+    return res.status(200).json(followingPosts);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+};
 
 module.exports = {
   addPost,
