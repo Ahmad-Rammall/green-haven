@@ -64,7 +64,7 @@ const likePost = async (req, res) => {
     const post = await Post.findById(req.body.postId);
     const user = req.user;
 
-    // Test if product exists in the user's cart
+    // Test if user liked the post
     const postLiked = post.likes.find((userElement) =>
       userElement._id.equals(user._id)
     );
@@ -188,7 +188,47 @@ const deleteComment = async (req, res) => {
   }
 };
 
-const likeComment = async (req, res) => {};
+const likeComment = async (req, res) => {
+  try {
+    const { commentId, postId } = req.body;
+    const user = req.user;
+
+    const post = await Post.findOne({ _id: postId });
+
+    if (!post) {
+      return res.status(400).json({ message: "Post Not Found" });
+    }
+
+    const comment = post.comments.find(
+      (comment) => comment._id.toString() === commentId
+    );
+
+    if (!comment) {
+      return res.status(400).json({ message: "Comment Not Found" });
+    }
+
+    // Test if user liked the comment
+    const commentLiked = comment.likes.find((userElement) =>
+      userElement._id.equals(user._id)
+    );
+
+    if (!commentLiked) {
+      comment.likes.push(user);
+      await post.save();
+      res.status(200).json("You liked this post");
+    } else if (commentLiked) {
+      comment.likes = comment.likes.filter(
+        (like) => String(like._id) !== String(user._id)
+      );
+      await post.save();
+      res.status(200).json("You disliked this post");
+    } else {
+      res.status(403).json("User Not Found");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
 module.exports = {
   addPost,
