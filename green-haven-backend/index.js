@@ -21,6 +21,10 @@ app.use("/garden", authMiddleware, gardenRoutes);
 const productRoutes = require("./routes/product.routes");
 app.use("/product", authMiddleware, productRoutes);
 
+// Cart Routes
+const cartRoutes = require("./routes/cart.routes");
+app.use("/cart", authMiddleware, cartRoutes);
+
 app.listen(8000, () => {
   console.log("Server listining on PORT: ", 8000);
   connectToMongoDB();
