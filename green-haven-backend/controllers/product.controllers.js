@@ -32,7 +32,8 @@ const addProduct = async (req, res) => {
   if (req.user.role != "seller") {
     return res.status(403).send("Unauthorized");
   }
-  const { name, description, image, price } = req.body;
+  const { name, description, price } = req.body;
+  const image = req.file ? req.file.filename : "noProductImage.jpg"
 
   try {
     const product = new Product({
@@ -54,7 +55,8 @@ const updateProduct = async (req, res) => {
   if (req.user.role != "seller") {
     return res.status(403).json({ message: "You are not a seller" });
   }
-  const { productId, name, description, image, price } = req.body;
+  const { productId, name, description, price } = req.body;
+  const image = req.file?.filename ;
 
   if (!productId) {
     return res.status(400).json({ message: "productId required" });
