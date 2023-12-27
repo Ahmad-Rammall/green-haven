@@ -16,7 +16,8 @@ const getUser = async (req, res) => {
 
 const updateProfile = async (req, res) => {
   // User cannot change his email / role
-  const { name, bio, phone_number, profile_picture, location } = req.body;
+  const { name, bio, phone_number, location } = req.body;
+  const profile_picture = req.file?.filename;
   let password = req.body.password;
 
   try {
