@@ -37,13 +37,79 @@ const updateProfile = async (req, res) => {
   }
 };
 
-const followUser = async (req,res) => {};
+const followUser = async (req, res) => {
+  const currentUser = req.user;
+  const otherUserId = req.body.otherUserId;
 
-const unfollowUser = async (req,res) => {}
+  if (currentUser._id != otherUserId) {
+    try {
+      const userToFollow = await User.findById(otherUserId);
+      if (userToFollow && currentUser) {
+        // Test if currentUser is already following the otherUser
+        const following = currentUser.following.find(
+          (user) => user._id.toString() === String(otherUserId)
+        );
+
+        if (!following) {
+          // Add userToFollow to the current User Following list.
+          await currentUser.updateOne({
+            $push: { following: userToFollow },
+          });
+
+          // Add current User to the userToFollow Followers list.
+          await userToFollow.updateOne({ $push: { followers: currentUser } });
+          res.status(200).json("Follow Successful");
+        } else {
+          unfollowUser(req, res);
+        }
+      } else {
+        return res.status(403).json("Wrong Ids");
+      }
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json(error);
+    }
+  } else {
+    return res.status(403).json("You can't follow yourself !");
+  }
+};
+
+const unfollowUser = async (req, res) => {
+  const currentUser = req.user;
+  const otherUserId = req.body.otherUserId;
+
+  if (currentUser._id != otherUserId) {
+    try {
+      const userToUnfollow = await User.findById(otherUserId);
+      if (userToUnfollow && currentUser) {
+        // Get All Following List Without the other user
+        currentUser.following = currentUser.following.filter(
+          (user) => user._id.toString() !== String(otherUserId)
+        );
+
+        // Get All Followers List Without the current User
+        userToUnfollow.followers = userToUnfollow.followers.filter(
+          (user) => user._id.toString() !== String(currentUser._id)
+        );
+
+        await currentUser.save();
+        await userToUnfollow.save();
+        return res.status(200).json("Unfollow Successful");
+      } else {
+        return res.status(403).json("Wrong Ids");
+      }
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json(error);
+    }
+  } else {
+    return res.status(403).json("You can't Unfollow yourself !");
+  }
+};
 
 module.exports = {
   updateProfile,
   getUser,
   followUser,
-  unfollowUser
+  unfollowUser,
 };
