@@ -1,8 +1,20 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 
-const updateProfile = async (req, res) => {
+const getUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+    const { password, createdAt, updatedAt, garden, cart, ...other } =
+      user._doc;
+    if (user) res.status(200).json(other);
+    else res.status(404).json("No Account");
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
 
+const updateProfile = async (req, res) => {
   // User cannot change his email / role
   const { name, bio, phone_number, profile_picture, location } = req.body;
   let password = req.body.password;
@@ -13,7 +25,7 @@ const updateProfile = async (req, res) => {
       password = await bcrypt.hash(password, salt);
     }
 
-    // Update User 
+    // Update User
     await User.findOneAndUpdate(
       { _id: req.user._id },
       { name, password, bio, phone_number, profile_picture, location },
@@ -25,6 +37,13 @@ const updateProfile = async (req, res) => {
   }
 };
 
+const followUser = async (req,res) => {};
+
+const unfollowUser = async (req,res) => {}
+
 module.exports = {
   updateProfile,
+  getUser,
+  followUser,
+  unfollowUser
 };
