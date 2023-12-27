@@ -1,10 +1,19 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+const morgan = require('morgan')
 require("dotenv").config();
 
+// Connect to mongo db function
 const { connectToMongoDB } = require("./configs/mongoDb.configs");
 
+app.use(cors());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(morgan("common"))
+
+// Define public folder as static folder
+app.use(express.static('public'))
 
 // Auth Middleware
 const authMiddleware = require("./middlewares/auth.middleware");

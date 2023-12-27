@@ -9,8 +9,9 @@ const addPlant = async (req, res) => {
   if (req.user.role !== "user") {
     return res.status(403).json("Unauthorized");
   }
+  const { plant_name, plant_description } = req.body;
+  const plant_picture = req.file ? req.file.filename: "noPlantImage.jpg";
 
-  const { plant_name, plant_description, plant_picture } = req.body;
   // All fields should exist
   if (
     !plant_name ||
@@ -30,7 +31,7 @@ const addPlant = async (req, res) => {
     user.garden.push({ plant_name, plant_description, plant_picture });
 
     await user.save();
-    res.status(200).json({ message: "Garden Updated" });
+    res.status(200).json({ message: "Garden Added" });
   } catch (error) {
     res.status(500).json({ error });
   }
