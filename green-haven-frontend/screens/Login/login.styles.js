@@ -43,6 +43,21 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     fontSize: SIZES.xSmall,
   },
+
+  // Register Option
+  registerText: {
+    textAlign: "center",
+    fontFamily: "light",
+    fontSize: SIZES.small,
+    marginBottom: 10,
+    color: COLORS.gray,
+  },
+  registerBtn: {
+    color: COLORS.primary,
+    textDecorationLine: "underline",
+  },
+
+  // Other Sign In Options
   otherOptionsContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -59,8 +74,10 @@ const styles = StyleSheet.create({
     color: COLORS.gray2,
     marginHorizontal: -10,
   },
+
+  // Options (GOOGLE / FACEBOOK)
   optionsContainer: {
-    margin: SIZES.large,
+    marginTop: 5,
   },
   option: (bgColor) => ({
     backgroundColor: bgColor,
@@ -81,6 +98,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.gray,
     margin: SIZES.medium,
+    marginBottom: 0,
     padding: 5,
     borderRadius: SIZES.medium,
     flexDirection: "row",
@@ -91,7 +109,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     resizeMode: "contain",
-    marginRight: 10
+    marginRight: 10,
   },
 });
 
