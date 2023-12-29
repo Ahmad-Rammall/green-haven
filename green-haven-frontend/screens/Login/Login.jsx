@@ -4,8 +4,8 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
   ScrollView,
+  Keyboard,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useState } from "react";
@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
     <SafeAreaView style={styles.loginContainer}>
-      <ScrollView >
+      <ScrollView onPress={Keyboard.dismiss()}>
         <Image
           source={require("../../assets/images/signinImage.png")}
           style={styles.image}
