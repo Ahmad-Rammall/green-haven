@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 import { COLORS, SIZES } from "../../assets/constants";
 
 const styles = StyleSheet.create({
+  loginContainer: {
+    backgroundColor: COLORS.offwhite,
+    flex: 1,
+  },
   image: {
     height: SIZES.height / 3,
     width: SIZES.width,
@@ -9,8 +13,8 @@ const styles = StyleSheet.create({
     marginBottom: SIZES.xLarge,
   },
   inputs: {
-    marginBottom: 20,
-    marginHorizontal: 20,
+    marginBottom: SIZES.large,
+    marginHorizontal: SIZES.large,
   },
   label: {
     fontFamily: "regular",
@@ -30,7 +34,7 @@ const styles = StyleSheet.create({
   }),
   input: {
     flex: 1,
-    marginLeft: SIZES.medium
+    marginLeft: SIZES.medium,
   },
   errorMsg: {
     color: COLORS.red,
@@ -38,6 +42,56 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 5,
     fontSize: SIZES.xSmall,
+  },
+  otherOptionsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: SIZES.medium,
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: COLORS.gray2,
+    marginHorizontal: SIZES.large,
+  },
+  text: {
+    fontSize: SIZES.small,
+    color: COLORS.gray2,
+    marginHorizontal: -10,
+  },
+  optionsContainer: {
+    margin: SIZES.large,
+  },
+  option: (bgColor) => ({
+    backgroundColor: bgColor,
+    margin: SIZES.medium,
+    padding: 5,
+    borderRadius: SIZES.medium,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  }),
+  optionText: (color) => ({
+    color: color,
+    textAlign: "center",
+    fontFamily: "semibold",
+    fontSize: SIZES.medium,
+  }),
+  googleOption: {
+    borderWidth: 1,
+    borderColor: COLORS.gray,
+    margin: SIZES.medium,
+    padding: 5,
+    borderRadius: SIZES.medium,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logoImage: {
+    width: 30,
+    height: 30,
+    resizeMode: "contain",
+    marginRight: 10
   },
 });
 

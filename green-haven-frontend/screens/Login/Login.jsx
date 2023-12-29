@@ -21,7 +21,7 @@ const Login = () => {
   });
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.loginContainer}>
       <Image
         source={require("../../assets/images/signinImage.png")}
         style={styles.image}
@@ -73,7 +73,9 @@ const Login = () => {
             <View style={styles.inputs}>
               <Text style={styles.label}>Password</Text>
               <View
-                style={styles.inputWrapper(touched.password ? COLORS.primary : COLORS.white)}
+                style={styles.inputWrapper(
+                  touched.password ? COLORS.primary : COLORS.white
+                )}
               >
                 <MaterialCommunityIcons
                   name="lock-outline"
@@ -106,10 +108,29 @@ const Login = () => {
               onPress={isValid ? handleSubmit : () => {}}
               isValid={isValid}
               btnText="Submit"
+              color={COLORS.primary}
             />
           </View>
         )}
       </Formik>
+
+      <View style={styles.otherOptionsContainer}>
+        <View style={styles.line} />
+        <Text style={styles.text}>Or Sign in with</Text>
+        <View style={styles.line} />
+      </View>
+
+      <View style={styles.optionsContainer}>
+        <TouchableOpacity style={styles.googleOption}>
+            <Image source={require("../../assets/images/googleLogo.png")} style={styles.logoImage}/>
+          <Text style={styles.optionText(COLORS.gray)}>Google</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.option(COLORS.blue)}>
+            <Image source={require("../../assets/images/facebookLogo.png")} style={styles.logoImage}/>
+          <Text style={styles.optionText(COLORS.white)}>Facebook</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
