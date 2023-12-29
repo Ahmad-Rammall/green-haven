@@ -6,7 +6,7 @@ import { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigation from "./navigators/BottomTabNavigation";
-import { Login } from "./screens";
+import { Login, Register } from "./screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,7 +33,7 @@ export default function App() {
   }
 
   return (
-      <Login />
+      <Register />
   );
 }
 
