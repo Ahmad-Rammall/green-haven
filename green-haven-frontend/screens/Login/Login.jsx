@@ -102,7 +102,11 @@ const Login = () => {
                 <Text style={styles.errorMsg}>{errors.password}</Text>
               )}
             </View>
-            
+            <Button
+              onPress={isValid ? handleSubmit : () => {}}
+              isValid={isValid}
+              btnText="Submit"
+            />
           </View>
         )}
       </Formik>
