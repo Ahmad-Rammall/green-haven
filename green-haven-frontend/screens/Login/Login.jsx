@@ -13,6 +13,13 @@ const Login = () => {
   const [responseData, setResponseData] = useState(null);
   const [secureText, setSecureText] = useState(true);
 
+  validationSchema = Yup.object({
+    password: Yup.string()
+      .min(6, "Must be 6 characters or above")
+      .required("Required"),
+    email: Yup.string().email("Invalid email address").required("Required"),
+  });
+
   return (
     <SafeAreaView>
       <Image source={require("../../assets/images/signinImage.png")} style={styles.image} />
