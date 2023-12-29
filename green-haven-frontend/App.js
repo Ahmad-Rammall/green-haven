@@ -7,6 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigation from "./navigators/BottomTabNavigation";
 import { Login, Register } from "./screens";
+import {Market} from "./screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,7 +35,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Market">
         <Stack.Screen
           name="Main"
           component={BottomTabNavigation}
@@ -49,6 +50,10 @@ export default function App() {
           name="Register"
           component={Register}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Market"
+          component={Market}
         />
       </Stack.Navigator>
     </NavigationContainer>
