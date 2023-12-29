@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import { Button } from "../../components";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import styles from "./register.styles";
+import styles from "../Login/login.styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 
@@ -184,6 +184,17 @@ const Register = () => {
                   <Text style={styles.errorMsg}>{errors.confirmPassword}</Text>
                 )}
               </View>
+              <Button
+                onPress={isValid ? handleSubmit : () => {}}
+                isValid={isValid}
+                btnText="Register"
+                color={COLORS.primary}
+              />
+
+              <Text style={styles.registerText}>
+                Already Have An Account?
+                <Text style={styles.registerBtn}> Sign in.</Text>
+              </Text>
             </View>
           )}
         </Formik>
