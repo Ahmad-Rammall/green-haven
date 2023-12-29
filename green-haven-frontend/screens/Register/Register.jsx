@@ -152,7 +152,38 @@ const Register = () => {
                   <Text style={styles.errorMsg}>{errors.password}</Text>
                 )}
               </View>
-              
+
+              {/* Confirm Password */}
+
+              <View style={styles.inputs}>
+                <Text style={styles.label}>Confirm Password</Text>
+                <View
+                  style={styles.inputWrapper(
+                    touched.confirmPassword ? COLORS.primary : COLORS.white
+                  )}
+                >
+                  <MaterialCommunityIcons
+                    name="lock-outline"
+                    size={25}
+                    color={COLORS.gray}
+                  />
+                  <TextInput
+                    placeholder="confirm Password"
+                    onFocus={() => setFieldTouched("confirmPassword")}
+                    onBlur={() => setFieldTouched("confirmPassword", "")}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    value={values.confirmPassword}
+                    onChangeText={handleChange("confirmPassword")}
+                    secureTextEntry={secureText}
+                    style={styles.input}
+                  />
+
+                </View>
+                {touched.confirmPassword && errors.confirmPassword && (
+                  <Text style={styles.errorMsg}>{errors.confirmPassword}</Text>
+                )}
+              </View>
             </View>
           )}
         </Formik>
