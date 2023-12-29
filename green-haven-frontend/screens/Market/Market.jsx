@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
-import { ProductCard } from "../../components";
+import { ProductCard, SearchBar } from "../../components";
 import styles from "./market.styles";
 import React from "react";
 
@@ -10,6 +10,7 @@ const Market = () => {
       showsVerticalScrollIndicator={false}
       showsHorizontalScrollIndicator={false}
     >
+      <SearchBar />
       <View style={styles.productsContainer}>
         <ProductCard />
         <ProductCard />

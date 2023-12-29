@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from "react-native";
 import {Feather, Ionicons} from "@expo/vector-icons"
 import { SIZES, COLORS } from "../../assets/constants";
+import styles from "./searchBar.styles";
 import React from "react";
 
 const SearchBar = () => {
@@ -19,7 +20,7 @@ const SearchBar = () => {
       <View style={styles.searchBtn}>
         <Ionicons
           name="camera-outline"
-          size={SIZES.small}
+          size={20}
           color={COLORS.secondary}
         />
       </View>
