@@ -1,5 +1,6 @@
 import { Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
+import styles from "./productCardStyles";
 import { useNavigation } from "@react-navigation/native";
 
 const x =
