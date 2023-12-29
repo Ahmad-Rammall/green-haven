@@ -36,7 +36,59 @@ const Register = () => {
 
   return (
     <SafeAreaView style={styles.loginContainer}>
-      <Text>Register</Text>
+      <ScrollView onPress={Keyboard.dismiss()}>
+        <Image
+          source={require("../../assets/images/registerImage.png")}
+          style={styles.image}
+        />
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={validationSchema}
+          onSubmit={(values) => console.log(values)}
+        >
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            errors,
+            isValid,
+            setFieldTouched,
+            touched,
+          }) => (
+            <View>
+              {/* Email */}
+              <View style={styles.inputs}>
+                <Text style={styles.label}>Email</Text>
+                <View
+                  style={styles.inputWrapper(
+                    touched.email ? COLORS.primary : COLORS.white
+                  )}
+                >
+                  <MaterialCommunityIcons
+                    name="email-outline"
+                    size={25}
+                    color={COLORS.gray}
+                  />
+                  <TextInput
+                    placeholder="Enter Your Email"
+                    onFocus={() => setFieldTouched("email")}
+                    onBlur={() => setFieldTouched("email", "")}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    value={values.email}
+                    onChangeText={handleChange("email")}
+                    style={styles.input}
+                  />
+                </View>
+                {touched.email && errors.email && (
+                  <Text style={styles.errorMsg}>{errors.email}</Text>
+                )}
+              </View>
+            </View>
+          )}
+        </Formik>
+      </ScrollView>
     </SafeAreaView>
   );
 };
