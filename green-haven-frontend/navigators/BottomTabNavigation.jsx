@@ -9,7 +9,7 @@ const Tab = createBottomTabNavigator();
 const screenOptions = {
   tabBarShowLabel: false,
   tabBarHideOnKeyboard: true,
-  headerShown: false,
+  // headerShown: false,
   tabBarStyles: {
     position: "absolute",
     bottom: 0,
@@ -17,12 +17,20 @@ const screenOptions = {
     left: 0,
     elevation: 0,
     height: 0,
-  },  
+  },
+  headerStyle: {
+    backgroundColor: COLORS.primary,
+  },
+  headerTintColor: COLORS.offwhite,
+  headerTitleAlign: 'center',
+  headerTitleStyle: {
+    fontWeight: 'light', // Change text style in header
+  },
 };
 
 const BottomTabNavigation = () => {
   return (
-    <Tab.Navigator screenOptions={screenOptions} initialRouteName="Garden" >
+    <Tab.Navigator screenOptions={screenOptions} initialRouteName="Garden">
       <Tab.Screen
         name="Market"
         component={Market}
