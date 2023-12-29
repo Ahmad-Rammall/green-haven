@@ -115,6 +115,44 @@ const Register = () => {
                   <Text style={styles.errorMsg}>{errors.name}</Text>
                 )}
               </View>
+
+              {/* Password */}
+
+              <View style={styles.inputs}>
+                <Text style={styles.label}>Password</Text>
+                <View
+                  style={styles.inputWrapper(
+                    touched.password ? COLORS.primary : COLORS.white
+                  )}
+                >
+                  <MaterialCommunityIcons
+                    name="lock-outline"
+                    size={25}
+                    color={COLORS.gray}
+                  />
+                  <TextInput
+                    placeholder="Password"
+                    onFocus={() => setFieldTouched("password")}
+                    onBlur={() => setFieldTouched("password", "")}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    value={values.password}
+                    onChangeText={handleChange("password")}
+                    secureTextEntry={secureText}
+                    style={styles.input}
+                  />
+                  <TouchableOpacity onPress={() => setSecureText(!secureText)}>
+                    <MaterialCommunityIcons
+                      name={secureText ? "eye-outline" : "eye-off-outline"}
+                      size={18}
+                    />
+                  </TouchableOpacity>
+                </View>
+                {touched.password && errors.password && (
+                  <Text style={styles.errorMsg}>{errors.password}</Text>
+                )}
+              </View>
+              
             </View>
           )}
         </Formik>
