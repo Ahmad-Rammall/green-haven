@@ -7,7 +7,7 @@ const COLORS = {
   secondary: "#edecee",
 
   gray: "#333333",
-  gray2: "#525252",
+  gray2: "#C1C0C8",
 
   offwhite: "#F8F8FA",
   blue:"#2781EB",

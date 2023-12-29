@@ -5,7 +5,7 @@ import { COLORS, SIZES } from "../../assets/constants";
 const Button = ({ btnText = "Button", isValid, onPress }) => {
   return (
     <TouchableOpacity
-      style={styles.button(isValid ? COLORS.primary : COLORS.gray)}
+      style={styles.button(isValid ? COLORS.primary : COLORS.gray2)}
       onPress={onPress}
       disabled={!isValid}
     >
