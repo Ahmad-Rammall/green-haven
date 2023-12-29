@@ -16,7 +16,7 @@ import styles from "../Login/login.styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 
-const Register = () => {
+const Register = ({ navigation }) => {
   const [loader, setLoader] = useState(false);
   const [responseData, setResponseData] = useState(null);
   const [secureText, setSecureText] = useState(true);
@@ -191,7 +191,7 @@ const Register = () => {
                 color={COLORS.primary}
               />
 
-              <Text style={styles.registerText}>
+              <Text style={styles.registerText} onPress={()=>navigation.navigate("Login")}>
                 Already Have An Account?
                 <Text style={styles.registerBtn}> Sign in.</Text>
               </Text>
