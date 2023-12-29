@@ -5,10 +5,9 @@ import { COLORS } from "../../assets/constants";
 
 const Carousel = () => {
   const slides = [
-    require("../../assets/images/plant1.jpg"),
-    require("../../assets/images/plant2.jpg"),
-    require("../../assets/images/plant3.jpg"),
-    require("../../assets/images/plant4.jpg"),
+    "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
+    "https://th.bing.com/th/id/OIP.rvSWtRd_oPRTwDoTCmkP5gHaE8?rs=1&pid=ImgDetMain",
+    "https://th.bing.com/th/id/OIP.W1fkF6di0Nmcy3Fyg5RJiwHaE8?rs=1&pid=ImgDetMain",
   ];
   
   return (
