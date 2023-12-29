@@ -85,6 +85,36 @@ const Register = () => {
                   <Text style={styles.errorMsg}>{errors.email}</Text>
                 )}
               </View>
+
+              {/* Name */}
+
+              <View style={styles.inputs}>
+                <Text style={styles.label}>Name</Text>
+                <View
+                  style={styles.inputWrapper(
+                    touched.name ? COLORS.primary : COLORS.white
+                  )}
+                >
+                  <MaterialCommunityIcons
+                    name="account-circle"
+                    size={25}
+                    color={COLORS.gray}
+                  />
+                  <TextInput
+                    placeholder="Full Name"
+                    onFocus={() => setFieldTouched("name")}
+                    onBlur={() => setFieldTouched("name", "")}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    value={values.name}
+                    onChangeText={handleChange("name")}
+                    style={styles.input}
+                  />
+                </View>
+                {touched.name && errors.name && (
+                  <Text style={styles.errorMsg}>{errors.name}</Text>
+                )}
+              </View>
             </View>
           )}
         </Formik>
