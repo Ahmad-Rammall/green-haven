@@ -13,61 +13,16 @@ import {
   ProductDetails,
   Cart,
 } from "../screens";
+import MarketStackNavigator from "./MarketStack";
+import ScannerStackNavigator from "./ScannerStack";
 
 const Tab = createBottomTabNavigator();
-const MarketStack = createNativeStackNavigator();
-
-// Options For Nested Screens
-const screenOptions = ({ route, navigation }) => ({
-  headerShown: true,
-  headerStyle: {
-    backgroundColor: COLORS.primary,
-  },
-  headerTintColor: COLORS.offwhite,
-  headerTitleAlign: "center",
-  headerTitleStyle: {
-    fontWeight: "light",
-  },
-  headerTitle: route.name,
-  headerBackTitleVisible: true,
-  headerBackImage: ({ tintColor }) => (
-    <Ionicons name="ios-arrow-back" size={24} color={tintColor} />
-  ),
-  // Cart Icon On The Right
-  headerRight: () => (
-    <View style={styles.headerButtonsContainer}>
-      <TouchableOpacity
-        style={styles.headerButton}
-        onPress={() => {
-          navigation.navigate("Cart")
-        }}
-      >
-        <Ionicons name="ios-cart-outline" size={24} color={COLORS.offwhite}/>
-      </TouchableOpacity>
-    </View>
-  ),
-  
-});
 
 // Options For Bottom Navigator Screens
 const bottomTabScreenOptions ={
   tabBarShowLabel: false,
   tabBarHideOnKeyboard: true,
   headerShown: false,
-};
-
-// Navigations inside the market section
-const MarketStackNavigator = () => {
-  return (
-    <MarketStack.Navigator screenOptions={screenOptions}>
-      <MarketStack.Screen name="Market" component={Market} />
-      <MarketStack.Screen
-        name="Product Details"
-        component={ProductDetails}
-      />
-      <MarketStack.Screen name="Cart" component={Cart} options={{ headerRight:()=>(<View></View>) }}/>
-    </MarketStack.Navigator>
-  );
 };
 
 // Bottom navigator sections
@@ -94,7 +49,7 @@ const BottomTabNavigation = () => {
       />
       <Tab.Screen
         name="Scanner"
-        component={Scanner}
+        component={ScannerStackNavigator}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
