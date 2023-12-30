@@ -1,13 +1,12 @@
 import { StyleSheet } from "react-native";
 import Constants from 'expo-constants';
+import { COLORS, SIZES } from "../../assets/constants";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: "#000",
-    padding: 8,
+    backgroundColor: COLORS.gray2,
   },
   controls: {
     flex: 0.5,
@@ -26,12 +25,19 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   camera: {
-    flex: 5,
+    flex: 4,
     borderRadius: 20,
   },
   topControls: {
     flex: 1,
   },
+  bottomContainer:{
+    flexDirection:"row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 5,
+    paddingHorizontal: 20,
+  }
 });
 
 export default styles;

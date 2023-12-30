@@ -4,6 +4,7 @@ import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import { CameraButton as Button } from "../../components";
 import styles from "./scanner.styles";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Scanner() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -50,7 +51,7 @@ export default function Scanner() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {!image ? (
         <Camera
           style={styles.camera}
@@ -66,15 +67,6 @@ export default function Scanner() {
             }}
           >
             <Button
-              title=""
-              icon="retweet"
-              onPress={() => {
-                setType(
-                  type === CameraType.back ? CameraType.front : CameraType.back
-                );
-              }}
-            />
-            <Button
               onPress={() =>
                 setFlash(
                   flash === Camera.Constants.FlashMode.off
@@ -84,6 +76,7 @@ export default function Scanner() {
               }
               icon="flash"
               color={flash === Camera.Constants.FlashMode.off ? "gray" : "#fff"}
+              flash
             />
           </View>
         </Camera>
@@ -108,14 +101,33 @@ export default function Scanner() {
             <Button title="Save" onPress={savePicture} icon="check" />
           </View>
         ) : (
-          <Button
-            title="Take a picture"
-            onPress={takePicture}
-            icon="camera"
-            shutter
-          />
+          <View style={styles.bottomContainer}>
+            <Button
+              title=""
+              icon="images"
+              onPress={() => {
+                setType(
+                  type === CameraType.back ? CameraType.front : CameraType.back
+                );
+              }}
+            />
+            <Button
+              title="Take a picture"
+              onPress={takePicture}
+              shutter
+            />
+            <Button
+              title=""
+              icon="retweet"
+              onPress={() => {
+                setType(
+                  type === CameraType.back ? CameraType.front : CameraType.back
+                );
+              }}
+            />
+          </View>
         )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
