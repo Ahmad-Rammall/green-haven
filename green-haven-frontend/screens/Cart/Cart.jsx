@@ -1,16 +1,29 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { CartItem } from "../../components"
-import React from 'react'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { CartItem, Button } from "../../components";
+import styles from "./cart.styles";
+import React from "react";
 
 const Cart = () => {
   return (
-    <View>
-      <Text>Cart</Text>
-      <CartItem />
+    <View style={styles.container}>
+      <View style={styles.wrapper}>
+        <ScrollView>
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+        </ScrollView>
+      </View>
+
+      <View style={styles.bottomContainer}>
+        <Text style={styles.totalAmount}>Total Amount : 50 $</Text>
+        <Button btnText="Checkout" isValid={true}/>
+      </View>
     </View>
-  )
-}
+  );
+};
 
-export default Cart
-
-const styles = StyleSheet.create({})
+export default Cart;

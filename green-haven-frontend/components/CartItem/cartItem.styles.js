@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.xSmall,
     flexDirection: "row",
     padding: SIZES.xSmall,
+    marginBottom: SIZES.small
   },
   leftContainer: {
   },
