@@ -3,26 +3,18 @@ import React from "react";
 import styles from "./productCardStyles";
 import { useNavigation } from "@react-navigation/native";
 
-const x =
-  "https://th.bing.com/th?id=OIP.3MxqaJv2Z5QsG7wIXzizjAHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2";
-
-const ProductCard = () => {
+const ProductCard = ({ image, name, sellerName, price }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity onPress={() => navigation.navigate("Product Details")}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image
-            source={{
-              uri: "https://th.bing.com/th?id=OIP.3MxqaJv2Z5QsG7wIXzizjAHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2",
-            }}
-            style={styles.image}
-          />
+          <Image source={ image } style={styles.image} />
         </View>
         <View style={styles.details}>
-          <Text style={styles.title}>Product Name</Text>
-          <Text style={styles.seller}>Ahmad Rammal</Text>
-          <Text style={styles.price}>10$</Text>
+          <Text style={styles.title}>{name}</Text>
+          <Text style={styles.seller}>{sellerName}</Text>
+          <Text style={styles.price}>{price}</Text>
         </View>
       </View>
     </TouchableOpacity>

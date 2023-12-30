@@ -13,17 +13,31 @@ const Market = () => {
       >
         <SearchBar />
         <View style={styles.productsContainer}>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard
+            image={require("../../assets/images/Carousel/plant1.jpg")}
+            name="Plant"
+            sellerName="Ahmad Rammal"
+            price="10 $"
+          />
+          <ProductCard
+            image={require("../../assets/images/Carousel/plant2.jpg")}
+            name="Plant"
+            sellerName="Ahmad Rammal"
+            price="10 $"
+          />
+          <ProductCard
+            image={require("../../assets/images/Carousel/plant3.jpg")}
+            name="Plant"
+            sellerName="Ahmad Rammal"
+            price="10 $"
+          />
+          <ProductCard
+            image={require("../../assets/images/Carousel/plant4.jpg")}
+            name="Plant"
+            sellerName="Ahmad Rammal"
+            price="10 $"
+          />
+          
         </View>
       </ScrollView>
     </View>

@@ -4,7 +4,7 @@ import { COLORS, SIZES } from "../../assets/constants";
 const styles = StyleSheet.create({
     container:{
         width: 150,
-        height: 210,
+        height: 230,
         margin: SIZES.small,
         borderRadius: SIZES.medium,
         backgroundColor: COLORS.secondary,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
     image:{
         aspectRatio: 1,
-        resizeMode: 'cover'
+        resizeMode: "stretch"
     },
     details:{
         paddingLeft: 3,
