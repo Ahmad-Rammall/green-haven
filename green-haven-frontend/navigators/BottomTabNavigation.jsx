@@ -1,4 +1,5 @@
 import React from "react";
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,7 +18,7 @@ const Tab = createBottomTabNavigator();
 const MarketStack = createNativeStackNavigator();
 
 // Options For Nested Screens
-const screenOptions = ({ route }) => ({
+const screenOptions = ({ route, navigation }) => ({
   headerShown: true,
   headerStyle: {
     backgroundColor: COLORS.primary,
@@ -32,6 +33,20 @@ const screenOptions = ({ route }) => ({
   headerBackImage: ({ tintColor }) => (
     <Ionicons name="ios-arrow-back" size={24} color={tintColor} />
   ),
+  // Cart Icon On The Right
+  headerRight: () => (
+    <View style={styles.headerButtonsContainer}>
+      <TouchableOpacity
+        style={styles.headerButton}
+        onPress={() => {
+          navigation.navigate("Cart")
+        }}
+      >
+        <Ionicons name="ios-cart-outline" size={24} color={COLORS.offwhite}/>
+      </TouchableOpacity>
+    </View>
+  ),
+  
 });
 
 // Options For Bottom Navigator Screens
@@ -41,6 +56,7 @@ const bottomTabScreenOptions ={
   headerShown: false,
 };
 
+// Navigations inside the market section
 const MarketStackNavigator = () => {
   return (
     <MarketStack.Navigator screenOptions={screenOptions}>
@@ -49,11 +65,12 @@ const MarketStackNavigator = () => {
         name="Product Details"
         component={ProductDetails}
       />
-      <MarketStack.Screen name="Cart" component={Cart} />
+      <MarketStack.Screen name="Cart" component={Cart} options={{ headerRight:()=>(<View></View>) }}/>
     </MarketStack.Navigator>
   );
 };
 
+// Bottom navigator sections
 const BottomTabNavigation = () => {
   return (
     <Tab.Navigator
@@ -75,7 +92,6 @@ const BottomTabNavigation = () => {
           },
         }}
       />
-
       <Tab.Screen
         name="Scanner"
         component={Scanner}
@@ -91,7 +107,6 @@ const BottomTabNavigation = () => {
           },
         }}
       />
-
       <Tab.Screen
         name="Garden"
         component={Garden}
@@ -107,7 +122,6 @@ const BottomTabNavigation = () => {
           },
         }}
       />
-
       <Tab.Screen
         name="Feed"
         component={Feed}
@@ -123,7 +137,6 @@ const BottomTabNavigation = () => {
           },
         }}
       />
-
       <Tab.Screen
         name="Profile"
         component={Profile}
@@ -142,5 +155,21 @@ const BottomTabNavigation = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  headerButtonsContainer: {
+    flexDirection: 'row',
+    marginRight: 10,
+  },
+  headerButton: {
+    marginLeft: 10,
+    padding: 10,
+    backgroundColor: COLORS.primary,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: COLORS.offwhite,
+  },
+});
 
 export default BottomTabNavigation;
