@@ -3,10 +3,13 @@ import React from "react";
 import styles from "./productCardStyles";
 import { useNavigation } from "@react-navigation/native";
 
-const ProductCard = ({ image, name, sellerName, price }) => {
+const ProductCard = ({ image, name, sellerName, price, description }) => {
   const navigation = useNavigation();
+  const gotoProductDetails = () => {
+    navigation.navigate("Product Details", { image, name, description, price })
+  }
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("Product Details")}>
+    <TouchableOpacity onPress={gotoProductDetails}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image source={ image } style={styles.image} />

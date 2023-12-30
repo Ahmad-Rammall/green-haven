@@ -8,40 +8,30 @@ import {
 } from "react-native";
 import React from "react";
 import styles from "./productDetails.styles";
-import { Ionicons } from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/native";
 
 const ProductDetails = ({ navigation }) => {
+  const route = useRoute();
+  const { image, name, description, price } = route.params;
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Image
-          source={{
-            uri: "https://th.bing.com/th/id/OIP.W1fkF6di0Nmcy3Fyg5RJiwHaE8?rs=1&pid=ImgDetMain",
-          }}
-          style={styles.image}
-        />
+        <Image source={image} style={styles.image} />
 
         <View style={styles.details}>
           <View style={styles.titleRow}>
-            <Text style={styles.title}>Product Name</Text>
+            <Text style={styles.title}>{name}</Text>
             <View style={styles.priceWrapper}>
-              <Text style={styles.price}>$ 10.99</Text>
+              <Text style={styles.price}>{price}</Text>
             </View>
           </View>
 
           <View style={styles.descriptionWrapper}>
             <Text style={styles.description}>Description</Text>
             <Text style={styles.descText}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa
-              aliquam nobis eveniet quos, quod dolore rem labore sint itaque
-              temporibus quaerat laboriosam maiores ipsum dolorem possimus minus
-              fugit, quasi odio ea neque, omnis modi cupiditate esse asperiores!
-              Nostrum reprehenderit velit itaque saepe architecto doloremque
-              ipsum nisi harum numquam debitis aperiam, iusto alias aliquam
-              deserunt vel voluptate dolor laborum sapiente praesentium. Amet,
-              est. Nesciunt mollitia in voluptate deserunt, quod numquam
-              eligendi? Quas soluta dicta excepturi impedit iusto doloremque
-              cumque ullam atque harum molestiae.
+              {description ??
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpaaliquam nobis eveniet quos, quod dolore rem labore sint itaquetemporibus quaerat laboriosam maiores ipsum dolorem possimus minusfugit, quasi odio ea neque, omnis modi doloremquecumque ullam atque harum molestiae."}
             </Text>
           </View>
 

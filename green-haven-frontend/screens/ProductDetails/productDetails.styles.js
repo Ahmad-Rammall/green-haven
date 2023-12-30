@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.lightWhite,
     },
     image:{
-        aspectRatio: 1,
         resizeMode: "cover",
+        width: "100%"
     },
     details:{
         marginTop: -SIZES.small,

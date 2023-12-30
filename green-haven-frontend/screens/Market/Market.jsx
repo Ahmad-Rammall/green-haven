@@ -17,7 +17,7 @@ const Market = () => {
             image={require("../../assets/images/Carousel/plant1.jpg")}
             name="Plant"
             sellerName="Ahmad Rammal"
-            price="10 $"
+            price="20 $"
           />
           <ProductCard
             image={require("../../assets/images/Carousel/plant2.jpg")}
