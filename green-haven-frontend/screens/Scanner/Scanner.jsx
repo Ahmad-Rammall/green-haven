@@ -6,6 +6,7 @@ import { CameraButton as Button } from "../../components";
 import styles from "./scanner.styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
+import { SIZES } from "../../assets/constants";
 
 export default function Scanner() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -81,13 +82,7 @@ export default function Scanner() {
           ref={cameraRef}
           flashMode={flash}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingHorizontal: 30,
-            }}
-          >
+          <View style={{ paddingHorizontal: SIZES.small }}>
             <Button
               onPress={() =>
                 setFlash(

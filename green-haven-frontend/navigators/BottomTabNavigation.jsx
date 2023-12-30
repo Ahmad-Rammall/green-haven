@@ -1,25 +1,15 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../assets/constants/index";
-import {
-  Feed,
-  Garden,
-  Market,
-  Profile,
-  Scanner,
-  ProductDetails,
-  Cart,
-} from "../screens";
+import { Feed, Garden, Profile } from "../screens";
 import MarketStackNavigator from "./MarketStack";
 import ScannerStackNavigator from "./ScannerStack";
 
 const Tab = createBottomTabNavigator();
 
 // Options For Bottom Navigator Screens
-const bottomTabScreenOptions ={
+const bottomTabScreenOptions = {
   tabBarShowLabel: false,
   tabBarHideOnKeyboard: true,
   headerShown: false,
@@ -110,21 +100,5 @@ const BottomTabNavigation = () => {
     </Tab.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  headerButtonsContainer: {
-    flexDirection: 'row',
-    marginRight: 10,
-  },
-  headerButton: {
-    marginLeft: 10,
-    padding: 10,
-    backgroundColor: COLORS.primary,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: COLORS.offwhite,
-  },
-});
 
 export default BottomTabNavigation;
