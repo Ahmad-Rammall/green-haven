@@ -1,39 +1,68 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../assets/constants/index";
-import { Feed, Garden, Market, Profile, Scanner } from "../screens";
+import {
+  Feed,
+  Garden,
+  Market,
+  Profile,
+  Scanner,
+  ProductDetails,
+  Cart,
+} from "../screens";
 
 const Tab = createBottomTabNavigator();
+const MarketStack = createNativeStackNavigator();
 
-const screenOptions = {
-  tabBarShowLabel: false,
-  tabBarHideOnKeyboard: true,
-  // headerShown: false,
-  tabBarStyles: {
-    position: "absolute",
-    bottom: 0,
-    right: 0,
-    left: 0,
-    elevation: 0,
-    height: 0,
-  },
+// Options For Nested Screens
+const screenOptions = ({ route }) => ({
+  headerShown: true,
   headerStyle: {
     backgroundColor: COLORS.primary,
   },
   headerTintColor: COLORS.offwhite,
-  headerTitleAlign: 'center',
+  headerTitleAlign: "center",
   headerTitleStyle: {
-    fontWeight: 'light', // Change text style in header
+    fontWeight: "light",
   },
+  headerTitle: route.name,
+  headerBackTitleVisible: true,
+  headerBackImage: ({ tintColor }) => (
+    <Ionicons name="ios-arrow-back" size={24} color={tintColor} />
+  ),
+});
+
+// Options For Bottom Navigator Screens
+const bottomTabScreenOptions ={
+  tabBarShowLabel: false,
+  tabBarHideOnKeyboard: true,
+  headerShown: false,
+};
+
+const MarketStackNavigator = () => {
+  return (
+    <MarketStack.Navigator screenOptions={screenOptions}>
+      <MarketStack.Screen name="Market" component={Market} />
+      <MarketStack.Screen
+        name="Product Details"
+        component={ProductDetails}
+      />
+      <MarketStack.Screen name="Cart" component={Cart} />
+    </MarketStack.Navigator>
+  );
 };
 
 const BottomTabNavigation = () => {
   return (
-    <Tab.Navigator screenOptions={screenOptions} initialRouteName="Garden">
+    <Tab.Navigator
+      screenOptions={bottomTabScreenOptions}
+      initialRouteName="Garden"
+    >
       <Tab.Screen
-        name="Market"
-        component={Market}
+        name="MarketSection"
+        component={MarketStackNavigator}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
