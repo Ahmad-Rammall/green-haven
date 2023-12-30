@@ -5,26 +5,28 @@ import React from "react";
 
 const Market = () => {
   return (
-    <ScrollView
-      style={styles.container}
-      showsVerticalScrollIndicator={false}
-      showsHorizontalScrollIndicator={false}
-    >
-      <SearchBar />
-      <View style={styles.productsContainer}>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView
+        style={styles.wrapper}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
+        <SearchBar />
+        <View style={styles.productsContainer}>
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

@@ -4,9 +4,9 @@ import { COLORS, SIZES } from "../../assets/constants";
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        margin: SIZES.medium,
-        marginTop:0,
         backgroundColor: COLORS.offwhite,
+    },
+    wrapper:{
     },
     productsContainer:{
         flexDirection: "row",
