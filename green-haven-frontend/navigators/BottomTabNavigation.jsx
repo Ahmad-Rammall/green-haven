@@ -21,10 +21,10 @@ const BottomTabNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={bottomTabScreenOptions}
-      initialRouteName="Garden"
+      initialRouteName="GardenPage"
     >
       <Tab.Screen
-        name="MarketSection"
+        name="MarketPage"
         component={MarketStackNavigator}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -39,7 +39,7 @@ const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Scanner"
+        name="ScannerPage"
         component={ScannerStackNavigator}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -54,7 +54,7 @@ const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Garden"
+        name="GardenPage"
         component={Garden}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -69,7 +69,7 @@ const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Feed"
+        name="FeedPage"
         component={Feed}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -84,7 +84,7 @@ const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="ProfilePage"
         component={ProfileStackNavigator}
         options={{
           tabBarIcon: ({ focused }) => {
