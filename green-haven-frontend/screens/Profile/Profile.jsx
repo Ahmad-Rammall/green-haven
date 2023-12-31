@@ -5,7 +5,7 @@ import { Button } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
@@ -23,7 +23,7 @@ const Profile = () => {
         </Text>
 
         <View style={styles.optionButtons}>
-          <TouchableOpacity style={styles.optionBtn}>
+          <TouchableOpacity style={styles.optionBtn} onPress={() => navigation.navigate("Edit Profile")}>
             <Text style={styles.optionTxt}>Edit Profile</Text>
             <Ionicons name="arrow-forward-outline" size={24} />
           </TouchableOpacity>
