@@ -7,6 +7,9 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import Cart from "./Cart/Cart"
+import EditProfile from "./EditProfile/EditProfile"
+import ChangePassword from "./ChangePassword/ChangePassword"
+import LikedPosts from "./LikedPosts/LikedPosts";
 
 export {
   Feed,
@@ -18,4 +21,7 @@ export {
   Register,
   ProductDetails,
   Cart,
+  EditProfile,
+  ChangePassword,
+  LikedPosts,
 };
