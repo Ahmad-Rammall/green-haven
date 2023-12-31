@@ -2,10 +2,11 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { COLORS, SIZES } from "../../assets/constants";
 
-const Button = ({ btnText = "Button", isValid, onPress }) => {
+const Button = ({ btnText = "Button", isValid, onPress, color }) => {
+  color = color ? color : COLORS.primary
   return (
     <TouchableOpacity
-      style={styles.button(isValid ? COLORS.primary : COLORS.gray2)}
+      style={styles.button(isValid ? color : COLORS.gray2)}
       onPress={onPress}
       disabled={!isValid}
     >
@@ -19,7 +20,6 @@ export default Button;
 const styles = StyleSheet.create({
   button: (color) => ({
     backgroundColor: color,
-    margin: SIZES.medium,
     padding: 5,
     borderRadius: SIZES.medium,
   }),
