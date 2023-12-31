@@ -5,25 +5,11 @@ const styles = StyleSheet.create({
   container: {
     margin: SIZES.medium,
   },
-  wrapper: {
-
-  },
-  imageContainer:{
-    
-  },
-  image: {
-    borderWidth: 4,
-    borderColor: COLORS.primary,
-    borderRadius: 100,
-    width: 150,
-    height: 150,
-    alignSelf: "center",
-    resizeMode: "cover"
-  },
   name: {
     fontFamily: "bold",
     fontSize: SIZES.large,
-    alignSelf: "center"
+    alignSelf: "center",
+    marginTop: 20
   },
   bio: {
     fontFamily: "light",

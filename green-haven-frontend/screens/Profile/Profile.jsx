@@ -4,17 +4,13 @@ import styles from "./profile.styles";
 import { Button } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
+import { ProfilePicture } from "../../components"
 
 const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require("../../assets/images/noUserImage.jpg")}
-            style={styles.image}
-          />
-        </View>
+        <ProfilePicture image={require("../../assets/images/Carousel/plant1.jpg")} />
         <Text style={styles.name}>Ahmad Rammal</Text>
         <Text style={styles.bio}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
