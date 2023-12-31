@@ -5,6 +5,7 @@ import { COLORS } from "../assets/constants/index";
 import { Feed, Garden, Profile } from "../screens";
 import MarketStackNavigator from "./MarketStack";
 import ScannerStackNavigator from "./ScannerStack";
+import ProfileStackNavigator from "./ProfileStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -84,7 +85,7 @@ const BottomTabNavigation = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileStackNavigator}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
