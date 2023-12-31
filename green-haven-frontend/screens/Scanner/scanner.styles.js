@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     width: SIZES.width,
-    height: "100%",
+    height: 1100,
     zIndex: 9999,
   },
   modalClose:{

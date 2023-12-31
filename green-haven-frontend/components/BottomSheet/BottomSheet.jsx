@@ -1,66 +1,51 @@
 import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
-import {
-  Button,
-  Pressable,
-  StyleSheet,
-  Switch,
-  Text,
-  useWindowDimensions,
-  View,
-} from "react-native";
-import {
-  BottomSheetModal,
-  BottomSheetModalProvider,
-} from "@gorhom/bottom-sheet";
-import { useRef, useState } from "react";
-import { AntDesign } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-
-const BottomSheet = ({ bottomSheetModalRef, handlePresentModal }) => {
-  const snapPoints = ["25%", "48%", "75%"];
+import { Text, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { TouchableOpacity } from "@gorhom/bottom-sheet";
+import styles from "./sheet.styles";
+const BottomSheet = () => {
+  const snapPoints = ["70%"];
 
   return (
-    <Text>xxxxxxxx</Text>
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>Plant Name</Text>
+      <Text style={styles.genre}>Plant Genre</Text>
+      <View style={styles.descriptionContainer}>
+        <Text style={styles.descTitle}>About the Plant :</Text>
+        <Text style={styles.description}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+          asperiores, maxime, dicta incidunt itaque magni nostrum eum inventore,
+          magnam maiores dolor illum? Voluptatem maxime accusantium quas iusto
+          quos quibusdam, voluptates placeat nobis id, officia odit eligendi
+          nulla rerum itaque facilis aliquam veritatis magnam qui perspiciatis
+          velit. Labore assumenda vel exercitationem?Lorem, ipsum dolor sit amet
+          consectetur adipisicing elit. Provident, velit explicabo. Eveniet
+          dignissimos, quaerat ullam quis nisi suscipit rerum, repellat labore
+          dolorum doloremque deserunt nemo, praesentium pariatur dolore
+          aspernatur! Reiciendis a aperiam soluta minus magni, eaque nisi
+          mollitia, molestias optio, quibusdam at ab in assumenda! Accusantium
+          magni molestiae in, eveniet et repellendus assumenda nam, maiores
+          veniam facilis ratione eum neque hic cupiditate. Nihil, sequi
+          reprehenderit aut nisi ad aspernatur deleniti? Sequi, accusamus
+          ratione tenetur eos ea ipsum aut cum, tempore dolorum minus facere ut
+          iste neque labore eaque perferendis fuga possimus blanditiis quam. Sit
+          fugiat ab repellendus sequi quisquam? Recusandae.
+        </Text>
+      </View>
+
+      <View style={styles.buttons}>
+        <TouchableOpacity style={styles.optionBtn}>
+          <Text style={styles.optText}> + Garden</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionBtn}>
+          <Text style={styles.optText}>Post</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionBtn}>
+          <Text style={styles.optText}>Send to</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
 export default BottomSheet;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "gray",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  contentContainer: {
-    flex: 1,
-    alignItems: "center",
-    paddingHorizontal: 15,
-  },
-  row: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginVertical: 10,
-  },
-  title: {
-    fontWeight: "900",
-    letterSpacing: 0.5,
-    fontSize: 16,
-  },
-  subtitle: {
-    color: "#101318",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  description: {
-    color: "#56636F",
-    fontSize: 13,
-    fontWeight: "normal",
-    width: "100%",
-  },
-});
