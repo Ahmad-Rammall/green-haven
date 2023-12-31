@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { COLORS, SIZES } from "../../assets/constants";
-import Constants from 'expo-constants';
+import Constants from "expo-constants";
 
 const styles = StyleSheet.create({
   container: {
@@ -32,12 +32,23 @@ const styles = StyleSheet.create({
   topControls: {
     flex: 1,
   },
-  bottomContainer:{
-    flexDirection:"row",
+  bottomContainer: {
+    flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 5,
     paddingHorizontal: 20,
+  },
+  modalOpen: {
+    display: "flex",
+    position: "absolute",
+    bottom: 0,
+    width: SIZES.width,
+    height: "100%",
+    zIndex: 9999,
+  },
+  modalClose:{
+    display: "none",
   }
 });
 
