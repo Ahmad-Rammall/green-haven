@@ -61,7 +61,20 @@ const FeedProfile = () => {
           </View>
         </View>
 
-        
+        <View>
+          <Post
+            postImage={postImage}
+            userImage={userImage}
+            description={description}
+            userName={userName}
+          />
+          <Post
+            postImage={postImage}
+            userImage={userImage}
+            description={description}
+            userName={userName}
+          />
+        </View>
       </ScrollView>
     </View>
   );
