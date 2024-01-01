@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { Post, SearchBar} from '../../components'
+import styles from "./feed.styles"
 import React from 'react'
 
 const Feed = () => {
   return (
     <View>
-      <Text>Feed</Text>
+      <View style={styles.stories}>
+        <Text>x</Text>
+      </View>
       <SearchBar placeholder="Search For Users"/>
       <Post />
     </View>
@@ -13,5 +16,3 @@ const Feed = () => {
 }
 
 export default Feed
-
-const styles = StyleSheet.create({})
