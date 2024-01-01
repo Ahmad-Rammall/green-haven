@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor: COLORS.offwhite,
+        margin: SIZES.small,
     },
     wrapper:{
     },
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         flexWrap: "wrap",
-        marginTop: 25
+        marginTop: 20
     }
 })
 

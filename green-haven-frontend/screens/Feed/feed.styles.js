@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     },
     stories:{
         flexDirection: "row",
-        // alignItems: "center",
         height: 80,
         borderTopWidth: 1,
         backgroundColor: COLORS.primary,

@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
     container:{
         width: 150,
         height: 230,
-        margin: SIZES.small,
         borderRadius: SIZES.medium,
         backgroundColor: COLORS.secondary,
     },
