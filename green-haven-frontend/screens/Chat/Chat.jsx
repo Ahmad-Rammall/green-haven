@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import UserChat from "../../components/UserChat/UserChat";
+import { COLORS, SIZES } from "../../assets/constants";
 
 const Chat = () => {
   return (
-    <View>
-      <Text>Chat</Text>
+    <View style={styles.container}>
+      <ScrollView style={styles.wrapper}>
+      </ScrollView>
     </View>
-  )
-}
+  );
+};
 
-export default Chat
+export default Chat;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
