@@ -34,7 +34,19 @@ const Post = () => {
             <Text style={styles.time}>10 min ago</Text>
           </View>
         </View>
-        
+        <View style={styles.buttons}>
+          {/* <Ionicons name="heart-outline" size={30} /> */}
+          <View style={styles.button}>
+            <Text>100</Text>
+            <FontAwesome name="comment-o" size={29} />
+          </View>
+          <View style={styles.button}>
+            <Text>100</Text>
+            <TouchableOpacity onPress={() => setIsLiked(!isLiked)}>
+              <Ionicons name={isLiked === true ? "heart" : "heart-outline"} size={30} />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </View>
   );
