@@ -7,6 +7,7 @@ import CameraButton from "./CameraButton/CameraButton";
 import BottomSheet from "../components/BottomSheet/BottomSheet";
 import ProfilePicture from "./ProfilePicture/ProfilePicture";
 import Post from "./Post/Post";
+import Story from "./Story/Story";
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   BottomSheet,
   ProfilePicture,
   Post,
+  Story,
 };
