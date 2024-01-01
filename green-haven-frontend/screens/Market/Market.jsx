@@ -11,7 +11,7 @@ const Market = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <SearchBar />
+        <SearchBar placeholder="What Are You Looking For ?"/>
         <View style={styles.productsContainer}>
           <ProductCard
             image={require("../../assets/images/Carousel/plant1.jpg")}
