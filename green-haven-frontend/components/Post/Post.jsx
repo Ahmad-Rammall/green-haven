@@ -1,11 +1,16 @@
 import { Text, View, Image } from "react-native";
 import styles from "./post.styles";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
+import { COLORS } from "../../assets/constants";
 
 const Post = () => {
-    const [isLiked, setIsLiked] = useState(false)
+  const [isLiked, setIsLiked] = useState(false);
+  const handleLike = () => {
+    console.log("xxxxxxx");
+    setIsLiked(!isLiked);
+  };
   return (
     <View style={styles.container}>
       <Text>x</Text>
@@ -42,9 +47,20 @@ const Post = () => {
           </View>
           <View style={styles.button}>
             <Text>100</Text>
-            <TouchableOpacity onPress={() => setIsLiked(!isLiked)}>
-              <Ionicons name={isLiked === true ? "heart" : "heart-outline"} size={30} />
-            </TouchableOpacity>
+            {isLiked ? (
+              <Ionicons
+                name="heart"
+                size={30}
+                onPress={() => handleLike()}
+                color={COLORS.red}
+              />
+            ) : (
+              <Ionicons
+                name="heart-outline"
+                size={30}
+                onPress={() => handleLike()}
+              />
+            )}
           </View>
         </View>
       </View>
