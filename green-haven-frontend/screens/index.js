@@ -10,6 +10,9 @@ import Cart from "./Cart/Cart"
 import EditProfile from "./EditProfile/EditProfile"
 import ChangePassword from "./ChangePassword/ChangePassword"
 import LikedPosts from "./LikedPosts/LikedPosts";
+import FeedProfile from "./FeedProfile/FeedProfile";
+import Chat from "./Chat/Chat";
+import Conversation from "./Conversation/Conversation";
 
 export {
   Feed,
@@ -24,4 +27,7 @@ export {
   EditProfile,
   ChangePassword,
   LikedPosts,
+  FeedProfile,
+  Chat,
+  Conversation
 };
