@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
         height: 230,
         borderRadius: SIZES.medium,
         backgroundColor: COLORS.secondary,
+        marginBottom: SIZES.medium
     },
     imageContainer:{
         flex:1,
