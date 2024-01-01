@@ -4,7 +4,7 @@ import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { COLORS } from "../../assets/constants";
 
-const Post = () => {
+const Post = ({ postImage, description, userName, userImage }) => {
   const [isLiked, setIsLiked] = useState(false);
   const handleLike = () => {
     console.log("xxxxxxx");
@@ -14,26 +14,22 @@ const Post = () => {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          source={require("../../assets/images/Carousel/plant1.jpg")}
+          source={postImage}
           style={styles.postImage}
         />
       </View>
       <Text style={styles.description}>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae soluta
-        ratione excepturi. Ipsum id harum consectetur necessitatibus, in dolore
-        quis eos vero quam totam, voluptate, deserunt rerum ullam repudiandae
-        neque assumenda doloremque explicabo? Incidunt modi non reprehenderit
-        ullam ut quis!
+        {description}
       </Text>
 
       <View style={styles.bottomContainer}>
         <View style={styles.profileContainer}>
           <Image
-            source={require("../../assets/images/noUserImage.png")}
+            source={userImage}
             style={styles.profilePic}
           />
           <View style={styles.profileText}>
-            <Text style={styles.userName}>User Name</Text>
+            <Text style={styles.userName}>{userName}</Text>
             <Text style={styles.time}>10 min ago</Text>
           </View>
         </View>
