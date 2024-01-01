@@ -4,13 +4,15 @@ import styles from "./profile.styles";
 import { Button } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
-import { ProfilePicture } from "../../components"
+import { ProfilePicture } from "../../components";
 
 const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <ProfilePicture image={require("../../assets/images/Carousel/plant1.jpg")} />
+        <ProfilePicture
+          image={require("../../assets/images/Carousel/plant1.jpg")}
+        />
         <Text style={styles.name}>Ahmad Rammal</Text>
         <Text style={styles.bio}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
@@ -19,12 +21,18 @@ const Profile = ({ navigation }) => {
         </Text>
 
         <View style={styles.optionButtons}>
-          <TouchableOpacity style={styles.optionBtn} onPress={() => navigation.navigate("Edit Profile")}>
+          <TouchableOpacity
+            style={styles.optionBtn}
+            onPress={() => navigation.navigate("Edit Profile")}
+          >
             <Text style={styles.optionTxt}>Edit Profile</Text>
             <Ionicons name="arrow-forward-outline" size={24} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.optionBtn}>
+          <TouchableOpacity
+            style={styles.optionBtn}
+            onPress={() => navigation.navigate("Change Password")}
+          >
             <Text style={styles.optionTxt}>Change Password</Text>
             <Ionicons name="arrow-forward-outline" size={24} />
           </TouchableOpacity>
