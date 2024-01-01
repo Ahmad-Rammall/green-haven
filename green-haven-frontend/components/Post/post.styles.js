@@ -9,15 +9,18 @@ const styles = StyleSheet.create({
     },
     imageContainer:{
         width: "100%",
+        height: 220
     },
     postImage:{
         resizeMode: "cover",
         width: "100%",
+        height: "100%",
         borderRadius: 5,
     },
     description:{
         fontFamily: "regular",
-        fontSize: SIZES.small
+        fontSize: SIZES.small,
+        marginVertical: 10
     },
     bottomContainer:{
         flexDirection: "row",

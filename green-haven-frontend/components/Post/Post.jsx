@@ -1,8 +1,7 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import styles from "./post.styles";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { TouchableOpacity } from "@gorhom/bottom-sheet";
 import { COLORS } from "../../assets/constants";
 
 const Post = () => {
@@ -13,7 +12,6 @@ const Post = () => {
   };
   return (
     <View style={styles.container}>
-      <Text>x</Text>
       <View style={styles.imageContainer}>
         <Image
           source={require("../../assets/images/Carousel/plant1.jpg")}
@@ -40,28 +38,24 @@ const Post = () => {
           </View>
         </View>
         <View style={styles.buttons}>
-          {/* <Ionicons name="heart-outline" size={30} /> */}
           <View style={styles.button}>
             <Text>100</Text>
-            <FontAwesome name="comment-o" size={29} />
+            <FontAwesome name="comment-o" size={30} />
           </View>
-          <View style={styles.button}>
-            <Text>100</Text>
-            {isLiked ? (
-              <Ionicons
-                name="heart"
-                size={30}
-                onPress={() => handleLike()}
-                color={COLORS.red}
-              />
-            ) : (
-              <Ionicons
-                name="heart-outline"
-                size={30}
-                onPress={() => handleLike()}
-              />
-            )}
-          </View>
+          <TouchableOpacity onPress={() => handleLike()}>
+            <View style={styles.button}>
+              <Text>100</Text>
+              {isLiked ? (
+                <Ionicons
+                  name="heart"
+                  size={30}
+                  color={COLORS.red}
+                />
+              ) : (
+                <Ionicons name="heart-outline" size={30} />
+              )}
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
