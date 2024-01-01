@@ -8,6 +8,7 @@ import BottomSheet from "../components/BottomSheet/BottomSheet";
 import ProfilePicture from "./ProfilePicture/ProfilePicture";
 import Post from "./Post/Post";
 import Story from "./Story/Story";
+import UserChat from "./UserChat/UserChat";
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   ProfilePicture,
   Post,
   Story,
+  UserChat
 };
