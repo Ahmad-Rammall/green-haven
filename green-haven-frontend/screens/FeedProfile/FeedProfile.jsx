@@ -41,6 +41,27 @@ const FeedProfile = () => {
             </View>
           </View>
         </View>
+
+        {/* Bottom Container */}
+
+        <View style={styles.bottomContainer}>
+          <View style={styles.bottomElement}>
+            <Text style={styles.elementNumber}>100</Text>
+            <Text style={styles.elementName}>Followers</Text>
+          </View>
+
+          <View style={styles.bottomElement}>
+            <Text style={styles.elementNumber}>100</Text>
+            <Text style={styles.elementName}>Followers</Text>
+          </View>
+
+          <View style={styles.bottomElement}>
+            <Text style={styles.elementNumber}>100</Text>
+            <Text style={styles.elementName}>Followers</Text>
+          </View>
+        </View>
+
+        
       </ScrollView>
     </View>
   );
