@@ -1,5 +1,25 @@
 const mongoose = require("mongoose");
 
+const cartItemSchema = new mongoose.Schema({
+  product: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product",
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+    min: 1,
+    default: 1,
+  },
+});
+
+const gardenPlantSchema = new mongoose.Schema({
+  plant_name: { type: String, required: true },
+  plant_description: { type: String, required: true },
+  plant_picture: { type: String, required: true },
+});
+
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -38,29 +58,8 @@ const userSchema = new mongoose.Schema(
       default: "user",
       required: true,
     },
-    garden: [
-      {
-        plant_name: { type: String, required: true },
-        plant_description: { type: String, required: true },
-        plant_picture: { type: String, required: true },
-      },
-    ],
-    cart: [
-      {
-        product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Product",
-          required: true,
-        },
-        quantity: {
-          type: Number,
-          required: true,
-          min: 1,
-          default: 1,
-        },
-      },
-    ],
-
+    garden: [gardenPlantSchema],
+    cart: [cartItemSchema],
     followers: [
       {
         type: mongoose.Schema.Types.ObjectId,
