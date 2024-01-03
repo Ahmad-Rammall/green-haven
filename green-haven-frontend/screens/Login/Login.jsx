@@ -33,7 +33,7 @@ const Login = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.loginContainer}>
-      <ScrollView onPress={Keyboard.dismiss()}>
+      <ScrollView onPress={Keyboard.dismiss()} style={styles.wrapper}>
         <Image
           source={require("../../assets/images/signinImage.png")}
           style={styles.image}

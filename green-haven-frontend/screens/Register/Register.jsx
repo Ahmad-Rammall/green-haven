@@ -36,7 +36,7 @@ const Register = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.loginContainer}>
-      <ScrollView onPress={Keyboard.dismiss()}>
+      <ScrollView onPress={Keyboard.dismiss()} style={styles.wrapper}>
         <Image
           source={require("../../assets/images/registerImage.png")}
           style={styles.image}

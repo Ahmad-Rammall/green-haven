@@ -6,15 +6,18 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.offwhite,
     flex: 1,
   },
+  wrapper:{
+    marginHorizontal: SIZES.large
+  },
   image: {
     height: SIZES.height / 3,
     width: SIZES.width,
     resizeMode: "contain",
     marginBottom: SIZES.xLarge,
+    alignSelf: "center",
   },
   inputs: {
     marginBottom: SIZES.large,
-    marginHorizontal: SIZES.large,
   },
   label: {
     fontFamily: "regular",
