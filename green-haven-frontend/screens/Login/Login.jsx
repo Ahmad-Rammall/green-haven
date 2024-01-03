@@ -15,11 +15,14 @@ import * as Yup from "yup";
 import styles from "./login.styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
+import { useLogic } from "../../core/hooks/loginLogic.hook";
 
 const Login = ({ navigation }) => {
   const [loader, setLoader] = useState(false);
   const [responseData, setResponseData] = useState(null);
   const [secureText, setSecureText] = useState(true);
+
+  const { error, handleLogin } = useLogic();
 
   validationSchema = Yup.object({
     password: Yup.string()
@@ -38,7 +41,7 @@ const Login = ({ navigation }) => {
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
-          onSubmit={(values) => navigation.navigate("Main")}
+          onSubmit={(values) => handleLogin(values)}
         >
           {({
             handleChange,
@@ -114,7 +117,7 @@ const Login = ({ navigation }) => {
                 )}
               </View>
               <Button
-                onPress={isValid ? handleSubmit : () => {}}
+                onPress={isValid ? handleSubmit : () => {  }}
                 isValid={isValid}
                 btnText="Submit"
                 color={COLORS.primary}
