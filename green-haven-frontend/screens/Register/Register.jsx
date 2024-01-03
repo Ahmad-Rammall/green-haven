@@ -15,12 +15,14 @@ import * as Yup from "yup";
 import styles from "../Login/auth.styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
+import { authDataSource } from "../../core/dataSource/remoteDataSource/auth";
 
 const Register = ({ navigation }) => {
   const [loader, setLoader] = useState(false);
   const [responseData, setResponseData] = useState(null);
   const [secureText, setSecureText] = useState(true);
-  const [selectedOption, setSelectedOption] = useState("owner");
+  const [selectedOption, setSelectedOption] = useState("user");
+  const [responseError, setResponseError] = useState("");
 
   validationSchema = Yup.object({
     email: Yup.string()
@@ -36,9 +38,15 @@ const Register = ({ navigation }) => {
     role: Yup.string().required("Role is required"),
   });
 
-  const handleRole = () => {
-    
-  }
+  const handleRegister = async (values) => {
+    const response = await authDataSource.register(values);
+    if (response?.status == 200) {
+      navigation.navigate("Login");
+      setResponseError("")
+    } else {
+      setResponseError("Failed to Register. Try Again !")
+    }
+  };
 
   return (
     <SafeAreaView style={styles.loginContainer}>
@@ -53,10 +61,10 @@ const Register = ({ navigation }) => {
             password: "",
             name: "",
             confirmPassword: "",
-            role: "",
+            role: "user",
           }}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => handleRegister(values)}
         >
           {({
             handleChange,
@@ -202,11 +210,11 @@ const Register = ({ navigation }) => {
                 <TouchableOpacity
                   style={[
                     styles.button,
-                    selectedOption === "owner" && styles.selectedButton,
+                    selectedOption === "user" && styles.selectedButton,
                   ]}
                   onPress={() => {
                     setFieldValue("role", "owner");
-                    setSelectedOption("owner")
+                    setSelectedOption("owner");
                   }}
                 >
                   <Text style={styles.buttonText}>Owner</Text>
@@ -219,8 +227,9 @@ const Register = ({ navigation }) => {
                   ]}
                   onPress={() => {
                     setFieldValue("role", "seller");
-                    setSelectedOption("seller")
-                  }}                >
+                    setSelectedOption("seller");
+                  }}
+                >
                   <Text style={styles.buttonText}>Seller</Text>
                 </TouchableOpacity>
               </View>
@@ -231,6 +240,8 @@ const Register = ({ navigation }) => {
                 btnText="Register"
                 color={COLORS.primary}
               />
+
+              <Text style={styles.errorMsg}>{responseError}</Text>
 
               <Text
                 style={styles.registerText}
