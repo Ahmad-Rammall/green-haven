@@ -21,5 +21,5 @@ export {
   ProfilePicture,
   Post,
   Story,
-  UserChat
+  UserChat,
 };

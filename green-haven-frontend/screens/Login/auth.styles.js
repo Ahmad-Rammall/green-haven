@@ -114,6 +114,29 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginRight: 10,
   },
+
+  // Role Buttons
+  roleBtns:{
+    flexDirection: "row",
+    alignSelf: "center",
+    marginBottom: SIZES.large,
+  },
+  button: {
+    backgroundColor: COLORS.gray2,
+    padding: 10,
+    margin: 10,
+    borderRadius: 5,
+    width: 100,
+    alignItems: "center"
+  },
+  selectedButton: {
+    backgroundColor: COLORS.primary,
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  
 });
 
 export default styles;

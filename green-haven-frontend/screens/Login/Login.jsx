@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import { Button } from "../../components";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import styles from "./login.styles";
+import styles from "./auth.styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 import { useLogic } from "../../core/hooks/loginLogic.hook";

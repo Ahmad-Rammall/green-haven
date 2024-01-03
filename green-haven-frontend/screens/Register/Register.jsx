@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import { Button } from "../../components";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import styles from "../Login/login.styles";
+import styles from "../Login/auth.styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 
@@ -20,6 +20,7 @@ const Register = ({ navigation }) => {
   const [loader, setLoader] = useState(false);
   const [responseData, setResponseData] = useState(null);
   const [secureText, setSecureText] = useState(true);
+  const [selectedOption, setSelectedOption] = useState("owner");
 
   validationSchema = Yup.object({
     email: Yup.string()
@@ -32,7 +33,12 @@ const Register = ({ navigation }) => {
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Confirm Password is required"),
     name: Yup.string().required("Name is required"),
+    role: Yup.string().required("Role is required"),
   });
+
+  const handleRole = () => {
+    
+  }
 
   return (
     <SafeAreaView style={styles.loginContainer}>
@@ -42,13 +48,19 @@ const Register = ({ navigation }) => {
           style={styles.image}
         />
         <Formik
-          initialValues={{ email: "", password: "" }}
+          initialValues={{
+            email: "",
+            password: "",
+            name: "",
+            confirmPassword: "",
+            role: "",
+          }}
           validationSchema={validationSchema}
           onSubmit={(values) => console.log(values)}
         >
           {({
             handleChange,
-            handleBlur,
+            setFieldValue,
             handleSubmit,
             values,
             errors,
@@ -178,12 +190,41 @@ const Register = ({ navigation }) => {
                     secureTextEntry={secureText}
                     style={styles.input}
                   />
-
                 </View>
                 {touched.confirmPassword && errors.confirmPassword && (
                   <Text style={styles.errorMsg}>{errors.confirmPassword}</Text>
                 )}
               </View>
+
+              {/* Role Buttons */}
+
+              <View style={styles.roleBtns}>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    selectedOption === "owner" && styles.selectedButton,
+                  ]}
+                  onPress={() => {
+                    setFieldValue("role", "owner");
+                    setSelectedOption("owner")
+                  }}
+                >
+                  <Text style={styles.buttonText}>Owner</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    selectedOption === "seller" && styles.selectedButton,
+                  ]}
+                  onPress={() => {
+                    setFieldValue("role", "seller");
+                    setSelectedOption("seller")
+                  }}                >
+                  <Text style={styles.buttonText}>Seller</Text>
+                </TouchableOpacity>
+              </View>
+
               <Button
                 onPress={isValid ? handleSubmit : () => {}}
                 isValid={isValid}
@@ -191,7 +232,10 @@ const Register = ({ navigation }) => {
                 color={COLORS.primary}
               />
 
-              <Text style={styles.registerText} onPress={()=>navigation.navigate("Login")}>
+              <Text
+                style={styles.registerText}
+                onPress={() => navigation.navigate("Login")}
+              >
                 Already Have An Account?
                 <Text style={styles.registerBtn}> Sign in.</Text>
               </Text>
