@@ -10,6 +10,11 @@ const getOneProduct = async (req, res) => {
   return res.status(500).send("Product Not Found");
 };
 
+const getAllProducts = async (req, res) => {
+  const products = await Product.find({});
+  return res.status(200).json({ products });
+};
+
 const getAllSellerProducts = async (req, res) => {
   try {
     const sellerId = req.body.sellerId;
@@ -100,6 +105,7 @@ const deleteProduct = async (req, res) => {
 };
 
 module.exports = {
+  getAllProducts,
   getAllSellerProducts,
   getOneProduct,
   addProduct,
