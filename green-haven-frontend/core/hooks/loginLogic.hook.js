@@ -6,24 +6,13 @@ import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
 export const useLogic = () => {
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
 
   const [error, setError] = useState("");
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const handleFormChange = (key, value) => {
-    setCredentials((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
-  const handleLogin = async () => {
+  const handleLogin = async (credentials) => {
     try {
       const response = await authDataSource.login(credentials);
 
@@ -46,7 +35,6 @@ export const useLogic = () => {
           following: user.following,
           followers: user.followers,
           profilePicture: user.profile_picture,
-          token: authorisation.token,
         })
       );
 
@@ -57,5 +45,5 @@ export const useLogic = () => {
     }
   };
 
-  return { error, handleLogin, handleFormChange };
+  return { error, handleLogin };
 };
