@@ -29,9 +29,6 @@ const getAllSellerProducts = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
-  if (req.user.role != "seller") {
-    return res.status(403).send("Unauthorized");
-  }
   const { name, description, price } = req.body;
   const image = req.file ? req.file.filename : "noProductImage.jpg"
 
@@ -52,9 +49,6 @@ const addProduct = async (req, res) => {
 };
 
 const updateProduct = async (req, res) => {
-  if (req.user.role != "seller") {
-    return res.status(403).json({ message: "You are not a seller" });
-  }
   const { productId, name, description, price } = req.body;
   const image = req.file?.filename ;
 
@@ -85,10 +79,6 @@ const updateProduct = async (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
-  if (req.user.role != "seller") {
-    return res.status(403).json({ message: "You are not a seller" });
-  }
-
   const productId = req.params.id;
 
   try {

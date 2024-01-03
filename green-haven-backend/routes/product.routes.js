@@ -3,6 +3,7 @@ const { getAllSellerProducts, addProduct, updateProduct, deleteProduct, getOnePr
 const router = express.Router();
 const multer = require("multer");
 const path = require("path");
+const sellerMiddleware = require("../middlewares/seller.middleware")
 
 const storage = multer.diskStorage({
   destination: (req, res, cb) => {
@@ -17,9 +18,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.get("/", getAllSellerProducts);
-router.post("/", upload.single("file"), addProduct);
-router.put("/", upload.single("file"), updateProduct);
-router.delete("/:id", deleteProduct);
+router.post("/", sellerMiddleware, upload.single("file"), addProduct);
+router.put("/", sellerMiddleware, upload.single("file"), updateProduct);
+router.delete("/:id", sellerMiddleware, deleteProduct);
 router.get("/:id", getOneProduct);
 
 module.exports = router;
