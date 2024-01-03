@@ -1,4 +1,5 @@
 import axios from "axios";
+import { local } from "./localStorage";
 
 export const sendRequest = async ({
   route,
@@ -8,12 +9,12 @@ export const sendRequest = async ({
 
   try {
     const response = await axios.request({
-      url: `http://localhost:8000/${route}`,
+      url: `http://192.168.0.10:8000/${route}`,
       method,
       data: body,
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem('token')}`,
+        "Authorization": `Bearer ${local('token')}`,
       },
     });
 
