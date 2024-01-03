@@ -8,6 +8,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigation from "./navigators/BottomTabNavigation";
 import { Login, Register, ProductDetails, Cart } from "./screens";
 
+import { Provider } from "react-redux";
+import { store } from "./core/dataSource/localDataSource/store";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -33,22 +36,18 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer >
-      <Stack.Navigator initialRouteName="Main" screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-          name="Main"
-          component={BottomTabNavigation}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="Main" component={BottomTabNavigation} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Register" component={Register} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
