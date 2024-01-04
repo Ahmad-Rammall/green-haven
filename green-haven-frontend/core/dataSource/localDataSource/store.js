@@ -7,3 +7,7 @@ export const store = configureStore({
   },
   devTools: true,
 });
+
+store.subscribe(() => {
+  console.log('Updated State:', store.getState());
+});
