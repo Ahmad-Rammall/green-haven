@@ -53,6 +53,10 @@ export const userSlice = createSlice({
         followers,
       };
     },
+    addItemToCart: (state, action) => {
+      const newItem = action.payload;
+      state.cart = [...state.cart, newItem];
+    },
     cleanData: (state, action) => {
       return { ...initialState };
     },
