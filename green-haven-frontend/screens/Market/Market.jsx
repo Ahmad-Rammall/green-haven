@@ -1,9 +1,25 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { ProductCard, SearchBar } from "../../components";
 import styles from "./market.styles";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
+import { local } from "../../core/helpers/localStorage";
 
 const Market = () => {
+  const [products, setProducts] = useState([]);
+  const getAllProducts = async () => {
+    try {
+      const response = await marketDataSource.getAllProducts();
+      setProducts(response.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -11,33 +27,16 @@ const Market = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <SearchBar placeholder="What Are You Looking For ?"/>
+        <SearchBar placeholder="What Are You Looking For ?" />
         <View style={styles.productsContainer}>
-          <ProductCard
-            image={require("../../assets/images/Carousel/plant1.jpg")}
-            name="Plant"
-            sellerName="Ahmad Rammal"
-            price="20 $"
-          />
-          <ProductCard
-            image={require("../../assets/images/Carousel/plant2.jpg")}
-            name="Plant"
-            sellerName="Ahmad Rammal"
-            price="10 $"
-          />
-          <ProductCard
-            image={require("../../assets/images/Carousel/plant3.jpg")}
-            name="Plant"
-            sellerName="Ahmad Rammal"
-            price="10 $"
-          />
-          <ProductCard
-            image={require("../../assets/images/Carousel/plant4.jpg")}
-            name="Plant"
-            sellerName="Ahmad Rammal"
-            price="10 $"
-          />
-          
+          {products.map((product) => (
+            <ProductCard
+              image={product.image}
+              name={product.name}
+              sellerName={product.image}
+              price={product.price}
+            />
+          ))}
         </View>
       </ScrollView>
     </View>
