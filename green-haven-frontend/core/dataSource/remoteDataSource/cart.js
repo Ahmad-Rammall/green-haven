@@ -10,4 +10,11 @@ export const cartDataSource = {
 
     return response;
   },
+  getAllCartProducts: async () => {
+    const response = await sendRequest({
+      route: "cart",
+    });
+
+    return response;
+  },
 };

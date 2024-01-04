@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { SIZES } from "../../assets/constants";
 
-const CartItem = () => {
+const CartItem = ({ product }) => {
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
@@ -16,8 +16,8 @@ const CartItem = () => {
 
       <View style={styles.rightContainer}>
         <View>
-          <Text style={styles.text("bold", SIZES.small)}>Plant Name</Text>
-          <Text style={styles.text("semibold", SIZES.small)}>$ 10</Text>
+          <Text style={styles.text("bold", SIZES.small)}>{product.product.name}</Text>
+          <Text style={styles.text("semibold", SIZES.small)}>$ {product.product.price}</Text>
         </View>
         <View style={styles.buttons}>
           <View style={styles.quantity}>
@@ -28,7 +28,7 @@ const CartItem = () => {
                 style={styles.quantityBtn}
               />
             </TouchableOpacity>
-            <Text style={styles.quantityText}>1</Text>
+            <Text style={styles.quantityText}>{product.quantity}</Text>
             <TouchableOpacity>
               <Ionicons
                 name="add"

@@ -7,7 +7,7 @@ const getUserCart = async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ _id: req.user._id });
+    const user = await User.findOne({ _id: req.user._id }).populate("cart.product");
     return res.status(200).json({ cart: user.cart });
   } catch (error) {
     return res.status(500).json(error);
