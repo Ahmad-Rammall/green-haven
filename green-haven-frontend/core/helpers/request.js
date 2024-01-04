@@ -6,6 +6,7 @@ export const sendRequest = async ({
   body,
   method = "GET",
 }) => {
+  const token = await local("token")
 
   try {
     const response = await axios.request({
@@ -14,7 +15,7 @@ export const sendRequest = async ({
       data: body,
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${local('token')}`,
+        "Authorization": `Bearer ${token}`,
       },
     });
 
