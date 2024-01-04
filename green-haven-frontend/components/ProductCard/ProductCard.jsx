@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
     <TouchableOpacity onPress={gotoProductDetails}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image source={ { uri: imageUrl } } style={styles.image} />
+          <Image source={{uri: imageUrl} } style={styles.image} />
         </View>
         <View style={styles.details}>
           <Text style={styles.title}>{name}</Text>

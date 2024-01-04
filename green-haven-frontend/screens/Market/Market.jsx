@@ -30,7 +30,7 @@ const Market = () => {
         <SearchBar placeholder="What Are You Looking For ?" />
         <View style={styles.productsContainer}>
           {products.map((product) => (
-            <ProductCard product={product} />
+            <ProductCard key={product._id} product={product} />
           ))}
         </View>
       </ScrollView>
