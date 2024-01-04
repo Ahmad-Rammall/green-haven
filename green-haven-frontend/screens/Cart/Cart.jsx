@@ -15,7 +15,7 @@ const Cart = () => {
 
   const getAllProducts = async () => {
     const response = await cartDataSource.getAllCartProducts();
-    console.log(response.data.cart)
+    console.log(response.data.cart);
     setProducts(response.data.cart);
   };
 
@@ -27,7 +27,10 @@ const Cart = () => {
       <View style={styles.wrapper}>
         <ScrollView>
           {products.map((product) => (
-            <CartItem key={product._id} product={product} />
+            <CartItem
+              key={product._id}
+              product={product}
+            />
           ))}
         </ScrollView>
       </View>
