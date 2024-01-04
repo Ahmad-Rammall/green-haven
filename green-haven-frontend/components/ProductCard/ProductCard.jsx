@@ -3,8 +3,9 @@ import React from "react";
 import styles from "./productCardStyles";
 import { useNavigation } from "@react-navigation/native";
 
-const ProductCard = ({ image, name, sellerName, price, description }) => {
+const ProductCard = ({ product }) => {
   const navigation = useNavigation();
+  const { user, image, name, description, price } = product
   const gotoProductDetails = () => {
     navigation.navigate("Product Details", { image, name, description, price })
   }
@@ -16,8 +17,8 @@ const ProductCard = ({ image, name, sellerName, price, description }) => {
         </View>
         <View style={styles.details}>
           <Text style={styles.title}>{name}</Text>
-          <Text style={styles.seller}>{sellerName}</Text>
-          <Text style={styles.price}>{price}</Text>
+          <Text style={styles.seller}>{user.name}</Text>
+          <Text style={styles.price}>$ {price}</Text>
         </View>
       </View>
     </TouchableOpacity>

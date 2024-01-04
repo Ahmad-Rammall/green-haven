@@ -30,12 +30,7 @@ const Market = () => {
         <SearchBar placeholder="What Are You Looking For ?" />
         <View style={styles.productsContainer}>
           {products.map((product) => (
-            <ProductCard
-              image={product.image}
-              name={product.name}
-              sellerName={product.image}
-              price={product.price}
-            />
+            <ProductCard product={product} />
           ))}
         </View>
       </ScrollView>
