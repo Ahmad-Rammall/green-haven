@@ -10,6 +10,7 @@ import React from "react";
 import styles from "./productDetails.styles";
 import { useRoute } from "@react-navigation/native";
 import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
+import Toast from 'react-native-simple-toast';
 
 const ProductDetails = () => {
   const route = useRoute();
@@ -20,7 +21,9 @@ const ProductDetails = () => {
       productId,
       quantity: 1
     })
-    console.log(response)
+    if(response?.status == 200){
+      Toast.show('Product Added To Cart !', Toast.LONG);
+    }
   }
 
   return (

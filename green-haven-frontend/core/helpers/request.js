@@ -1,6 +1,7 @@
 import axios from "axios";
 import { local } from "./localStorage";
 import { API_HOST } from "@env"
+import Toast from 'react-native-simple-toast';
 
 export const sendRequest = async ({
   route,
@@ -22,6 +23,6 @@ export const sendRequest = async ({
 
     return response;
   } catch (error) {
-    console.log(error);
+    Toast.show("Product Already Exists In Your Cart !", Toast.LONG);
   }
 };
