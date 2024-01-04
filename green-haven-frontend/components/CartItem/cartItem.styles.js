@@ -4,60 +4,53 @@ import { COLORS, SIZES } from "../../assets/constants";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.secondary,
-    height: 180,
+    height: 80,
     borderRadius: SIZES.xSmall,
     flexDirection: "row",
-    padding: SIZES.xSmall,
-    marginBottom: SIZES.small
+    marginBottom: SIZES.small,
   },
-  leftContainer: {
-  },
+  leftContainer: {},
   image: {
-    height: 150,
-    width: 150,
+    height: "100%",
+    width: 80,
     resizeMode: "cover",
     borderRadius: SIZES.small,
   },
   rightContainer: {
+    flex: 1,
     margin: SIZES.xSmall,
-    justifyContent: "space-evenly"
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   text: (family, size) => ({
     fontFamily: family,
     fontSize: size,
   }),
-  buttons:{
+  buttons: {
     flexDirection: "row",
     gap: 20,
   },
-  quantity:{
+  quantity: {
     flexDirection: "row",
-    backgroundColor: COLORS.gray2,
     borderRadius: SIZES.xSmall,
-    width: "40%",
     justifyContent: "space-between",
-    alignItems:"center",
+    gap: 5,
   },
-  quantityBtn:{
-    backgroundColor: COLORS.primary,
-    color: COLORS.offwhite,
-    height: 35
+  quantityBtn: {
+    color: COLORS.primary,
   },
-  minusBtn:{
-    borderTopLeftRadius: SIZES.xSmall,
-    borderBottomLeftRadius: SIZES.xSmall,
+  quantityText: {
+    fontSize: 18,
+    marginHorizontal: 10,
+    fontFamily: "regular",
   },
-  plusBtn:{
-    borderTopRightRadius: SIZES.xSmall,
-    borderBottomRightRadius: SIZES.xSmall,
-  },
-  deleteBtn:{
+  deleteBtn: {
     backgroundColor: COLORS.red,
     color: COLORS.offwhite,
     borderRadius: SIZES.xSmall,
     padding: 5,
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
 
 export default styles;

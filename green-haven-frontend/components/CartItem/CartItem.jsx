@@ -16,8 +16,8 @@ const CartItem = () => {
 
       <View style={styles.rightContainer}>
         <View>
-          <Text style={styles.text("bold", SIZES.large)}>Plant Name</Text>
-          <Text style={styles.text("semibold", SIZES.medium)}>10 $</Text>
+          <Text style={styles.text("bold", SIZES.small)}>Plant Name</Text>
+          <Text style={styles.text("semibold", SIZES.small)}>$ 10</Text>
         </View>
         <View style={styles.buttons}>
           <View style={styles.quantity}>
@@ -25,24 +25,15 @@ const CartItem = () => {
               <Ionicons
                 name="ios-remove"
                 size={24}
-                style={[styles.quantityBtn, styles.minusBtn]}
+                style={styles.quantityBtn}
               />
             </TouchableOpacity>
-            <Text style={{ fontSize: 18, marginHorizontal: 10 }}>1</Text>
+            <Text style={styles.quantityText}>1</Text>
             <TouchableOpacity>
               <Ionicons
                 name="add"
                 size={24}
-                style={[styles.quantityBtn, styles.plusBtn]}
-              />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.delete}>
-            <TouchableOpacity>
-              <Ionicons
-                name="trash-outline"
-                size={24}
-                style={styles.deleteBtn}
+                style={styles.quantityBtn}
               />
             </TouchableOpacity>
           </View>
