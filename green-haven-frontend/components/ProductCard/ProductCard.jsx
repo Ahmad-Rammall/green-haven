@@ -1,3 +1,4 @@
+// product card
 import { Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
 import styles from "./productCardStyles";
@@ -7,10 +8,11 @@ import {PUBLIC_FOLDER} from "@env"
 const ProductCard = ({ product }) => {
   const navigation = useNavigation();
   const { user, image, name, description, price } = product
+  const productId = product._id;
   const imageUrl = PUBLIC_FOLDER + 'products-pics/' + image;
 
   const gotoProductDetails = () => {
-    navigation.navigate("Product Details", { imageUrl, name, description, price })
+    navigation.navigate("Product Details", { imageUrl, name, description, price, productId })
   }
   return (
     <TouchableOpacity onPress={gotoProductDetails}>

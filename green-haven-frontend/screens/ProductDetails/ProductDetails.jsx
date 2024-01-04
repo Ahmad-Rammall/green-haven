@@ -9,11 +9,19 @@ import {
 import React from "react";
 import styles from "./productDetails.styles";
 import { useRoute } from "@react-navigation/native";
-import { PUBLIC_FOLDER } from "@env";
+import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 
 const ProductDetails = () => {
   const route = useRoute();
-  const { imageUrl, name, description, price } = route.params;
+  const { imageUrl, name, description, price, productId } = route.params;
+
+  const addToCart = async() => {
+    const response = await cartDataSource.addProductToCart({
+      productId,
+      quantity: 1
+    })
+    console.log(response)
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -33,7 +41,7 @@ const ProductDetails = () => {
             <Text style={styles.descText}>{description}</Text>
           </View>
 
-          <TouchableOpacity style={styles.cartBtn}>
+          <TouchableOpacity style={styles.cartBtn} onPress={addToCart}>
             <Text style={styles.addCart}>Add To Cart</Text>
           </TouchableOpacity>
         </View>
