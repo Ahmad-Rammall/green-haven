@@ -9,7 +9,7 @@ export const sendRequest = async ({
 
   try {
     const response = await axios.request({
-      url: `http://192.168.0.10:8000/${route}`,
+      url: `http://192.168.0.11:8000/${route}`,
       method,
       data: body,
       headers: {
