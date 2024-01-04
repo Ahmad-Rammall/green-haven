@@ -1,5 +1,6 @@
 import axios from "axios";
 import { local } from "./localStorage";
+import { API_HOST } from "@env"
 
 export const sendRequest = async ({
   route,
@@ -10,7 +11,7 @@ export const sendRequest = async ({
 
   try {
     const response = await axios.request({
-      url: `http://192.168.0.11:8000/${route}`,
+      url: `${API_HOST}/${route}`,
       method,
       data: body,
       headers: {

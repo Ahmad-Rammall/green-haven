@@ -27,6 +27,7 @@
     "formik": "^2.4.5",
     "react": "18.2.0",
     "react-native": "0.71.14",
+    "react-native-dotenv": "^3.4.9",
     "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-image": "^0.1.1",
