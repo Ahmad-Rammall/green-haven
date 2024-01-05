@@ -17,4 +17,13 @@ export const cartDataSource = {
 
     return response;
   },
+  deleteCartProduct: async (data) => {
+    const response = await sendRequest({
+      route: "cart",
+      method: "DELETE",
+      body: data
+    });
+
+    return response;
+  },
 };
