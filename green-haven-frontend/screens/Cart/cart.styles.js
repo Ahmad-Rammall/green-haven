@@ -13,19 +13,24 @@ const styles = StyleSheet.create({
   // Bottom Container Styles
 
   bottomContainer:{
-    backgroundColor: COLORS.gray2,
-    height: 150,
+    backgroundColor: COLORS.secondary,
     position: "absolute",
     bottom: 0,
     width: "100%",
     borderTopLeftRadius: SIZES.xSmall,
     borderTopRightRadius: SIZES.xSmall,
+    paddingHorizontal: SIZES.large
+  },
+  totalAmountContainer:{
+    flexDirection: "row",
+    justifyContent:"space-between",
+    alignItems: "center"
   },
 
   totalAmount:{
-    padding: SIZES.medium,
-    fontFamily: "bold",
-    fontSize: SIZES.large,
+    paddingVertical: SIZES.medium,
+    fontFamily: "semibold",
+    fontSize: SIZES.medium,
   }
 });
 
