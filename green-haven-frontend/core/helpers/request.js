@@ -23,6 +23,6 @@ export const sendRequest = async ({
 
     return response;
   } catch (error) {
-    Toast.show("Product Already Exists In Your Cart !", Toast.LONG);
+    Toast.show(error.message, Toast.LONG);
   }
 };

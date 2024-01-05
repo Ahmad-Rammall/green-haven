@@ -45,7 +45,12 @@ const ProductDetails = () => {
             <Text style={styles.descText}>{description}</Text>
           </View>
 
-          <Button btnText="Add To Cart" isValid={true} style={styles.cartBtn} />
+          <Button
+            btnText="Add To Cart"
+            isValid={true}
+            style={styles.cartBtn}
+            onPress={addToCart}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
