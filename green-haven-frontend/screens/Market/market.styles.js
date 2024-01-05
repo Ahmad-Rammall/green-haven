@@ -5,9 +5,9 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor: COLORS.offwhite,
-        margin: SIZES.small,
     },
     wrapper:{
+        margin: SIZES.large,
     },
     productsContainer:{
         flexDirection: "row",
