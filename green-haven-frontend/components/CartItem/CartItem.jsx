@@ -4,15 +4,16 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useState, useEffect } from "react";
 import { SIZES } from "../../assets/constants";
 import { PUBLIC_FOLDER } from "@env";
+import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 
-const CartItem = ({ product, totalAmount, setTotalAmount }) => {
+const CartItem = ({ product, setRefresh, setTotalAmount }) => {
   const [itemQuantity, setItemQuantity] = useState(product.quantity);
   const [isZero, setIsZero] = useState(false);
 
-  const handleDecrement = () => {
+  const handleDecrement = async () => {
     if (itemQuantity === 0) {
-      // call delete
-      console.log("saret 0");
+      const response = await cartDataSource.deleteCartProduct({productId: product._id});
+      setRefresh(prevVal => !prevVal)
       return;
     }
 
