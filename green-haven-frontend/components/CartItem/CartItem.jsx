@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import styles from "./cartItem.styles";
 import { Ionicons } from "@expo/vector-icons";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SIZES } from "../../assets/constants";
+import { PUBLIC_FOLDER } from "@env";
 
-const CartItem = ({ product }) => {
+const CartItem = ({ product, totalAmount, setTotalAmount }) => {
   const [itemQuantity, setItemQuantity] = useState(product.quantity);
   const [isZero, setIsZero] = useState(false);
 
@@ -14,24 +15,43 @@ const CartItem = ({ product }) => {
       console.log("saret 0");
       return;
     }
+
+    // Decrement by 1
+    setItemQuantity(itemQuantity - 1);
+    setTotalAmount(
+      (prevTotalAmount) => prevTotalAmount - product.product.price
+    );
     if (itemQuantity === 1) {
-      setItemQuantity(0);
       setIsZero(true);
-    } else {
-      setItemQuantity(itemQuantity - 1);
     }
   };
 
   const handleIncrement = () => {
+    setTotalAmount(
+      (prevTotalAmount) =>
+        prevTotalAmount - product.product.price * itemQuantity
+    );
     setItemQuantity(itemQuantity + 1);
+    setTotalAmount(
+      (prevTotalAmount) =>
+        prevTotalAmount + product.product.price * (itemQuantity + 1)
+    );
     setIsZero(false);
   };
+
+  useEffect(() => {
+    setTotalAmount(
+      (prevTotalAmount) => prevTotalAmount + product.product.price
+    );
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
         <Image
           style={styles.image}
-          source={require("../../assets/images/Carousel/plant1.jpg")}
+          source={{
+            uri: PUBLIC_FOLDER + "products-pics/" + product.product.image,
+          }}
         />
       </View>
 

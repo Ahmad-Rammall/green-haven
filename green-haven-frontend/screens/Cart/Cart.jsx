@@ -12,7 +12,7 @@ import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
-
+  const [totalAmount, setTotalAmount] = useState(0)
   const getAllProducts = async () => {
     const response = await cartDataSource.getAllCartProducts();
     console.log(response.data.cart);
@@ -30,15 +30,17 @@ const Cart = () => {
             <CartItem
               key={product._id}
               product={product}
+              totalAmount={totalAmount}
+              setTotalAmount={setTotalAmount}
             />
           ))}
         </ScrollView>
       </View>
 
-      {/* <View style={styles.bottomContainer}>
-        <Text style={styles.totalAmount}>Total Amount : 50 $</Text>
+      <View style={styles.bottomContainer}>
+        <Text style={styles.totalAmount}>Total: $ {totalAmount}</Text>
         <Button btnText="Checkout" isValid={true} />
-      </View> */}
+      </View>
     </View>
   );
 };
