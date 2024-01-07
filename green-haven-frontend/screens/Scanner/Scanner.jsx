@@ -8,6 +8,7 @@ import styles from "./scanner.styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 import { SIZES } from "../../assets/constants";
+import * as FileSystem from "expo-file-system";
 
 // Modal Dep
 import {
@@ -23,15 +24,28 @@ export default function Scanner() {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const [modalOpen, setModalOpen] = useState(false);
+  const [encodedImage, setEncodedImage] = useState("");
   const cameraRef = useRef(null);
   const bottomSheetModalRef = useRef(null);
   const snapPoints = ["50%"];
-  const [modalStyle, setModalStyle] = useState(styles.modalClose) 
+  const [modalStyle, setModalStyle] = useState(styles.modalClose);
+
+  const encodeImage = async (uri) => {
+    try {
+      const base64Image = await FileSystem.readAsStringAsync(uri, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+      console.log(base64Image);
+      setEncodedImage(base64Image);
+    } catch (error) {
+      console.log("Error Encoding Image");
+    }
+  };
 
   const handlePresentModal = () => {
     bottomSheetModalRef.current?.present();
     setModalOpen(true);
-    setModalStyle(styles.modalOpen)
+    setModalStyle(styles.modalOpen);
   };
 
   useEffect(() => {
@@ -51,7 +65,9 @@ export default function Scanner() {
         const data = await cameraRef.current.takePictureAsync();
         console.log(data);
         setImage(data.uri);
+        encodeImage(data.uri);
       } catch (error) {
+        console.log("-------error------------");
         console.log(error);
       }
     }
@@ -76,7 +92,7 @@ export default function Scanner() {
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
         aspect: [4, 3],
-        quality: 1,
+        quality: 0,
       });
 
       if (!result.canceled) {
@@ -118,15 +134,16 @@ export default function Scanner() {
       ) : (
         <>
           <Image source={{ uri: image }} style={styles.camera} />
-          <GestureHandlerRootView
-            style={modalStyle}
-          >
+          <GestureHandlerRootView style={modalStyle}>
             <BottomSheetModalProvider>
               <BottomSheetModal
                 ref={bottomSheetModalRef}
                 index={0}
                 snapPoints={snapPoints}
-                onDismiss={() => {setModalOpen(false); setModalStyle(styles.modalClose)}}
+                onDismiss={() => {
+                  setModalOpen(false);
+                  setModalStyle(styles.modalClose);
+                }}
               >
                 <BottomSheet />
               </BottomSheetModal>
