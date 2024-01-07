@@ -13,6 +13,7 @@ import {
   postImage,
   getImageDetails,
 } from "../../core/dataSource/remoteDataSource/scanner";
+import { imagePicker } from "../../core/helpers/imagePicker";
 
 // Modal Dep
 import {
@@ -116,21 +117,11 @@ export default function Scanner() {
   };
 
   const pickImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 0.5,
-      });
+    const image = await imagePicker();
 
-      if (!result.canceled) {
-        console.log(result.assets[0].uri)
-        setImage(result.assets[0].uri);
-        encodeImage(result.assets[0].uri);
-      }
-    } catch (error) {
-      console.error("Error picking image: ", error);
+    if (!image.canceled) {
+      setImage(image.assets[0].uri);
+      encodeImage(image.assets[0].uri);
     }
   };
 
@@ -185,14 +176,18 @@ export default function Scanner() {
 
       <View style={styles.controls}>
         {image ? (
-          <View
-            style={styles.resultBottomContainer}
-          >
-            <TouchableOpacity onPress={() => setImage(null)} style={styles.resultBtn}>
+          <View style={styles.resultBottomContainer}>
+            <TouchableOpacity
+              onPress={() => setImage(null)}
+              style={styles.resultBtn}
+            >
               <Text style={styles.resultBtnText}>Re-take</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={handlePresentModal} style={styles.resultBtn}>
+            <TouchableOpacity
+              onPress={handlePresentModal}
+              style={styles.resultBtn}
+            >
               <Text style={styles.resultBtnText}>Scan</Text>
             </TouchableOpacity>
           </View>
