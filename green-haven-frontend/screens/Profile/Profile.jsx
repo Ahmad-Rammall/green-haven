@@ -5,53 +5,48 @@ import { Button } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 import { ProfilePicture } from "../../components";
-import {useSelector} from "react-redux"
-import {PUBLIC_FOLDER} from "@env";
+import { useSelector } from "react-redux";
+import { PUBLIC_FOLDER } from "@env";
 
 const Profile = ({ navigation }) => {
+  const currentUser = useSelector((state) => state.User);
 
-  const currentUser = useSelector(state => state.User);
-  
-  const userProfilePicture = `${PUBLIC_FOLDER}profile-pics/${currentUser.profilePicture}`
-  console.log(userProfilePicture)
+  const userProfilePicture = `${PUBLIC_FOLDER}profile-pics/${currentUser.profilePicture}`;
+  console.log(userProfilePicture);
 
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <ProfilePicture
-          image={{ uri: userProfilePicture }}
-        />
-        <Text style={styles.name}>Ahmad Rammal</Text>
-        <Text style={styles.bio}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-          reprehenderit odit ipsum nam neque doloribus suscipit esse! Quis,
-          quisquam inventore?
-        </Text>
+        <ProfilePicture image={{ uri: userProfilePicture }} />
+        <Text style={styles.name}>{currentUser.username}</Text>
+        <Text style={styles.bio}>{currentUser.bio}</Text>
 
-        <View style={styles.optionButtons}>
-          <TouchableOpacity
-            style={styles.optionBtn}
-            onPress={() => navigation.navigate("Edit Profile")}
-          >
-            <Text style={styles.optionTxt}>Edit Profile</Text>
-            <Ionicons name="arrow-forward-outline" size={24} />
-          </TouchableOpacity>
+        <View style={styles.buttons}>
+          <View style={styles.optionButtons}>
+            <TouchableOpacity
+              style={[styles.optionBtn, styles.shadow]}
+              onPress={() => navigation.navigate("Edit Profile")}
+            >
+              <Text style={styles.optionTxt}>Edit Profile</Text>
+              <Ionicons name="arrow-forward-outline" size={24} />
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.optionBtn}
-            onPress={() => navigation.navigate("Change Password")}
-          >
-            <Text style={styles.optionTxt}>Change Password</Text>
-            <Ionicons name="arrow-forward-outline" size={24} />
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.optionBtn, styles.shadow]}
+              onPress={() => navigation.navigate("Change Password")}
+            >
+              <Text style={styles.optionTxt}>Change Password</Text>
+              <Ionicons name="arrow-forward-outline" size={24} />
+            </TouchableOpacity>
+          </View>
+
+          <Button
+            btnText="Logout"
+            color={COLORS.red}
+            isValid={true}
+            style={styles.logoutBtn}
+          />
         </View>
-
-        <Button
-          btnText="Logout"
-          color={COLORS.red}
-          isValid={true}
-          style={styles.logoutBtn}
-        />
       </View>
     </View>
   );

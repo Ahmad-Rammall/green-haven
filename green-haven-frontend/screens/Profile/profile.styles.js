@@ -1,20 +1,31 @@
 import { StyleSheet } from "react-native";
-import { COLORS, SIZES } from "../../assets/constants";
+import { COLORS, SHADOWS, SIZES } from "../../assets/constants";
 
 const styles = StyleSheet.create({
   container: {
-    margin: SIZES.medium,
+    flex:1,
+    backgroundColor: COLORS.offwhite
+  },
+  wrapper:{
+    margin: SIZES.large,
+    flex:1,
   },
   name: {
     fontFamily: "bold",
     fontSize: SIZES.large,
     alignSelf: "center",
-    marginTop: 20
+    marginTop: 20,
   },
   bio: {
     fontFamily: "light",
     textAlign: "center",
     color: COLORS.gray,
+  },
+  shadow: SHADOWS.medium,
+  buttons:{
+    flexDirection: "column",
+    justifyContent: "space-between",
+    flex: 1,
   },
 
   //Option Buttons
@@ -25,7 +36,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.gray2,
     padding: 10,
     borderRadius: 10,
-    elevation: 10,
     marginVertical: 15,
   },
 
