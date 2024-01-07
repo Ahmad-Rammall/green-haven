@@ -21,11 +21,6 @@ const styles = StyleSheet.create({
     fontFamily: "bold",
     fontSize: SIZES.xxLarge,
   },
-  genre:{
-    color: COLORS.gray2,
-    textAlign: "center",
-    fontSize: SIZES.large
-  },
   descriptionContainer:{
     backgroundColor: COLORS.offwhite,
     marginVertical: 10,

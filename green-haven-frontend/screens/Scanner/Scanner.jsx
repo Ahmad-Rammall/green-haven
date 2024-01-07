@@ -43,6 +43,7 @@ export default function Scanner() {
       const base64Image = await FileSystem.readAsStringAsync(uri, {
         encoding: FileSystem.EncodingType.Base64,
       });
+      console.log(base64Image);
       setEncodedImage(base64Image);
     } catch (error) {
       console.log("Error Encoding Image");
@@ -124,7 +125,9 @@ export default function Scanner() {
       });
 
       if (!result.canceled) {
-        setImage(result.uri);
+        console.log(result.assets[0].uri)
+        setImage(result.assets[0].uri);
+        encodeImage(result.assets[0].uri);
       }
     } catch (error) {
       console.error("Error picking image: ", error);

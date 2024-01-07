@@ -15,7 +15,6 @@ const BottomSheet = ({ plant }) => {
       ) : (
         <ScrollView>
           <Text style={styles.title}>{plant.name}</Text>
-          <Text style={styles.genre}>Plant Genre</Text>
           <View style={styles.descriptionContainer}>
             <Text style={styles.descTitle}>About the Plant :</Text>
             <Text style={styles.description}>{plant.description}</Text>
