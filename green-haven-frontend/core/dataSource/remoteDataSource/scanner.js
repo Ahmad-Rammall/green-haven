@@ -24,12 +24,12 @@ export const postImage = async (data) => {
   }
 };
 
-export const getImageDescription = async (access_token) => {
+export const getImageDetails = async (access_token) => {
 
     const getUrl = `https://plant.id/api/v3/identification/${access_token}?details=description`
   
     try {
-      const response = await axios.post(getUrl, { headers });
+      const response = await axios.get(getUrl, { headers });
       return response;
     } catch (error) {
       console.error(

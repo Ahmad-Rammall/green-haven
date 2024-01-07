@@ -9,7 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 import { SIZES } from "../../assets/constants";
 import * as FileSystem from "expo-file-system";
-import { postImage } from "../../core/dataSource/remoteDataSource/scanner";
+import { postImage, getImageDetails } from "../../core/dataSource/remoteDataSource/scanner";
 
 // Modal Dep
 import {
@@ -30,13 +30,16 @@ export default function Scanner() {
   const bottomSheetModalRef = useRef(null);
   const snapPoints = ["50%"];
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
+  const [plantDetails, setPlantDetails] = useState({
+    name: '',
+    description: ''
+  })
 
   const encodeImage = async (uri) => {
     try {
       const base64Image = await FileSystem.readAsStringAsync(uri, {
         encoding: FileSystem.EncodingType.Base64,
       });
-      console.log(base64Image);
       setEncodedImage(base64Image);
     } catch (error) {
       console.log("Error Encoding Image");
@@ -44,8 +47,23 @@ export default function Scanner() {
   };
 
   const handlePresentModal = async () => {
-      const response = await postImage(encodedImage);
-      console.log(response.data.result.is_plant.binary);
+    // Post Encoded Image to API
+    const response = await postImage(encodedImage);
+    if(response.data.result.is_plant.binary){
+      const details = await getImageDetails(response.data.access_token)
+      const res_details = details.data.result.classification.suggestions[0]
+      setPlantDetails({
+        name: res_details.name,
+        description: res_details.details.description.value
+      })
+    }
+    else{
+      setPlantDetails({
+        name: '',
+        description:''
+      })
+    }
+    console.log(response)
 
     bottomSheetModalRef.current?.present();
     setModalOpen(true);
@@ -66,9 +84,13 @@ export default function Scanner() {
   const takePicture = async () => {
     if (cameraRef) {
       try {
-        const data = await cameraRef.current.takePictureAsync();
-        console.log(data);
+        const pictureOptions = { width: 4, height: 3, quality: 0.5 };
+
+        // Take Image
+        const data = await cameraRef.current.takePictureAsync(pictureOptions);
         setImage(data.uri);
+
+        // Encode Image to 64 bit
         encodeImage(data.uri);
       } catch (error) {
         console.log("-------error------------");
@@ -96,7 +118,7 @@ export default function Scanner() {
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
         aspect: [4, 3],
-        quality: 0,
+        quality: 0.5,
       });
 
       if (!result.canceled) {
@@ -149,7 +171,7 @@ export default function Scanner() {
                   setModalStyle(styles.modalClose);
                 }}
               >
-                <BottomSheet />
+                <BottomSheet plant={plantDetails}/>
               </BottomSheetModal>
             </BottomSheetModalProvider>
           </GestureHandlerRootView>
