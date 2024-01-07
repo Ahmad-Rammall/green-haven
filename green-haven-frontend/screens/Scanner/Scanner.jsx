@@ -9,6 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 import { SIZES } from "../../assets/constants";
 import * as FileSystem from "expo-file-system";
+import { postImage } from "../../core/dataSource/remoteDataSource/scanner";
 
 // Modal Dep
 import {
@@ -42,7 +43,10 @@ export default function Scanner() {
     }
   };
 
-  const handlePresentModal = () => {
+  const handlePresentModal = async () => {
+      const response = await postImage(encodedImage);
+      console.log(response.data.result.is_plant.binary);
+
     bottomSheetModalRef.current?.present();
     setModalOpen(true);
     setModalStyle(styles.modalOpen);
