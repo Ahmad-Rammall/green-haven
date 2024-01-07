@@ -6,6 +6,16 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: SIZES.small,
   },
+  emptyResult:{
+    flex:1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  emptyResultText:{
+    color: COLORS.gray2,
+    fontFamily: "light",
+    fontSize:30
+  },
   title:{
     textAlign: "center",
     fontFamily: "bold",

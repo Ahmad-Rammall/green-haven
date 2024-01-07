@@ -28,7 +28,7 @@ export default function Scanner() {
   const [encodedImage, setEncodedImage] = useState("");
   const cameraRef = useRef(null);
   const bottomSheetModalRef = useRef(null);
-  const snapPoints = ["50%"];
+  const snapPoints = ["40%"];
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [plantDetails, setPlantDetails] = useState({
     name: '',
@@ -49,7 +49,7 @@ export default function Scanner() {
   const handlePresentModal = async () => {
     // Post Encoded Image to API
     const response = await postImage(encodedImage);
-    if(response.data.result.is_plant.binary){
+    if(response.data.result.is_plant.probability >= 0.7){
       const details = await getImageDetails(response.data.access_token)
       const res_details = details.data.result.classification.suggestions[0]
       setPlantDetails({
