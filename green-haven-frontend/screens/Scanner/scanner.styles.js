@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   },
   camera: {
     flex: 3.5,
-    borderRadius: 20,
   },
   topControls: {
     flex: 1,
@@ -47,9 +46,29 @@ const styles = StyleSheet.create({
     height: 1100,
     zIndex: 9999,
   },
-  modalClose:{
+  modalClose: {
     display: "none",
-  }
+  },
+  resultBottomContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 50,
+  },
+  resultBtn: {
+    backgroundColor: COLORS.white,
+    padding: 10,
+    borderRadius: 100,
+    width: "40%"
+  },
+  resultBtnText: {
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#E9730F",
+    marginLeft: 10,
+    textAlign: "center",
+  },
 });
 
 export default styles;

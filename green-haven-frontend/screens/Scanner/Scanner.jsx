@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import React, { useState, useEffect, useRef } from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import { CameraButton as Button, BottomSheet } from "../../components";
@@ -9,7 +9,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 import { SIZES } from "../../assets/constants";
 import * as FileSystem from "expo-file-system";
-import { postImage, getImageDetails } from "../../core/dataSource/remoteDataSource/scanner";
+import {
+  postImage,
+  getImageDetails,
+} from "../../core/dataSource/remoteDataSource/scanner";
 
 // Modal Dep
 import {
@@ -31,9 +34,9 @@ export default function Scanner() {
   const snapPoints = ["40%"];
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [plantDetails, setPlantDetails] = useState({
-    name: '',
-    description: ''
-  })
+    name: "",
+    description: "",
+  });
 
   const encodeImage = async (uri) => {
     try {
@@ -49,21 +52,20 @@ export default function Scanner() {
   const handlePresentModal = async () => {
     // Post Encoded Image to API
     const response = await postImage(encodedImage);
-    if(response.data.result.is_plant.probability >= 0.7){
-      const details = await getImageDetails(response.data.access_token)
-      const res_details = details.data.result.classification.suggestions[0]
+    if (response.data.result.is_plant.probability >= 0.7) {
+      const details = await getImageDetails(response.data.access_token);
+      const res_details = details.data.result.classification.suggestions[0];
       setPlantDetails({
         name: res_details.name,
-        description: res_details.details.description.value
-      })
-    }
-    else{
+        description: res_details.details.description.value,
+      });
+    } else {
       setPlantDetails({
-        name: '',
-        description:''
-      })
+        name: "",
+        description: "",
+      });
     }
-    console.log(response)
+    console.log(response);
 
     bottomSheetModalRef.current?.present();
     setModalOpen(true);
@@ -171,7 +173,7 @@ export default function Scanner() {
                   setModalStyle(styles.modalClose);
                 }}
               >
-                <BottomSheet plant={plantDetails}/>
+                <BottomSheet plant={plantDetails} />
               </BottomSheetModal>
             </BottomSheetModalProvider>
           </GestureHandlerRootView>
@@ -181,18 +183,15 @@ export default function Scanner() {
       <View style={styles.controls}>
         {image ? (
           <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingHorizontal: 50,
-            }}
+            style={styles.resultBottomContainer}
           >
-            <Button
-              title="Re-take"
-              onPress={() => setImage(null)}
-              icon="retweet"
-            />
-            <Button title="Save" onPress={handlePresentModal} icon="check" />
+            <TouchableOpacity onPress={() => setImage(null)} style={styles.resultBtn}>
+              <Text style={styles.resultBtnText}>Re-take</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={handlePresentModal} style={styles.resultBtn}>
+              <Text style={styles.resultBtnText}>Scan</Text>
+            </TouchableOpacity>
           </View>
         ) : (
           <View style={styles.bottomContainer}>
