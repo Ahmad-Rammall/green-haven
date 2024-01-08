@@ -6,8 +6,8 @@ export const profileDataSource = {
       body: data,
       route: "profile",
       method: "PUT",
+      contentType: "multipart/form-data"
     });
-
-    return response;
-  }
+    return response
+  },
 };
