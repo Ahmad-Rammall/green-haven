@@ -16,7 +16,7 @@ const Profile = ({ navigation }) => {
 
   const handleLogout = async () => {
     local("token", "");
-    navigation.navigate('Login');
+    navigation.replace('Login');
   }
 
   return (
