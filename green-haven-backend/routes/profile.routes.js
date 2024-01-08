@@ -3,6 +3,7 @@ const {
   updateProfile,
   getUser,
   followUser,
+  updatePassword
 } = require("../controllers/profile.controllers");
 const router = express.Router();
 
@@ -24,5 +25,6 @@ const upload = multer({ storage });
 router.put("/", upload.single("file"), updateProfile);
 router.get("/:id", getUser);
 router.put("/followOrUnfollow", followUser);
+router.put("/password", updatePassword)
 
 module.exports = router;
