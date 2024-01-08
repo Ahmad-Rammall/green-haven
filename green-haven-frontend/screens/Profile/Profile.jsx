@@ -7,12 +7,17 @@ import { COLORS } from "../../assets/constants";
 import { ProfilePicture } from "../../components";
 import { useSelector } from "react-redux";
 import { PUBLIC_FOLDER } from "@env";
+import { local } from "../../core/helpers/localStorage";
 
 const Profile = ({ navigation }) => {
   const currentUser = useSelector((state) => state.User);
 
   const userProfilePicture = `${PUBLIC_FOLDER}profile-pics/${currentUser.profilePicture}`;
-  console.log(userProfilePicture);
+
+  const handleLogout = async () => {
+    local("token", "");
+    navigation.navigate('Login');
+  }
 
   return (
     <View style={styles.container}>
@@ -45,6 +50,7 @@ const Profile = ({ navigation }) => {
             color={COLORS.red}
             isValid={true}
             style={styles.logoutBtn}
+            onPress={() => handleLogout()}
           />
         </View>
       </View>
