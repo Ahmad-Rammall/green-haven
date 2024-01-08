@@ -6,16 +6,15 @@ import styles from "./editProfile.styles";
 import React, { useState } from "react";
 import { useProfileLogic } from "../../core/hooks/editProfileLogic.hook";
 
-const EditProfile = ({ navigation }) => {
-  const [name, setName] = useState("");
-
-  const { error, handleFormChange, handleSubmit, credentials } = useProfileLogic();
+const EditProfile = () => {
+  const { error, handleFormChange, handleSubmit, credentials } =
+    useProfileLogic();
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <ProfilePicture
         edit
-        image={require("../../assets/images/Carousel/plant1.jpg")}
+        handleFormChange={handleFormChange}
       />
 
       <View style={styles.inputs}>
@@ -41,11 +40,14 @@ const EditProfile = ({ navigation }) => {
             value={credentials.name}
             style={styles.input}
             onChangeText={(text) => {
-              setName(text);
               handleFormChange("name", text);
             }}
           />
-          {credentials.name === "" ? <Text style={styles.error}>Required</Text> : ""}
+          {credentials.name === "" ? (
+            <Text style={styles.error}>Required</Text>
+          ) : (
+            ""
+          )}
         </View>
 
         {/* Phone Number */}
@@ -56,7 +58,7 @@ const EditProfile = ({ navigation }) => {
             value={credentials.phone}
             style={styles.input}
             onChangeText={(text) => handleFormChange("phone", text)}
-            keyboardType={Platform.OS === 'android' ? "numeric" : "number-pad"}
+            keyboardType={Platform.OS === "android" ? "numeric" : "number-pad"}
           />
         </View>
 
