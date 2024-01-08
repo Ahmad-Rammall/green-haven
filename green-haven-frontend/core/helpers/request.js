@@ -7,6 +7,7 @@ export const sendRequest = async ({
   route,
   body,
   method = "GET",
+  contentType = "application/json"
 }) => {
   const token = await local("token")
 
@@ -16,7 +17,7 @@ export const sendRequest = async ({
       method,
       data: body,
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": contentType,
         "Authorization": `Bearer ${token}`,
       },
     });

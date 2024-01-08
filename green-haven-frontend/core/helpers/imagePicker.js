@@ -9,7 +9,9 @@ export const imagePicker = async () => {
       quality: 0.5,
     });
 
-    return result;
+    if(!result.canceled){
+      return result;
+    }
   } catch (error) {
     console.error("Error picking image: ", error);
   }
