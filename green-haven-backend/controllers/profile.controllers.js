@@ -27,12 +27,12 @@ const updateProfile = async (req, res) => {
     }
 
     // Update User
-    await User.findOneAndUpdate(
+    const updatedUser = await User.findOneAndUpdate(
       { _id: req.user._id },
       { name, password, bio, phone_number, profile_picture, location },
       { new: true, runValidators: true }
     );
-    return res.status(200).json({ message: "User Updated" });
+    return res.status(200).json({ message: "User Updated", updatedUser });
   } catch (error) {
     return res.status(500).json({ message: "Internal Error" });
   }
