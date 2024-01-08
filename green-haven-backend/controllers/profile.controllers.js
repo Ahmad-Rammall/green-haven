@@ -18,21 +18,37 @@ const updateProfile = async (req, res) => {
   // User cannot change his email / role
   const { name, bio, phone_number, location } = req.body;
   const profile_picture = req.file?.filename;
-  let password = req.body.password;
-
   try {
-    if (password) {
-      const salt = await bcrypt.genSalt(10);
-      password = await bcrypt.hash(password, salt);
-    }
-
     // Update User
     const updatedUser = await User.findOneAndUpdate(
       { _id: req.user._id },
-      { name, password, bio, phone_number, profile_picture, location },
+      { name, bio, phone_number, profile_picture, location },
       { new: true, runValidators: true }
     );
     return res.status(200).json({ message: "User Updated", updatedUser });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal Error" });
+  }
+};
+
+const updatePassword = async (req, res) => {
+  try {
+    const {oldPassword, newPassword} = req.body;
+
+    const user = await User.findOne({ _id: req.user._id });
+  
+    if (bcrypt.compare(oldPassword, user.password)) {
+      const salt = await bcrypt.genSalt(10);
+
+      // update user's password
+      user.password = await bcrypt.hash(newPassword, salt);
+
+      // save user
+      await user.save({ new: true, runValidators: true });
+      res.status(200).send("Password Updated");
+    } else {
+      res.status(400).send("Passwords Don't Match !");
+    }
   } catch (error) {
     return res.status(500).json({ message: "Internal Error" });
   }
@@ -113,4 +129,5 @@ module.exports = {
   getUser,
   followUser,
   unfollowUser,
+  updatePassword,
 };
