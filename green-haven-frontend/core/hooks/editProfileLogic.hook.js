@@ -3,6 +3,7 @@ import { profileDataSource } from "../dataSource/remoteDataSource/profile";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import Toast from "react-native-simple-toast";
 
 export const useProfileLogic = () => {
   const [error, setError] = useState("");
@@ -29,8 +30,15 @@ export const useProfileLogic = () => {
 
   const handleSubmit = async (passwords) => {
     try {
-      if(passwords){
-        await profileDataSource.updatePassword(passwords);
+      if (passwords) {
+        const response = await profileDataSource.updatePassword(passwords);
+        if (response?.status === 200) {
+          Toast.show("Password Updated Successfully.", Toast.LONG);
+          navigation.navigate("Profile");
+        }
+        else{
+          Toast.show("Passwords Don't Match !", Toast.LONG);
+        }
         return
       }
 
@@ -46,12 +54,12 @@ export const useProfileLogic = () => {
       if (profilePic.uri) {
         data.append("file", {
           uri: profilePic.uri,
-          type: 'image/jpeg',
-          name: 'user.jpg',
+          type: "image/jpeg",
+          name: "user.jpg",
         });
       }
       const response = await profileDataSource.updateProfile(data);
-      
+
       const updatedUser = response.data.updatedUser;
 
       dispatch(
@@ -72,7 +80,7 @@ export const useProfileLogic = () => {
 
       navigation.navigate("Profile");
     } catch (error) {
-      console.log(error);
+      Toast.show(error?.message, Toast.LONG);
       setError(error?.message);
     }
   };

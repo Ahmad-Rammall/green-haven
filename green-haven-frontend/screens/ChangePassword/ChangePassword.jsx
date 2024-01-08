@@ -59,7 +59,9 @@ const ChangePassword = () => {
             confirmNewPassword: "",
           }}
           validationSchema={validationSchema}
-          onSubmit={async (values) => await handleSubmit(values)}
+          onSubmit={async (values) => {
+            await handleSubmit(values);
+          }}
         >
           {({
             handleChange,
