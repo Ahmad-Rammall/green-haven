@@ -15,11 +15,13 @@ import { COLORS, SIZES } from "../../assets/constants";
 import { Button } from "../../components";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "./changePassword.styles";
+import { useProfileLogic } from "../../core/hooks/editProfileLogic.hook";
 
 import React, { useState } from "react";
 
 const ChangePassword = () => {
   const [secureText, setSecureText] = useState(true);
+  const { handleSubmit } = useProfileLogic();
 
   validationSchema = Yup.object({
     oldPassword: Yup.string()
@@ -35,7 +37,11 @@ const ChangePassword = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView onPress={Keyboard.dismiss()} style={styles.wrapper} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        onPress={Keyboard.dismiss()}
+        style={styles.wrapper}
+        showsVerticalScrollIndicator={false}
+      >
         <Image
           source={require("../../assets/images/lock.png")}
           style={styles.image}
@@ -53,7 +59,7 @@ const ChangePassword = () => {
             confirmNewPassword: "",
           }}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={async (values) => await handleSubmit(values)}
         >
           {({
             handleChange,

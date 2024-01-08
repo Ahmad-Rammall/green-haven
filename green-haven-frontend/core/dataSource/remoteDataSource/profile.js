@@ -10,4 +10,13 @@ export const profileDataSource = {
     });
     return response
   },
+
+  updatePassword: async (data) => {
+    const response = await sendRequest({
+      body: data,
+      route: "profile/password",
+      method: "PUT",
+    });
+    return response
+  },
 };

@@ -27,11 +27,16 @@ export const useProfileLogic = () => {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (passwords) => {
     try {
-      const { name, phone, location, bio, profilePic } = credentials;
+      if(passwords){
+        await profileDataSource.updatePassword(passwords);
+        return
+      }
 
       const data = new FormData();
+
+      const { name, phone, location, bio, profilePic } = credentials;
 
       // Append each piece of information to the form data
       data.append("name", name);
