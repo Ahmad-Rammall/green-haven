@@ -6,14 +6,15 @@ import { useNavigation } from "@react-navigation/native";
 
 export const useProfileLogic = () => {
   const [error, setError] = useState("");
-  const currentUser = useSelector(state => state.User);
+  const currentUser = useSelector((state) => state.User);
 
   const [credentials, setCredentials] = useState({
     email: currentUser.email,
     name: currentUser.username,
-    phone:currentUser.phoneNumber,
+    phone: currentUser.phoneNumber,
     location: currentUser.location,
     bio: currentUser.bio,
+    profilePic: {},
   });
 
   const navigation = useNavigation();
@@ -28,10 +29,24 @@ export const useProfileLogic = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await profileDataSource.updateProfile(credentials);
+      const { name, phone, location, bio, profilePic } = credentials;
 
-      console.log(response);
+      const data = new FormData();
 
+      // Append each piece of information to the form data
+      data.append("name", name);
+      data.append("phone_number", phone);
+      data.append("location", location);
+      data.append("bio", bio);
+      if (profilePic.uri) {
+        data.append("file", {
+          uri: profilePic.uri,
+          type: 'image/jpeg',
+          name: 'user.jpg',
+        });
+      }
+      const response = await profileDataSource.updateProfile(data);
+      
       const updatedUser = response.data.updatedUser;
 
       dispatch(
