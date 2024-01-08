@@ -1,14 +1,36 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { COLORS } from "../../assets/constants";
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
+import React, { useState } from "react";
+import { imagePicker } from "../../core/helpers/imagePicker";
+import { PUBLIC_FOLDER } from "@env";
+import { useSelector } from "react-redux";
 
-const ProfilePicture = ({ image, edit }) => {
+const ProfilePicture = ({ image, edit, handleFormChange }) => {
+  const [profilePic, setProfilePic] = useState({});
+  const currentUser = useSelector((state) => state.User);
+
+  // Pick Image from Device
+  const pickImage = async () => {
+    const result = await imagePicker();
+    setProfilePic(result.assets[0].uri);
+    handleFormChange("profilePic", result.assets[0]);
+  };
+
+  const imagePath =
+    PUBLIC_FOLDER + "profile-pics/" + currentUser.profilePicture;
   return (
     <View>
       {edit ? (
-        <TouchableOpacity>
-          <Image source={image} style={styles.image} />
+        <TouchableOpacity onPress={pickImage}>
+          <Image
+            source={
+              Object.keys(profilePic).length !== 0
+                ? { uri: profilePic }
+                : { uri: imagePath }
+            }
+            style={styles.image}
+          />
           <Ionicons name="camera-outline" size={22} style={styles.icon} />
         </TouchableOpacity>
       ) : (
