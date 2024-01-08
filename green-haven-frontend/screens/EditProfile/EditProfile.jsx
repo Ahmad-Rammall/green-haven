@@ -4,13 +4,13 @@ import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 import styles from "./editProfile.styles";
 import React, { useState } from "react";
+import { useProfileLogic } from "../../core/hooks/editProfileLogic.hook";
 
 const EditProfile = ({ navigation }) => {
   const [name, setName] = useState("");
 
-  const handleNameChange = (text) => {
-    console.log(text);
-  };
+  const { error, handleFormChange, handleSubmit } = useProfileLogic();
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <ProfilePicture
@@ -39,7 +39,10 @@ const EditProfile = ({ navigation }) => {
           <TextInput
             placeholder="Full Name"
             style={styles.input}
-            onChangeText={setName}
+            onChangeText={(text) => {
+              setName(text);
+              handleFormChange("name", text);
+            }}
           />
           {name === "" ? <Text style={styles.error}>Required</Text> : ""}
         </View>
@@ -47,13 +50,21 @@ const EditProfile = ({ navigation }) => {
         {/* Phone Number */}
         <View style={styles.inputWrapper}>
           <Ionicons name="phone-portrait-outline" size={24} color="black" />
-          <TextInput placeholder="Phone Number" style={styles.input} />
+          <TextInput
+            placeholder="Phone Number"
+            style={styles.input}
+            onChangeText={(text) => handleFormChange("phone", text)}
+          />
         </View>
 
         {/* Location */}
         <View style={styles.inputWrapper}>
           <Ionicons name="ios-location-outline" size={25} color={COLORS.gray} />
-          <TextInput placeholder="Location" style={styles.input} />
+          <TextInput
+            placeholder="Location"
+            style={styles.input}
+            onChangeText={(text) => handleFormChange("location", text)}
+          />
         </View>
 
         {/* Bio */}
@@ -63,14 +74,18 @@ const EditProfile = ({ navigation }) => {
             size={25}
             color={COLORS.gray}
           />
-          <TextInput placeholder="Location" style={styles.input} />
+          <TextInput
+            placeholder="Location"
+            style={styles.input}
+            onChangeText={(text) => handleFormChange("bio", text)}
+          />
         </View>
       </View>
       <View style={styles.btn}>
         <Button
           btnText="Save"
           isValid={name === "" ? false : true}
-          onPress={() => navigation.goBack()}
+          onPress={() => handleSubmit()}
         />
       </View>
     </ScrollView>
