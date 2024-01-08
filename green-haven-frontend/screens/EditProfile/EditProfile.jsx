@@ -9,7 +9,7 @@ import { useProfileLogic } from "../../core/hooks/editProfileLogic.hook";
 const EditProfile = ({ navigation }) => {
   const [name, setName] = useState("");
 
-  const { error, handleFormChange, handleSubmit } = useProfileLogic();
+  const { error, handleFormChange, handleSubmit, credentials } = useProfileLogic();
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -27,7 +27,7 @@ const EditProfile = ({ navigation }) => {
             color={COLORS.gray}
           />
           <TextInput
-            value="xxxxx@xx.com"
+            value={credentials.email}
             style={styles.input}
             editable={false}
           />
@@ -38,13 +38,14 @@ const EditProfile = ({ navigation }) => {
           <Ionicons name="person-outline" size={25} color={COLORS.gray} />
           <TextInput
             placeholder="Full Name"
+            value={credentials.name}
             style={styles.input}
             onChangeText={(text) => {
               setName(text);
               handleFormChange("name", text);
             }}
           />
-          {name === "" ? <Text style={styles.error}>Required</Text> : ""}
+          {credentials.name === "" ? <Text style={styles.error}>Required</Text> : ""}
         </View>
 
         {/* Phone Number */}
@@ -52,8 +53,10 @@ const EditProfile = ({ navigation }) => {
           <Ionicons name="phone-portrait-outline" size={24} color="black" />
           <TextInput
             placeholder="Phone Number"
+            value={credentials.phone}
             style={styles.input}
             onChangeText={(text) => handleFormChange("phone", text)}
+            keyboardType={Platform.OS === 'android' ? "numeric" : "number-pad"}
           />
         </View>
 
@@ -62,6 +65,7 @@ const EditProfile = ({ navigation }) => {
           <Ionicons name="ios-location-outline" size={25} color={COLORS.gray} />
           <TextInput
             placeholder="Location"
+            value={credentials.location}
             style={styles.input}
             onChangeText={(text) => handleFormChange("location", text)}
           />
@@ -75,7 +79,8 @@ const EditProfile = ({ navigation }) => {
             color={COLORS.gray}
           />
           <TextInput
-            placeholder="Location"
+            placeholder="Bio"
+            value={credentials.bio}
             style={styles.input}
             onChangeText={(text) => handleFormChange("bio", text)}
           />
@@ -84,7 +89,7 @@ const EditProfile = ({ navigation }) => {
       <View style={styles.btn}>
         <Button
           btnText="Save"
-          isValid={name === "" ? false : true}
+          isValid={credentials.name === "" ? false : true}
           onPress={() => handleSubmit()}
         />
       </View>

@@ -1,17 +1,19 @@
 import { loggedInUser } from "../dataSource/localDataSource/user";
 import { profileDataSource } from "../dataSource/remoteDataSource/profile";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
 export const useProfileLogic = () => {
   const [error, setError] = useState("");
+  const currentUser = useSelector(state => state.User);
 
   const [credentials, setCredentials] = useState({
-    name: "",
-    phone: "",
-    location: "",
-    bio: "",
+    email: currentUser.email,
+    name: currentUser.username,
+    phone:currentUser.phoneNumber,
+    location: currentUser.location,
+    bio: currentUser.bio,
   });
 
   const navigation = useNavigation();
@@ -55,5 +57,5 @@ export const useProfileLogic = () => {
     }
   };
 
-  return { error, handleSubmit, handleFormChange };
+  return { error, handleSubmit, handleFormChange, credentials };
 };
