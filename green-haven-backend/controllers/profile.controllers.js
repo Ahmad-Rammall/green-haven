@@ -37,7 +37,7 @@ const updatePassword = async (req, res) => {
 
     const user = await User.findOne({ _id: req.user._id });
   
-    if (bcrypt.compare(oldPassword, user.password)) {
+    if (await bcrypt.compare(oldPassword, user.password)) {
       const salt = await bcrypt.genSalt(10);
 
       // update user's password
