@@ -2,6 +2,8 @@ const User = require("../models/user.model");
 const Product = require("../models/product.model");
 const Order = require("../models/order.model");
 
+const getSellerOrders = async (req, res) => {};
+
 const createOrder = async (req, res) => {
   const { productId, quantity, location } = req.body;
 
@@ -38,4 +40,5 @@ const deleteOrder = async (req, res) => {};
 module.exports = {
   createOrder,
   deleteOrder,
+  getSellerOrders,
 };
