@@ -3,14 +3,14 @@ const Product = require("../models/product.model");
 const Order = require("../models/order.model");
 
 const getSellerOrders = async (req, res) => {
-    const sellerId = req.user._id;
-    try {
-      const orders = await Order.find({ seller: sellerId });
-      res.status(200).json({ orders });
-    } catch (error) {
-      res.status(500).json({ message: "Internal Error" });
-    }
-  };
+  const sellerId = req.user._id;
+  try {
+    const orders = await Order.find({ seller: sellerId });
+    res.status(200).json({ orders });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Error" });
+  }
+};
 
 const createOrder = async (req, res) => {
   const { productId, quantity, location } = req.body;
@@ -20,9 +20,8 @@ const createOrder = async (req, res) => {
     const product = await Product.findOne({ _id: productId }).populate("user");
 
     if (!product) {
-      res.status(404).json({ message: "Product Doesn't Exist" });
+      return res.status(404).json({ message: "Product Doesn't Exist" });
     }
-    console.log(product)
 
     const totalAmount = product.price * quantity;
 
@@ -45,7 +44,21 @@ const createOrder = async (req, res) => {
   }
 };
 
-const deleteOrder = async (req, res) => {};
+const deleteOrder = async (req, res) => {
+  const orderId = req.body.orderId;
+
+  try {
+    const deletedOrder = await Order.findOneAndDelete({ _id: orderId, seller: req.user._id });
+
+    if(!deletedOrder){
+        return res.status(400).json({ message: "Order Not Found" });
+    }
+
+    res.status(200).json({ message: "Order Deleted" });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Error" });
+  }
+};
 
 module.exports = {
   createOrder,
