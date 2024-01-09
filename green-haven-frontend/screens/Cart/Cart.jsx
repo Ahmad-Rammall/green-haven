@@ -9,6 +9,26 @@ const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [refresh, setRefresh] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [quantities, setQuantities] = useState({});
+
+  const updateQuantity = (productId, quantity, sellerId) => {
+    if (quantity == 0) {
+      setQuantities((prevQuantities) => {
+        const newQuantities = { ...prevQuantities };
+        delete newQuantities[productId];
+        return newQuantities;
+      });
+      return;
+    }
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [productId]: quantity,
+    }));
+  };
+
+  useEffect(() => {
+    console.log(quantities);
+  }, [quantities]);
 
   const getAllProducts = async () => {
     const response = await cartDataSource.getAllCartProducts();
@@ -32,6 +52,7 @@ const Cart = () => {
               product={product}
               setTotalAmount={setTotalAmount}
               setRefresh={setRefresh}
+              updateQuantity={updateQuantity}
             />
           ))}
         </ScrollView>
