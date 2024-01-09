@@ -27,6 +27,26 @@ const Cart = () => {
     }));
   };
 
+  const sendOrders = async () => {
+    for (let productId in quantities) {
+      console.log(productId)
+      let order = {
+        productId,
+        quantity: quantities[productId],
+        location
+      };
+      // Replace this with your actual API call
+      try {
+        const response = await cartDataSource.createOrder(order)
+        console.log(response)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    // Close the modal after sending the orders
+    toggleModal();
+  };
+
   useEffect(() => {
     console.log(quantities);
   }, [quantities]);
@@ -72,6 +92,7 @@ const Cart = () => {
         toggleModal={toggleModal}
         style={styles.modal}
         setLocation={setLocation}
+        sendOrders={sendOrders}
       />
     </View>
   );
