@@ -8,6 +8,7 @@ import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 
 const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
   const [isZero, setIsZero] = useState(true);
+  console.log(product)
 
   const handleDecrement = async () => {
     if (product.quantity === 1) {
@@ -15,7 +16,7 @@ const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
       await cartDataSource.deleteCartProduct({
         productId: product._id,
       });
-      updateQuantity(product._id, product.quantity);
+      updateQuantity(product.product._id, product.quantity);
 
       setTotalAmount(
         (prevTotalAmount) => prevTotalAmount - product.product.price
@@ -25,7 +26,7 @@ const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
     }
 
     product.quantity = product.quantity - 1;
-    updateQuantity(product._id, product.quantity);
+    updateQuantity(product.product._id, product.quantity);
     setTotalAmount(
       (prevTotalAmount) => prevTotalAmount - product.product.price
     );
@@ -40,7 +41,7 @@ const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
         prevTotalAmount - product.product.price * product.quantity
     );
     product.quantity = product.quantity + 1;
-    updateQuantity(product._id, product.quantity);
+    updateQuantity(product.product._id, product.quantity);
     setTotalAmount(
       (prevTotalAmount) =>
         prevTotalAmount + product.product.price * (product.quantity + 1)
