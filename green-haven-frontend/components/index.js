@@ -23,5 +23,5 @@ export {
   Post,
   Story,
   UserChat,
-  LocationModal
+  
 };
