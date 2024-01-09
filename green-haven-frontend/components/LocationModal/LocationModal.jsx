@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Button, Modal } from "react-native";
 import styles from "./locationModal.styles";
 
-const LocationModal = ({ isModalVisible, toggleModal, setLocation }) => {
+const LocationModal = ({ isModalVisible, toggleModal, setLocation, sendOrders }) => {
   return (
     <>
       {isModalVisible && (
@@ -15,7 +15,7 @@ const LocationModal = ({ isModalVisible, toggleModal, setLocation }) => {
             />
             <View style={styles.buttons}>
               <Button title="Cancel" onPress={toggleModal}/>
-              <Button title="OK" onPress={handleInputSubmit} />
+              <Button title="OK"  onPress={sendOrders}/>
             </View>
           </View>
         </View>
