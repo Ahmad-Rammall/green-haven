@@ -43,6 +43,10 @@ app.use("/post", authMiddleware, postRoutes);
 const profileRoutes = require("./routes/profile.routes");
 app.use("/profile", authMiddleware, profileRoutes);
 
+// Order Routes
+const orderRoutes = require("./routes/order.routes");
+app.use("/order", authMiddleware, orderRoutes);
+
 app.listen(8000, () => {
   console.log("Server listining on PORT: ", 8000);
   connectToMongoDB();
