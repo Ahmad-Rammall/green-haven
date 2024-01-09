@@ -10,6 +10,7 @@ const Cart = () => {
   const [refresh, setRefresh] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
   const [quantities, setQuantities] = useState({});
+  const [location, setLocation] = useState("");
 
   const updateQuantity = (productId, quantity, sellerId) => {
     if (quantity == 0) {
@@ -70,6 +71,7 @@ const Cart = () => {
         isModalVisible={isModalVisible}
         toggleModal={toggleModal}
         style={styles.modal}
+        setLocation={setLocation}
       />
     </View>
   );

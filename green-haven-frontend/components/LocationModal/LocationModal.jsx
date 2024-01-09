@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Button, Modal } from "react-native";
 import styles from "./locationModal.styles";
 
-const LocationModal = ({ isModalVisible, toggleModal }) => {
-  const [inputValue, setInputValue] = useState("");
-
-  const handleInputSubmit = () => {
-    console.log("Submitted Text:", inputValue);
-  };
+const LocationModal = ({ isModalVisible, toggleModal, setLocation }) => {
   return (
     <>
       {isModalVisible && (
@@ -16,8 +11,7 @@ const LocationModal = ({ isModalVisible, toggleModal }) => {
             <Text>Enter Location:</Text>
             <TextInput
               style={styles.text}
-              onChangeText={(text) => setInputValue(text)}
-              value={inputValue}
+              onChangeText={(text) => setLocation(text)}
             />
             <View style={styles.buttons}>
               <Button title="Cancel" onPress={toggleModal}/>
