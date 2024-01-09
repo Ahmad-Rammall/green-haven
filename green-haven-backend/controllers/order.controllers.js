@@ -2,7 +2,15 @@ const User = require("../models/user.model");
 const Product = require("../models/product.model");
 const Order = require("../models/order.model");
 
-const getSellerOrders = async (req, res) => {};
+const getSellerOrders = async (req, res) => {
+    const sellerId = req.user._id;
+    try {
+      const orders = await Order.find({ seller: sellerId });
+      res.status(200).json({ orders });
+    } catch (error) {
+      res.status(500).json({ message: "Internal Error" });
+    }
+  };
 
 const createOrder = async (req, res) => {
   const { productId, quantity, location } = req.body;
