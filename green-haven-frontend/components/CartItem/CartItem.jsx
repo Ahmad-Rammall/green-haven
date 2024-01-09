@@ -6,15 +6,17 @@ import { SIZES } from "../../assets/constants";
 import { PUBLIC_FOLDER } from "@env";
 import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 
-const CartItem = ({ product, setRefresh, setTotalAmount }) => {
-  const [itemQuantity, setItemQuantity] = useState(product.quantity);
+const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
   const [isZero, setIsZero] = useState(true);
 
   const handleDecrement = async () => {
-    if (itemQuantity === 1) {
-      const response = await cartDataSource.deleteCartProduct({
+    if (product.quantity === 1) {
+      product.quantity =0;
+      await cartDataSource.deleteCartProduct({
         productId: product._id,
       });
+      updateQuantity(product._id, product.quantity);
+
       setTotalAmount(
         (prevTotalAmount) => prevTotalAmount - product.product.price
       );
@@ -22,12 +24,12 @@ const CartItem = ({ product, setRefresh, setTotalAmount }) => {
       return;
     }
 
-    // Decrement by 1
-    setItemQuantity(itemQuantity - 1);
+    product.quantity = product.quantity - 1;
+    updateQuantity(product._id, product.quantity);
     setTotalAmount(
       (prevTotalAmount) => prevTotalAmount - product.product.price
     );
-    if (itemQuantity === 2) {
+    if (product.quantity === 1) {
       setIsZero(true);
     }
   };
@@ -35,12 +37,13 @@ const CartItem = ({ product, setRefresh, setTotalAmount }) => {
   const handleIncrement = () => {
     setTotalAmount(
       (prevTotalAmount) =>
-        prevTotalAmount - product.product.price * itemQuantity
+        prevTotalAmount - product.product.price * product.quantity
     );
-    setItemQuantity(itemQuantity + 1);
+    product.quantity = product.quantity + 1;
+    updateQuantity(product._id, product.quantity);
     setTotalAmount(
       (prevTotalAmount) =>
-        prevTotalAmount + product.product.price * (itemQuantity + 1)
+        prevTotalAmount + product.product.price * (product.quantity + 1)
     );
     setIsZero(false);
   };
@@ -50,6 +53,7 @@ const CartItem = ({ product, setRefresh, setTotalAmount }) => {
       (prevTotalAmount) => prevTotalAmount + product.product.price
     );
   }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
@@ -87,7 +91,7 @@ const CartItem = ({ product, setRefresh, setTotalAmount }) => {
                 />
               )}
             </TouchableOpacity>
-            <Text style={styles.quantityText}>{itemQuantity}</Text>
+            <Text style={styles.quantityText}>{product.quantity}</Text>
             <TouchableOpacity onPress={() => handleIncrement()}>
               <Ionicons name="add" size={24} style={styles.quantityBtn} />
             </TouchableOpacity>
