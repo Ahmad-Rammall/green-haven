@@ -6,6 +6,11 @@ const orderSchema = mongoose.Schema({
     ref: "User",
     required: true,
   },
+  seller: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Product",
@@ -21,12 +26,11 @@ const orderSchema = mongoose.Schema({
     required: true,
     min: 1,
   },
-  location:{
+  location: {
     type: String,
     required: true,
     maxlength: 500,
-}
+  },
 });
 
 module.exports = mongoose.model("Order", orderSchema);
-

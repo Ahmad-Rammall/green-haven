@@ -14,12 +14,14 @@ const createOrder = async (req, res) => {
     if (!product) {
       res.status(404).json({ message: "Product Doesn't Exist" });
     }
+    console.log(product)
 
     const totalAmount = product.price * quantity;
 
     // create new order
     const order = new Order({
       client: req.user,
+      seller: product.user._id,
       product,
       location,
       totalAmount,
