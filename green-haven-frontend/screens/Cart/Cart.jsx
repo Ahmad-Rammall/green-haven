@@ -1,10 +1,4 @@
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { CartItem, Button, LocationModal } from "../../components";
 import styles from "./cart.styles";
 import React, { useState, useEffect } from "react";
@@ -48,10 +42,14 @@ const Cart = () => {
           <Text style={styles.totalAmount}>Total Amount : </Text>
           <Text style={styles.totalAmount}>$ {totalAmount}</Text>
         </View>
-        <Button btnText="Checkout" isValid={true} onPress={toggleModal}/>
+        <Button btnText="Checkout" isValid={true} onPress={toggleModal} />
       </View>
 
-      <LocationModal isModalVisible={isModalVisible} toggleModal={toggleModal} style={styles.modal}/>
+      <LocationModal
+        isModalVisible={isModalVisible}
+        toggleModal={toggleModal}
+        style={styles.modal}
+      />
     </View>
   );
 };

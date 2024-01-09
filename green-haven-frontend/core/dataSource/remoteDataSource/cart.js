@@ -31,4 +31,13 @@ export const cartDataSource = {
 
     return response;
   },
+  createOrder: async (data) => {
+    const response = await sendRequest({
+      route: "order",
+      method: "POST",
+      body: data
+    });
+
+    return response;
+  },
 };
