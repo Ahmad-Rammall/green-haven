@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { ProductCard, SearchBar } from "../../components";
 import styles from "./market.styles";
 import React, { useState, useEffect } from "react";
@@ -56,6 +56,10 @@ const Market = () => {
           ))}
         </View>
       </ScrollView>
+
+        <TouchableOpacity style={styles.addBtn}>
+          <Text style={styles.addBtnText}>+</Text>
+        </TouchableOpacity>
     </View>
   );
 };
