@@ -11,7 +11,7 @@ import styles from "./productDetails.styles";
 import { useRoute } from "@react-navigation/native";
 import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 import Toast from "react-native-simple-toast";
-import { Button, ProductModal } from "../../components";
+import { Button, ProductModal, DeleteModal } from "../../components";
 import { useSelector } from "react-redux";
 import { COLORS } from "../../assets/constants";
 
@@ -20,6 +20,7 @@ const ProductDetails = () => {
   const { imageUrl, name, description, price, productId } = route.params;
   const currentUser = useSelector((state) => state.User);
   const [isVisible, setIsVisible] = useState(false);
+  const [isDeleteVisible, setIsDeleteVisible] = useState(false);
 
   const addToCart = async () => {
     const response = await cartDataSource.addProductToCart({
@@ -33,6 +34,7 @@ const ProductDetails = () => {
 
   const onClose = () => {
     setIsVisible(false);
+    setIsDeleteVisible(false)
   };
 
   return (
@@ -62,7 +64,7 @@ const ProductDetails = () => {
             />
           ) : (
             <View style={styles.sellerOptions}>
-              <TouchableOpacity style={[styles.sellerOption, styles.deleteBtn]}>
+              <TouchableOpacity style={[styles.sellerOption, styles.deleteBtn]} onPress={() => setIsDeleteVisible(true)}>
                 <Text style={styles.optionTxt}>Delete</Text>
               </TouchableOpacity>
 
@@ -78,6 +80,8 @@ const ProductDetails = () => {
                 onClose={onClose}
                 details={route.params}
               />
+
+              <DeleteModal isVisible={isDeleteVisible} onClose={onClose}/>
             </View>
           )}
         </View>
