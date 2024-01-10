@@ -12,10 +12,13 @@ import { useRoute } from "@react-navigation/native";
 import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 import Toast from "react-native-simple-toast";
 import { Button } from "../../components";
+import { useSelector } from "react-redux";
+import { COLORS } from "../../assets/constants";
 
 const ProductDetails = () => {
   const route = useRoute();
   const { imageUrl, name, description, price, productId } = route.params;
+  const currentUser = useSelector((state) => state.User);
 
   const addToCart = async () => {
     const response = await cartDataSource.addProductToCart({
@@ -45,12 +48,24 @@ const ProductDetails = () => {
             <Text style={styles.descText}>{description}</Text>
           </View>
 
-          <Button
-            btnText="Add To Cart"
-            isValid={true}
-            style={styles.cartBtn}
-            onPress={addToCart}
-          />
+          {currentUser.role !== "seller" ? (
+            <Button
+              btnText="Add To Cart"
+              isValid={true}
+              style={styles.cartBtn}
+              onPress={addToCart}
+            />
+          ) : (
+            <View style={styles.sellerOptions}>
+              <TouchableOpacity style={[styles.sellerOption, styles.deleteBtn]}>
+                <Text style={styles.optionTxt}>Delete</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity style={[styles.sellerOption, styles.updateBtn]}>
+                <Text style={styles.optionTxt}>Update</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
