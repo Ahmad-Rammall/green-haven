@@ -14,6 +14,8 @@ import Toast from "react-native-simple-toast";
 import { Button, ProductModal, DeleteModal } from "../../components";
 import { useSelector } from "react-redux";
 import { COLORS } from "../../assets/constants";
+import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
+import {useNavigation} from "@react-navigation/native"
 
 const ProductDetails = () => {
   const route = useRoute();
@@ -21,6 +23,8 @@ const ProductDetails = () => {
   const currentUser = useSelector((state) => state.User);
   const [isVisible, setIsVisible] = useState(false);
   const [isDeleteVisible, setIsDeleteVisible] = useState(false);
+
+  const navigation = useNavigation();
 
   const addToCart = async () => {
     const response = await cartDataSource.addProductToCart({
@@ -34,7 +38,20 @@ const ProductDetails = () => {
 
   const onClose = () => {
     setIsVisible(false);
-    setIsDeleteVisible(false)
+    setIsDeleteVisible(false);
+  };
+
+  const deleteProduct = async () => {
+    try {
+      const response = await marketDataSource.deleteProduct(productId);
+      console.log(response);
+      if(response?.status === 200){
+        Toast.show("Product Deleted !", Toast.LONG);
+        navigation.navigate("Market")
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -64,7 +81,10 @@ const ProductDetails = () => {
             />
           ) : (
             <View style={styles.sellerOptions}>
-              <TouchableOpacity style={[styles.sellerOption, styles.deleteBtn]} onPress={() => setIsDeleteVisible(true)}>
+              <TouchableOpacity
+                style={[styles.sellerOption, styles.deleteBtn]}
+                onPress={() => setIsDeleteVisible(true)}
+              >
                 <Text style={styles.optionTxt}>Delete</Text>
               </TouchableOpacity>
 
@@ -81,7 +101,7 @@ const ProductDetails = () => {
                 details={route.params}
               />
 
-              <DeleteModal isVisible={isDeleteVisible} onClose={onClose}/>
+              <DeleteModal isVisible={isDeleteVisible} onClose={onClose} onDelete={deleteProduct}/>
             </View>
           )}
         </View>
