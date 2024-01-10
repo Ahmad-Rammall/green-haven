@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 const Market = () => {
   const [products, setProducts] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [refresh, setRefresh] = useState(false)
 
   // get loggedin user
   const user = useSelector((state) => state.User);
@@ -44,13 +45,17 @@ const Market = () => {
     setIsVisible(false);
   };
 
+  const handleRefresh = () => {
+    setRefresh(!refresh)
+  }
+
   useEffect(() => {
     if (user.role === "user") {
       getAllProducts();
     } else if (user.role === "seller") {
       getAllSellerProducts();
     }
-  }, [user]);
+  }, [user, refresh]);
 
   return (
     <View style={styles.container}>
@@ -76,7 +81,7 @@ const Market = () => {
             <Text style={styles.addBtnText}>+</Text>
           </TouchableOpacity>
 
-          <ProductModal isVisible={isVisible} onClose={closeModal}/>
+          <ProductModal isVisible={isVisible} onClose={closeModal} refresh={handleRefresh}/>
         </>
       )}
     </View>

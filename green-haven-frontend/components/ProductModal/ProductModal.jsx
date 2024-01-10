@@ -8,8 +8,9 @@ import styles from "./productModal.styles";
 import { ProfilePicture } from "../../components";
 import { PUBLIC_FOLDER } from "@env";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
+import Toast from "react-native-simple-toast";
 
-const ProductModal = ({ isVisible, onClose }) => {
+const ProductModal = ({ isVisible, onClose, refresh }) => {
   const [image, setImage] = useState({});
 
   const validationSchema = Yup.object({
@@ -29,7 +30,9 @@ const ProductModal = ({ isVisible, onClose }) => {
 
   const handleCreateProduct = async (values) => {
     const { description, name, price } = values;
+
     const data = new FormData();
+
     // Append each piece of information to the form data
     data.append("name", name);
     data.append("description", description);
@@ -41,9 +44,14 @@ const ProductModal = ({ isVisible, onClose }) => {
         name: "product.jpg",
       });
     }
+
     try {
       const response = await marketDataSource.addProduct(data);
-      console.log(response);
+      if (response?.status === 200) {
+        Toast.show("Product Added !", Toast.LONG);
+        onClose();
+        refresh();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -87,6 +95,7 @@ const ProductModal = ({ isVisible, onClose }) => {
                     onBlur={() => setFieldTouched("description", "")}
                     value={values.description}
                     onChangeText={handleChange("description")}
+                    style={styles.input}
                   />
                 </View>
                 {touched.description && errors.description && (
@@ -109,6 +118,7 @@ const ProductModal = ({ isVisible, onClose }) => {
                     onBlur={() => setFieldTouched("name", "")}
                     value={values.name}
                     onChangeText={handleChange("name")}
+                    style={styles.input}
                   />
                 </View>
                 {touched.name && errors.name && (
@@ -134,6 +144,7 @@ const ProductModal = ({ isVisible, onClose }) => {
                     keyboardType={
                       Platform.OS === "android" ? "numeric" : "number-pad"
                     }
+                    style={styles.input}
                   />
                 </View>
                 {touched.price && errors.price && (
