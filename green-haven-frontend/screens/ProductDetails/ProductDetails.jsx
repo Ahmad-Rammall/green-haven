@@ -6,12 +6,12 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./productDetails.styles";
 import { useRoute } from "@react-navigation/native";
 import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 import Toast from "react-native-simple-toast";
-import { Button } from "../../components";
+import { Button, ProductModal } from "../../components";
 import { useSelector } from "react-redux";
 import { COLORS } from "../../assets/constants";
 
@@ -19,6 +19,7 @@ const ProductDetails = () => {
   const route = useRoute();
   const { imageUrl, name, description, price, productId } = route.params;
   const currentUser = useSelector((state) => state.User);
+  const [isVisible, setIsVisible] = useState(false);
 
   const addToCart = async () => {
     const response = await cartDataSource.addProductToCart({
@@ -28,6 +29,10 @@ const ProductDetails = () => {
     if (response?.status == 200) {
       Toast.show("Product Added To Cart !", Toast.LONG);
     }
+  };
+
+  const onClose = () => {
+    setIsVisible(false);
   };
 
   return (
@@ -60,10 +65,19 @@ const ProductDetails = () => {
               <TouchableOpacity style={[styles.sellerOption, styles.deleteBtn]}>
                 <Text style={styles.optionTxt}>Delete</Text>
               </TouchableOpacity>
-              
-              <TouchableOpacity style={[styles.sellerOption, styles.updateBtn]}>
+
+              <TouchableOpacity
+                style={[styles.sellerOption, styles.updateBtn]}
+                onPress={() => setIsVisible(true)}
+              >
                 <Text style={styles.optionTxt}>Update</Text>
               </TouchableOpacity>
+
+              <ProductModal
+                isVisible={isVisible}
+                onClose={onClose}
+                details={route.params}
+              />
             </View>
           )}
         </View>

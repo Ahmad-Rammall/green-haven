@@ -10,7 +10,7 @@ import { PUBLIC_FOLDER } from "@env";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
 import Toast from "react-native-simple-toast";
 
-const ProductModal = ({ isVisible, onClose, refresh }) => {
+const ProductModal = ({ isVisible, onClose, refresh, details }) => {
   const [image, setImage] = useState({});
 
   const validationSchema = Yup.object({
@@ -62,14 +62,26 @@ const ProductModal = ({ isVisible, onClose, refresh }) => {
       <View style={styles.modalContainer}>
         <View style={styles.image}>
           <ProfilePicture
-            image={image}
+            image={details ? details.imageUrl : ""}
             handleFormChange={handleImageChange}
             edit
           />
         </View>
 
         <Formik
-          initialValues={{ description: "", price: 0, name: "" }}
+          initialValues={
+            details
+              ? {
+                  description: details.description,
+                  price: String(details.price),
+                  name: details.name,
+                }
+              : {
+                description: "",
+                price: "",
+                name: "",
+              }
+          }
           validationSchema={validationSchema}
           onSubmit={(values) => handleCreateProduct(values)}
         >
