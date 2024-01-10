@@ -3,10 +3,15 @@ import { ProductCard, SearchBar } from "../../components";
 import styles from "./market.styles";
 import React, { useState, useEffect } from "react";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
-import { local } from "../../core/helpers/localStorage";
+import { useSelector } from "react-redux";
 
 const Market = () => {
   const [products, setProducts] = useState([]);
+
+  // get loggedin user
+  const user = useSelector((state) => state.User);
+
+  // get all market's products
   const getAllProducts = async () => {
     try {
       const response = await marketDataSource.getAllProducts();
@@ -16,18 +21,26 @@ const Market = () => {
     }
   };
 
+  // get only loggedin seller's products
   const getAllSellerProducts = async () => {
     try {
       const response = await marketDataSource.getAllSellerProducts();
-      setProducts(response.data.products);
+      if(response){
+        setProducts(response.data.products);
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    getAllProducts();
-  }, []);
+    if(user.role === "user"){
+      getAllProducts();
+    }
+    else if(user.role === "seller"){
+      getAllSellerProducts();
+    }
+  }, [user]);
 
   return (
     <View style={styles.container}>
