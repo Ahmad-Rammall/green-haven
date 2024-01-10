@@ -8,4 +8,12 @@ export const marketDataSource = {
 
     return response;
   },
+
+  getAllSellerProducts: async () => {
+    const response = await sendRequest({
+      route: "product/seller",
+    });
+
+    return response;
+  },
 };
