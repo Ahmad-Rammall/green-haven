@@ -17,12 +17,7 @@ const getAllProducts = async (req, res) => {
 
 const getAllSellerProducts = async (req, res) => {
   try {
-    const sellerId = req.body.sellerId;
-    const seller = await User.findOne({ _id: sellerId });
-
-    if (!seller) {
-      return res.status(404).send("Seller Not Found");
-    }
+    const sellerId = req.user._id;
 
     // Get Seller's Products
     const products = await Product.find({ user: sellerId });
