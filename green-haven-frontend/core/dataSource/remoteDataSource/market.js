@@ -16,4 +16,15 @@ export const marketDataSource = {
 
     return response;
   },
+
+  addProduct: async (data) => {
+    const response = await sendRequest({
+      route: "product",
+      body: data,
+      method: "POST",
+      contentType: "multipart/form-data"
+    });
+
+    return response;
+  },
 };
