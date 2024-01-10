@@ -7,6 +7,7 @@ import { COLORS } from "../../assets/constants";
 import styles from "./productModal.styles";
 import { ProfilePicture } from "../../components";
 import { PUBLIC_FOLDER } from "@env";
+import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
 
 const ProductModal = ({ isVisible, onClose }) => {
   const [image, setImage] = useState({});
@@ -23,7 +24,29 @@ const ProductModal = ({ isVisible, onClose }) => {
   });
 
   const handleImageChange = (key, value) => {
-    setImage(() => ({ [key]: value }));
+    setImage(value);
+  };
+
+  const handleCreateProduct = async (values) => {
+    const { description, name, price } = values;
+    const data = new FormData();
+    // Append each piece of information to the form data
+    data.append("name", name);
+    data.append("description", description);
+    data.append("price", price);
+    if (image.uri) {
+      data.append("file", {
+        uri: image.uri,
+        type: "image/jpeg",
+        name: "product.jpg",
+      });
+    }
+    try {
+      const response = await marketDataSource.addProduct(data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -40,7 +63,7 @@ const ProductModal = ({ isVisible, onClose }) => {
         <Formik
           initialValues={{ description: "", price: 0, name: "" }}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => handleCreateProduct(values)}
         >
           {({
             handleChange,
