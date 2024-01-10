@@ -10,6 +10,7 @@ import Post from "./Post/Post";
 import Story from "./Story/Story";
 import UserChat from "./UserChat/UserChat";
 import LocationModal from "./LocationModal/LocationModal";
+import ProductModal from "./ProductModal/ProductModal";
 
 export {
   Button,
@@ -23,5 +24,6 @@ export {
   Post,
   Story,
   UserChat,
-  LocationModal
+  LocationModal,
+  ProductModal,
 };
