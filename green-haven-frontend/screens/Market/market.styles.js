@@ -14,6 +14,23 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         flexWrap: "wrap",
         marginTop: 20
+    },
+
+    addBtn:{
+        backgroundColor: COLORS.primary,
+        position: "absolute",
+        bottom:0,
+        right:0,
+        margin: SIZES.large,
+        height:50,
+        width: 50,
+        borderRadius: 100,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    addBtnText:{
+        color: COLORS.offwhite,
+        fontSize: 30
     }
 })
 
