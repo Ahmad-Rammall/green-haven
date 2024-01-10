@@ -11,6 +11,7 @@ import Story from "./Story/Story";
 import UserChat from "./UserChat/UserChat";
 import LocationModal from "./LocationModal/LocationModal";
 import ProductModal from "./ProductModal/ProductModal";
+import DeleteModal from "./DeleteModal/DeleteModal";
 
 export {
   Button,
@@ -26,4 +27,5 @@ export {
   UserChat,
   LocationModal,
   ProductModal,
+  DeleteModal,
 };
