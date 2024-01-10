@@ -5,6 +5,7 @@ import { COLORS } from "../assets/constants/index";
 import MarketStackNavigator from "./MarketStack";
 import ProfileStackNavigator from "./ProfileStack";
 import FeedStackNavigator from "./FeedStack";
+import { useRoute } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +18,7 @@ const bottomTabScreenOptions = {
 
 // Bottom navigator sections
 const BottomTabNavigation = () => {
+  const route = useRoute();
   return (
     <Tab.Navigator
       screenOptions={bottomTabScreenOptions}
@@ -25,7 +27,7 @@ const BottomTabNavigation = () => {
       <Tab.Screen
         name="MarketPage"
         component={MarketStackNavigator}
-        options={{
+        options={() => ({
           tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
@@ -35,8 +37,9 @@ const BottomTabNavigation = () => {
               />
             );
           },
-        }}
+        })}
       />
+
       <Tab.Screen
         name="FeedPage"
         component={FeedStackNavigator}
