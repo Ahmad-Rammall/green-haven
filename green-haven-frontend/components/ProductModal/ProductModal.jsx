@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { COLORS } from "../../assets/constants";
 import styles from "./productModal.styles";
+import { ProfilePicture } from "../../components";
+import { PUBLIC_FOLDER } from "@env";
 
 const ProductModal = ({ isVisible, onClose }) => {
+  const [image, setImage] = useState({});
 
   const validationSchema = Yup.object({
     description: Yup.string()
@@ -24,9 +22,21 @@ const ProductModal = ({ isVisible, onClose }) => {
       .min(1, "Price must be at least $ 1"),
   });
 
+  const handleImageChange = (key, value) => {
+    setImage(() => ({ [key]: value }));
+  };
+
   return (
     <Modal isVisible={isVisible} onRequestClose={onClose}>
       <View style={styles.modalContainer}>
+        <View style={styles.image}>
+          <ProfilePicture
+            image={image}
+            handleFormChange={handleImageChange}
+            edit
+          />
+        </View>
+
         <Formik
           initialValues={{ description: "", price: 0, name: "" }}
           validationSchema={validationSchema}
@@ -128,4 +138,3 @@ const ProductModal = ({ isVisible, onClose }) => {
 };
 
 export default ProductModal;
-

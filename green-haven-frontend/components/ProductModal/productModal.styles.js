@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
       },
+      image:{
+        marginBottom: 50,
+      },
       button: {
         padding: 10,
         color: "blue",
