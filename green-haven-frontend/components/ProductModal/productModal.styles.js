@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { SIZES, COLORS } from "../../assets/constants";
 
 const styles = StyleSheet.create({
     modalContainer: {

@@ -5,7 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import { ProductCard, SearchBar } from "../../components";
+import { ProductCard, SearchBar, ProductModal } from "../../components";
 import styles from "./market.styles";
 import React, { useState, useEffect } from "react";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 
 const Market = () => {
   const [products, setProducts] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
 
   // get loggedin user
   const user = useSelector((state) => state.User);
@@ -39,6 +40,10 @@ const Market = () => {
     }
   };
 
+  const closeModal = () => {
+    setIsVisible(false);
+  };
+
   useEffect(() => {
     if (user.role === "user") {
       getAllProducts();
@@ -63,9 +68,16 @@ const Market = () => {
       </ScrollView>
 
       {user.role === "seller" && (
-        <TouchableOpacity style={styles.addBtn}>
-          <Text style={styles.addBtnText}>+</Text>
-        </TouchableOpacity>
+        <>
+          <TouchableOpacity
+            style={styles.addBtn}
+            onPress={() => setIsVisible(true)}
+          >
+            <Text style={styles.addBtnText}>+</Text>
+          </TouchableOpacity>
+
+          <ProductModal isVisible={isVisible} onClose={closeModal}/>
+        </>
       )}
     </View>
   );
