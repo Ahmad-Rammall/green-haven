@@ -38,4 +38,13 @@ export const marketDataSource = {
 
     return response;
   },
+
+  deleteProduct: async (data) => {
+    const response = await sendRequest({
+      route: `product/${data}`,
+      method: "DELETE",
+    });
+
+    return response;
+  },
 };
