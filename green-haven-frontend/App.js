@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigation from "./navigators/BottomTabNavigation";
+import SellerTabNavigation from "./navigators/SellerTabNavigation";
 import { Login, Register } from "./screens";
 
 import { Provider } from "react-redux";
@@ -40,6 +41,7 @@ export default function App() {
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="Main" component={BottomTabNavigation} />
+          <Stack.Screen name="Seller" component={SellerTabNavigation} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register" component={Register} />
         </Stack.Navigator>
