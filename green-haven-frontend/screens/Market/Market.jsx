@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { ProductCard, SearchBar } from "../../components";
 import styles from "./market.styles";
 import React, { useState, useEffect } from "react";
@@ -25,7 +31,7 @@ const Market = () => {
   const getAllSellerProducts = async () => {
     try {
       const response = await marketDataSource.getAllSellerProducts();
-      if(response){
+      if (response) {
         setProducts(response.data.products);
       }
     } catch (error) {
@@ -34,10 +40,9 @@ const Market = () => {
   };
 
   useEffect(() => {
-    if(user.role === "user"){
+    if (user.role === "user") {
       getAllProducts();
-    }
-    else if(user.role === "seller"){
+    } else if (user.role === "seller") {
       getAllSellerProducts();
     }
   }, [user]);
@@ -57,9 +62,11 @@ const Market = () => {
         </View>
       </ScrollView>
 
+      {user.role === "seller" && (
         <TouchableOpacity style={styles.addBtn}>
           <Text style={styles.addBtnText}>+</Text>
         </TouchableOpacity>
+      )}
     </View>
   );
 };
