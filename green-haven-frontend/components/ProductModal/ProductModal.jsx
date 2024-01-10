@@ -12,6 +12,7 @@ import Toast from "react-native-simple-toast";
 
 const ProductModal = ({ isVisible, onClose, refresh, details }) => {
   const [image, setImage] = useState({});
+  console.log(details)
 
   const validationSchema = Yup.object({
     description: Yup.string()
@@ -57,6 +58,37 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
     }
   };
 
+  const handleUpdateProduct = async (values) => {
+    const { description, name, price } = values;
+    const productId = details.productId;
+    const data = new FormData();
+
+    // Append each piece of information to the form data
+    data.append("productId", productId);
+    data.append("name", name);
+    data.append("description", description);
+    data.append("price", price);
+    if (image.uri) {
+      data.append("file", {
+        uri: image.uri,
+        type: "image/jpeg",
+        name: "product.jpg",
+      });
+    }
+
+    try {
+      const response = await marketDataSource.updateProduct(data);
+      console.log(response)
+      if (response?.status === 200) {
+        Toast.show("Product Updated !", Toast.LONG);
+        onClose();
+        // refresh();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Modal isVisible={isVisible} onRequestClose={onClose}>
       <View style={styles.modalContainer}>
@@ -83,7 +115,14 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
               }
           }
           validationSchema={validationSchema}
-          onSubmit={(values) => handleCreateProduct(values)}
+          onSubmit={(values) => {
+            if(details){
+              handleUpdateProduct(values)
+            }
+            else{
+              handleCreateProduct(values)
+            }
+          }}
         >
           {({
             handleChange,
