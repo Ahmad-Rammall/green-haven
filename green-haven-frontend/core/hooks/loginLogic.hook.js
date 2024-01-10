@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
 export const useLogic = () => {
-
   const [error, setError] = useState("");
 
   const navigation = useNavigation();
@@ -38,7 +37,11 @@ export const useLogic = () => {
         })
       );
 
-      navigation.navigate("Main");
+      if (user.role === "user") {
+        navigation.navigate("Main");
+      } else if (user.role === "seller") {
+        navigation.navigate("Seller");
+      }
     } catch (error) {
       console.log(error);
       setError(error?.message);
