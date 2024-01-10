@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.large,
   },
   descriptionWrapper: {
-    marginVertical: 30,
+    marginTop: 30,
   },
   description: {
     fontFamily: "medium",
@@ -44,6 +44,30 @@ const styles = StyleSheet.create({
     fontFamily: "regular",
     fontSize: SIZES.small,
     textAlign: "justify",
+  },
+  sellerOptions:{
+    flexDirection: "row",
+    width:"100%",
+    justifyContent: "space-between",
+  },
+  sellerOption:{  
+    padding: 5,
+    borderRadius: SIZES.medium,
+    marginBottom: SIZES.small
+  },
+  updateBtn:{
+    backgroundColor: COLORS.primary,
+    width:"65%",
+  },
+  deleteBtn:{
+    backgroundColor: COLORS.red,
+    width:"30%",
+  },
+  optionTxt: {
+    color: COLORS.white,
+    textAlign: "center",
+    fontFamily: "semibold",
+    fontSize: SIZES.medium
   },
 });
 
