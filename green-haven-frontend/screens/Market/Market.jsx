@@ -16,6 +16,15 @@ const Market = () => {
     }
   };
 
+  const getAllSellerProducts = async () => {
+    try {
+      const response = await marketDataSource.getAllSellerProducts();
+      setProducts(response.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAllProducts();
   }, []);
