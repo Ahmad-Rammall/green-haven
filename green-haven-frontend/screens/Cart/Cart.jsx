@@ -31,8 +31,10 @@ const Cart = () => {
 
   const resetCart = async() => {
     try {
-      const res = await cartDataSource.resetCart();
+      await cartDataSource.resetCart();
       setRefresh(!refresh)
+      setTotalAmount(0)
+      setQuantities({})
     } catch (error) {
       console.log(error)
     }
