@@ -5,7 +5,7 @@ const Order = require("../models/order.model");
 const getSellerOrders = async (req, res) => {
   const sellerId = req.user._id;
   try {
-    const orders = await Order.find({ seller: sellerId });
+    const orders = await Order.find({ seller: sellerId }).populate({path:"client", select:"name"}).populate({path:"product", select:"name"});
     res.status(200).json({ orders });
   } catch (error) {
     res.status(500).json({ message: "Internal Error" });
