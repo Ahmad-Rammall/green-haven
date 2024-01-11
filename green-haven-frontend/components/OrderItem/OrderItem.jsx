@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./orderItem.styles";
 import { Ionicons } from "@expo/vector-icons";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import { orderDataSource } from "../../core/dataSource/remoteDataSource/order";
 
-const OrderItem = ({ order }) => {
+const OrderItem = ({ order, setRefresh }) => {
   const { client, location, product, quantity, seller, totalAmount, _id } =
     order;
   const [isModalVisible, setModalVisible] = useState(false);
@@ -19,6 +20,18 @@ const OrderItem = ({ order }) => {
         <Text style={styles.detail}>{detail}</Text>
       </View>
     );
+  };
+
+  const onDelete = async () => {
+    try {
+      const response = await orderDataSource.deleteOrder({orderId: _id});
+      console.log(response);
+      if(response?.status === 200){
+        setRefresh(!refresh);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onClose = () => {
@@ -45,7 +58,7 @@ const OrderItem = ({ order }) => {
         </TouchableOpacity>
       </View>
 
-      <DeleteModal isVisible={isModalVisible} onClose={onClose}/>
+      <DeleteModal isVisible={isModalVisible} onClose={onClose} onDelete={onDelete}/>
     </View>
   );
 };
