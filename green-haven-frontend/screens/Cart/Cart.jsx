@@ -29,9 +29,17 @@ const Cart = () => {
     }));
   };
 
+  const resetCart = async() => {
+    try {
+      const res = await cartDataSource.resetCart();
+      setRefresh(!refresh)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const sendOrders = async () => {
     for(let productId in quantities) {
-      console.log(productId)
       let order = {
         productId,
         quantity: quantities[productId],
@@ -48,6 +56,7 @@ const Cart = () => {
         console.log(error)
       }
     }
+    resetCart();
     Toast.show("Order Created !", Toast.LONG)
     // Close the modal after sending the orders
     toggleModal();

@@ -43,7 +43,7 @@ export const cartDataSource = {
 
   resetCart: async () => {
     const response = await sendRequest({
-      route: "order",
+      route: "cart",
       method: "PUT",
     });
 
