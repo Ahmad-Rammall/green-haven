@@ -17,6 +17,30 @@ const bottomTabScreenOptions = {
   headerShown: false,
 };
 
+const ordersScreenOptions = () => ({
+  headerShown: true,
+  headerStyle: {
+    backgroundColor: COLORS.primary,
+  },
+  headerTintColor: COLORS.offwhite,
+  headerTitleAlign: "center",
+  headerTitleStyle: {
+    fontWeight: "light",
+  },
+  headerTitle: "Orders",
+  headerBackTitleVisible: true,
+
+  tabBarIcon: ({ focused }) => {
+    return (
+      <Ionicons
+        name={focused ? "list-sharp" : "list-outline"}
+        size={27}
+        color={focused ? COLORS.primary : COLORS.gray2}
+      />
+    );
+  },
+});
+
 // Bottom navigator sections
 const BottomTabNavigation = () => {
   const route = useRoute();
@@ -28,17 +52,7 @@ const BottomTabNavigation = () => {
       <Tab.Screen
         name="OrdersPage"
         component={Order}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <Ionicons
-                name={focused ? "list-sharp" : "list-outline"}
-                size={27}
-                color={focused ? COLORS.primary : COLORS.gray2}
-              />
-            );
-          },
-        }}
+        options={ordersScreenOptions}
       />
       <Tab.Screen
         name="MarketPage"
