@@ -8,7 +8,10 @@ import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 
 const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
   const [isZero, setIsZero] = useState(true);
-  console.log(product)
+
+  useEffect(() => {
+    updateQuantity(product.product._id, product.quantity);
+  },[])
 
   const handleDecrement = async () => {
     if (product.quantity === 1) {

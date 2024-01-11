@@ -3,6 +3,7 @@ import { CartItem, Button, LocationModal } from "../../components";
 import styles from "./cart.styles";
 import React, { useState, useEffect } from "react";
 import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
+import Toast from "react-native-simple-toast";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
@@ -11,6 +12,7 @@ const Cart = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [quantities, setQuantities] = useState({});
   const [location, setLocation] = useState("");
+  const [orderFinished, setOrderFinished] = useState(false)
 
   const updateQuantity = (productId, quantity, sellerId) => {
     if (quantity == 0) {
@@ -28,28 +30,28 @@ const Cart = () => {
   };
 
   const sendOrders = async () => {
-    for (let productId in quantities) {
+    for(let productId in quantities) {
       console.log(productId)
       let order = {
         productId,
         quantity: quantities[productId],
         location
       };
-      // Replace this with your actual API call
+
       try {
         const response = await cartDataSource.createOrder(order)
         console.log(response)
+        if(response?.status === 200 && orderFinished === false){
+          setOrderFinished(true)
+        }
       } catch (error) {
         console.log(error)
       }
     }
+    Toast.show("Order Created !", Toast.LONG)
     // Close the modal after sending the orders
     toggleModal();
   };
-
-  useEffect(() => {
-    console.log(quantities);
-  }, [quantities]);
 
   const getAllProducts = async () => {
     const response = await cartDataSource.getAllCartProducts();
