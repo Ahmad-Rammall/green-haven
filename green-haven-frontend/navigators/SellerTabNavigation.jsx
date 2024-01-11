@@ -5,6 +5,7 @@ import { COLORS } from "../assets/constants/index";
 import MarketStackNavigator from "./MarketStack";
 import ProfileStackNavigator from "./ProfileStack";
 import FeedStackNavigator from "./FeedStack";
+import { Order } from "../screens";
 import { useRoute } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
@@ -24,6 +25,21 @@ const BottomTabNavigation = () => {
       screenOptions={bottomTabScreenOptions}
       initialRouteName="MarketPage"
     >
+      <Tab.Screen
+        name="OrdersPage"
+        component={Order}
+        options={{
+          tabBarIcon: ({ focused }) => {
+            return (
+              <Ionicons
+                name={focused ? "list-sharp" : "list-outline"}
+                size={27}
+                color={focused ? COLORS.primary : COLORS.gray2}
+              />
+            );
+          },
+        }}
+      />
       <Tab.Screen
         name="MarketPage"
         component={MarketStackNavigator}

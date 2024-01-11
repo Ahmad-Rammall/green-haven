@@ -13,6 +13,7 @@ import LikedPosts from "./LikedPosts/LikedPosts";
 import FeedProfile from "./FeedProfile/FeedProfile";
 import Chat from "./Chat/Chat";
 import Conversation from "./Conversation/Conversation";
+import Order from "./Order/Order";
 
 export {
   Feed,
@@ -29,5 +30,6 @@ export {
   LikedPosts,
   FeedProfile,
   Chat,
-  Conversation
+  Conversation,
+  Order,
 };
