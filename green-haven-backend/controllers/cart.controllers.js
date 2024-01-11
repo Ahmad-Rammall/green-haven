@@ -7,7 +7,9 @@ const getUserCart = async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ _id: req.user._id }).populate("cart.product");
+    const user = await User.findOne({ _id: req.user._id }).populate(
+      "cart.product"
+    );
     return res.status(200).json({ cart: user.cart });
   } catch (error) {
     return res.status(500).json(error);
@@ -51,7 +53,9 @@ const removeProductFromCart = async (req, res) => {
 
   try {
     // Find the index of the product in the user's cart array
-    const productIndex = user.cart.findIndex((product) => product._id == productId);
+    const productIndex = user.cart.findIndex(
+      (product) => product._id == productId
+    );
 
     if (productIndex === -1) {
       return res.status(404).json({ error: "Product not found in the cart" });
@@ -67,8 +71,22 @@ const removeProductFromCart = async (req, res) => {
   }
 };
 
+const resetCart = async (req, res) => {
+  try {
+    const user = req.user;
+
+    user.cart = [];
+    await user.save();
+
+    res.status(200).json({ message: "Cart reset" });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
+
 module.exports = {
   removeProductFromCart,
   getUserCart,
   addProductToCart,
+  resetCart
 };
