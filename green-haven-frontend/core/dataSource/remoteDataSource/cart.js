@@ -40,4 +40,13 @@ export const cartDataSource = {
 
     return response;
   },
+
+  resetCart: async () => {
+    const response = await sendRequest({
+      route: "order",
+      method: "PUT",
+    });
+
+    return response;
+  },
 };
