@@ -3,7 +3,8 @@ import React from "react";
 import styles from "./orderItem.styles";
 import { Ionicons } from "@expo/vector-icons";
 
-const OrderItem = () => {
+const OrderItem = ({ order }) => {
+//   const { client, location, produdct, quantity, seller, totalAmount } = order;
   const Detail = ({ title, detail }) => {
     return (
       <View style={styles.detailContainer}>
@@ -27,7 +28,7 @@ const OrderItem = () => {
         <Detail title="Total Amount" detail={"$ 10"} />
         <TouchableOpacity style={styles.checkBtn}>
           <Text style={styles.checkBtnText}>
-            <Ionicons name="checkmark" size={15}/> Done
+            <Ionicons name="checkmark" size={15} /> Done
           </Text>
         </TouchableOpacity>
       </View>
