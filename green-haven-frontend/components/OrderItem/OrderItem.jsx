@@ -4,7 +4,7 @@ import styles from "./orderItem.styles";
 import { Ionicons } from "@expo/vector-icons";
 
 const OrderItem = ({ order }) => {
-//   const { client, location, produdct, quantity, seller, totalAmount } = order;
+  const { client, location, product, quantity, seller, totalAmount, _id } = order;
   const Detail = ({ title, detail }) => {
     return (
       <View style={styles.detailContainer}>
@@ -18,14 +18,15 @@ const OrderItem = ({ order }) => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.orderId}>Order Id</Text>
-      <Detail title="Client Name" detail={"xxxxxxxxxxxxxxxxxxxx"} />
-      <Detail title="Client Phone" detail={"xxxxxxxxxxxxxxxxxxxx"} />
-      <Detail title="Location" detail={"xxxxxxxxxxxxxxxxxxxx"} />
-      <Detail title="Quantity" detail={"xxxxxxxxxxxxxxxxxxxx"} />
+      <Text style={styles.orderId}>{_id}</Text>
+      <Detail title="Product Name" detail={product.name} />
+      <Detail title="Client Name" detail={client.name} />
+      <Detail title="Client Phone" detail={client.phone_number} />
+      <Detail title="Location" detail={location} />
+      <Detail title="Quantity" detail={quantity} />
       <Text style={styles.line}></Text>
       <View style={styles.bottomContainer}>
-        <Detail title="Total Amount" detail={"$ 10"} />
+        <Detail title="Total Amount" detail={"$ "+totalAmount} />
         <TouchableOpacity style={styles.checkBtn}>
           <Text style={styles.checkBtnText}>
             <Ionicons name="checkmark" size={15} /> Done
