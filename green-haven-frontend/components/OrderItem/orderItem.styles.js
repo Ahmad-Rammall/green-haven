@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.secondary,
     padding: 15,
+    marginBottom: 10
   },
   orderId: {
     fontFamily: "bold",
