@@ -5,11 +5,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.secondary,
     padding: 15,
-    marginBottom: 10
+    marginBottom: 10,
+    borderRadius: 10
   },
   orderId: {
     fontFamily: "bold",
-    fontSize: SIZES.large,
+    fontSize: 19,
+    marginVertical: 5
   },
 
   detailContainer: {
