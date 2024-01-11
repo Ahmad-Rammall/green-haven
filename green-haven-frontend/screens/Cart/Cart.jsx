@@ -12,7 +12,7 @@ const Cart = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [quantities, setQuantities] = useState({});
   const [location, setLocation] = useState("");
-  const [orderFinished, setOrderFinished] = useState(false)
+  const [orderFinished, setOrderFinished] = useState(false);
 
   const updateQuantity = (productId, quantity, sellerId) => {
     if (quantity == 0) {
@@ -29,37 +29,37 @@ const Cart = () => {
     }));
   };
 
-  const resetCart = async() => {
+  const resetCart = async () => {
     try {
       await cartDataSource.resetCart();
-      setRefresh(!refresh)
-      setTotalAmount(0)
-      setQuantities({})
+      setRefresh(!refresh);
+      setTotalAmount(0);
+      setQuantities({});
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const sendOrders = async () => {
-    for(let productId in quantities) {
+    for (let productId in quantities) {
       let order = {
         productId,
         quantity: quantities[productId],
-        location
+        location,
       };
 
       try {
-        const response = await cartDataSource.createOrder(order)
-        console.log(response)
-        if(response?.status === 200 && orderFinished === false){
-          setOrderFinished(true)
+        const response = await cartDataSource.createOrder(order);
+        console.log(response);
+        if (response?.status === 200 && orderFinished === false) {
+          setOrderFinished(true);
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
     resetCart();
-    Toast.show("Order Created !", Toast.LONG)
+    Toast.show("Order Created !", Toast.LONG);
     // Close the modal after sending the orders
     toggleModal();
   };
@@ -97,7 +97,11 @@ const Cart = () => {
           <Text style={styles.totalAmount}>Total Amount : </Text>
           <Text style={styles.totalAmount}>$ {totalAmount}</Text>
         </View>
-        <Button btnText="Checkout" isValid={true} onPress={toggleModal} />
+        <Button
+          btnText="Checkout"
+          isValid={Object.keys(products).length !== 0}
+          onPress={toggleModal}
+        />
       </View>
 
       <LocationModal
