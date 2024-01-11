@@ -31,13 +31,21 @@ const styles = StyleSheet.create({
   cancelButton: {
     backgroundColor: COLORS.gray2,
   },
-  deleteButton: {
-    backgroundColor: COLORS.red,
-  },
+  actionButton: (color) => ({
+    backgroundColor: color,
+  }),
   buttonText: {
     color: COLORS.offwhite,
     textAlign: "center",
     fontWeight: "bold",
+  },
+  text: {
+    borderColor: COLORS.gray,
+    backgroundColor: COLORS.lightWhite,
+    borderWidth: 1,
+    borderRadius: 5,
+    width:200,
+    marginBottom: 20,
   },
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Modal, TouchableOpacity } from 'react-native';
-import styles from './deleteModal.styles';
+import styles from './modal.styles';
 
 const DeleteModal = ({ isVisible, onClose, onDelete }) => {
   return (
@@ -17,7 +17,7 @@ const DeleteModal = ({ isVisible, onClose, onDelete }) => {
             <TouchableOpacity onPress={onClose} style={[styles.button, styles.cancelButton]}>
               <Text style={styles.buttonText}>Cancel</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={onDelete} style={[styles.button, styles.deleteButton]}>
+            <TouchableOpacity onPress={onDelete} style={[styles.button, styles.actionButton(COLORS.red)]}>
               <Text style={styles.buttonText}>Delete</Text>
             </TouchableOpacity>
           </View>
