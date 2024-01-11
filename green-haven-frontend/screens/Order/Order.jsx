@@ -17,6 +17,10 @@ const Order = () => {
     }
   };
 
+  const refreshPage = () => {
+    setRefresh(!refresh)
+  }
+
   useEffect(() => {
     getOrders();
   }, [refresh]);
@@ -30,7 +34,7 @@ const Order = () => {
       ) : (
         <ScrollView style={styles.wrapper} showsVerticalScrollIndicator={false}>
           {orders.map((order) => (
-            <OrderItem order={order} setRefresh={setRefresh} />
+            <OrderItem order={order} refresh={refreshPage} />
           ))}
         </ScrollView>
       )}

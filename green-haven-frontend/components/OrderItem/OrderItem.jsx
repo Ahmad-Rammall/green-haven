@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { orderDataSource } from "../../core/dataSource/remoteDataSource/order";
 
-const OrderItem = ({ order, setRefresh }) => {
+const OrderItem = ({ order, refresh }) => {
   const { client, location, product, quantity, seller, totalAmount, _id } =
     order;
   const [isModalVisible, setModalVisible] = useState(false);
@@ -24,11 +24,11 @@ const OrderItem = ({ order, setRefresh }) => {
 
   const onDelete = async () => {
     try {
-      const response = await orderDataSource.deleteOrder({orderId: _id});
-      console.log(response);
-      if(response?.status === 200){
-        setRefresh(!refresh);
+      const response = await orderDataSource.deleteOrder({ orderId: _id });
+      if (response?.status === 200) {
+        refresh();
       }
+      onClose();
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +58,11 @@ const OrderItem = ({ order, setRefresh }) => {
         </TouchableOpacity>
       </View>
 
-      <DeleteModal isVisible={isModalVisible} onClose={onClose} onDelete={onDelete}/>
+      <DeleteModal
+        isVisible={isModalVisible}
+        onClose={onClose}
+        onDelete={onDelete}
+      />
     </View>
   );
 };
