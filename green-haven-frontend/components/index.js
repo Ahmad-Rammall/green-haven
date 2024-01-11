@@ -12,6 +12,7 @@ import UserChat from "./UserChat/UserChat";
 import LocationModal from "./LocationModal/LocationModal";
 import ProductModal from "./ProductModal/ProductModal";
 import DeleteModal from "./DeleteModal/DeleteModal";
+import OrderItem from "./OrderItem/OrderItem";
 
 export {
   Button,
@@ -28,4 +29,5 @@ export {
   LocationModal,
   ProductModal,
   DeleteModal,
+  OrderItem,
 };
