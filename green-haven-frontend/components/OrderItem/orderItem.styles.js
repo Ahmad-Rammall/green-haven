@@ -31,6 +31,23 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderStyle: "dashed",
   },
+  bottomContainer:{
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  checkBtn:{
+    backgroundColor: COLORS.primary,
+    padding:2,
+    justifyContent: "center",
+    borderRadius: 10,
+    width: 70
+  },
+  checkBtnText:{
+    color: COLORS.offwhite,
+    fontFamily: "regular",
+    textAlign: "center"
+  }
 });
 
 export default styles;

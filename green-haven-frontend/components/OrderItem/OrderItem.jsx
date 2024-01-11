@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./orderItem.styles";
+import { Ionicons } from "@expo/vector-icons";
 
 const OrderItem = () => {
   const Detail = ({ title, detail }) => {
@@ -22,7 +23,14 @@ const OrderItem = () => {
       <Detail title="Location" detail={"xxxxxxxxxxxxxxxxxxxx"} />
       <Detail title="Quantity" detail={"xxxxxxxxxxxxxxxxxxxx"} />
       <Text style={styles.line}></Text>
-      <Detail title="Total Amount" detail={"$ 10"} />
+      <View style={styles.bottomContainer}>
+        <Detail title="Total Amount" detail={"$ 10"} />
+        <TouchableOpacity style={styles.checkBtn}>
+          <Text style={styles.checkBtnText}>
+            <Ionicons name="checkmark" size={15}/> Done
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
