@@ -5,7 +5,9 @@ const Order = require("../models/order.model");
 const getSellerOrders = async (req, res) => {
   const sellerId = req.user._id;
   try {
-    const orders = await Order.find({ seller: sellerId }).populate({path:"client", select:"name"}).populate({path:"product", select:"name"});
+    const orders = await Order.find({ seller: sellerId })
+      .populate({ path: "client", select: "name phone_number" })
+      .populate({ path: "product", select: "name" });
     res.status(200).json({ orders });
   } catch (error) {
     res.status(500).json({ message: "Internal Error" });
@@ -48,10 +50,13 @@ const deleteOrder = async (req, res) => {
   const orderId = req.body.orderId;
 
   try {
-    const deletedOrder = await Order.findOneAndDelete({ _id: orderId, seller: req.user._id });
+    const deletedOrder = await Order.findOneAndDelete({
+      _id: orderId,
+      seller: req.user._id,
+    });
 
-    if(!deletedOrder){
-        return res.status(400).json({ message: "Order Not Found" });
+    if (!deletedOrder) {
+      return res.status(400).json({ message: "Order Not Found" });
     }
 
     res.status(200).json({ message: "Order Deleted" });
