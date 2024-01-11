@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import React from "react";
+import React, {useState} from "react";
 import styles from "./orderItem.styles";
 import { Ionicons } from "@expo/vector-icons";
 import DeleteModal from "../DeleteModal/DeleteModal";
@@ -45,7 +45,7 @@ const OrderItem = ({ order }) => {
         </TouchableOpacity>
       </View>
 
-      <DeleteModal isVisible={isVisible} onClose={onClose}/>
+      <DeleteModal isVisible={isModalVisible} onClose={onClose}/>
     </View>
   );
 };

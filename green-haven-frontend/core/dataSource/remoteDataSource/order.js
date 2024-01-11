@@ -10,4 +10,14 @@ export const orderDataSource = {
     return response;
   },
 
+  deleteOrder: async (data) => {
+    const response = await sendRequest({
+      route: "order",
+      method: "DELETE",
+      body: data
+    });
+
+    return response;
+  },
+
 };
