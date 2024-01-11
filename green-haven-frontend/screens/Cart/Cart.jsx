@@ -110,6 +110,7 @@ const Cart = () => {
         style={styles.modal}
         setLocation={setLocation}
         sendOrders={sendOrders}
+        location={location}
       />
     </View>
   );
