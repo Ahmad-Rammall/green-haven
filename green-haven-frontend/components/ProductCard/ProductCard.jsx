@@ -6,11 +6,11 @@ import { useNavigation } from "@react-navigation/native";
 import { PUBLIC_FOLDER } from "@env";
 
 const ProductCard = ({ product }) => {
+  process.env.PUBLIC_FOLDER;
   const navigation = useNavigation();
   const { user, image, name, description, price } = product;
   const productId = product._id;
   const imageUrl = PUBLIC_FOLDER + "products-pics/" + image;
-  console.log(imageUrl);
 
   const gotoProductDetails = () => {
     navigation.navigate("Product Details", {

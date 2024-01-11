@@ -4,10 +4,11 @@ import { View, TouchableOpacity } from "react-native";
 import { Market, ProductDetails, Cart } from "../screens";
 import { COLORS } from "../assets/constants";
 import { StyleSheet } from "react-native";
+import { useSelector } from "react-redux";
 
 const MarketStack = createNativeStackNavigator();
 
-const screenOptions = ({ route, navigation }) => ({
+const screenOptions = ({ navigation, route }) => ({
   headerShown: true,
   headerStyle: {
     backgroundColor: COLORS.primary,
@@ -37,17 +38,42 @@ const screenOptions = ({ route, navigation }) => ({
   ),
 });
 
+const sellerScreenOptions = ({ route }) => ({
+  headerShown: true,
+  headerStyle: {
+    backgroundColor: COLORS.primary,
+  },
+  headerTintColor: COLORS.offwhite,
+  headerTitleAlign: "center",
+  headerTitleStyle: {
+    fontWeight: "light",
+  },
+  headerTitle: route.name,
+  headerBackTitleVisible: true,
+  headerBackImage: ({ tintColor }) => (
+    <Ionicons name="ios-arrow-back" size={24} color={tintColor} />
+  ),
+  // Cart Icon On The Right
+  headerRight: undefined,
+});
+
 // Navigations inside the market section
 const MarketStackNavigator = () => {
-  return (
+  const user = useSelector((state) => state.User);
+  return user.role === "user" ? (
     <MarketStack.Navigator screenOptions={screenOptions}>
       <MarketStack.Screen name="Market" component={Market} />
       <MarketStack.Screen name="Product Details" component={ProductDetails} />
       <MarketStack.Screen
         name="Cart"
         component={Cart}
-        options={{ headerRight: () => <View></View> }}
+        options={{ headerRight: undefined }}
       />
+    </MarketStack.Navigator>
+  ) : (
+    <MarketStack.Navigator screenOptions={sellerScreenOptions}>
+      <MarketStack.Screen name="Market" component={Market} />
+      <MarketStack.Screen name="Product Details" component={ProductDetails} />
     </MarketStack.Navigator>
   );
 };
