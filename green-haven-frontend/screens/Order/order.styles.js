@@ -6,10 +6,20 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.offwhite,
     flex: 1,
   },
-  wrapper:{
+  wrapper: {
     margin: SIZES.large,
-    marginBottom: 10
-  }
+    marginBottom: 10,
+  },
+  emptyOrders: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  emptyOrdersText: {
+    fontFamily: "light",
+    fontSize: 20,
+    color: COLORS.gray2,
+  },
 });
 
 export default styles;
