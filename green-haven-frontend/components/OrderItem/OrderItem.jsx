@@ -2,9 +2,13 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./orderItem.styles";
 import { Ionicons } from "@expo/vector-icons";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 const OrderItem = ({ order }) => {
-  const { client, location, product, quantity, seller, totalAmount, _id } = order;
+  const { client, location, product, quantity, seller, totalAmount, _id } =
+    order;
+  const [isModalVisible, setModalVisible] = useState(false);
+
   const Detail = ({ title, detail }) => {
     return (
       <View style={styles.detailContainer}>
@@ -16,6 +20,10 @@ const OrderItem = ({ order }) => {
       </View>
     );
   };
+
+  const onClose = () => {
+    setModalVisible(false);
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.orderId}>{_id}</Text>
@@ -26,13 +34,18 @@ const OrderItem = ({ order }) => {
       <Detail title="Quantity" detail={quantity} />
       <Text style={styles.line}></Text>
       <View style={styles.bottomContainer}>
-        <Detail title="Total Amount" detail={"$ "+totalAmount} />
-        <TouchableOpacity style={styles.checkBtn}>
+        <Detail title="Total Amount" detail={"$ " + totalAmount} />
+        <TouchableOpacity
+          style={styles.checkBtn}
+          onPress={() => setModalVisible(true)}
+        >
           <Text style={styles.checkBtnText}>
             <Ionicons name="checkmark" size={15} /> Done
           </Text>
         </TouchableOpacity>
       </View>
+
+      <DeleteModal isVisible={isVisible} onClose={onClose}/>
     </View>
   );
 };
