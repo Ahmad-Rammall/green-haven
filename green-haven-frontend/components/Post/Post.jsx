@@ -6,6 +6,7 @@ import { COLORS } from "../../assets/constants";
 import { useNavigation } from "@react-navigation/native";
 import { format } from "timeago.js";
 import {useSelector} from "react-redux"
+import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 
 const Post = ({ description, userName, userImage, post }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -21,8 +22,9 @@ const Post = ({ description, userName, userImage, post }) => {
   const userProfilePic =
     process.env.PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture;
 
-  const handleLike = () => {
+  const handleLike = async () => {
     setIsLiked(!isLiked);
+    const response = await postDataSource.likePost({postId: post._id});
   };
 
   const navigateToUserProfile = () => {
