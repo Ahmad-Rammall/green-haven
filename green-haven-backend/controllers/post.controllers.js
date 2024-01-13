@@ -103,7 +103,10 @@ const getFollowingPosts = async (req, res) => {
   try {
     const followingPosts = await Promise.all(
       req.user.following.map((followingId) => {
-        return Post.find({ user: followingId });
+        return Post.find({ user: followingId }).populate({
+          path: "user",
+          select: ["name", "profile_picture"],
+        });
       })
     );
     return res.status(200).json(followingPosts);
