@@ -105,7 +105,7 @@ const getFollowingPosts = async (req, res) => {
       req.user.following.map((followingId) => {
         return Post.find({ user: followingId }).populate({
           path: "user",
-          select: ["name", "profile_picture"],
+          select: ["-cart", "-garden", "-password"],
         });
       })
     );
