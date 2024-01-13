@@ -23,6 +23,16 @@ const styles = StyleSheet.create({
     height: 1100,
     zIndex: 9999,
   },
+  noPlants:{
+    flex:1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  noPlantsText:{
+    color: COLORS.gray2,
+    fontFamily: "light",
+    fontSize: 20
+  }
 });
 
 export default styles;

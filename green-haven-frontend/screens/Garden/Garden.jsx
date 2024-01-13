@@ -34,36 +34,44 @@ const Garden = () => {
     getPlants();
   }, []);
   return (
-    <>
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-        <View style={styles.wrapper}>
-          {plants.map((plant) => (
-            <GardenItem
-              key={plant._id}
-              plant={plant}
-              handleOpenModal={handleOpenModal}
-              setSelectedPlant={setSelectedPlant}
-            />
-          ))}
-        </View>
-      </ScrollView>
+    <View style={styles.container}>
+      {plants.length !== 0 ? (
+        <View>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={styles.wrapper}>
+              {plants.map((plant) => (
+                <GardenItem
+                  key={plant._id}
+                  plant={plant}
+                  handleOpenModal={handleOpenModal}
+                  setSelectedPlant={setSelectedPlant}
+                />
+              ))}
+            </View>
+          </ScrollView>
 
-      <GestureHandlerRootView style={modalStyle}>
-        <BottomSheetModalProvider>
-          <BottomSheetModal
-            ref={bottomSheetModalRef}
-            index={0}
-            snapPoints={snapPoints}
-            onDismiss={() => {
-              setModalOpen(false);
-              setModalStyle(styles.modalClose);
-            }}
-          >
-            <BottomSheet plant={selectedPlant} garden />
-          </BottomSheetModal>
-        </BottomSheetModalProvider>
-      </GestureHandlerRootView>
-    </>
+          <GestureHandlerRootView style={modalStyle}>
+            <BottomSheetModalProvider>
+              <BottomSheetModal
+                ref={bottomSheetModalRef}
+                index={0}
+                snapPoints={snapPoints}
+                onDismiss={() => {
+                  setModalOpen(false);
+                  setModalStyle(styles.modalClose);
+                }}
+              >
+                <BottomSheet plant={selectedPlant} garden />
+              </BottomSheetModal>
+            </BottomSheetModalProvider>
+          </GestureHandlerRootView>
+        </View>
+      ) : (
+        <View style={styles.noPlants}>
+          <Text style={styles.noPlantsText}>No Saved Plants</Text>
+        </View>
+      )}
+    </View>
   );
 };
 
