@@ -23,6 +23,7 @@ export const useLogic = () => {
 
       dispatch(
         loggedInUser({
+          _id: String(user._id),
           email: user.email,
           username: user.name,
           bio: user.bio,
