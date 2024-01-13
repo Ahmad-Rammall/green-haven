@@ -1,14 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, ScrollView } from "react-native";
+import React from "react";
+import { GardenItem } from "../../components";
+import styles from "./garden.styles";
 
 const Garden = () => {
   return (
-    <View>
-      <Text>Garden</Text>
-    </View>
-  )
-}
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+      <View style={styles.wrapper}>
+        <GardenItem imageSource={require("../../assets/images/plant5.jpg")} />
+        <GardenItem imageSource={require("../../assets/images/plant5.jpg")} />
+        <GardenItem imageSource={require("../../assets/images/plant5.jpg")} />
+        <GardenItem imageSource={require("../../assets/images/plant5.jpg")} />
+        <GardenItem imageSource={require("../../assets/images/plant5.jpg")} />
+        <GardenItem imageSource={require("../../assets/images/plant5.jpg")} />
+        <GardenItem imageSource={require("../../assets/images/plant5.jpg")} />
+        <GardenItem imageSource={require("../../assets/images/plant5.jpg")} />
 
-export default Garden
+      </View>
+    </ScrollView>
+  );
+};
 
-const styles = StyleSheet.create({})
+export default Garden;
