@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
+import React, {useState} from "react";
 import styles from "./feedPofile.styles";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { COLORS } from "../../assets/constants";
@@ -15,15 +15,16 @@ import { Post } from "../../components";
 
 const FeedProfile = () => {
   const route = useRoute();
-  const { userImage, userName, description, postImage } = route.params;
+  const { user, profilePicture } = route.params;
+  const [followersCount, setFollowersCount] = useState(user.followers.length)
 
   return (
     <View style={styles.container}>
       <ScrollView style={styles.wrapper}>
         <View style={styles.topContainer}>
-          <Image source={userImage} style={styles.image} />
+          <Image source={{ uri: profilePicture }} style={styles.image} />
           <View>
-            <Text style={styles.userName}>{userName}</Text>
+            <Text style={styles.userName}>{user.name}</Text>
             <View style={styles.buttons}>
               {/* Follow/Unfollow Button */}
               <TouchableOpacity style={[styles.followBtn, styles.btn]}>
@@ -46,34 +47,23 @@ const FeedProfile = () => {
 
         <View style={styles.bottomContainer}>
           <View style={styles.bottomElement}>
-            <Text style={styles.elementNumber}>100</Text>
+            <Text style={styles.elementNumber}>{followersCount}</Text>
             <Text style={styles.elementName}>Followers</Text>
           </View>
 
           <View style={styles.bottomElement}>
-            <Text style={styles.elementNumber}>100</Text>
-            <Text style={styles.elementName}>Followers</Text>
+            <Text style={styles.elementNumber}>{user.following.length}</Text>
+            <Text style={styles.elementName}>Following</Text>
           </View>
 
           <View style={styles.bottomElement}>
             <Text style={styles.elementNumber}>100</Text>
-            <Text style={styles.elementName}>Followers</Text>
+            <Text style={styles.elementName}>Posts</Text>
           </View>
         </View>
 
         <View>
-          <Post
-            postImage={postImage}
-            userImage={userImage}
-            description={description}
-            userName={userName}
-          />
-          <Post
-            postImage={postImage}
-            userImage={userImage}
-            description={description}
-            userName={userName}
-          />
+
         </View>
       </ScrollView>
     </View>

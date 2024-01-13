@@ -46,7 +46,8 @@ const Post = ({ post }) => {
   // when user clicks on the post's owner profile picture
   const navigateToUserProfile = () => {
     navigation.navigate("User Profile", {
-      user: post.user._id,
+      user: post.user,
+      profilePicture: userProfilePic
     });
   };
   return (
