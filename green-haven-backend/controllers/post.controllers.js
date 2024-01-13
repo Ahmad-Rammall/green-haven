@@ -92,7 +92,10 @@ const likePost = async (req, res) => {
 const getUserPosts = async (req, res) => {
   const userId = req.params.userId;
   try {
-    const posts = await Post.find({ user: userId });
+    const posts = await Post.find({ user: userId }).populate({
+      path: "user",
+      select: ["-cart", "-garden", "-password"],
+    });
     return res.status(200).json(posts);
   } catch (error) {
     return res.status(500).send(error);
