@@ -12,9 +12,9 @@ export const sendRequest = async ({
   const token = await local("token")
 
   try {
-    process.env.API_HOST
+    
     const response = await axios.request({
-      url: `${API_HOST}/${route}`,
+      url: `${process.env.API_HOST}/${route}`,
       method,
       data: body,
       headers: {

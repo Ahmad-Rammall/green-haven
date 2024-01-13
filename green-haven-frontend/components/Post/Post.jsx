@@ -4,20 +4,19 @@ import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { COLORS } from "../../assets/constants";
 import { useNavigation } from "@react-navigation/native";
-import {PUBLIC_FOLDER} from "@env";
-import {format} from "timeago.js"
+import { format } from "timeago.js";
 
 const Post = ({ description, userName, userImage, post }) => {
   const [isLiked, setIsLiked] = useState(false);
   const navigation = useNavigation();
 
-  const postImage = PUBLIC_FOLDER + "posts-pics/" + post.image
-  const userProfilePic = PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture
-
+  const postImage = process.env.PUBLIC_FOLDER + "posts-pics/" + post.image;
+  const userProfilePic =
+    process.env.PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture;
 
   const handleLike = () => {
     console.log("xxxxxxx");
-    setIsLiked(!isLiked);
+    setIsLiked(post.likes.includes(currentUser._id));
   };
 
   const navigateToUserProfile = () => {
