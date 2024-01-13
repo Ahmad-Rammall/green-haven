@@ -12,17 +12,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     margin: SIZES.medium,
   },
-  modalClose: {
-    display: "none",
-  },
-  modalOpen: {
-    display: "flex",
-    position: "absolute",
-    bottom: 0,
-    width: SIZES.width,
-    height: 1100,
-    zIndex: 9999,
-  },
 });
 
 export default styles;
