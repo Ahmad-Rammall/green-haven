@@ -4,18 +4,27 @@ import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import React, { useState, useEffect } from "react";
 import { COLORS } from "../../assets/constants";
 import { useNavigation } from "@react-navigation/native";
-import { format } from "timeago.js";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
+import moment from "moment";
 
-const Post = ({ description, userName, userImage, post }) => {
+const Post = ({ post }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCounter, setLikeCounter] = useState(post.likes.length);
   const [commentCounter, setCommentCounter] = useState(post.comments.length);
+  const [timeAgoValue, setTimeAgoValue] = useState("");
   const navigation = useNavigation();
 
-  const currentUser = useSelector(state => state.User);
+  // get current loggedin user
+  const currentUser = useSelector((state) => state.User);
 
+  // calculate post time ago
+  useEffect(() => {
+    const parsedCreatedAt = moment(post.createdAt, moment.ISO_8601);
+    setTimeAgoValue(parsedCreatedAt.fromNow());
+  }, [post.createdAt]);
+
+  // test if user already liked this post
   useEffect(() => {
     setIsLiked(post.likes.some((like) => like._id === currentUser._id));
   }, [post.likes]);
@@ -25,33 +34,31 @@ const Post = ({ description, userName, userImage, post }) => {
     process.env.PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture;
 
   const handleLike = async () => {
-    if(isLiked){
-      setLikeCounter(likeCounter - 1)
-    }
-    else{
-      setLikeCounter(likeCounter + 1)
+    if (isLiked) {
+      setLikeCounter(likeCounter - 1);
+    } else {
+      setLikeCounter(likeCounter + 1);
     }
     setIsLiked(!isLiked);
-    // post.likes
-    const response = await postDataSource.likePost({postId: post._id});
+    await postDataSource.likePost({ postId: post._id });
   };
 
+  // when user clicks on the post's owner profile picture
   const navigateToUserProfile = () => {
     navigation.navigate("User Profile", {
-      postImage,
-      description,
-      userName,
-      userImage,
+      user: post.user._id,
     });
   };
   return (
     <View style={styles.container}>
+      {/* Post Image */}
       <View style={styles.imageContainer}>
         <Image source={{ uri: postImage }} style={styles.postImage} />
       </View>
       <Text style={styles.description}>{post.description}</Text>
 
       <View style={styles.bottomContainer}>
+        {/* Owner Info */}
         <TouchableOpacity
           style={styles.profileContainer}
           onPress={navigateToUserProfile}
@@ -59,9 +66,11 @@ const Post = ({ description, userName, userImage, post }) => {
           <Image source={{ uri: userProfilePic }} style={styles.profilePic} />
           <View style={styles.profileText}>
             <Text style={styles.userName}>{post.user.name}</Text>
-            <Text style={styles.time}>{format(post.createdAt)}</Text>
+            <Text style={styles.time}>{timeAgoValue}</Text>
           </View>
         </TouchableOpacity>
+
+        {/* Comment + Like Btns */}
         <View style={styles.buttons}>
           <View style={styles.button}>
             <Text>{commentCounter}</Text>
