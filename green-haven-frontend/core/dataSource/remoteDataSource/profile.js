@@ -19,4 +19,14 @@ export const profileDataSource = {
     });
     return response
   },
+
+  handleFollowUser: async (data) => {
+    const response = await sendRequest({
+      body: data,
+      route: "profile/followOrUnfollow",
+      method: "PUT"
+    })
+
+    return response
+  }
 };

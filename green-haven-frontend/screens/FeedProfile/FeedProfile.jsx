@@ -19,7 +19,6 @@ const FeedProfile = () => {
   const { user, profilePicture } = route.params;
   const [followersCount, setFollowersCount] = useState(user.followers.length);
   const [posts, setPosts] = useState([]);
-  console.log(user);
 
   const getUserPosts = async () => {
     const userId = user._id;
