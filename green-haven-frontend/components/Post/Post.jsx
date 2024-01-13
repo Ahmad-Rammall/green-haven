@@ -1,22 +1,28 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import styles from "./post.styles";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { COLORS } from "../../assets/constants";
 import { useNavigation } from "@react-navigation/native";
 import { format } from "timeago.js";
+import {useSelector} from "react-redux"
 
 const Post = ({ description, userName, userImage, post }) => {
   const [isLiked, setIsLiked] = useState(false);
   const navigation = useNavigation();
+
+  const currentUser = useSelector(state => state.User);
+
+  useEffect(() => {
+    setIsLiked(post.likes.some((like) => like._id === currentUser._id));
+  }, [post.likes]);
 
   const postImage = process.env.PUBLIC_FOLDER + "posts-pics/" + post.image;
   const userProfilePic =
     process.env.PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture;
 
   const handleLike = () => {
-    console.log("xxxxxxx");
-    setIsLiked(post.likes.includes(currentUser._id));
+    setIsLiked(!isLiked);
   };
 
   const navigateToUserProfile = () => {
