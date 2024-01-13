@@ -35,8 +35,8 @@ export default function Scanner() {
   const snapPoints = ["40%"];
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [plantDetails, setPlantDetails] = useState({
-    name: "",
-    description: "",
+    plant_name: "",
+    plant_description: "",
   });
 
   const encodeImage = async (uri) => {
@@ -58,13 +58,13 @@ export default function Scanner() {
       const details = await getImageDetails(response.data.access_token);
       const res_details = details.data.result.classification.suggestions[0];
       setPlantDetails({
-        name: res_details.name,
-        description: res_details.details.description.value,
+        plant_name: res_details.name,
+        plant_description: res_details.details.description.value,
       });
     } else {
       setPlantDetails({
-        name: "",
-        description: "",
+        plant_name: "",
+        plant_description: "",
       });
     }
     console.log(response);
