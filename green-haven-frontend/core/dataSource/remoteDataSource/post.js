@@ -7,4 +7,13 @@ export const postDataSource = {
     });
     return response;
   },
+
+  likePost: async (data) => {
+    const response = await sendRequest({
+      route:"post/like",
+      method: "PUT",
+      body: data,
+    });
+    return response;
+  }
 };
