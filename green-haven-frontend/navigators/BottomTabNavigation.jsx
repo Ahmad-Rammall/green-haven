@@ -17,6 +17,28 @@ const bottomTabScreenOptions = {
   headerShown: false,
 };
 
+const gardenScreenOptions = ({ route }) => ({
+  headerShown: true,
+  headerStyle: {
+    backgroundColor: COLORS.primary,
+  },
+  headerTintColor: COLORS.offwhite,
+  headerTitleAlign: "center",
+  headerTitleStyle: {
+    fontWeight: "light",
+  },
+  headerTitle:"Garden",
+  tabBarIcon: ({ focused }) => {
+    return (
+      <Ionicons
+        name={focused ? "ios-basket" : "ios-basket-outline"}
+        size={27}
+        color={focused ? COLORS.primary : COLORS.gray2}
+      />
+    );
+  }
+});
+
 // Bottom navigator sections
 const BottomTabNavigation = () => {
   return (
@@ -57,17 +79,7 @@ const BottomTabNavigation = () => {
       <Tab.Screen
         name="GardenPage"
         component={Garden}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <Ionicons
-                name={focused ? "home" : "home-outline"}
-                size={27}
-                color={focused ? COLORS.primary : COLORS.gray2}
-              />
-            );
-          },
-        }}
+        options={gardenScreenOptions}
       />
       <Tab.Screen
         name="FeedPage"
