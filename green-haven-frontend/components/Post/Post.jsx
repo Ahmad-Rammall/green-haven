@@ -10,6 +10,8 @@ import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 
 const Post = ({ description, userName, userImage, post }) => {
   const [isLiked, setIsLiked] = useState(false);
+  const [likeCounter, setLikeCounter] = useState(post.likes.length);
+  const [commentCounter, setCommentCounter] = useState(post.comments.length);
   const navigation = useNavigation();
 
   const currentUser = useSelector(state => state.User);
@@ -23,7 +25,14 @@ const Post = ({ description, userName, userImage, post }) => {
     process.env.PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture;
 
   const handleLike = async () => {
+    if(isLiked){
+      setLikeCounter(likeCounter - 1)
+    }
+    else{
+      setLikeCounter(likeCounter + 1)
+    }
     setIsLiked(!isLiked);
+    // post.likes
     const response = await postDataSource.likePost({postId: post._id});
   };
 
@@ -55,12 +64,12 @@ const Post = ({ description, userName, userImage, post }) => {
         </TouchableOpacity>
         <View style={styles.buttons}>
           <View style={styles.button}>
-            <Text>{post.comments.length}</Text>
+            <Text>{commentCounter}</Text>
             <FontAwesome name="comment-o" size={30} />
           </View>
           <TouchableOpacity onPress={() => handleLike()}>
             <View style={styles.button}>
-              <Text>{post.likes.length}</Text>
+              <Text>{likeCounter}</Text>
               {isLiked ? (
                 <Ionicons name="heart" size={30} color={COLORS.red} />
               ) : (
