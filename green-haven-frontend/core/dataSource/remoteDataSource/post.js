@@ -15,5 +15,13 @@ export const postDataSource = {
       body: data,
     });
     return response;
+  },
+
+  getUserPosts: async (data) => {
+    const response = await sendRequest({
+      route: `post/${data}`
+    })
+
+    return response;
   }
 };
