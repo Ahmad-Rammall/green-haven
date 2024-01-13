@@ -1,7 +1,7 @@
 const User = require("../models/user.model");
 
 const getAllUserPlants = async (req, res) => {
-  return res.status(200).json({ garden: req.user });
+  return res.status(200).json({ garden: req.user.garden });
 };
 
 const addPlant = async (req, res) => {
