@@ -2,7 +2,9 @@ const Post = require("../models/post.model");
 const mongoose = require("mongoose");
 
 const addPost = async (req, res) => {
-  const { description, image } = req.body;
+  const description = req.body.description;
+  const image = req.file ? req.file.filename : "";
+
   try {
     const post = new Post({ user: req.user, description, image });
     await post.save({ new: true, runValidators: true });
