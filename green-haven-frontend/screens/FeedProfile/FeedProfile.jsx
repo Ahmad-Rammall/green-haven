@@ -13,11 +13,17 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { COLORS } from "../../assets/constants";
 import { Post } from "../../components";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
+import { profileDataSource } from "../../core/dataSource/remoteDataSource/profile";
+import { useSelector } from "react-redux";
 
 const FeedProfile = () => {
   const route = useRoute();
   const { user, profilePicture } = route.params;
+  const currentUser = useSelector((state) => state.User);
   const [followersCount, setFollowersCount] = useState(user.followers.length);
+  const [isFollowing, setIsFollowing] = useState(
+    user.followers.some((follower) => follower === currentUser._id)
+  );
   const [posts, setPosts] = useState([]);
 
   const getUserPosts = async () => {
@@ -43,9 +49,22 @@ const FeedProfile = () => {
             <Text style={styles.userName}>{user.name}</Text>
             <View style={styles.buttons}>
               {/* Follow/Unfollow Button */}
-              <TouchableOpacity style={[styles.followBtn, styles.btn]}>
-                <Text style={styles.followTxt}>Follow</Text>
-              </TouchableOpacity>
+
+              {isFollowing ? (
+                <TouchableOpacity
+                  style={[styles.followBtn(COLORS.red), styles.btn]}
+                  onPress={() => handleFollow()}
+                >
+                  <Text style={styles.followTxt}>Unfollow</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  style={[styles.followBtn(COLORS.primary), styles.btn]}
+                  onPress={() => handleFollow()}
+                >
+                  <Text style={styles.followTxt}>Follow</Text>
+                </TouchableOpacity>
+              )}
 
               {/* Message Button */}
               <TouchableOpacity style={[styles.messageBtn, styles.btn]}>
@@ -73,13 +92,17 @@ const FeedProfile = () => {
           </View>
 
           <View style={styles.bottomElement}>
-            <Text style={styles.elementNumber}>{posts ? posts?.length : "0"}</Text>
+            <Text style={styles.elementNumber}>
+              {posts ? posts?.length : "0"}
+            </Text>
             <Text style={styles.elementName}>Posts</Text>
           </View>
         </View>
 
         <View>
-          {posts.map((post) => <Post key={post._id} post={post}/>)}
+          {posts.map((post) => (
+            <Post key={post._id} post={post} />
+          ))}
         </View>
       </ScrollView>
     </View>

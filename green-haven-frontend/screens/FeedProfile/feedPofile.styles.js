@@ -35,10 +35,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: "center"
     },
-    followBtn:{
-        backgroundColor: COLORS.primary,
+    followBtn:(color) => ({
+        backgroundColor: color,
         width: 80,
-    },
+    }),
     followTxt:{
         fontFamily:"bold",
         color: COLORS.offwhite
