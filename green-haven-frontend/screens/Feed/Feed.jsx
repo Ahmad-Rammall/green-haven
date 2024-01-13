@@ -6,17 +6,23 @@ import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
-  const desc =
-    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae soluta ratione excepturi. Ipsum id harum consectetur necessitatibus, in dolorequis eos vero quam totam, voluptate, deserunt rerum ullam repudiandaeneque assumenda doloremque explicabo? Incidunt modi non reprehenderitullam ut quis!";
+  const [refresh, setRefresh] = useState(false)
 
   const getPosts = async () => {
     const response = await postDataSource.getPosts();
-    setPosts(response.data[0]);
+    console.log(response.status)
+    if (response?.status === 200 || response?.status === 304) {
+      setPosts(response.data[1]);
+    }
   };
+
+  const refreshPage = () => {
+    setRefresh(!refresh)
+  }
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [refresh]);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -54,9 +60,13 @@ const Feed = () => {
         <View style={styles.postsWrapper}>
           <SearchBar placeholder={"Search For Users"} />
 
-          {posts.map((post) => (
-            <Post key={post._id} post={post} />
-          ))}
+          {posts ? (
+            posts.map((post) => <Post key={post._id} post={post} refreshPage={refreshPage}/>)
+          ) : (
+            <View style={styles.noPosts}>
+              <Text style={styles.noPostsText}>No Posts</Text>
+            </View>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>

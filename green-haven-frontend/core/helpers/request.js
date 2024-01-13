@@ -14,7 +14,7 @@ export const sendRequest = async ({
   try {
     
     const response = await axios.request({
-      url: `${process.env.API_HOST}/${route}`,
+      url: `${API_HOST}/${route}`,
       method,
       data: body,
       headers: {

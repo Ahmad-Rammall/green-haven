@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 import moment from "moment";
 
-const Post = ({ post }) => {
+const Post = ({ post, refreshPage }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCounter, setLikeCounter] = useState(post.likes.length);
   const [commentCounter, setCommentCounter] = useState(post.comments.length);
@@ -47,7 +47,8 @@ const Post = ({ post }) => {
   const navigateToUserProfile = () => {
     navigation.navigate("User Profile", {
       user: post.user,
-      profilePicture: userProfilePic
+      profilePicture: userProfilePic,
+      refreshPage
     });
   };
   return (

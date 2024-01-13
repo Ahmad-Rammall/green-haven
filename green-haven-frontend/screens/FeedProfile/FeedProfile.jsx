@@ -18,11 +18,12 @@ import { useSelector } from "react-redux";
 
 const FeedProfile = () => {
   const route = useRoute();
-  const { user, profilePicture } = route.params;
+  const { user, profilePicture, refreshPage } = route.params;
   const currentUser = useSelector((state) => state.User);
   const [followersCount, setFollowersCount] = useState(user.followers.length);
+  console.log(user.followers);
   const [isFollowing, setIsFollowing] = useState(
-    user.followers.some((follower) => follower === currentUser._id)
+    user.followers.includes(String(currentUser._id))
   );
   const [posts, setPosts] = useState([]);
 
@@ -36,9 +37,32 @@ const FeedProfile = () => {
     }
   };
 
+  const handleFollow = async () => {
+    if (isFollowing) {
+      setFollowersCount(followersCount - 1);
+    } else {
+      setFollowersCount(followersCount + 1);
+    }
+    setIsFollowing(!isFollowing);
+    const response = await profileDataSource.handleFollowUser({
+      otherUserId: user._id,
+    });
+    if (response?.status === 200) {
+      refreshPage();
+    }
+    console.log(response);
+  };
+
   useEffect(() => {
     getUserPosts();
   }, [user]);
+
+  useEffect(() => {
+    console.log("---------------------------------");
+    console.log(isFollowing);
+    console.log(user.followers);
+    console.log("---------------------------------");
+  }, [isFollowing]);
 
   return (
     <View style={styles.container}>

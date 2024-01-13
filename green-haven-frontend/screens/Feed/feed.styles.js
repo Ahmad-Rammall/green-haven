@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     container:{
         alignItems: "flex-start",
         backgroundColor: COLORS.offwhite,
+        flex:1,
     },
     stories:{
         flexDirection: "row",
