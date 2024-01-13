@@ -12,9 +12,23 @@ const {
   likeComment,
 } = require("../controllers/post.controllers");
 const router = express.Router();
+const multer = require("multer");
+const path = require("path");
+
+const storage = multer.diskStorage({
+  destination: (req, res, cb) => {
+    cb(null, path.join(__dirname, "../public/images/posts-pics"));
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' +file.originalname);
+  },
+});
+
+// upload middleware
+const upload = multer({ storage });
 
 router.get("/", getFollowingPosts);
-router.post("/", addPost);
+router.post("/", upload.single('file'), addPost);
 router.put("/", updatePost);
 router.delete("/", deletePost);
 router.get("/:userId", getUserPosts);
