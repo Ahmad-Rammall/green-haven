@@ -13,6 +13,7 @@ import LocationModal from "./LocationModal/LocationModal";
 import ProductModal from "./ProductModal/ProductModal";
 import DeleteModal from "./DeleteModal/DeleteModal";
 import OrderItem from "./OrderItem/OrderItem";
+import GardenItem from "./GardenItem/GardenItem";
 
 export {
   Button,
@@ -30,4 +31,5 @@ export {
   ProductModal,
   DeleteModal,
   OrderItem,
+  GardenItem,
 };
