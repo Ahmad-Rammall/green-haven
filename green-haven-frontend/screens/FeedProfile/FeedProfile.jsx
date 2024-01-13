@@ -7,16 +7,33 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./feedPofile.styles";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { COLORS } from "../../assets/constants";
 import { Post } from "../../components";
+import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 
 const FeedProfile = () => {
   const route = useRoute();
   const { user, profilePicture } = route.params;
-  const [followersCount, setFollowersCount] = useState(user.followers.length)
+  const [followersCount, setFollowersCount] = useState(user.followers.length);
+  const [posts, setPosts] = useState([]);
+  console.log(user);
+
+  const getUserPosts = async () => {
+    const userId = user._id;
+    const response = await postDataSource.getUserPosts(userId);
+    if (response?.status === 200) {
+      setPosts(response.data);
+    } else {
+      console.log("error");
+    }
+  };
+
+  useEffect(() => {
+    getUserPosts();
+  }, [user]);
 
   return (
     <View style={styles.container}>
@@ -57,13 +74,13 @@ const FeedProfile = () => {
           </View>
 
           <View style={styles.bottomElement}>
-            <Text style={styles.elementNumber}>100</Text>
+            <Text style={styles.elementNumber}>{posts ? posts?.length : "0"}</Text>
             <Text style={styles.elementName}>Posts</Text>
           </View>
         </View>
 
         <View>
-
+          {posts.map((post) => <Post key={post._id} post={post}/>)}
         </View>
       </ScrollView>
     </View>
