@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import styles from './modal.styles';
+import { COLORS } from '../../assets/constants';
 
 const DeleteModal = ({ isVisible, onClose, onDelete }) => {
   return (
