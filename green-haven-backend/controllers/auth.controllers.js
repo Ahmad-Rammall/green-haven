@@ -47,7 +47,7 @@ const login = async (req, res) => {
   if (!isValidPassword)
     return res.status(400).json({ message: "Invalid username/password" });
 
-  const { password: hashedPassword, _id, ...userDetails } = user.toJSON();
+  const { password: hashedPassword, ...userDetails } = user.toJSON();
 
   // generate JWT token
   const token = jwt.sign(
