@@ -8,10 +8,15 @@ import {
 } from "react-native";
 import { Post, SearchBar, Story, PostCreator } from "../../components";
 import styles from "./feed.styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 import { usersDataSource } from "../../core/dataSource/remoteDataSource/users";
 import { PUBLIC_FOLDER } from "@env";
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const Feed = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
@@ -19,6 +24,16 @@ const Feed = ({ navigation }) => {
   const [searchInput, setSearchInput] = useState("");
   const [users, setUsers] = useState([]);
   const [searchedUsers, setSearchedUsers] = useState([]);
+  const bottomSheetModalRef = useRef(null);
+  const [modalStyle, setModalStyle] = useState(styles.modalClose);
+  const [modalOpen, setModalOpen] = useState(false);
+  const snapPoints = ["75%"];
+
+  const handleOpenModal = () => {
+    bottomSheetModalRef.current?.present();
+    setModalOpen(true);
+    setModalStyle(styles.modalOpen);
+  };
 
   const getPosts = async () => {
     const response = await postDataSource.getPosts();
@@ -98,7 +113,12 @@ const Feed = ({ navigation }) => {
 
           {posts ? (
             posts.map((post) => (
-              <Post key={post._id} post={post} refreshPage={refreshPage} />
+              <Post
+                key={post._id}
+                post={post}
+                refreshPage={refreshPage}
+                handleOpenModal={handleOpenModal}
+              />
             ))
           ) : (
             <View style={styles.noPosts}>
@@ -107,6 +127,20 @@ const Feed = ({ navigation }) => {
           )}
         </View>
       </ScrollView>
+
+      <GestureHandlerRootView style={modalStyle}>
+        <BottomSheetModalProvider>
+          <BottomSheetModal
+            ref={bottomSheetModalRef}
+            index={0}
+            snapPoints={snapPoints}
+            onDismiss={() => {
+              setModalOpen(false);
+              setModalStyle(styles.modalClose);
+            }}
+          ></BottomSheetModal>
+        </BottomSheetModalProvider>
+      </GestureHandlerRootView>
     </SafeAreaView>
   );
 };

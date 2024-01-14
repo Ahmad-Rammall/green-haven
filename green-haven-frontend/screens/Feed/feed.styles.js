@@ -55,6 +55,16 @@ const styles = StyleSheet.create({
     color: COLORS.gray,
     fontSize: 12
   },
+  modalClose: {
+    display: "none",
+  },
+  modalOpen: {
+    display: "flex",
+    position: "absolute",
+    top: 0,
+    width: SIZES.width,
+    height: 1100,
+  },
 });
 
 export default styles;

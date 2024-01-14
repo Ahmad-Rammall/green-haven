@@ -6,10 +6,10 @@ import { COLORS } from "../../assets/constants";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
-import {PUBLIC_FOLDER} from "@env"
+import { PUBLIC_FOLDER } from "@env";
 import moment from "moment";
 
-const Post = ({ post, refreshPage }) => {
+const Post = ({ post, refreshPage, handleOpenModal }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCounter, setLikeCounter] = useState(post.likes.length);
   const [commentCounter, setCommentCounter] = useState(post.comments.length);
@@ -49,7 +49,7 @@ const Post = ({ post, refreshPage }) => {
     navigation.navigate("User Profile", {
       user: post.user,
       profilePicture: userProfilePic,
-      refreshPage
+      refreshPage,
     });
   };
   return (
@@ -75,10 +75,13 @@ const Post = ({ post, refreshPage }) => {
 
         {/* Comment + Like Btns */}
         <View style={styles.buttons}>
-          <View style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => handleOpenModal()}
+          >
             <Text>{commentCounter}</Text>
             <FontAwesome name="comment-o" size={30} />
-          </View>
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => handleLike()}>
             <View style={styles.button}>
               <Text>{likeCounter}</Text>
