@@ -1,13 +1,19 @@
-import { Image, Text, View, ScrollView, SafeAreaView } from "react-native";
+import {
+  Image,
+  Text,
+  View,
+  ScrollView,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import { Post, SearchBar, Story, PostCreator } from "../../components";
 import styles from "./feed.styles";
 import React, { useEffect, useState } from "react";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
-import { TouchableOpacity } from "@gorhom/bottom-sheet";
 import { usersDataSource } from "../../core/dataSource/remoteDataSource/users";
-import { PUBLIC_FOLDER } from "@env"
+import { PUBLIC_FOLDER } from "@env";
 
-const Feed = () => {
+const Feed = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -16,9 +22,8 @@ const Feed = () => {
 
   const getPosts = async () => {
     const response = await postDataSource.getPosts();
-    console.log(response.status);
     if (response?.status === 200 || response?.status === 304) {
-      setPosts(response.data[1]);
+      setPosts(response.data[0]);
     }
   };
 
@@ -44,13 +49,20 @@ const Feed = () => {
 
   useEffect(() => {
     setSearchedUsers([]);
-    setSearchedUsers(users.filter(user => user.name.toLowerCase().includes(searchInput.toLowerCase())))
+    setSearchedUsers(
+      users.filter((user) =>
+        user.name.toLowerCase().includes(searchInput.toLowerCase())
+      )
+    );
   }, [searchInput]);
 
-  useEffect(() => {
-    console.log(searchedUsers)
-  }, [searchedUsers])
-
+  const navigateToUserProfile = (user) => {
+    navigation.navigate("User Profile", {
+      user,
+      profilePicture: PUBLIC_FOLDER + "profile-pics/" + user.profile_picture,
+      refreshPage,
+    });
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -61,20 +73,29 @@ const Feed = () => {
           />
 
           {/* Search Result */}
-          {searchInput !== "" && (<ScrollView
-            style={styles.searchResult}
-            showsVerticalScrollIndicator={false}
-          >
-            {searchedUsers.map((user) => (
-              <TouchableOpacity style={styles.userSearchResult} key={user._id}>
-                <Image
-                  source={{ uri: PUBLIC_FOLDER + "profile-pics/" + user.profile_picture }}
-                  style={styles.userSearchImg}
-                />
-                <Text style={styles.userSearchName}>{user.name}</Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>)}
+          {searchInput !== "" && (
+            <ScrollView
+              style={styles.searchResult}
+              showsVerticalScrollIndicator={false}
+            >
+              {searchedUsers.map((user) => (
+                <TouchableOpacity
+                  style={styles.userSearchResult}
+                  key={user._id}
+                  onPress={() => navigateToUserProfile(user)}
+                >
+                  <Image
+                    source={{
+                      uri:
+                        PUBLIC_FOLDER + "profile-pics/" + user.profile_picture,
+                    }}
+                    style={styles.userSearchImg}
+                  />
+                  <Text style={styles.userSearchName}>{user.name}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          )}
 
           <PostCreator refresh={refreshPage} />
 
