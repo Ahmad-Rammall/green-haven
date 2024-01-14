@@ -4,7 +4,7 @@ import { SIZES, COLORS } from "../../assets/constants";
 import styles from "./searchBar.styles";
 import React from "react";
 
-const SearchBar = ({ placeholder }) => {
+const SearchBar = ({ placeholder, setSearchInput }) => {
   return (
     <View style={styles.searchContainer}>
       <TouchableOpacity>
@@ -12,9 +12,9 @@ const SearchBar = ({ placeholder }) => {
       </TouchableOpacity>
       <View style={styles.searchWrapper}>
         <TextInput
-          value=""
           placeholder={placeholder}
           style={styles.searchInput}
+          onChangeText={(text) => setSearchInput(text)}
         />
       </View>
       <View style={styles.searchBtn}>
