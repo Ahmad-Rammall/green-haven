@@ -10,7 +10,7 @@ export const postDataSource = {
 
   likePost: async (data) => {
     const response = await sendRequest({
-      route:"post/like",
+      route: "post/like",
       method: "PUT",
       body: data,
     });
@@ -19,7 +19,18 @@ export const postDataSource = {
 
   getUserPosts: async (data) => {
     const response = await sendRequest({
-      route: `post/${data}`
+      route: `post/${data}`,
+    });
+
+    return response;
+  },
+
+  createPost: async (data) => {
+    const response = await sendRequest({
+      route: "post",
+      body: data,
+      method: "POST",
+      contentType: "multipart/form-data"
     })
 
     return response;
