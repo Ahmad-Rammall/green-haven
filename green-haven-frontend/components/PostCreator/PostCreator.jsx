@@ -1,25 +1,39 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import { PUBLIC_FOLDER } from "@env";
 import { imagePicker } from "../../core/helpers/imagePicker";
 import { MaterialIcons } from "@expo/vector-icons";
 import styles from "./postCreator.styles";
+import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
+import Toast from "react-native-simple-toast";
 
-const PostCreator = () => {
+const PostCreator = ({ refresh }) => {
   const currentUser = useSelector((state) => state.User);
-  const [inputText, setInputText] = useState("");
+  const [description, setDescription] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
 
   const pickImage = async () => {
     const image = await imagePicker();
     setSelectedImage(image.assets[0].uri);
+  };
+
+  const createPost = async () => {
+    const data = new FormData();
+    data.append("description", description);
+    console.log(selectedImage);
+    data.append("file", {
+      uri: selectedImage,
+      type: "image/jpeg",
+      name: "post.jpg",
+    });
+    const response = await postDataSource.createPost(data);
+    if (response?.status === 200) {
+      Toast.show("Post Created !", Toast.LONG);
+      setSelectedImage("");
+      setDescription("");
+      refresh();
+    }
   };
 
   const profilePic =
@@ -33,8 +47,8 @@ const PostCreator = () => {
           <TextInput
             style={styles.input}
             placeholder={`What's on your mind ${currentUser.username}?`}
-            onChangeText={(text) => setInputText(text)}
-            value={inputText}
+            onChangeText={(text) => setDescription(text)}
+            value={description}
           />
         </View>
 
@@ -69,7 +83,7 @@ const PostCreator = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.right}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => createPost()}>
               <Text style={styles.shareButton}>Share</Text>
             </TouchableOpacity>
           </View>
@@ -78,7 +92,5 @@ const PostCreator = () => {
     </View>
   );
 };
-
-
 
 export default PostCreator;

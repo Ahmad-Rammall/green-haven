@@ -29,7 +29,7 @@ const Feed = () => {
         <View style={styles.postsWrapper}>
           <SearchBar placeholder={"Search For Users"} />
 
-          <PostCreator />
+          <PostCreator refresh={refreshPage}/>
 
           {posts ? (
             posts.map((post) => <Post key={post._id} post={post} refreshPage={refreshPage}/>)
