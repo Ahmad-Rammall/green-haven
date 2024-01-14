@@ -4,20 +4,22 @@ import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 import styles from "./comment.styles";
 import { PUBLIC_FOLDER } from "@env";
+import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, postId}) => {
   const [isLiked, setIsLiked] = useState(false);
   const [commentLikeCount, setCommentLikeCount] = useState(comment.likes.length);
 
   const image = PUBLIC_FOLDER + "profile-pics/" + comment.user.profile_picture;
 
-  const handleLike = () => {
+  const handleLike = async () => {
     setIsLiked(!isLiked);
     if (!isLiked) {
       setCommentLikeCount((prev) => prev + 1);
     } else {
       setCommentLikeCount((prev) => prev - 1);
     }
+    const response = await postDataSource.handleLikeComment();
   };
 
   return (

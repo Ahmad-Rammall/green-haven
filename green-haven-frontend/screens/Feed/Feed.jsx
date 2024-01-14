@@ -29,7 +29,10 @@ const Feed = ({ navigation }) => {
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [modalOpen, setModalOpen] = useState(false);
   const snapPoints = ["80%"];
-  const [comments, setComments] = useState([]);
+  const [commentsObject, setCommentsObject] = useState({
+    postId: '',
+    postComments: []
+  });
 
   const handleOpenModal = () => {
     bottomSheetModalRef.current?.present();
@@ -79,8 +82,8 @@ const Feed = ({ navigation }) => {
   };
 
   useEffect(() => {
-    console.log(comments);
-  }, [comments]);
+    console.log(commentsObject);
+  }, [commentsObject]);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -124,7 +127,7 @@ const Feed = ({ navigation }) => {
                 post={post}
                 refreshPage={refreshPage}
                 handleOpenModal={handleOpenModal}
-                setComments={setComments}
+                setCommentsObject={setCommentsObject}
               />
             ))
           ) : (
@@ -153,8 +156,8 @@ const Feed = ({ navigation }) => {
             <MaterialIcons name="highlight-remove" size={25} />
           </TouchableOpacity>
           <BottomSheetScrollView>
-            {comments.map((comment) => (
-              <Comment key={comment._id} comment={comment} />
+            {commentsObject.postComments.map((comment) => (
+              <Comment key={comment._id} comment={comment} postId={commentsObject.postId}/>
             ))}
           </BottomSheetScrollView>
         </BottomSheetModal>

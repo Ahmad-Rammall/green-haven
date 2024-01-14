@@ -9,7 +9,7 @@ import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 import { PUBLIC_FOLDER } from "@env";
 import moment from "moment";
 
-const Post = ({ post, refreshPage, handleOpenModal, setComments }) => {
+const Post = ({ post, refreshPage, handleOpenModal, setCommentsObject }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCounter, setLikeCounter] = useState(post.likes.length);
   const [commentCounter, setCommentCounter] = useState(post.comments.length);
@@ -45,7 +45,10 @@ const Post = ({ post, refreshPage, handleOpenModal, setComments }) => {
   };
 
   const handleCommentClick = () => {
-    setComments(post.comments);
+    setCommentsObject({
+      postId: post._id,
+      postComments: post.comments
+    });
     handleOpenModal();
   }
 
