@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import { COLORS, SIZES } from "../../assets/constants";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { COLORS } from "../../assets/constants";
+import styles from "./comment.styles";
 
 const Comment = ({ userImage, userName, commentText }) => {
   const [isLiked, setIsLiked] = useState(false);
