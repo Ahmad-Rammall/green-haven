@@ -41,11 +41,8 @@ const Feed = ({ navigation }) => {
 
   useEffect(() => {
     getPosts();
-  }, [refresh]);
-
-  useEffect(() => {
     getAllUsers();
-  }, []);
+  }, [refresh]);
 
   useEffect(() => {
     setSearchedUsers([]);
