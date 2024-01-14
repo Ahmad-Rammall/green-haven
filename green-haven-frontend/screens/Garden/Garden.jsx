@@ -15,7 +15,7 @@ const Garden = () => {
   const bottomSheetModalRef = useRef(null);
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [modalOpen, setModalOpen] = useState(false);
-  const snapPoints = ["40%"];
+  const snapPoints = ["75%"];
 
   const getPlants = async () => {
     const response = await gardenDataSource.getAllPlants();

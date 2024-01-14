@@ -12,9 +12,9 @@ export const sendRequest = async ({
   const token = await local("token")
 
   try {
-    
+    process.env.API_HOST
     const response = await axios.request({
-      url: `http:192.168.43.29:8000/${route}`,
+      url: `${API_HOST}/${route}`,
       method,
       data: body,
       headers: {

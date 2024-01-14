@@ -4,7 +4,7 @@ import { COLORS, SIZES } from "../../assets/constants";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.offwhite,
+    backgroundColor: "red",
   },
   wrapper: {
     flexDirection: "row",
@@ -18,10 +18,9 @@ const styles = StyleSheet.create({
   modalOpen: {
     display: "flex",
     position: "absolute",
-    bottom: 0,
+    top: 0,
     width: SIZES.width,
     height: 1100,
-    zIndex: 9999,
   },
   noPlants:{
     flex:1,
