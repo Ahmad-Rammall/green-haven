@@ -14,6 +14,7 @@ import ProductModal from "./ProductModal/ProductModal";
 import DeleteModal from "./DeleteModal/DeleteModal";
 import OrderItem from "./OrderItem/OrderItem";
 import GardenItem from "./GardenItem/GardenItem";
+import PostCreator from "./PostCreator/PostCreator";
 
 export {
   Button,
@@ -32,4 +33,5 @@ export {
   DeleteModal,
   OrderItem,
   GardenItem,
+  PostCreator
 };

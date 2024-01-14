@@ -3,7 +3,6 @@ import { COLORS, SIZES } from "../../assets/constants";
 
 const styles = StyleSheet.create({
     container:{
-        alignItems: "flex-start",
         backgroundColor: COLORS.offwhite,
         flex:1,
     },
@@ -16,7 +15,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 15,
     },
     postsWrapper:{
-        marginHorizontal: SIZES.xSmall
+        margin: SIZES.large
     }
 })
 

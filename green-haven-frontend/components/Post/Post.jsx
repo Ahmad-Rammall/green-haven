@@ -6,6 +6,7 @@ import { COLORS } from "../../assets/constants";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
+import {PUBLIC_FOLDER} from "@env"
 import moment from "moment";
 
 const Post = ({ post, refreshPage }) => {
@@ -31,7 +32,7 @@ const Post = ({ post, refreshPage }) => {
 
   const postImage = process.env.PUBLIC_FOLDER + "posts-pics/" + post.image;
   const userProfilePic =
-    process.env.PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture;
+    PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture;
 
   const handleLike = async () => {
     if (isLiked) {
