@@ -5,10 +5,16 @@ import { COLORS } from "../../assets/constants";
 import styles from "./comment.styles";
 import { PUBLIC_FOLDER } from "@env";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
+import { useSelector } from "react-redux";
 
-const Comment = ({ comment, postId}) => {
-  const [isLiked, setIsLiked] = useState(false);
-  const [commentLikeCount, setCommentLikeCount] = useState(comment.likes.length);
+const Comment = ({ comment, postId, refreshPage }) => {
+  const currentUser = useSelector((state) => state.User);
+  const [isLiked, setIsLiked] = useState(
+    comment.likes.some((like) => String(like._id) === String(currentUser._id))
+  );
+  const [commentLikeCount, setCommentLikeCount] = useState(
+    comment.likes.length
+  );
 
   const image = PUBLIC_FOLDER + "profile-pics/" + comment.user.profile_picture;
 
@@ -19,7 +25,13 @@ const Comment = ({ comment, postId}) => {
     } else {
       setCommentLikeCount((prev) => prev - 1);
     }
-    const response = await postDataSource.handleLikeComment();
+    const response = await postDataSource.handleLikeComment({
+      postId,
+      commentId: comment._id,
+    });
+    if (response?.status === 200) {
+      refreshPage();
+    }
   };
 
   return (

@@ -81,9 +81,6 @@ const Feed = ({ navigation }) => {
     });
   };
 
-  useEffect(() => {
-    console.log(commentsObject);
-  }, [commentsObject]);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -157,7 +154,7 @@ const Feed = ({ navigation }) => {
           </TouchableOpacity>
           <BottomSheetScrollView>
             {commentsObject.postComments.map((comment) => (
-              <Comment key={comment._id} comment={comment} postId={commentsObject.postId}/>
+              <Comment key={comment._id} comment={comment} postId={commentsObject.postId} refreshPage={refreshPage}/>
             ))}
           </BottomSheetScrollView>
         </BottomSheetModal>
