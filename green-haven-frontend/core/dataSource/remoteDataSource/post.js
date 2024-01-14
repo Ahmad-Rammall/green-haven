@@ -30,9 +30,19 @@ export const postDataSource = {
       route: "post",
       body: data,
       method: "POST",
-      contentType: "multipart/form-data"
-    })
+      contentType: "multipart/form-data",
+    });
 
     return response;
-  }
+  },
+
+  handleLikeComment: async (data) => {
+    const response = await sendRequest({
+      route: "post/comment/like",
+      body: data,
+      method: "PUT",
+    });
+
+    return response;
+  },
 };
