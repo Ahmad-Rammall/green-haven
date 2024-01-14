@@ -15,6 +15,7 @@ import DeleteModal from "./DeleteModal/DeleteModal";
 import OrderItem from "./OrderItem/OrderItem";
 import GardenItem from "./GardenItem/GardenItem";
 import PostCreator from "./PostCreator/PostCreator";
+import Comment from "./Comment/Comment";
 
 export {
   Button,
@@ -33,5 +34,6 @@ export {
   DeleteModal,
   OrderItem,
   GardenItem,
-  PostCreator
+  PostCreator,
+  Comment,
 };
