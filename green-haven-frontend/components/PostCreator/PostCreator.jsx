@@ -52,9 +52,8 @@ const PostCreator = ({ refresh }) => {
           />
         </View>
 
-        <View style={styles.selectedImgContainer}>
-          {selectedImage && (
-            <View>
+        {selectedImage && (
+          <View style={styles.selectedImgContainer}>
               <Image
                 source={{ uri: selectedImage }}
                 style={styles.selectedImg}
@@ -66,9 +65,8 @@ const PostCreator = ({ refresh }) => {
                 style={styles.removeIcon}
                 onPress={() => setSelectedImage("")}
               />
-            </View>
-          )}
-        </View>
+          </View>
+        )}
         <View style={styles.hr} />
         <View style={styles.bottom}>
           <View style={styles.left}>

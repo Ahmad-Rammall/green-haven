@@ -15,7 +15,18 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 15,
     },
     postsWrapper:{
-        margin: SIZES.large
+        margin: SIZES.large,
+        marginTop: 0
+    },
+    noPosts:{
+        flex:1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    noPostsText:{
+        color: COLORS.gray2,
+        fontFamily: "light",
+        fontSize: 20
     }
 })
 
