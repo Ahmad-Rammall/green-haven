@@ -155,8 +155,8 @@ const Feed = ({ navigation }) => {
           <BottomSheetScrollView>
             {comments.map((comment) => (
               <Comment
-                userImage={require("../../assets/images/plant5.jpg")}
-                userName={"xxxxxxx"}
+                userImage={comment.user.profile_picture}
+                userName={comment.user.name}
                 commentText={comment.text}
               />
             ))}

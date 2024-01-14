@@ -3,9 +3,12 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 import styles from "./comment.styles";
+import {PUBLIC_FOLDER} from "@env"
 
 const Comment = ({ userImage, userName, commentText }) => {
   const [isLiked, setIsLiked] = useState(false);
+
+  const image = PUBLIC_FOLDER + "profile-pics/"+ userImage;
 
   const handleLike = () => {
     setIsLiked(!isLiked);
@@ -13,7 +16,7 @@ const Comment = ({ userImage, userName, commentText }) => {
 
   return (
     <View style={styles.commentContainer}>
-      <Image source={userImage} style={styles.userImage} />
+      <Image source={{ uri:image }} style={styles.userImage} />
       <View style={styles.commentContent}>
         <Text style={styles.userName}>{userName}</Text>
         <Text style={styles.commentText}>{commentText}</Text>
