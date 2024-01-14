@@ -95,6 +95,9 @@ const getUserPosts = async (req, res) => {
     const posts = await Post.find({ user: userId }).populate({
       path: "user",
       select: ["-cart", "-garden", "-password"],
+    }).populate({
+      path: "comments.user",
+      select: ["name", "profile_picture"],
     });
     return res.status(200).json(posts);
   } catch (error) {
@@ -109,6 +112,9 @@ const getFollowingPosts = async (req, res) => {
         return Post.find({ user: followingId }).populate({
           path: "user",
           select: ["-cart", "-garden", "-password"],
+        }).populate({
+          path: "comments.user",
+          select: ["name", "profile_picture"],
         });
       })
     );
