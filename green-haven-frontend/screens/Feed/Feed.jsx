@@ -4,11 +4,13 @@ import styles from "./feed.styles";
 import React, { useEffect, useState } from "react";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
+import { usersDataSource } from "../../core/dataSource/remoteDataSource/users";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [users, setUsers] = useState([]);
 
   const getPosts = async () => {
     const response = await postDataSource.getPosts();
@@ -18,6 +20,14 @@ const Feed = () => {
     }
   };
 
+  const getAllUsers = async () => {
+    const response = await usersDataSource.getAllUsers();
+    if(response?.status === 200){
+      console.log(response.data)
+      setUsers(response.data)
+    }
+  }
+
   const refreshPage = () => {
     setRefresh(!refresh);
   };
@@ -25,6 +35,11 @@ const Feed = () => {
   useEffect(() => {
     getPosts();
   }, [refresh]);
+
+  
+  useEffect(() => {
+    getAllUsers();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
