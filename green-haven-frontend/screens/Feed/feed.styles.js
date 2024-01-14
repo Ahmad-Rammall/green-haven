@@ -52,6 +52,8 @@ const styles = StyleSheet.create({
   },
   userSearchName: {
     fontFamily: "regular",
+    color: COLORS.gray,
+    fontSize: 12
   },
 });
 
