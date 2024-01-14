@@ -29,6 +29,7 @@ const Feed = ({ navigation }) => {
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [modalOpen, setModalOpen] = useState(false);
   const snapPoints = ["80%"];
+  const [comments, setComments] = useState([]);
 
   const handleOpenModal = () => {
     bottomSheetModalRef.current?.present();
@@ -76,6 +77,10 @@ const Feed = ({ navigation }) => {
       refreshPage,
     });
   };
+
+  useEffect(() => {
+    console.log(comments);
+  }, [comments]);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -119,6 +124,7 @@ const Feed = ({ navigation }) => {
                 post={post}
                 refreshPage={refreshPage}
                 handleOpenModal={handleOpenModal}
+                setComments={setComments}
               />
             ))
           ) : (
@@ -147,11 +153,13 @@ const Feed = ({ navigation }) => {
             <MaterialIcons name="highlight-remove" size={25} />
           </TouchableOpacity>
           <BottomSheetScrollView>
-            <Comment
-              userImage={require("../../assets/images/plant5.jpg")}
-              userName={"xxxxxxx"}
-              commentText={"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
-            />
+            {comments.map((comment) => (
+              <Comment
+                userImage={require("../../assets/images/plant5.jpg")}
+                userName={"xxxxxxx"}
+                commentText={comment.text}
+              />
+            ))}
           </BottomSheetScrollView>
         </BottomSheetModal>
       </BottomSheetModalProvider>

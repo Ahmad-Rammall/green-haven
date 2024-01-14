@@ -9,7 +9,7 @@ import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 import { PUBLIC_FOLDER } from "@env";
 import moment from "moment";
 
-const Post = ({ post, refreshPage, handleOpenModal }) => {
+const Post = ({ post, refreshPage, handleOpenModal, setComments }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCounter, setLikeCounter] = useState(post.likes.length);
   const [commentCounter, setCommentCounter] = useState(post.comments.length);
@@ -44,6 +44,11 @@ const Post = ({ post, refreshPage, handleOpenModal }) => {
     await postDataSource.likePost({ postId: post._id });
   };
 
+  const handleCommentClick = () => {
+    setComments(post.comments);
+    handleOpenModal();
+  }
+
   // when user clicks on the post's owner profile picture
   const navigateToUserProfile = () => {
     navigation.navigate("User Profile", {
@@ -77,7 +82,7 @@ const Post = ({ post, refreshPage, handleOpenModal }) => {
         <View style={styles.buttons}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handleOpenModal()}
+            onPress={() => handleCommentClick()}
           >
             <Text>{commentCounter}</Text>
             <FontAwesome name="comment-o" size={30} />
