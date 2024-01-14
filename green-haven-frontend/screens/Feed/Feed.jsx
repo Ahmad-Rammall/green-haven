@@ -154,11 +154,7 @@ const Feed = ({ navigation }) => {
           </TouchableOpacity>
           <BottomSheetScrollView>
             {comments.map((comment) => (
-              <Comment
-                userImage={comment.user.profile_picture}
-                userName={comment.user.name}
-                commentText={comment.text}
-              />
+              <Comment key={comment._id} comment={comment} />
             ))}
           </BottomSheetScrollView>
         </BottomSheetModal>
