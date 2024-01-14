@@ -2,11 +2,10 @@ import {
   Image,
   Text,
   View,
-  ScrollView,
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import { Post, SearchBar, Story, PostCreator } from "../../components";
+import { Post, SearchBar, Story, PostCreator, Comment } from "../../components";
 import styles from "./feed.styles";
 import React, { useEffect, useState, useRef } from "react";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
@@ -15,8 +14,10 @@ import { PUBLIC_FOLDER } from "@env";
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
+  BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native-gesture-handler";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const Feed = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
@@ -27,7 +28,7 @@ const Feed = ({ navigation }) => {
   const bottomSheetModalRef = useRef(null);
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [modalOpen, setModalOpen] = useState(false);
-  const snapPoints = ["75%"];
+  const snapPoints = ["80%"];
 
   const handleOpenModal = () => {
     bottomSheetModalRef.current?.present();
@@ -128,19 +129,32 @@ const Feed = ({ navigation }) => {
         </View>
       </ScrollView>
 
-      <GestureHandlerRootView style={modalStyle}>
-        <BottomSheetModalProvider>
-          <BottomSheetModal
-            ref={bottomSheetModalRef}
-            index={0}
-            snapPoints={snapPoints}
-            onDismiss={() => {
-              setModalOpen(false);
-              setModalStyle(styles.modalClose);
-            }}
-          ></BottomSheetModal>
-        </BottomSheetModalProvider>
-      </GestureHandlerRootView>
+      <BottomSheetModalProvider>
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          index={0}
+          snapPoints={snapPoints}
+          onDismiss={() => {
+            setModalOpen(false);
+            setModalStyle(styles.modalClose);
+          }}
+          handleComponent={null}
+        >
+          <TouchableOpacity
+            onPress={() => bottomSheetModalRef.current.close()}
+            style={styles.modalHeader}
+          >
+            <MaterialIcons name="highlight-remove" size={25} />
+          </TouchableOpacity>
+          <BottomSheetScrollView>
+            <Comment
+              userImage={require("../../assets/images/plant5.jpg")}
+              userName={"xxxxxxx"}
+              commentText={"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+            />
+          </BottomSheetScrollView>
+        </BottomSheetModal>
+      </BottomSheetModalProvider>
     </SafeAreaView>
   );
 };

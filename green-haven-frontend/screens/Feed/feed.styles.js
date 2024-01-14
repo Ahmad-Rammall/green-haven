@@ -65,6 +65,11 @@ const styles = StyleSheet.create({
     width: SIZES.width,
     height: 1100,
   },
+  modalHeader:{
+    alignItems: "flex-end",
+    paddingHorizontal: SIZES.small,
+    paddingVertical: 5
+  }
 });
 
 export default styles;
