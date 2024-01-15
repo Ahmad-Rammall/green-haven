@@ -56,6 +56,18 @@ const Feed = ({ navigation }) => {
     }
   };
 
+  const addComment = async () => {
+    const response = await postDataSource.addComment({
+      text: commentInput,
+      postId: commentsObject.postId,
+    });
+    if(response?.status === 200){
+      setCommentInput("");
+      setRefresh(!refresh);
+      bottomSheetModalRef.current.close()
+    }
+  };
+
   const refreshPage = () => {
     setRefresh(!refresh);
   };
@@ -170,6 +182,9 @@ const Feed = ({ navigation }) => {
                 onChangeText={setCommentInput}
                 value={commentInput}
               />
+              <TouchableOpacity onPress={() => addComment()}>
+                <Text>send</Text>
+              </TouchableOpacity>
             </View>
           </BottomSheetModal>
         </BottomSheetModalProvider>

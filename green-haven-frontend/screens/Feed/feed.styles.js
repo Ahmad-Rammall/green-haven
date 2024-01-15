@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 5,
     borderRadius: 10,
+    backgroundColor: COLORS.offwhite
   },
 });
 
