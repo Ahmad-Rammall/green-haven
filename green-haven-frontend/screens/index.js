@@ -12,7 +12,7 @@ import ChangePassword from "./ChangePassword/ChangePassword"
 import LikedPosts from "./LikedPosts/LikedPosts";
 import FeedProfile from "./FeedProfile/FeedProfile";
 import Chat from "./Chat/Chat";
-import Conversation from "./Conversation/Conversation";
+import Conversation from "./Conversation/Conversations";
 import Order from "./Order/Order";
 
 export {
