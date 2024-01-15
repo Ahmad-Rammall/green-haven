@@ -3,24 +3,19 @@ import { COLORS, SIZES } from "../../assets/constants";
 
 const styles = StyleSheet.create({
   container: {
-    width: 140,
-    height: 195,
+    width: 170,
+    height: 225,
     borderRadius: SIZES.medium,
     backgroundColor: COLORS.secondary,
     marginBottom: SIZES.large,
   },
   image: {
-    aspectRatio: 1,
-    resizeMode: "cover",
+    resizeMode: "contain",
     borderRadius: SIZES.small,
-  },
-  topDetailsContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    height: 170,
   },
   details: {
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
   },
   title: {
     fontFamily: "light",
