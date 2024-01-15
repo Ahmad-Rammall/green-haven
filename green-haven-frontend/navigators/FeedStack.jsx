@@ -59,6 +59,12 @@ const FeedStackNavigator = () => {
         },
         client.devToken('testUser'),
       );
+
+      const channel = client.channel('livestream', 'public', {
+        name: 'Public',
+      });
+
+      await channel.create()
     }
     connectUser();
   }, [])
