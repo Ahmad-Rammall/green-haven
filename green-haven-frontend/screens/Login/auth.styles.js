@@ -10,8 +10,7 @@ const styles = StyleSheet.create({
     marginHorizontal: SIZES.large
   },
   image: {
-    height: SIZES.height / 3,
-    width: SIZES.width,
+    height: SIZES.height / 2.9,
     resizeMode: "contain",
     marginBottom: SIZES.xLarge,
     alignSelf: "center",
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
   },
   option: (bgColor) => ({
     backgroundColor: bgColor,
-    margin: SIZES.medium,
+    marginVertical: SIZES.medium,
     padding: 5,
     borderRadius: SIZES.medium,
     flexDirection: "row",
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
   googleOption: {
     borderWidth: 1,
     borderColor: COLORS.gray,
-    margin: SIZES.medium,
+    marginVertical: SIZES.medium,
     marginBottom: 0,
     padding: 5,
     borderRadius: SIZES.medium,

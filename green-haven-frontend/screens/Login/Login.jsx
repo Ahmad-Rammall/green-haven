@@ -58,7 +58,7 @@ const Login = ({ navigation }) => {
                 <Text style={styles.label}>Email</Text>
                 <View
                   style={styles.inputWrapper(
-                    touched.email ? COLORS.primary : COLORS.white
+                    touched.email ? COLORS.primary : COLORS.gray2
                   )}
                 >
                   <MaterialCommunityIcons
@@ -86,7 +86,7 @@ const Login = ({ navigation }) => {
                 <Text style={styles.label}>Password</Text>
                 <View
                   style={styles.inputWrapper(
-                    touched.password ? COLORS.primary : COLORS.white
+                    touched.password ? COLORS.primary : COLORS.gray2
                   )}
                 >
                   <MaterialCommunityIcons
