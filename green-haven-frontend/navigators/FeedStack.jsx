@@ -1,17 +1,16 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
-import { Feed, FeedProfile, Chat, Conversation } from "../screens";
+import { Feed, FeedProfile, Chat as ChatPage, Conversation } from "../screens";
 import { COLORS } from "../assets/constants";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
-import {StreamChat} from 'stream-chat'
-import {STREAM_KEY} from "@env"
+import { StreamChat } from "stream-chat";
+import { STREAM_KEY } from "@env";
 import { useEffect } from "react";
+import { OverlayProvider, Chat } from "stream-chat-expo";
 
 const FeedStack = createNativeStackNavigator();
 
-const client = StreamChat.getInstance(STREAM_KEY)
-
-
+const client = StreamChat.getInstance(STREAM_KEY);
 
 const screenOptions = ({ route, navigation }) => ({
   headerShown: true,
@@ -46,39 +45,42 @@ const screenOptions = ({ route, navigation }) => ({
   ),
 });
 
-
 // Navigations inside the market section
 const FeedStackNavigator = () => {
   useEffect(() => {
     const connectUser = async () => {
       await client.connectUser(
         {
-          id: 'testUser',
-          name: 'Test User',
-          image: 'https://i.imgur.com/fR9Jz14.png',
+          id: "testUser",
+          name: "Test User",
+          image: "https://i.imgur.com/fR9Jz14.png",
         },
-        client.devToken('testUser'),
+        client.devToken("testUser")
       );
 
-      const channel = client.channel('livestream', 'public', {
-        name: 'Public',
+      const channel = client.channel("livestream", "public", {
+        name: "Public",
       });
 
-      await channel.create()
-    }
+      await channel.create();
+    };
     connectUser();
-  }, [])
+  }, []);
   return (
-    <FeedStack.Navigator screenOptions={screenOptions}>
-      <FeedStack.Screen name="Feed" component={Feed} />
-      <FeedStack.Screen name="User Profile" component={FeedProfile} />
-      <FeedStack.Screen
-        name="Chat"
-        component={Chat}
-        options={{ headerRight: () => <View /> }}
-      />
-      <FeedStack.Screen name="Conversation" component={Conversation} />
-    </FeedStack.Navigator>
+    <OverlayProvider>
+      <Chat client={client}>
+        <FeedStack.Navigator screenOptions={screenOptions}>
+          <FeedStack.Screen name="Feed" component={Feed} />
+          <FeedStack.Screen name="User Profile" component={FeedProfile} />
+          <FeedStack.Screen
+            name="Chat"
+            component={ChatPage}
+            options={{ headerRight: () => <View /> }}
+          />
+          <FeedStack.Screen name="Conversation" component={Conversation} />
+        </FeedStack.Navigator>
+      </Chat>
+    </OverlayProvider>
   );
 };
 
