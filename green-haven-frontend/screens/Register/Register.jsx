@@ -51,10 +51,8 @@ const Register = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.loginContainer}>
       <ScrollView onPress={Keyboard.dismiss()} style={styles.wrapper}>
-        <Image
-          source={require("../../assets/images/registerImage.png")}
-          style={styles.image}
-        />
+        <View style={styles.registerWrapper}>
+        <Text style={styles.registerTitle}>Register</Text>
         <Formik
           initialValues={{
             email: "",
@@ -82,7 +80,7 @@ const Register = ({ navigation }) => {
                 <Text style={styles.label}>Email</Text>
                 <View
                   style={styles.inputWrapper(
-                    touched.email ? COLORS.primary : COLORS.white
+                    touched.email ? COLORS.primary : COLORS.gray2
                   )}
                 >
                   <MaterialCommunityIcons
@@ -112,7 +110,7 @@ const Register = ({ navigation }) => {
                 <Text style={styles.label}>Name</Text>
                 <View
                   style={styles.inputWrapper(
-                    touched.name ? COLORS.primary : COLORS.white
+                    touched.name ? COLORS.primary : COLORS.gray2
                   )}
                 >
                   <MaterialCommunityIcons
@@ -142,7 +140,7 @@ const Register = ({ navigation }) => {
                 <Text style={styles.label}>Password</Text>
                 <View
                   style={styles.inputWrapper(
-                    touched.password ? COLORS.primary : COLORS.white
+                    touched.password ? COLORS.primary : COLORS.gray2
                   )}
                 >
                   <MaterialCommunityIcons
@@ -179,7 +177,7 @@ const Register = ({ navigation }) => {
                 <Text style={styles.label}>Confirm Password</Text>
                 <View
                   style={styles.inputWrapper(
-                    touched.confirmPassword ? COLORS.primary : COLORS.white
+                    touched.confirmPassword ? COLORS.primary : COLORS.gray2
                   )}
                 >
                   <MaterialCommunityIcons
@@ -253,6 +251,7 @@ const Register = ({ navigation }) => {
             </View>
           )}
         </Formik>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

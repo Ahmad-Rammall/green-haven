@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.offwhite,
     flex: 1,
   },
-  wrapper:{
-    marginHorizontal: SIZES.large
+  wrapper: {
+    marginHorizontal: SIZES.large,
   },
   image: {
     height: SIZES.height / 2.9,
@@ -47,6 +47,16 @@ const styles = StyleSheet.create({
   },
 
   // Register Option
+  registerWrapper: {
+    height: SIZES.height - 100,
+    justifyContent: "space-evenly",
+  },
+  registerTitle: {
+    textAlign: "center",
+    marginVertical: 50,
+    fontFamily: "regular",
+    fontSize: 30,
+  },
   registerText: {
     textAlign: "center",
     fontFamily: "light",
@@ -115,7 +125,7 @@ const styles = StyleSheet.create({
   },
 
   // Role Buttons
-  roleBtns:{
+  roleBtns: {
     flexDirection: "row",
     alignSelf: "center",
     marginBottom: SIZES.large,
@@ -126,7 +136,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 5,
     width: 100,
-    alignItems: "center"
+    alignItems: "center",
   },
   selectedButton: {
     backgroundColor: COLORS.primary,
@@ -135,7 +145,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
-  
 });
 
 export default styles;
