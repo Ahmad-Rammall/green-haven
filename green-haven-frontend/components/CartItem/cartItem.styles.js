@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.xSmall,
     justifyContent: "space-between",
     gap: 5,
+    alignItems: "center",
   },
   quantityBtn: {
     color: COLORS.primary,
