@@ -81,7 +81,10 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 5,
     borderRadius: 10,
-    backgroundColor: COLORS.offwhite
+    backgroundColor: COLORS.offwhite,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
 });
 

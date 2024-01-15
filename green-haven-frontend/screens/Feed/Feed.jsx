@@ -18,6 +18,7 @@ import {
 } from "@gorhom/bottom-sheet";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
+import { COLORS } from "../../assets/constants";
 
 const Feed = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
@@ -61,10 +62,10 @@ const Feed = ({ navigation }) => {
       text: commentInput,
       postId: commentsObject.postId,
     });
-    if(response?.status === 200){
+    if (response?.status === 200) {
       setCommentInput("");
       setRefresh(!refresh);
-      bottomSheetModalRef.current.close()
+      bottomSheetModalRef.current.close();
     }
   };
 
@@ -183,7 +184,7 @@ const Feed = ({ navigation }) => {
                 value={commentInput}
               />
               <TouchableOpacity onPress={() => addComment()}>
-                <Text>send</Text>
+                  <MaterialIcons name="send" size={24} color={COLORS.primary} />
               </TouchableOpacity>
             </View>
           </BottomSheetModal>
