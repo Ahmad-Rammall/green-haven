@@ -94,7 +94,7 @@ const FeedStackNavigator = ({ navigation }) => {
                 ),
               }}
             />
-            <FeedStack.Screen name="Conversation" component={Conversation} />
+            <FeedStack.Screen name="Conversation" component={Conversation} options={{headerRight: undefined}}/>
           </FeedStack.Navigator>
         </Chat>
       </OverlayProvider>
