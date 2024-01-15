@@ -7,6 +7,8 @@ import { StreamChat } from "stream-chat";
 import { STREAM_KEY } from "@env";
 import { useEffect } from "react";
 import { OverlayProvider, Chat } from "stream-chat-expo";
+import "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const FeedStack = createNativeStackNavigator();
 
@@ -67,20 +69,22 @@ const FeedStackNavigator = () => {
     connectUser();
   }, []);
   return (
-    <OverlayProvider>
-      <Chat client={client}>
-        <FeedStack.Navigator screenOptions={screenOptions}>
-          <FeedStack.Screen name="Feed" component={Feed} />
-          <FeedStack.Screen name="User Profile" component={FeedProfile} />
-          <FeedStack.Screen
-            name="Chat"
-            component={ChatPage}
-            options={{ headerRight: () => <View /> }}
-          />
-          <FeedStack.Screen name="Conversation" component={Conversation} />
-        </FeedStack.Navigator>
-      </Chat>
-    </OverlayProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <OverlayProvider>
+        <Chat client={client}>
+          <FeedStack.Navigator screenOptions={screenOptions}>
+            <FeedStack.Screen name="Feed" component={Feed} />
+            <FeedStack.Screen name="User Profile" component={FeedProfile} />
+            <FeedStack.Screen
+              name="Chat"
+              component={ChatPage}
+              options={{ headerRight: () => <View /> }}
+            />
+            <FeedStack.Screen name="Conversation" component={Conversation} />
+          </FeedStack.Navigator>
+        </Chat>
+      </OverlayProvider>
+    </GestureHandlerRootView>
   );
 };
 
