@@ -48,20 +48,8 @@ const screenOptions = ({ route, navigation }) => ({
   ),
 });
 
-const chatHeaderRight = () => (
-  <View>
-    <TouchableOpacity
-      onPress={() => {
-        navigation.navigate("Conversation");
-      }}
-    >
-      <Feather name="edit" size={24} color={COLORS.offwhite} />
-    </TouchableOpacity>
-  </View>
-);
-
 // Navigations inside the market section
-const FeedStackNavigator = () => {
+const FeedStackNavigator = ({ navigation }) => {
   const currentUser = useSelector((state) => state.User);
   useEffect(() => {
     const connectUser = async () => {
@@ -92,7 +80,19 @@ const FeedStackNavigator = () => {
             <FeedStack.Screen
               name="Chat"
               component={ChatPage}
-              options={{ headerRight: chatHeaderRight }}
+              options={{
+                headerRight: () => (
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("Conversation");
+                      }}
+                    >
+                      <Feather name="edit" size={24} color={COLORS.offwhite} />
+                    </TouchableOpacity>
+                  </View>
+                ),
+              }}
             />
             <FeedStack.Screen name="Conversation" component={Conversation} />
           </FeedStack.Navigator>
