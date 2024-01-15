@@ -18,12 +18,12 @@ import {
 } from "@gorhom/bottom-sheet";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
-import EmojiPicker from 'rn-emoji-keyboard';
 
 const Feed = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [commentInput, setCommentInput] = useState("");
   const [users, setUsers] = useState([]);
   const [searchedUsers, setSearchedUsers] = useState([]);
   const bottomSheetModalRef = useRef(null);
@@ -34,13 +34,6 @@ const Feed = ({ navigation }) => {
     postId: "",
     postComments: [],
   });
-  const [showEmojiBoard, setShowEmojiBoard] = useState(false);
-  const [text, setText] = useState('');
-
-  const handleEmojiPress = (emoji) => {
-    console.log(emoji)
-    setText((prevText) => prevText + emoji);
-  };
 
   const handleOpenModal = () => {
     bottomSheetModalRef.current?.present();
@@ -172,7 +165,11 @@ const Feed = ({ navigation }) => {
               ))}
             </BottomSheetScrollView>
             <View style={styles.commentInput}>
-              <TextInput placeholder="Add Comment" />
+              <TextInput
+                placeholder="Add Comment"
+                onChangeText={setCommentInput}
+                value={commentInput}
+              />
             </View>
           </BottomSheetModal>
         </BottomSheetModalProvider>

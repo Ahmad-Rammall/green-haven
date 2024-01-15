@@ -45,4 +45,14 @@ export const postDataSource = {
 
     return response;
   },
+
+  addComment: async (data) => {
+    const response = await sendRequest({
+      method: "POST",
+      body:data,
+      route: "post/comment"
+    })
+
+    return response;
+  }
 };
