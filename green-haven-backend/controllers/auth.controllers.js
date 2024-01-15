@@ -1,6 +1,14 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const StreamChat = require("stream-chat");
+
+const { STREAM_API_KEY, STREAM_API_SECRET } = process.env;
+
+const client = StreamChat.StreamChat.getInstance(
+  STREAM_API_KEY,
+  STREAM_API_SECRET
+);
 
 const register = async (req, res) => {
   const { email, password, name, role } = req.body;
@@ -8,7 +16,7 @@ const register = async (req, res) => {
     return res.status(400).json({ message: "all fields are required" });
   }
 
-  if(role != "user" && role != "seller"){
+  if (role != "user" && role != "seller") {
     return res.status(403).json(`Can't register as ${role}`);
   }
 
@@ -58,9 +66,13 @@ const login = async (req, res) => {
     { expiresIn: "1h" }
   );
 
+  // generate StreamChat token
+  const streamToken = client.createToken(user._id.toString());
+
   res.status(200).json({
     user: userDetails,
     token,
+    streamToken
   });
 };
 
