@@ -25,6 +25,7 @@ export const userSlice = createSlice({
     loggedInUser: (state, action) => {
       const {
         token,
+        streamToken,
         _id,
         email,
         username,
@@ -42,6 +43,7 @@ export const userSlice = createSlice({
       return {
         ...state,
         token,
+        streamToken,
         _id,
         email,
         username,

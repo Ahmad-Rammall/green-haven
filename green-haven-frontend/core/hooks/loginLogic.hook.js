@@ -19,7 +19,7 @@ export const useLogic = () => {
 
       local("token", response.data.token);
 
-      const { user, token } = response.data;
+      const { user, token, streamToken } = response.data;
 
       dispatch(
         loggedInUser({
@@ -35,6 +35,7 @@ export const useLogic = () => {
           following: user.following,
           followers: user.followers,
           profilePicture: user.profile_picture,
+          streamToken,
         })
       );
 
