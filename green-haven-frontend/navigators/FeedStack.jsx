@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, Feather } from "@expo/vector-icons";
 import { Feed, FeedProfile, Chat as ChatPage, Conversation } from "../screens";
 import { COLORS } from "../assets/constants";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { OverlayProvider, Chat } from "stream-chat-expo";
 import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
 
 const FeedStack = createNativeStackNavigator();
 
@@ -48,9 +48,21 @@ const screenOptions = ({ route, navigation }) => ({
   ),
 });
 
+const chatHeaderRight = () => (
+  <View>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate("Conversation");
+      }}
+    >
+      <Feather name="edit" size={24} color={COLORS.offwhite} />
+    </TouchableOpacity>
+  </View>
+);
+
 // Navigations inside the market section
 const FeedStackNavigator = () => {
-  const currentUser = useSelector(state => state.User);
+  const currentUser = useSelector((state) => state.User);
   useEffect(() => {
     const connectUser = async () => {
       await client.connectUser(
@@ -80,7 +92,7 @@ const FeedStackNavigator = () => {
             <FeedStack.Screen
               name="Chat"
               component={ChatPage}
-              options={{ headerRight: () => <View /> }}
+              options={{ headerRight: chatHeaderRight }}
             />
             <FeedStack.Screen name="Conversation" component={Conversation} />
           </FeedStack.Navigator>
