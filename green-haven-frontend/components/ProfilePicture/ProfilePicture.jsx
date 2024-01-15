@@ -22,7 +22,7 @@ const ProfilePicture = ({ image, edit, handleFormChange }) => {
   return (
     <View>
       {edit ? (
-        <TouchableOpacity onPress={pickImage}>
+        <TouchableOpacity onPress={pickImage} style={styles.imageContainer}>
           <Image
             source={
               Object.keys(profilePic).length !== 0
@@ -31,7 +31,9 @@ const ProfilePicture = ({ image, edit, handleFormChange }) => {
             }
             style={styles.image}
           />
-          <Ionicons name="camera-outline" size={22} style={styles.icon} />
+          <View style={styles.icon}>
+            <Ionicons name="camera-outline" size={20} color={COLORS.offwhite}/>
+          </View>
         </TouchableOpacity>
       ) : (
         <View>
@@ -45,11 +47,12 @@ const ProfilePicture = ({ image, edit, handleFormChange }) => {
 export default ProfilePicture;
 
 const styles = StyleSheet.create({
-  imageContainer: {},
+  imageContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
   image: {
-    borderWidth: 4,
-    borderColor: COLORS.primary,
-    borderRadius: 100,
+    borderRadius: 999,
     width: 150,
     height: 150,
     alignSelf: "center",
@@ -57,12 +60,14 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   icon: {
+    width: 35,
+    height: 35,
     position: "absolute",
-    alignSelf: "center",
-    top: "85%",
+    bottom: -10,
     backgroundColor: COLORS.primary,
-    borderRadius: 200,
+    borderRadius: 999,
     padding: 5,
-    color: COLORS.offwhite,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

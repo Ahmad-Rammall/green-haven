@@ -5,13 +5,16 @@ import { COLORS } from "../../assets/constants";
 const styles = StyleSheet.create({
   container: {
     flex:1,
+    backgroundColor: COLORS.offwhite
+  },
+  wrapper:{
     margin: SIZES.medium,
   },
   inputs:{
     marginTop: SIZES.medium
   },
   inputWrapper: {
-    borderColor: COLORS.gray,
+    borderColor: COLORS.gray2,
     backgroundColor: COLORS.lightWhite,
     borderWidth: 1,
     height: 50,

@@ -11,7 +11,8 @@ const EditProfile = () => {
     useProfileLogic();
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <View  style={styles.container} >
+      <ScrollView showsVerticalScrollIndicator={false}  style={styles.wrapper} >
       <ProfilePicture
         edit
         handleFormChange={handleFormChange}
@@ -96,6 +97,7 @@ const EditProfile = () => {
         />
       </View>
     </ScrollView>
+    </View>
   );
 };
 
