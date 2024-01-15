@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   userSearchName: {
     fontFamily: "regular",
     color: COLORS.gray,
-    fontSize: 12
+    fontSize: 12,
   },
   modalClose: {
     display: "none",
@@ -61,15 +61,27 @@ const styles = StyleSheet.create({
   modalOpen: {
     display: "flex",
     position: "absolute",
-    top: 0,
+    bottom: 0,
     width: SIZES.width,
-    height: 1100,
+    height: 500,
   },
-  modalHeader:{
+  modalHeader: {
     alignItems: "flex-end",
     paddingHorizontal: SIZES.small,
-    paddingVertical: 5
-  }
+    paddingVertical: 5,
+  },
+  commentInput: {
+    borderWidth: 1,
+    borderColor: COLORS.gray2,
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    left: 0,
+    marginHorizontal: SIZES.small,
+    marginVertical: 10,
+    padding: 5,
+    borderRadius: 10,
+  },
 });
 
 export default styles;

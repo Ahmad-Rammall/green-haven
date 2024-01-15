@@ -16,8 +16,9 @@ import {
   BottomSheetModalProvider,
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
+import EmojiPicker from 'rn-emoji-keyboard';
 
 const Feed = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
@@ -30,9 +31,16 @@ const Feed = ({ navigation }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const snapPoints = ["80%"];
   const [commentsObject, setCommentsObject] = useState({
-    postId: '',
-    postComments: []
+    postId: "",
+    postComments: [],
   });
+  const [showEmojiBoard, setShowEmojiBoard] = useState(false);
+  const [text, setText] = useState('');
+
+  const handleEmojiPress = (emoji) => {
+    console.log(emoji)
+    setText((prevText) => prevText + emoji);
+  };
 
   const handleOpenModal = () => {
     bottomSheetModalRef.current?.present();
@@ -135,30 +143,40 @@ const Feed = ({ navigation }) => {
         </View>
       </ScrollView>
 
-      <BottomSheetModalProvider>
-        <BottomSheetModal
-          ref={bottomSheetModalRef}
-          index={0}
-          snapPoints={snapPoints}
-          onDismiss={() => {
-            setModalOpen(false);
-            setModalStyle(styles.modalClose);
-          }}
-          handleComponent={null}
-        >
-          <TouchableOpacity
-            onPress={() => bottomSheetModalRef.current.close()}
-            style={styles.modalHeader}
+      <View style={modalStyle}>
+        <BottomSheetModalProvider>
+          <BottomSheetModal
+            ref={bottomSheetModalRef}
+            index={0}
+            snapPoints={snapPoints}
+            onDismiss={() => {
+              setModalOpen(false);
+              setModalStyle(styles.modalClose);
+            }}
+            handleComponent={null}
           >
-            <MaterialIcons name="highlight-remove" size={25} />
-          </TouchableOpacity>
-          <BottomSheetScrollView>
-            {commentsObject.postComments.map((comment) => (
-              <Comment key={comment._id} comment={comment} postId={commentsObject.postId} refreshPage={refreshPage}/>
-            ))}
-          </BottomSheetScrollView>
-        </BottomSheetModal>
-      </BottomSheetModalProvider>
+            <TouchableOpacity
+              onPress={() => bottomSheetModalRef.current.close()}
+              style={styles.modalHeader}
+            >
+              <MaterialIcons name="highlight-remove" size={25} />
+            </TouchableOpacity>
+            <BottomSheetScrollView>
+              {commentsObject.postComments.map((comment) => (
+                <Comment
+                  key={comment._id}
+                  comment={comment}
+                  postId={commentsObject.postId}
+                  refreshPage={refreshPage}
+                />
+              ))}
+            </BottomSheetScrollView>
+            <View style={styles.commentInput}>
+              <TextInput placeholder="Add Comment" />
+            </View>
+          </BottomSheetModal>
+        </BottomSheetModalProvider>
+      </View>
     </SafeAreaView>
   );
 };
