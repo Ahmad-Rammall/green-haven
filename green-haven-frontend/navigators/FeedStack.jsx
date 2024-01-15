@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { OverlayProvider, Chat } from "stream-chat-expo";
 import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import {useSelector} from "react-redux"
 
 const FeedStack = createNativeStackNavigator();
 
@@ -49,15 +50,16 @@ const screenOptions = ({ route, navigation }) => ({
 
 // Navigations inside the market section
 const FeedStackNavigator = () => {
+  const currentUser = useSelector(state => state.User);
   useEffect(() => {
     const connectUser = async () => {
       await client.connectUser(
         {
-          id: "testUser",
-          name: "Test User",
+          id: currentUser._id.toString(),
+          name: currentUser.username,
           image: "https://i.imgur.com/fR9Jz14.png",
         },
-        client.devToken("testUser")
+        currentUser.streamToken
       );
 
       const channel = client.channel("livestream", "public", {
