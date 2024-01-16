@@ -3,8 +3,8 @@ import { COLORS, SIZES } from "../../assets/constants";
 
 const styles = StyleSheet.create({
   container: {
-    width: 170,
-    height: 225,
+    width: SIZES.width / 2.4,
+    height: 200,
     borderRadius: SIZES.medium,
     backgroundColor: COLORS.secondary,
     marginBottom: SIZES.large,
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   image: {
     resizeMode: "contain",
     borderRadius: SIZES.small,
-    height: 170,
+    aspectRatio:1
   },
   details: {
     paddingHorizontal: 10,

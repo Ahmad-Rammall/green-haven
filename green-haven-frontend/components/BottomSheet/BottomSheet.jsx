@@ -4,11 +4,10 @@ import { ScrollView } from "react-native-gesture-handler";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
 import styles from "./sheet.styles";
 const BottomSheet = ({ plant, garden }) => {
-  const snapPoints = ["70%"];
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {plant.name === "" ? (
+      {plant.plant_name == "" ? (
         <View style={styles.emptyResult}>
           <Text style={styles.emptyResultText}>Plant Not Found</Text>
         </View>
