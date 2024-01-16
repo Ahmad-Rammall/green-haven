@@ -9,7 +9,8 @@ import { useEffect } from "react";
 import { OverlayProvider, Chat } from "stream-chat-expo";
 import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { loggedInClient } from "../core/dataSource/localDataSource/client";
 
 const FeedStack = createNativeStackNavigator();
 
@@ -51,6 +52,13 @@ const screenOptions = ({ route, navigation }) => ({
 // Navigations inside the market section
 const FeedStackNavigator = ({ navigation }) => {
   const currentUser = useSelector((state) => state.User);
+  const dispatch = useDispatch();
+
+  dispatch(
+    loggedInClient({
+      client : JSON.stringify(client)
+    })
+  );
   useEffect(() => {
     const connectUser = async () => {
       await client.connectUser(
@@ -94,7 +102,11 @@ const FeedStackNavigator = ({ navigation }) => {
                 ),
               }}
             />
-            <FeedStack.Screen name="Conversation" component={Conversation} options={{headerRight: undefined}}/>
+            <FeedStack.Screen
+              name="Conversation"
+              component={Conversation}
+              options={{ headerRight: undefined }}
+            />
           </FeedStack.Navigator>
         </Chat>
       </OverlayProvider>
