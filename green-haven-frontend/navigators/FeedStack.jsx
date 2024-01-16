@@ -11,6 +11,7 @@ import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useSelector, useDispatch } from "react-redux";
 import { loggedInClient } from "../core/dataSource/localDataSource/client";
+import flatted from "flatted";
 
 const FeedStack = createNativeStackNavigator();
 
@@ -56,7 +57,7 @@ const FeedStackNavigator = ({ navigation }) => {
 
   dispatch(
     loggedInClient({
-      client : JSON.stringify(client)
+      client : flatted.stringify(client)
     })
   );
   useEffect(() => {

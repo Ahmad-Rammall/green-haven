@@ -1,10 +1,31 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./userChat.styles";
+import {useSelector} from "react-redux";
+import flatted from "flatted";
+import { STREAM_KEY } from "@env";
+import { StreamChat } from "stream-chat";
 
 const UserChat = ({ user }) => {
+  // get client instance
+  const client = StreamChat.getInstance(STREAM_KEY);
+
+  // current loggedin user
+  const currentUser = useSelector((state) => state.User);
+
+  const createNewChannel = async () => {
+    if (user._id !== currentUser._id) {
+      const channel = client.channel("messaging", {
+        members: [user._id.toString(), currentUser._id.toString()],
+      });
+      await channel.watch();
+    } else {
+      console.log("Error: user._id and currentUser._id are the same.");
+    }
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => createNewChannel()}>
       <Image
         source={require("../../assets/images/noUserImage.png")}
         style={styles.image}

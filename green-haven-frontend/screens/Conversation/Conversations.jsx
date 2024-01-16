@@ -23,10 +23,10 @@ const Conversation = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList 
-      data={users}
-      renderItem={({ item }) => <UserChat user={item}/>}
-    />
+      <FlatList
+        data={users}
+        renderItem={({ item }) => <UserChat user={item} />}
+      />
     </View>
   );
 };
@@ -34,8 +34,8 @@ const Conversation = () => {
 export default Conversation;
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    margin: SIZES.medium
-  }
+  container: {
+    flex: 1,
+    margin: SIZES.medium,
+  },
 });
