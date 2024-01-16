@@ -45,14 +45,13 @@ const Feed = ({ navigation }) => {
   const getPosts = async () => {
     const response = await postDataSource.getPosts();
     if (response?.status === 200 || response?.status === 304) {
-      setPosts(response.data[0]);
+      setPosts(response.data);
     }
   };
 
   const getAllUsers = async () => {
     const response = await usersDataSource.getAllUsers();
     if (response?.status === 200) {
-      console.log(response.data);
       setUsers(response.data);
     }
   };
@@ -184,7 +183,7 @@ const Feed = ({ navigation }) => {
                 value={commentInput}
               />
               <TouchableOpacity onPress={() => addComment()}>
-                  <MaterialIcons name="send" size={24} color={COLORS.primary} />
+                <MaterialIcons name="send" size={24} color={COLORS.primary} />
               </TouchableOpacity>
             </View>
           </BottomSheetModal>
