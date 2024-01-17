@@ -5,18 +5,19 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor: COLORS.secondary,
         borderRadius: 5,
-        padding: 10,
+        padding: 15,
         marginBottom: 15,
     },
     imageContainer:{
         width: "100%",
-        height: 220
+        height: 250,
     },
     postImage:{
-        resizeMode: "cover",
+        resizeMode: "contain",
         width: "100%",
         height: "100%",
         borderRadius: 5,
+        alignSelf: "center",
     },
     description:{
         fontFamily: "regular",

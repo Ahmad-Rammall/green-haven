@@ -88,15 +88,15 @@ const Post = ({ post, refreshPage, handleOpenModal, setCommentsObject }) => {
             onPress={() => handleCommentClick()}
           >
             <Text>{commentCounter}</Text>
-            <FontAwesome name="comment-o" size={30} />
+            <FontAwesome name="comment-o" size={23} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleLike()}>
             <View style={styles.button}>
               <Text>{likeCounter}</Text>
               {isLiked ? (
-                <Ionicons name="heart" size={30} color={COLORS.red} />
+                <Ionicons name="heart" size={23} color={COLORS.red} />
               ) : (
-                <Ionicons name="heart-outline" size={30} />
+                <Ionicons name="heart-outline" size={23} />
               )}
             </View>
           </TouchableOpacity>
