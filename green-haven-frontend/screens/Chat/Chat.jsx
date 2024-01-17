@@ -1,21 +1,29 @@
-import { ScrollView, View } from "react-native";
 import React, { useState } from "react";
-import UserChat from "../../components/UserChat/UserChat";
-import styles from "./chat.styles";
 import {
   ChannelList,
   Channel,
   MessageList,
   MessageInput,
 } from "stream-chat-expo";
-import { useEffect } from "react";
+import {useRoute} from "@react-navigation/native";
+import { STREAM_KEY } from "@env";
+import { StreamChat } from "stream-chat";
 
 const Chat = () => {
   const [channel, setChannel] = useState();
+  const route = useRoute();
+  const channelId = route.params?.channelId;
+  const client = StreamChat.getInstance(STREAM_KEY);
 
-  useEffect(() => {
-    console.log(channel);
-  }, [channel]);
+  if(channelId){
+    const channel = client.channel('messaging', channelId);
+    return (
+      <Channel channel={channel}>
+        <MessageList />
+        <MessageInput />
+      </Channel>
+    );
+  }
 
   if (channel) {
     return (
