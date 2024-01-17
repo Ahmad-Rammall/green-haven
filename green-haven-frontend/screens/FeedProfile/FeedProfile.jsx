@@ -15,17 +15,34 @@ import { Post } from "../../components";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 import { profileDataSource } from "../../core/dataSource/remoteDataSource/profile";
 import { useSelector } from "react-redux";
+import { STREAM_KEY } from "@env";
+import { StreamChat } from "stream-chat";
 
 const FeedProfile = () => {
   const route = useRoute();
   const { user, profilePicture, refreshPage } = route.params;
   const currentUser = useSelector((state) => state.User);
   const [followersCount, setFollowersCount] = useState(user.followers.length);
-  console.log(user.followers);
+  const navigation = useNavigation();
   const [isFollowing, setIsFollowing] = useState(
     user.followers.includes(String(currentUser._id))
   );
   const [posts, setPosts] = useState([]);
+
+  // get client instance
+  const client = StreamChat.getInstance(STREAM_KEY);
+
+  const createNewChannel = async () => {
+    if (user._id !== currentUser._id) {
+      const channel = client.channel("messaging", {
+        members: [user._id.toString(), currentUser._id.toString()],
+      });
+      await channel.watch();
+      navigation.navigate("Chat", { channelId: channel.id });
+    } else {
+      console.log("Error: user._id and currentUser._id are the same.");
+    }
+  };
 
   const getUserPosts = async () => {
     const userId = user._id;
@@ -91,7 +108,10 @@ const FeedProfile = () => {
               )}
 
               {/* Message Button */}
-              <TouchableOpacity style={[styles.messageBtn, styles.btn]}>
+              <TouchableOpacity
+                style={[styles.messageBtn, styles.btn]}
+                onPress={() => createNewChannel()}
+              >
                 <Ionicons
                   name="paper-plane-outline"
                   size={24}
