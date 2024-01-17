@@ -22,10 +22,19 @@ const styles = StyleSheet.create({
     width: SIZES.width,
     height: 1100,
   },
+  scrollViewContainer: {
+    flex: 1,
+  },
+  scrollViewContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   noPlants:{
     flex:1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "red"
   },
   noPlantsText:{
     color: COLORS.gray2,

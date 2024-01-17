@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  RefreshControl,
+} from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { GardenItem, BottomSheet } from "../../components";
 import styles from "./garden.styles";
@@ -15,6 +21,7 @@ const Garden = () => {
   const bottomSheetModalRef = useRef(null);
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [modalOpen, setModalOpen] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const snapPoints = ["75%"];
 
   const getPlants = async () => {
@@ -30,6 +37,15 @@ const Garden = () => {
     setModalStyle(styles.modalOpen);
   };
 
+  const handleRefresh = async () => {
+    setRefresh(true);
+    try {
+      await getPlants();
+    } finally {
+      setRefresh(false);
+    }
+  };
+
   useEffect(() => {
     getPlants();
   }, []);
@@ -37,7 +53,12 @@ const Garden = () => {
     <View style={styles.container}>
       {plants.length !== 0 ? (
         <View>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl refreshing={refresh} onRefresh={handleRefresh} />
+            }
+          >
             <View style={styles.wrapper}>
               {plants.map((plant) => (
                 <GardenItem
@@ -68,7 +89,15 @@ const Garden = () => {
         </View>
       ) : (
         <View style={styles.noPlants}>
-          <Text style={styles.noPlantsText}>No Saved Plants</Text>
+          <ScrollView
+            style={styles.scrollViewContainer}
+            contentContainerStyle={styles.scrollViewContent}
+            refreshControl={
+              <RefreshControl refreshing={refresh} onRefresh={handleRefresh} />
+            }
+          >
+            <Text style={styles.noPlantsText}>No Saved Plants</Text>
+          </ScrollView>
         </View>
       )}
     </View>
