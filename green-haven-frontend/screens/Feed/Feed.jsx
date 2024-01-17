@@ -6,7 +6,14 @@ import {
   TouchableOpacity,
   RefreshControl,
 } from "react-native";
-import { Post, SearchBar, Story, PostCreator, Comment } from "../../components";
+import {
+  Post,
+  SearchBar,
+  Story,
+  PostCreator,
+  Comment,
+  LoadingModal,
+} from "../../components";
 import styles from "./feed.styles";
 import React, { useEffect, useState, useRef } from "react";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
@@ -31,6 +38,7 @@ const Feed = ({ navigation }) => {
   const bottomSheetModalRef = useRef(null);
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const snapPoints = ["80%"];
   const [commentsObject, setCommentsObject] = useState({
     postId: "",
@@ -44,10 +52,11 @@ const Feed = ({ navigation }) => {
   };
 
   const getPosts = async () => {
+    setLoading(true)
     const response = await postDataSource.getPosts();
     if (response?.status === 200 || response?.status === 304) {
       setPosts(response.data);
-      console.log(response.data)
+      setLoading(false)
     }
   };
 
@@ -72,12 +81,14 @@ const Feed = ({ navigation }) => {
 
   const refreshPage = async () => {
     setRefresh(true);
-    setSearchInput("")
+    setLoading(true);
+    setSearchInput("");
     try {
       await getPosts();
       await getAllUsers();
     } finally {
       setRefresh(false);
+      setLoading(false);
     }
   };
 
@@ -146,7 +157,9 @@ const Feed = ({ navigation }) => {
 
           <PostCreator refresh={refreshPage} />
 
-          {posts ? (
+          {loading ? (
+            <LoadingModal />
+          ) : posts ? (
             posts.map((post) => (
               <Post
                 key={post._id}
