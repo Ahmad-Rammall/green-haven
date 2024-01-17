@@ -6,9 +6,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigation from "./navigators/BottomTabNavigation";
 import SellerTabNavigation from "./navigators/SellerTabNavigation";
 import { Login, Register } from "./screens";
+import {StatusBar} from "expo-status-bar"
 
 import { Provider } from "react-redux";
 import { store } from "./core/dataSource/localDataSource/store";
+import { COLORS } from "./assets/constants";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +37,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
+      <StatusBar style="dark" backgroundColor={COLORS.offwhite} translucent />
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Login"
