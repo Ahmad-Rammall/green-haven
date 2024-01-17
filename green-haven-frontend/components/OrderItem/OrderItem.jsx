@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import styles from "./orderItem.styles";
 import { Ionicons } from "@expo/vector-icons";
-import DeleteModal from "../DeleteModal/DeleteModal";
+import DeleteModal from "../Modals/DeleteModal";
 import { orderDataSource } from "../../core/dataSource/remoteDataSource/order";
 
 const OrderItem = ({ order, refresh }) => {

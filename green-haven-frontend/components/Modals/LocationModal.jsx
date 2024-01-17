@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Modal } from "react-native";
-import styles from "../DeleteModal/modal.styles";
+import styles from "./modal.styles";
 import { COLORS } from "../../assets/constants";
 
 const LocationModal = ({
