@@ -1,4 +1,4 @@
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView, Text, RefreshControl } from "react-native";
 import React, { useEffect, useState } from "react";
 import { OrderItem, LoadingModal } from "../../components";
 import styles from "./order.styles";
@@ -22,13 +22,19 @@ const Order = () => {
     }
   };
 
-  const refreshPage = () => {
-    setRefresh(!refresh);
+  const refreshPage = async () => {
+    setRefresh(true);
+
+    try {
+      await getOrders();
+    } finally {
+      setRefresh(false);
+    }
   };
 
   useEffect(() => {
     getOrders();
-  }, [refresh]);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -44,9 +50,17 @@ const Order = () => {
             <ScrollView
               style={styles.wrapper}
               showsVerticalScrollIndicator={false}
+              refreshControl={<RefreshControl
+                refreshing={refresh}
+                onRefresh={refreshPage}
+              />}
             >
               {orders.map((order) => (
-                <OrderItem key={order._id} order={order} refresh={refreshPage} />
+                <OrderItem
+                  key={order._id}
+                  order={order}
+                  refresh={refreshPage}
+                />
               ))}
             </ScrollView>
           )}
