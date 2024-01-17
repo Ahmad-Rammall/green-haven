@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
     marginVertical: SIZES.medium,
     height: 50,
+    borderWidth: 0.5,
+    borderColor: "#389F5F"
   },
   searchIcon: {
     marginHorizontal: 10,
