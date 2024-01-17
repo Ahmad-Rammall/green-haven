@@ -12,7 +12,7 @@ const LoadingModal = ({ isVisible, onClose, onDelete }) => {
       onRequestClose={onClose}
     >
       <View style={styles.modalContainer}>
-        <ActivityIndicator />
+        <ActivityIndicator size={"large"} color={COLORS.primary}/>
       </View>
     </Modal>
   )
