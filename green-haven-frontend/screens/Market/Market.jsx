@@ -40,6 +40,7 @@ const Market = () => {
       const response = await marketDataSource.getAllSellerProducts();
       if (response) {
         setProducts(response.data.products);
+        setLoading(false)
       }
     } catch (error) {
       console.log(error);
