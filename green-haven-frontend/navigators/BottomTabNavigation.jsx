@@ -31,7 +31,7 @@ const gardenScreenOptions = ({ route }) => ({
   tabBarIcon: ({ focused }) => {
     return (
       <Ionicons
-        name={focused ? "ios-basket" : "ios-basket-outline"}
+        name={focused ? "home" : "home-outline"}
         size={27}
         color={focused ? COLORS.primary : COLORS.gray2}
       />
