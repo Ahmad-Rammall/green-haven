@@ -1,5 +1,5 @@
 import {
-  StyleSheet,
+  RefreshControl,
   Text,
   View,
   ScrollView,
@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 const Market = () => {
   const [products, setProducts] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
-  const [refresh, setRefresh] = useState(false)
+  const [refresh, setRefresh] = useState(false);
 
   // get loggedin user
   const user = useSelector((state) => state.User);
@@ -44,10 +44,19 @@ const Market = () => {
   const closeModal = () => {
     setIsVisible(false);
   };
-
-  const handleRefresh = () => {
-    setRefresh(!refresh)
-  }
+  const handleRefresh = async () => {
+    setRefresh(true);
+  
+    try {
+      if (user.role === "user") {
+        await getAllProducts();
+      } else if (user.role === "seller") {
+        await getAllSellerProducts();
+      }
+    } finally {
+      setRefresh(false);
+    }
+  };
 
   useEffect(() => {
     if (user.role === "user") {
@@ -55,7 +64,7 @@ const Market = () => {
     } else if (user.role === "seller") {
       getAllSellerProducts();
     }
-  }, [user, refresh]);
+  }, [user]);
 
   return (
     <View style={styles.container}>
@@ -63,6 +72,12 @@ const Market = () => {
         style={styles.wrapper}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refresh}
+            onRefresh={handleRefresh}
+          />
+        }
       >
         <SearchBar placeholder="What Are You Looking For ?" />
         <View style={styles.productsContainer}>
@@ -81,7 +96,11 @@ const Market = () => {
             <Text style={styles.addBtnText}>+</Text>
           </TouchableOpacity>
 
-          <ProductModal isVisible={isVisible} onClose={closeModal} refresh={handleRefresh}/>
+          <ProductModal
+            isVisible={isVisible}
+            onClose={closeModal}
+            refresh={handleRefresh}
+          />
         </>
       )}
     </View>
