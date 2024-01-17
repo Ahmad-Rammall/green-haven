@@ -23,7 +23,7 @@ const commonScreenOptions = {
   ),
 };
 
-const userScreenOptions = {
+const userScreenOptions = ({navigation}) => ({
   ...commonScreenOptions,
   headerRight: () => (
     <View style={styles.headerButtonsContainer}>
@@ -37,7 +37,7 @@ const userScreenOptions = {
       </TouchableOpacity>
     </View>
   ),
-};
+});
 
 // Navigations inside the market section
 const MarketStackNavigator = () => {
