@@ -8,8 +8,7 @@ import { useSelector } from "react-redux";
 
 const MarketStack = createNativeStackNavigator();
 
-const screenOptions = ({ navigation, route }) => ({
-  headerShown: true,
+const commonScreenOptions = {
   headerStyle: {
     backgroundColor: COLORS.primary,
   },
@@ -18,12 +17,14 @@ const screenOptions = ({ navigation, route }) => ({
   headerTitleStyle: {
     fontWeight: "light",
   },
-  headerTitle: route.name,
   headerBackTitleVisible: true,
   headerBackImage: ({ tintColor }) => (
     <Ionicons name="ios-arrow-back" size={24} color={tintColor} />
   ),
-  // Cart Icon On The Right
+};
+
+const userScreenOptions = {
+  ...commonScreenOptions,
   headerRight: () => (
     <View style={styles.headerButtonsContainer}>
       <TouchableOpacity
@@ -36,32 +37,13 @@ const screenOptions = ({ navigation, route }) => ({
       </TouchableOpacity>
     </View>
   ),
-});
-
-const sellerScreenOptions = ({ route }) => ({
-  headerShown: true,
-  headerStyle: {
-    backgroundColor: COLORS.primary,
-  },
-  headerTintColor: COLORS.offwhite,
-  headerTitleAlign: "center",
-  headerTitleStyle: {
-    fontWeight: "light",
-  },
-  headerTitle: route.name,
-  headerBackTitleVisible: true,
-  headerBackImage: ({ tintColor }) => (
-    <Ionicons name="ios-arrow-back" size={24} color={tintColor} />
-  ),
-  // Cart Icon On The Right
-  headerRight: undefined,
-});
+};
 
 // Navigations inside the market section
 const MarketStackNavigator = () => {
   const user = useSelector((state) => state.User);
   return user.role === "user" ? (
-    <MarketStack.Navigator screenOptions={screenOptions}>
+    <MarketStack.Navigator screenOptions={userScreenOptions}>
       <MarketStack.Screen name="Market" component={Market} />
       <MarketStack.Screen name="Product Details" component={ProductDetails} />
       <MarketStack.Screen
@@ -71,7 +53,7 @@ const MarketStackNavigator = () => {
       />
     </MarketStack.Navigator>
   ) : (
-    <MarketStack.Navigator screenOptions={sellerScreenOptions}>
+    <MarketStack.Navigator screenOptions={commonScreenOptions}>
       <MarketStack.Screen name="Market" component={Market} />
       <MarketStack.Screen name="Product Details" component={ProductDetails} />
     </MarketStack.Navigator>
