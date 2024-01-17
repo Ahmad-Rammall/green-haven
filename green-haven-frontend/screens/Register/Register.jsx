@@ -186,7 +186,7 @@ const Register = ({ navigation }) => {
                     color={COLORS.gray}
                   />
                   <TextInput
-                    placeholder="confirm Password"
+                    placeholder="Confirm Password"
                     onFocus={() => setFieldTouched("confirmPassword")}
                     onBlur={() => setFieldTouched("confirmPassword", "")}
                     autoCapitalize="none"
