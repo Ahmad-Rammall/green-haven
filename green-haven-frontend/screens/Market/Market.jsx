@@ -4,8 +4,9 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
+  ActivityIndicator
 } from "react-native";
-import { ProductCard, SearchBar, ProductModal } from "../../components";
+import { ProductCard, SearchBar, ProductModal, LoadingModal } from "../../components";
 import styles from "./market.styles";
 import React, { useState, useEffect } from "react";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
@@ -15,6 +16,7 @@ const Market = () => {
   const [products, setProducts] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // get loggedin user
   const user = useSelector((state) => state.User);
@@ -22,10 +24,13 @@ const Market = () => {
   // get all market's products
   const getAllProducts = async () => {
     try {
+      setLoading(true)
       const response = await marketDataSource.getAllProducts();
       setProducts(response.data.products);
     } catch (error) {
       console.log(error);
+    } finally{
+      setLoading(false)
     }
   };
 
@@ -81,9 +86,13 @@ const Market = () => {
       >
         <SearchBar placeholder="What Are You Looking For ?" />
         <View style={styles.productsContainer}>
-          {products.map((product) => (
+        {loading ? (
+          <LoadingModal />
+        ) : (
+          products.map((product) => (
             <ProductCard key={product._id} product={product} />
-          ))}
+          ))
+        )}
         </View>
       </ScrollView>
 
