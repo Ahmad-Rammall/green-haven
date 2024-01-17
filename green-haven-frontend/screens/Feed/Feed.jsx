@@ -4,6 +4,7 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
+  RefreshControl,
 } from "react-native";
 import { Post, SearchBar, Story, PostCreator, Comment } from "../../components";
 import styles from "./feed.styles";
@@ -46,6 +47,7 @@ const Feed = ({ navigation }) => {
     const response = await postDataSource.getPosts();
     if (response?.status === 200 || response?.status === 304) {
       setPosts(response.data);
+      console.log(response.data)
     }
   };
 
@@ -68,14 +70,23 @@ const Feed = ({ navigation }) => {
     }
   };
 
-  const refreshPage = () => {
-    setRefresh(!refresh);
+  const refreshPage = async () => {
+    setRefresh(true);
+    setSearchInput("")
+    try {
+      await getPosts();
+      await getAllUsers();
+    } finally {
+      setRefresh(false);
+    }
   };
+
+  const handleRefresh = async () => {};
 
   useEffect(() => {
     getPosts();
     getAllUsers();
-  }, [refresh]);
+  }, []);
 
   useEffect(() => {
     setSearchedUsers([]);
@@ -96,7 +107,12 @@ const Feed = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refresh} onRefresh={refreshPage} />
+        }
+      >
         <View style={styles.postsWrapper}>
           <SearchBar
             placeholder={"Search For Users"}
