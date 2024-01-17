@@ -17,7 +17,7 @@ const bottomTabScreenOptions = {
   headerShown: false,
 };
 
-const gardenScreenOptions = ({ route }) => ({
+const gardenScreenOptions = () => ({
   headerShown: true,
   headerStyle: {
     backgroundColor: COLORS.primary,
@@ -69,7 +69,7 @@ const BottomTabNavigation = () => {
             return (
               <Ionicons
                 name={focused ? "scan-circle" : "scan-circle-outline"}
-                size={30}
+                size={27}
                 color={focused ? COLORS.primary : COLORS.gray2}
               />
             );
@@ -104,7 +104,7 @@ const BottomTabNavigation = () => {
             return (
               <Ionicons
                 name={focused ? "person" : "person-outline"}
-                size={27}
+                size={25}
                 color={focused ? COLORS.primary : COLORS.gray2}
               />
             );
