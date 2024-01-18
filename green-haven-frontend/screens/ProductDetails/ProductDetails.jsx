@@ -15,7 +15,7 @@ import { Button, ProductModal, DeleteModal } from "../../components";
 import { useSelector } from "react-redux";
 import { COLORS } from "../../assets/constants";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
-import {useNavigation} from "@react-navigation/native"
+import { useNavigation } from "@react-navigation/native";
 
 const ProductDetails = () => {
   const route = useRoute();
@@ -45,9 +45,9 @@ const ProductDetails = () => {
     try {
       const response = await marketDataSource.deleteProduct(productId);
       console.log(response);
-      if(response?.status === 200){
+      if (response?.status === 200) {
         Toast.show("Product Deleted !", Toast.LONG);
-        navigation.navigate("Market")
+        navigation.navigate("Market");
       }
     } catch (error) {
       console.log(error);
@@ -56,31 +56,34 @@ const ProductDetails = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <View>
         <Image source={{ uri: imageUrl }} style={styles.image} />
 
         <View style={styles.details}>
-          <View style={styles.titleRow}>
-            <Text style={styles.title}>{name}</Text>
-            <View style={styles.priceWrapper}>
-              <Text style={styles.price}>$ {price}</Text>
+          <ScrollView contentContainerStyle={styles.detailsWrapper} showsVerticalScrollIndicator={false}>
+            <View style={styles.titleRow}>
+              <Text style={styles.title}>{name}</Text>
+              <View style={styles.priceWrapper}>
+                <Text style={styles.price}>$ {price}</Text>
+              </View>
             </View>
-          </View>
 
-          <View style={styles.descriptionWrapper}>
-            <Text style={styles.description}>Description</Text>
-            <Text style={styles.descText}>{description}</Text>
-          </View>
+            <View style={styles.descriptionWrapper}>
+              <Text style={styles.description}>Description</Text>
+              <Text style={styles.descText}>{description}</Text>
+            </View>
+          </ScrollView>
 
           {currentUser.role !== "seller" ? (
-            <Button
-              btnText="Add To Cart"
-              isValid={true}
-              style={styles.cartBtn}
-              onPress={addToCart}
-            />
+            <View style={styles.fixedBottomContainer}>
+              <Button
+                btnText="Add To Cart"
+                isValid={true}
+                onPress={addToCart}
+              />
+            </View>
           ) : (
-            <View style={styles.sellerOptions}>
+            <View style={[styles.sellerOptions, styles.fixedBottomContainer]}>
               <TouchableOpacity
                 style={[styles.sellerOption, styles.deleteBtn]}
                 onPress={() => setIsDeleteVisible(true)}
@@ -101,11 +104,15 @@ const ProductDetails = () => {
                 details={route.params}
               />
 
-              <DeleteModal isVisible={isDeleteVisible} onClose={onClose} onDelete={deleteProduct}/>
+              <DeleteModal
+                isVisible={isDeleteVisible}
+                onClose={onClose}
+                onDelete={deleteProduct}
+              />
             </View>
           )}
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };

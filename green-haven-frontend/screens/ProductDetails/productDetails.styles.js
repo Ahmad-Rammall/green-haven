@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: SIZES.medium,
     borderTopRightRadius: SIZES.medium,
     paddingHorizontal: SIZES.xLarge,
+    height: 315,
   },
   titleRow: {
     flexDirection: "row",
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     top: 20,
   },
+  detailsWrapper: { paddingBottom: 60 },
   title: {
     fontFamily: "bold",
     fontSize: SIZES.large,
@@ -45,29 +47,36 @@ const styles = StyleSheet.create({
     fontSize: SIZES.small,
     textAlign: "justify",
   },
-  sellerOptions:{
+  sellerOptions: {
     flexDirection: "row",
-    width:"100%",
+    width: "100%",
     justifyContent: "space-between",
   },
-  sellerOption:{  
+  sellerOption: {
     padding: 5,
     borderRadius: SIZES.medium,
-    marginBottom: SIZES.small
+    marginBottom: SIZES.small,
   },
-  updateBtn:{
+  updateBtn: {
     backgroundColor: COLORS.primary,
-    width:"65%",
+    width: "65%",
   },
-  deleteBtn:{
+  deleteBtn: {
     backgroundColor: COLORS.red,
-    width:"30%",
+    width: "30%",
   },
   optionTxt: {
     color: COLORS.white,
     textAlign: "center",
     fontFamily: "semibold",
-    fontSize: SIZES.medium
+    fontSize: SIZES.medium,
+  },
+  fixedBottomContainer: {
+    position: "absolute",
+    bottom: 0,
+    right: SIZES.large,
+    left: SIZES.large,
+    backgroundColor: COLORS.offwhite,
   },
 });
 
