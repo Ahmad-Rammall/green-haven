@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../assets/constants/index";
-import { Garden } from "../screens";
+import { Garden, Home } from "../screens";
 import MarketStackNavigator from "./MarketStack";
 import ScannerStackNavigator from "./ScannerStack";
 import ProfileStackNavigator from "./ProfileStack";
@@ -78,7 +78,7 @@ const BottomTabNavigation = () => {
       />
       <Tab.Screen
         name="GardenPage"
-        component={Garden}
+        component={Home}
         options={gardenScreenOptions}
       />
       <Tab.Screen

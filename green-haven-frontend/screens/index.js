@@ -14,6 +14,7 @@ import FeedProfile from "./FeedProfile/FeedProfile";
 import Chat from "./Chat/Chat";
 import Conversation from "./Conversation/Conversations";
 import Order from "./Order/Order";
+import Home from "./Home/Home";
 
 export {
   Feed,
@@ -32,4 +33,5 @@ export {
   Chat,
   Conversation,
   Order,
+  Home
 };

@@ -38,6 +38,7 @@
     "react-native-dotenv": "^3.4.9",
     "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "~2.9.0",
+    "react-native-gifted-chat": "^2.4.0",
     "react-native-image": "^0.1.1",
     "react-native-image-crop-picker": "^0.40.2",
     "react-native-image-picker": "^7.1.0",
