@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { COLORS } from "../../assets/constants";
 import styles from "./productModal.styles";
-import { ImageContainer } from "../../components";
+import { ImageContainer } from "../ImageContainer/ImageContainer";
 import { PUBLIC_FOLDER } from "@env";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
 import Toast from "react-native-simple-toast";
