@@ -1,14 +1,37 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useCallback } from "react";
+import { GiftedChat } from "react-native-gifted-chat";
 
-const ChatBot = () => {
+const ChatBot = ({ messages, setMessages }) => {
+  const onSend = useCallback((messages) => {
+    setMessages((previousMessages) =>
+      GiftedChat.append(previousMessages, messages)
+    );
+    const botMessage = {
+      _id: new Date().getTime(),
+      text: "xxx",
+      user: {
+        _id: 1,
+        name: "ChatBot",
+      },
+    };
+
+    setTimeout(() => {
+      setMessages((previousMessages) =>
+        GiftedChat.append(previousMessages, botMessage)
+      );
+    }, 1000);
+  }, []);
+
   return (
-    <View>
-      <Text>ChatBot</Text>
-    </View>
-  )
-}
+    <GiftedChat
+      messages={messages}
+      onSend={(messages) => onSend(messages)}
+      user={{
+        _id: 2,
+        createdAt: new Date(),
+      }}
+    />
+  );
+};
 
-export default ChatBot
-
-const styles = StyleSheet.create({})
+export default ChatBot;
