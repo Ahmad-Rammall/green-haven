@@ -14,10 +14,16 @@ const styles = StyleSheet.create({
   image: {
     marginBottom: 50,
   },
-  button: {
-    padding: 10,
+  button:(bgColor)=>( {
+    padding: 5,
     color: "blue",
-  },
+    backgroundColor: bgColor,
+    borderRadius: 5,
+    color: COLORS.offwhite,
+    fontFamily: "semibold",
+    width: 70,
+    textAlign: "center"
+  }),
   inputs: { marginBottom: SIZES.large },
   label: {
     fontFamily: "regular",

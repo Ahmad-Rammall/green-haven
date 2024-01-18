@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { imagePicker } from "../../core/helpers/imagePicker";
 import { useSelector } from "react-redux";
 
-const ProfilePicture = ({ image, edit, handleFormChange }) => {
+const ImageContainer = ({ image, edit, handleFormChange }) => {
   const [selectedImage, setSelectedImage] = useState("");
 
   // Pick Image from Device
@@ -36,7 +36,7 @@ const ProfilePicture = ({ image, edit, handleFormChange }) => {
   );
 };
 
-export default ProfilePicture;
+export default ImageContainer;
 
 const styles = StyleSheet.create({
   imageContainer: {

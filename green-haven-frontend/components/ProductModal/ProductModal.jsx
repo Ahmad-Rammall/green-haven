@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { COLORS } from "../../assets/constants";
 import styles from "./productModal.styles";
-import { ImageContainer } from "../ImageContainer/ImageContainer";
+import ImageContainer from "../ImageContainer/ImageContainer";
 import { PUBLIC_FOLDER } from "@env";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
 import Toast from "react-native-simple-toast";
@@ -207,11 +207,11 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
 
               <View style={styles.buttonContainer}>
                 <TouchableOpacity onPress={onClose}>
-                  <Text style={styles.button}>Cancel</Text>
+                  <Text style={styles.button(COLORS.gray2)}>Cancel</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity>
-                  <Text style={styles.button} onPress={handleSubmit}>
+                  <Text style={styles.button(COLORS.primary)} onPress={handleSubmit}>
                     Add
                   </Text>
                 </TouchableOpacity>
