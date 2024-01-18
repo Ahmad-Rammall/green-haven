@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     top: 20,
   },
-  detailsWrapper: { paddingBottom: 60 },
+  detailsWrapper: { paddingBottom: 65 },
   title: {
     fontFamily: "bold",
     fontSize: SIZES.large,
@@ -49,21 +49,19 @@ const styles = StyleSheet.create({
   },
   sellerOptions: {
     flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
   },
   sellerOption: {
     padding: 5,
-    borderRadius: SIZES.medium,
-    marginBottom: SIZES.small,
+    borderRadius: 10,
+    marginVertical: SIZES.small,
+    width: 130
   },
   updateBtn: {
     backgroundColor: COLORS.primary,
-    width: "65%",
   },
   deleteBtn: {
     backgroundColor: COLORS.red,
-    width: "30%",
   },
   optionTxt: {
     color: COLORS.white,
