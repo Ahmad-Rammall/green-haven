@@ -27,6 +27,7 @@ import {
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
+import {useSelector} from "react-redux"
 
 const Feed = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
@@ -44,6 +45,8 @@ const Feed = ({ navigation }) => {
     postId: "",
     postComments: [],
   });
+
+  const currentUser = useSelector(state => state.User);
 
   const handleOpenModal = () => {
     bottomSheetModalRef.current?.present();
@@ -73,9 +76,20 @@ const Feed = ({ navigation }) => {
       postId: commentsObject.postId,
     });
     if (response?.status === 200) {
+      const newComment = {
+        text: commentInput,
+        likes: [],
+        user: {
+          profile_picture: currentUser.profilePicture,
+          name: currentUser.username
+        }
+      }
       setCommentInput("");
-      setRefresh(!refresh);
-      bottomSheetModalRef.current.close();
+      setCommentsObject((prevCommentsObject) => ({
+        ...prevCommentsObject,
+        postComments: [...prevCommentsObject.postComments, newComment],
+      }));
+      refreshPage();
     }
   };
 
@@ -91,8 +105,6 @@ const Feed = ({ navigation }) => {
       setLoading(false);
     }
   };
-
-  const handleRefresh = async () => {};
 
   useEffect(() => {
     getPosts();
