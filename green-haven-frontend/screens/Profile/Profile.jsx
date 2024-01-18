@@ -30,7 +30,7 @@ const Profile = ({ navigation }) => {
           <View style={styles.optionButtons}>
             <TouchableOpacity
               style={[styles.optionBtn, styles.shadow]}
-              onPress={() => navigation.navigate("Edit Profile")}
+              onPress={() => navigation.navigate("Edit Profile", {userProfilePicture})}
             >
               <Text style={styles.optionTxt}>Edit Profile</Text>
               <Ionicons name="arrow-forward-outline" size={24} />

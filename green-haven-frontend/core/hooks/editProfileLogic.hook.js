@@ -77,7 +77,7 @@ export const useProfileLogic = () => {
           profilePicture: updatedUser.profile_picture,
         })
       );
-
+      Toast.show("Profile Updated Successfully.", Toast.LONG);
       navigation.navigate("Profile");
     } catch (error) {
       Toast.show(error?.message, Toast.LONG);
