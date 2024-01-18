@@ -3,42 +3,28 @@ import { COLORS } from "../../assets/constants";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { imagePicker } from "../../core/helpers/imagePicker";
-import { PUBLIC_FOLDER } from "@env";
 import { useSelector } from "react-redux";
 
 const ProfilePicture = ({ image, edit, handleFormChange }) => {
-  const [profilePic, setProfilePic] = useState({});
-  const currentUser = useSelector((state) => state.User);
-  console.log("image: "+ image)
+  const [selectedImage, setSelectedImage] = useState("");
 
   // Pick Image from Device
   const pickImage = async () => {
     const result = await imagePicker();
-    setProfilePic(result.assets[0].uri);
+    setSelectedImage(result.assets[0].uri);
     handleFormChange("profilePic", result.assets[0]);
   };
-
-  let imagePath = PUBLIC_FOLDER + "profile-pics/" + currentUser.profilePicture;
-
-  if(image){
-     imagePath =
-    PUBLIC_FOLDER + "products-pics/" + image;
-  }
 
   return (
     <View>
       {edit ? (
         <TouchableOpacity onPress={pickImage} style={styles.imageContainer}>
           <Image
-            source={
-              Object.keys(profilePic).length !== 0
-                ? { uri: profilePic }
-                : { uri: imagePath }
-            }
+            source={selectedImage === "" ? { uri: image } : { uri: selectedImage }}
             style={styles.image}
           />
           <View style={styles.icon}>
-            <Ionicons name="camera-outline" size={20} color={COLORS.offwhite}/>
+            <Ionicons name="camera-outline" size={20} color={COLORS.offwhite} />
           </View>
         </TouchableOpacity>
       ) : (

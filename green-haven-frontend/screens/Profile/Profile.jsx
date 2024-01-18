@@ -4,7 +4,7 @@ import styles from "./profile.styles";
 import { Button } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
-import { ProfilePicture } from "../../components";
+import { ImageContainer } from "../../components";
 import { useSelector } from "react-redux";
 import { PUBLIC_FOLDER } from "@env";
 import { local } from "../../core/helpers/localStorage";
@@ -22,7 +22,7 @@ const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <ProfilePicture image={{ uri: userProfilePicture }} />
+        <ImageContainer image={{ uri: userProfilePicture }} />
         <Text style={styles.name}>{currentUser.username}</Text>
         <Text style={styles.bio}>{currentUser.bio}</Text>
 

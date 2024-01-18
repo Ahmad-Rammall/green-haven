@@ -5,13 +5,17 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { COLORS } from "../../assets/constants";
 import styles from "./productModal.styles";
-import { ProfilePicture } from "../../components";
+import { ImageContainer } from "../../components";
 import { PUBLIC_FOLDER } from "@env";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
 import Toast from "react-native-simple-toast";
 
 const ProductModal = ({ isVisible, onClose, refresh, details }) => {
   const [image, setImage] = useState({});
+  console.log(details);
+
+  // if plant has no image
+  const noProductImage = PUBLIC_FOLDER + "products-pics/noProductImage.jpg";
 
   const validationSchema = Yup.object({
     description: Yup.string()
@@ -77,7 +81,7 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
 
     try {
       const response = await marketDataSource.updateProduct(data);
-      console.log(response)
+      console.log(response);
       if (response?.status === 200) {
         Toast.show("Product Updated !", Toast.LONG);
         onClose();
@@ -91,8 +95,8 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
     <Modal isVisible={isVisible} onRequestClose={onClose}>
       <View style={styles.modalContainer}>
         <View style={styles.image}>
-          <ProfilePicture
-            image={details ? details.imageUrl : "noProductImage.jpg"}
+          <ImageContainer
+            image={details ? details.imageUrl : noProductImage}
             handleFormChange={handleImageChange}
             edit
           />
@@ -107,18 +111,17 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
                   name: details.name,
                 }
               : {
-                description: "",
-                price: "",
-                name: "",
-              }
+                  description: "",
+                  price: "",
+                  name: "",
+                }
           }
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            if(details){
-              handleUpdateProduct(values)
-            }
-            else{
-              handleCreateProduct(values)
+            if (details) {
+              handleUpdateProduct(values);
+            } else {
+              handleCreateProduct(values);
             }
           }}
         >
@@ -131,27 +134,6 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
             touched,
           }) => (
             <View>
-              <View style={styles.inputs}>
-                <Text style={styles.label}>Description</Text>
-                <View
-                  style={styles.inputWrapper(
-                    touched.description ? COLORS.primary : COLORS.gray
-                  )}
-                >
-                  <TextInput
-                    placeholder="Description"
-                    onFocus={() => setFieldTouched("description")}
-                    onBlur={() => setFieldTouched("description", "")}
-                    value={values.description}
-                    onChangeText={handleChange("description")}
-                    style={styles.input}
-                  />
-                </View>
-                {touched.description && errors.description && (
-                  <Text style={styles.errorMsg}>{errors.description}</Text>
-                )}
-              </View>
-
               {/* Name */}
 
               <View style={styles.inputs}>
@@ -172,6 +154,28 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
                 </View>
                 {touched.name && errors.name && (
                   <Text style={styles.errorMsg}>{errors.name}</Text>
+                )}
+              </View>
+
+              {/* Description */}
+              <View style={styles.inputs}>
+                <Text style={styles.label}>Description</Text>
+                <View
+                  style={styles.inputWrapper(
+                    touched.description ? COLORS.primary : COLORS.gray
+                  )}
+                >
+                  <TextInput
+                    placeholder="Description"
+                    onFocus={() => setFieldTouched("description")}
+                    onBlur={() => setFieldTouched("description", "")}
+                    value={values.description}
+                    onChangeText={handleChange("description")}
+                    style={styles.input}
+                  />
+                </View>
+                {touched.description && errors.description && (
+                  <Text style={styles.errorMsg}>{errors.description}</Text>
                 )}
               </View>
 

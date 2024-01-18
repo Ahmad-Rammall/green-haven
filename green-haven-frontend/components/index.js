@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar/SearchBar";
 import CartItem from "./CartItem/CartItem";
 import CameraButton from "./CameraButton/CameraButton";
 import BottomSheet from "../components/BottomSheet/BottomSheet";
-import ProfilePicture from "./ProfilePicture/ProfilePicture";
+import ImageContainer from "./ImageContainer/ImageContainer";
 import Post from "./Post/Post";
 import Story from "./Story/Story";
 import UserChat from "./UserChat/UserChat";
@@ -26,7 +26,7 @@ export {
   CartItem,
   CameraButton,
   BottomSheet,
-  ProfilePicture,
+  ImageContainer,
   Post,
   Story,
   UserChat,
