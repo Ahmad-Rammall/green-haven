@@ -13,7 +13,10 @@ export const gardenDataSource = {
     const response = await sendRequest({
       route:"garden",
       method: "POST",
-      contentType: "multipart/form-data"
+      contentType: "multipart/form-data",
+      body:data
     })
+
+    return response;
   }
 };

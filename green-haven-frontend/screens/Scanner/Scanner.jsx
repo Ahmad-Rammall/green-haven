@@ -37,6 +37,7 @@ export default function Scanner() {
   const [plantDetails, setPlantDetails] = useState({
     plant_name: "",
     plant_description: "",
+    plant_image: "",
   });
 
   const encodeImage = async (uri) => {
@@ -60,11 +61,13 @@ export default function Scanner() {
       setPlantDetails({
         plant_name: res_details.name,
         plant_description: res_details.details.description.value,
+        plant_image: image,
       });
     } else {
       setPlantDetails({
         plant_name: "",
         plant_description: "",
+        plant_image: "",
       });
     }
     console.log(response);
