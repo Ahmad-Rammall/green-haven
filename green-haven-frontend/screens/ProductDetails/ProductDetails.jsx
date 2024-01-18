@@ -13,7 +13,6 @@ import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 import Toast from "react-native-simple-toast";
 import { Button, ProductModal, DeleteModal } from "../../components";
 import { useSelector } from "react-redux";
-import { COLORS } from "../../assets/constants";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
 import { useNavigation } from "@react-navigation/native";
 
@@ -60,7 +59,10 @@ const ProductDetails = () => {
         <Image source={{ uri: imageUrl }} style={styles.image} />
 
         <View style={styles.details}>
-          <ScrollView contentContainerStyle={styles.detailsWrapper} showsVerticalScrollIndicator={false}>
+          <ScrollView
+            contentContainerStyle={styles.detailsWrapper}
+            showsVerticalScrollIndicator={false}
+          >
             <View style={styles.titleRow}>
               <Text style={styles.title}>{name}</Text>
               <View style={styles.priceWrapper}>

@@ -21,7 +21,7 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
     description: Yup.string()
       .max(500, "Max 500 characters")
       .required("Required"),
-    name: Yup.string().max(50, "Max 50 Characters").required("Required"), // Fixed the typo and added the missing parenthesis
+    name: Yup.string().max(50, "Max 50 Characters").required("Required"),
     price: Yup.number()
       .required("Price is required")
       .positive("Number must be positive")

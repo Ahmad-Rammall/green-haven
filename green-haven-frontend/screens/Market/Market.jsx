@@ -4,9 +4,14 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
 } from "react-native";
-import { ProductCard, SearchBar, ProductModal, LoadingModal } from "../../components";
+import {
+  ProductCard,
+  SearchBar,
+  ProductModal,
+  LoadingModal,
+} from "../../components";
 import styles from "./market.styles";
 import React, { useState, useEffect } from "react";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
@@ -14,6 +19,8 @@ import { useSelector } from "react-redux";
 
 const Market = () => {
   const [products, setProducts] = useState([]);
+  const [searchedProducts, setSearchedProducts] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -21,16 +28,28 @@ const Market = () => {
   // get loggedin user
   const user = useSelector((state) => state.User);
 
+  const searchItem = () => {
+    const selectedProducts = products.filter((product) =>
+      product.name.includes(searchInput)
+    );
+    setSearchedProducts(selectedProducts);
+  };
+
+  useEffect(() => {
+    searchItem();
+  }, [searchInput]);
+
   // get all market's products
   const getAllProducts = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await marketDataSource.getAllProducts();
       setProducts(response.data.products);
+      setSearchedProducts(response.data.products);
     } catch (error) {
       console.log(error);
-    } finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,7 +59,7 @@ const Market = () => {
       const response = await marketDataSource.getAllSellerProducts();
       if (response) {
         setProducts(response.data.products);
-        setLoading(false)
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -52,7 +71,7 @@ const Market = () => {
   };
   const handleRefresh = async () => {
     setRefresh(true);
-  
+
     try {
       if (user.role === "user") {
         await getAllProducts();
@@ -79,21 +98,22 @@ const Market = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         refreshControl={
-          <RefreshControl
-            refreshing={refresh}
-            onRefresh={handleRefresh}
-          />
+          <RefreshControl refreshing={refresh} onRefresh={handleRefresh} />
         }
       >
-        <SearchBar placeholder="What Are You Looking For ?" />
+        <SearchBar
+          placeholder="What Are You Looking For ?"
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+        />
         <View style={styles.productsContainer}>
-        {loading ? (
-          <LoadingModal />
-        ) : (
-          products.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))
-        )}
+          {loading ? (
+            <LoadingModal />
+          ) : (
+            searchedProducts.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))
+          )}
         </View>
       </ScrollView>
 
