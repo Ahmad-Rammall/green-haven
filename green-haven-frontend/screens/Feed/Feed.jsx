@@ -27,7 +27,7 @@ import {
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
 
 const Feed = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
@@ -46,7 +46,7 @@ const Feed = ({ navigation }) => {
     postComments: [],
   });
 
-  const currentUser = useSelector(state => state.User);
+  const currentUser = useSelector((state) => state.User);
 
   const handleOpenModal = () => {
     bottomSheetModalRef.current?.present();
@@ -55,11 +55,11 @@ const Feed = ({ navigation }) => {
   };
 
   const getPosts = async () => {
-    setLoading(true)
+    setLoading(true);
     const response = await postDataSource.getPosts();
     if (response?.status === 200 || response?.status === 304) {
       setPosts(response.data);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -81,9 +81,9 @@ const Feed = ({ navigation }) => {
         likes: [],
         user: {
           profile_picture: currentUser.profilePicture,
-          name: currentUser.username
-        }
-      }
+          name: currentUser.username,
+        },
+      };
       setCommentInput("");
       setCommentsObject((prevCommentsObject) => ({
         ...prevCommentsObject,
@@ -207,7 +207,9 @@ const Feed = ({ navigation }) => {
             >
               <MaterialIcons name="highlight-remove" size={25} />
             </TouchableOpacity>
-            <BottomSheetScrollView>
+            <BottomSheetScrollView
+              contentContainerStyle={{ paddingBottom: 60 }}
+            >
               {commentsObject.postComments.map((comment) => (
                 <Comment
                   key={comment._id}
