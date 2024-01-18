@@ -67,19 +67,11 @@ const FeedProfile = () => {
     if (response?.status === 200) {
       refreshPage();
     }
-    console.log(response);
   };
 
   useEffect(() => {
     getUserPosts();
   }, [user]);
-
-  useEffect(() => {
-    console.log("---------------------------------");
-    console.log(isFollowing);
-    console.log(user.followers);
-    console.log("---------------------------------");
-  }, [isFollowing]);
 
   return (
     <View style={styles.container}>

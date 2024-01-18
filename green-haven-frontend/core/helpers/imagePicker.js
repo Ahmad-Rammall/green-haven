@@ -5,11 +5,11 @@ export const imagePicker = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [1, 1],
       quality: 0.5,
     });
 
-    if(!result.canceled){
+    if (!result.canceled) {
       return result;
     }
   } catch (error) {
