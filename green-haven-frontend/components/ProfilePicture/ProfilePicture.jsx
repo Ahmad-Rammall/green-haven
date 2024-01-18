@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 const ProfilePicture = ({ image, edit, handleFormChange }) => {
   const [profilePic, setProfilePic] = useState({});
   const currentUser = useSelector((state) => state.User);
+  console.log("image: "+ image)
 
   // Pick Image from Device
   const pickImage = async () => {
@@ -17,8 +18,13 @@ const ProfilePicture = ({ image, edit, handleFormChange }) => {
     handleFormChange("profilePic", result.assets[0]);
   };
 
-  const imagePath =
-    PUBLIC_FOLDER + "profile-pics/" + currentUser.profilePicture;
+  let imagePath = PUBLIC_FOLDER + "profile-pics/" + currentUser.profilePicture;
+
+  if(image){
+     imagePath =
+    PUBLIC_FOLDER + "products-pics/" + image;
+  }
+
   return (
     <View>
       {edit ? (

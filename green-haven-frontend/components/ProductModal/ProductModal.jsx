@@ -12,7 +12,6 @@ import Toast from "react-native-simple-toast";
 
 const ProductModal = ({ isVisible, onClose, refresh, details }) => {
   const [image, setImage] = useState({});
-  console.log(details)
 
   const validationSchema = Yup.object({
     description: Yup.string()
@@ -82,7 +81,6 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
       if (response?.status === 200) {
         Toast.show("Product Updated !", Toast.LONG);
         onClose();
-        // refresh();
       }
     } catch (error) {
       console.log(error);
@@ -94,7 +92,7 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
       <View style={styles.modalContainer}>
         <View style={styles.image}>
           <ProfilePicture
-            image={details ? details.imageUrl : ""}
+            image={details ? details.imageUrl : "noProductImage.jpg"}
             handleFormChange={handleImageChange}
             edit
           />
