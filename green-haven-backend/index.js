@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const morgan = require('morgan');
+const morgan = require("morgan");
 const path = require("path");
 require("dotenv").config();
 
@@ -11,16 +11,20 @@ const { connectToMongoDB } = require("./configs/mongoDb.configs");
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(morgan("common"))
+app.use(morgan("common"));
 
 // Define public folder as static folder
-app.use('/public',express.static(path.join(__dirname, 'public')));
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 // Auth Middleware
 const authMiddleware = require("./middlewares/auth.middleware");
 
 // Admin Middleware
 const adminMiddleware = require("./middlewares/admin.middleware");
+
+// Admin Routes
+const adminRoutes = require("./routes/admin.routes");
+app.use("/admin", authMiddleware, adminMiddleware, adminRoutes);
 
 // Auth Routes
 const authRoutes = require("./routes/auth.routes");
