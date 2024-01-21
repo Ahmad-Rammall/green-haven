@@ -19,6 +19,9 @@ app.use('/public',express.static(path.join(__dirname, 'public')));
 // Auth Middleware
 const authMiddleware = require("./middlewares/auth.middleware");
 
+// Admin Middleware
+const adminMiddleware = require("./middlewares/admin.middleware");
+
 // Auth Routes
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
