@@ -1,14 +1,26 @@
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Unstable_Grid2";
+import Typography from "@mui/material/Typography";
 
-import { products } from 'src/_mock/products';
+import ProductCard from "../product-card";
 
-import ProductCard from '../product-card';
+import { useState, useEffect } from "react";
+
+import { productsDataSource } from "../../../core/remoteDataSource/product";
 
 // ----------------------------------------------------------------------
 
 export default function ProductsView() {
+  const [products, setProducts] = useState([]);
+
+  const getAllProducts = async () => {
+    const response = await productsDataSource.getAllProducts();
+    setProducts(response.data.products);
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
   return (
     <Container>
@@ -23,7 +35,6 @@ export default function ProductsView() {
           </Grid>
         ))}
       </Grid>
-
     </Container>
   );
 }

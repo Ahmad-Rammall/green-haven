@@ -12,11 +12,11 @@ import IconButton from '@mui/material/IconButton';
 import { fCurrency } from 'src/utils/format-number';
 
 import Label from 'src/components/label';
-import { ColorPreview } from 'src/components/color-utils';
 
 // ----------------------------------------------------------------------
 
 export default function ShopProductCard({ product }) {
+  const image = import.meta.env.VITE_REACT_APP_PUBLIC_FOLDER + "/products-pics/" + product.image
   const renderStatus = (
     <Label
       variant="filled"
@@ -37,7 +37,7 @@ export default function ShopProductCard({ product }) {
     <Box
       component="img"
       alt={product.name}
-      src={product.cover}
+      src={image}
       sx={{
         top: 0,
         width: 1,
