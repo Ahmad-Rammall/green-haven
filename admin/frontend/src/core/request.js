@@ -14,7 +14,9 @@ export const sendRequest = async ({ method = "GET", body, route }) => {
       },
     });
 
-    return response
+    if(response?.status === 200){
+      return response
+    }
   } catch (error) {
     return error
   }
