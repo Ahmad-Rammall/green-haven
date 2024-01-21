@@ -1,9 +1,11 @@
 import axios from "axios";
 
 export const sendRequest = async ({ method = "GET", body, route }) => {
+  const apiHost = import.meta.env.VITE_REACT_APP_API_HOST
+  
   try {
     const response = await axios.request({
-      url: `${process.env.API_HOST}/${route}`,
+      url: `${apiHost}/${route}`,
       method,
       data: body,
       headers: {
