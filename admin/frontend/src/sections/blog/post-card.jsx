@@ -1,19 +1,21 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
-import { alpha } from '@mui/material/styles';
-import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import Avatar from "@mui/material/Avatar";
+import Grid from "@mui/material/Unstable_Grid2";
+import Typography from "@mui/material/Typography";
 
-import { fDate } from 'src/utils/format-time';
-import { fShortenNumber } from 'src/utils/format-number';
+import { fDate } from "src/utils/format-time";
+import { fShortenNumber } from "src/utils/format-number";
 
-import Iconify from 'src/components/iconify';
-import SvgColor from 'src/components/svg-color';
+import Iconify from "src/components/iconify";
+import SvgColor from "src/components/svg-color";
+
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import IconButton from "@mui/material/IconButton";
 
 // ----------------------------------------------------------------------
 
@@ -22,7 +24,7 @@ export default function PostCard({ post, index }) {
   const publicFolder = import.meta.env.VITE_REACT_APP_PUBLIC_FOLDER;
 
   const user_profile = publicFolder + "/profile-pics/" + user.profile_picture;
-  const post_image = publicFolder + "/posts-pics/" + image
+  const post_image = publicFolder + "/posts-pics/" + image;
 
   const renderAvatar = (
     <Avatar
@@ -32,7 +34,7 @@ export default function PostCard({ post, index }) {
         zIndex: 9,
         width: 32,
         height: 32,
-        position: 'absolute',
+        position: "absolute",
         left: (theme) => theme.spacing(3),
         bottom: (theme) => theme.spacing(-2),
       }}
@@ -46,10 +48,10 @@ export default function PostCard({ post, index }) {
       underline="hover"
       sx={{
         height: 44,
-        overflow: 'hidden',
+        overflow: "hidden",
         WebkitLineClamp: 2,
-        display: '-webkit-box',
-        WebkitBoxOrient: 'vertical',
+        display: "-webkit-box",
+        WebkitBoxOrient: "vertical",
       }}
     >
       {description}
@@ -57,29 +59,44 @@ export default function PostCard({ post, index }) {
   );
 
   const renderInfo = (
-    <Stack
-      direction="row"
-      flexWrap="wrap"
-      spacing={1.5}
-      justifyContent="flex-end"
-      sx={{
-        mt: 3,
-        color: 'text.disabled',
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
-      {[
-        { number: comments.length, icon: 'eva:message-circle-fill' },
-        { number: likes.length, icon: 'eva:eye-fill' },
-      ].map((info, _index) => (
-        <Stack
-          key={_index}
-          direction="row"
-        >
-          <Iconify width={16} icon={info.icon} sx={{ mr: 0.5 }} />
-          <Typography variant="caption">{fShortenNumber(info.number)}</Typography>
-        </Stack>
-      ))}
-    </Stack>
+      <IconButton style={{ cursor: "pointer" }}>
+        <DeleteOutlineIcon sx={{ color: "red" }} />
+      </IconButton>
+      <Stack
+        direction="row"
+        flexWrap="wrap"
+        spacing={1.5}
+        justifyContent="flex-end"
+        sx={{
+          color: "text.disabled",
+        }}
+      >
+        {[
+          {
+            number: comments.length !== 0 ? comments.length : "0",
+            icon: "eva:message-circle-fill",
+          },
+          {
+            number: likes.length ? likes.length : "0",
+            icon: "icon-park-outline:like",
+          },
+        ].map((info, _index) => (
+          <Stack key={_index} direction="row">
+            <Iconify width={16} icon={info.icon} sx={{ mr: 0.5 }} />
+            <Typography variant="caption">
+              {fShortenNumber(info.number)}
+            </Typography>
+          </Stack>
+        ))}
+      </Stack>
+    </div>
   );
 
   const renderCover = (
@@ -91,8 +108,8 @@ export default function PostCard({ post, index }) {
         top: 0,
         width: 1,
         height: 1,
-        objectFit: 'cover',
-        position: 'absolute',
+        objectFit: "cover",
+        position: "absolute",
       }}
     />
   );
@@ -103,7 +120,7 @@ export default function PostCard({ post, index }) {
       component="div"
       sx={{
         mb: 2,
-        color: 'text.disabled',
+        color: "text.disabled",
       }}
     >
       {fDate(createdAt)}
@@ -119,19 +136,19 @@ export default function PostCard({ post, index }) {
         height: 36,
         zIndex: 9,
         bottom: -15,
-        position: 'absolute',
-        color: 'background.paper',
+        position: "absolute",
+        color: "background.paper",
       }}
     />
   );
 
   return (
-    <Grid xs={3} >
+    <Grid xs={3}>
       <Card>
         <Box
           sx={{
-            position: 'relative',
-            pt: 'calc(100% * 3 / 4)',
+            position: "relative",
+            pt: "calc(100% * 3 / 4)",
           }}
         >
           {renderShape}
