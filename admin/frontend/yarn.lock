@@ -40,10 +40,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3", "@babel/runtime@^7.20.7", "@babel/runtime@^7.21.0", "@babel/runtime@^7.22.6", "@babel/runtime@^7.23.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.7":
-  version "7.23.1"
-  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.23.1.tgz"
-  integrity sha512-hC2v6p8ZSI/W0HUzh3V8C5g+NwSKzKPtJwSpTjwl0o297GP9+ZLQSkdvHz46CM3LqyoXxq+5G9komY+eSqSO0g==
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3", "@babel/runtime@^7.20.7", "@babel/runtime@^7.21.0", "@babel/runtime@^7.22.6", "@babel/runtime@^7.23.1", "@babel/runtime@^7.23.8", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.7":
+  version "7.23.8"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.23.8.tgz"
+  integrity sha512-Y7KbAP984rn1VGMbGqKmBLio9V7y5Je9GvU4rQPCPinCyNfUcToxIXl06d59URp/F3LwinvODxab5N/G6qggkw==
   dependencies:
     regenerator-runtime "^0.14.0"
 
@@ -320,6 +320,13 @@
   version "5.14.12"
   resolved "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.14.12.tgz"
   integrity sha512-WZhCkKqhrXaSVBzoC6LNcVkIawS000OOt7gmnp4g9HhyvN0PSclRXc/JrkC7EwfzUAZJh+hiK2LaVsbtOpNuOg==
+
+"@mui/icons-material@^5.15.5":
+  version "5.15.5"
+  resolved "https://registry.npmjs.org/@mui/icons-material/-/icons-material-5.15.5.tgz"
+  integrity sha512-qiql0fd1JY7TZ1wm1RldvU7sL8QUatE9OC12i/qm5rnm/caTFyAfOyTIR7qqxorsJvoZGyrzwoMkal6Ij9kM0A==
+  dependencies:
+    "@babel/runtime" "^7.23.8"
 
 "@mui/lab@^5.0.0-alpha.147":
   version "5.0.0-alpha.147"

@@ -5,6 +5,9 @@ import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import IconButton from '@mui/material/IconButton';
+
 
 import { fCurrency } from 'src/utils/format-number';
 
@@ -76,7 +79,9 @@ export default function ShopProductCard({ product }) {
         </Link>
 
         <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <ColorPreview colors={product.colors} />
+          <IconButton style={{ cursor: "pointer" }}>
+          <DeleteOutlineIcon sx={{ color: "red" }} />
+          </IconButton>
           {renderPrice}
         </Stack>
       </Stack>
