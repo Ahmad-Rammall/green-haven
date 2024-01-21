@@ -16,6 +16,8 @@ import { bgGradient } from "src/theme/css";
 import Logo from "src/components/logo";
 import Iconify from "src/components/iconify";
 import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux"
+import {loggedIn} from "../../core/localDataSource/User"
 
 // ----------------------------------------------------------------------
 
@@ -23,6 +25,7 @@ export default function LoginView() {
   const theme = useTheme();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("")
@@ -40,6 +43,14 @@ export default function LoginView() {
       body:credentials
     })
     if(response?.status === 200){
+      dispatch(
+        loggedIn({
+          _id:response.data.user._id,
+          email:response.data.user.email,
+          name:response.data.user.name,
+          profile_picture:response.data.user.profile_picture,
+        })
+      )
       navigate("/main");
     }
     else{
