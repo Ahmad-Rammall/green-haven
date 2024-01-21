@@ -1,5 +1,6 @@
 const User = require("../models/user.model");
 const Order = require("../models/order.model");
+const Posts = require("../models/post.model")
 
 const getCounts = async (req, res) => {
   try {
@@ -46,7 +47,19 @@ const getAllUsers = async (req,res) => {
   }
 }
 
+const getAllProducts = async (req,res) => {
+  try{
+    const posts = await Post.find({});
+    if(!posts) return res.status(400).json({message: "error"});
+    res.status(200).json(posts);
+  }
+  catch(error){
+    return res.status(500).json(error);
+  }
+}
+
 module.exports = {
   getCounts,
-  getAllUsers
+  getAllUsers,
+  getAllProducts,
 };
