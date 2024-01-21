@@ -72,11 +72,46 @@ const login = async (req, res) => {
   res.status(200).json({
     user: userDetails,
     token,
-    streamToken
+    streamToken,
+  });
+};
+
+const adminLogin = async (req, res) => {
+  const { email, password } = req.body;
+
+  // check if user is available in DB
+  const user = await User.findOne({ email });
+  if (!user)
+    return res.status(400).json({ message: "Invalid username/password" });
+
+  if (user.role !== "admin") {
+    return res.status(403).json({ message: "Unauthorized" });
+  }
+
+  // check if password is correct
+  const isValidPassword = await bcrypt.compare(password, user.password);
+  if (!isValidPassword)
+    return res.status(400).json({ message: "Invalid username/password" });
+
+  const { password: hashedPassword, ...userDetails } = user.toJSON();
+
+  // generate JWT token
+  const token = jwt.sign(
+    {
+      ...userDetails,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "1h" }
+  );
+
+  res.status(200).json({
+    user: userDetails,
+    token,
   });
 };
 
 module.exports = {
   register,
   login,
+  adminLogin,
 };
