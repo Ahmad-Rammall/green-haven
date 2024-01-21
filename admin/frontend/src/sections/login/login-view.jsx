@@ -43,6 +43,7 @@ export default function LoginView() {
       body: credentials,
     });
     if (response?.status === 200) {
+      localStorage.setItem("token", response.data.token)
       dispatch(
         loggedIn({
           _id: response.data.user._id,
