@@ -47,7 +47,7 @@ const getAllUsers = async (req,res) => {
   }
 }
 
-const getAllProducts = async (req,res) => {
+const getAllPosts = async (req,res) => {
   try{
     const posts = await Post.find({});
     if(!posts) return res.status(400).json({message: "error"});
@@ -61,5 +61,5 @@ const getAllProducts = async (req,res) => {
 module.exports = {
   getCounts,
   getAllUsers,
-  getAllProducts,
+  getAllPosts,
 };
