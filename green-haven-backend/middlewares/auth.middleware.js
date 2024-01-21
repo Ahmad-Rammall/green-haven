@@ -11,6 +11,9 @@ const authMiddleware = async (req, res, next) => {
       const user = await User.findOne({ email: decoded.email }).select(
         "-password"
       );
+      if(user.status === "banned"){
+        return res.status(403).json({message: "Banned Account"});
+      }
       req.user = user;
       next();
     }

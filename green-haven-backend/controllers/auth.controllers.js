@@ -49,6 +49,10 @@ const login = async (req, res) => {
   const user = await User.findOne({ email });
   if (!user)
     return res.status(400).json({ message: "Invalid username/password" });
+  
+    if(user.status === "banned"){
+      return res.status(403).json({message: "Banned Account"});
+    }
 
   // check if password is correct
   const isValidPassword = await bcrypt.compare(password, user.password);
