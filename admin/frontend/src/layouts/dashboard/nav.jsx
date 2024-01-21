@@ -22,12 +22,19 @@ import Scrollbar from 'src/components/scrollbar';
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
 
+import {useSelector} from "react-redux"
+
 // ----------------------------------------------------------------------
 
 export default function Nav({ openNav, onCloseNav }) {
   const pathname = usePathname();
 
   const upLg = useResponsive('up', 'lg');
+
+  const currentUser = useSelector(state => state.User);
+  
+  const publicFolder = import.meta.env.VITE_REACT_APP_PUBLIC_FOLDER
+  const profile_picture = publicFolder + "/profile-pics/" + currentUser.profile_picture;
 
   useEffect(() => {
     if (openNav) {
@@ -49,10 +56,10 @@ export default function Nav({ openNav, onCloseNav }) {
         bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
       }}
     >
-      <Avatar src={account.photoURL} alt="photoURL" />
+      <Avatar src={profile_picture} alt="photoURL" />
 
       <Box sx={{ ml: 2 }}>
-        <Typography variant="subtitle2">{account.displayName}</Typography>
+        <Typography variant="subtitle2">{currentUser.name}</Typography>
 
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           {account.role}

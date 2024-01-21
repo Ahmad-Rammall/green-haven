@@ -9,15 +9,15 @@ import IconButton from "@mui/material/IconButton";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { alpha, useTheme } from "@mui/material/styles";
 import InputAdornment from "@mui/material/InputAdornment";
-import {sendRequest} from "../../core/request"
+import { sendRequest } from "../../core/request";
 
 import { bgGradient } from "src/theme/css";
 
 import Logo from "src/components/logo";
 import Iconify from "src/components/iconify";
 import { useNavigate } from "react-router-dom";
-import {useDispatch} from "react-redux"
-import {loggedIn} from "../../core/localDataSource/User"
+import { useDispatch } from "react-redux";
+import { loggedIn } from "../../core/localDataSource/User";
 
 // ----------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ export default function LoginView() {
   const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const [credentials, setCredentials] = useState({
     email: "",
@@ -36,25 +36,24 @@ export default function LoginView() {
   });
 
   const handleClick = async () => {
-    setError("")
+    setError("");
     const response = await sendRequest({
-      method:"POST",
-      route:"auth/login",
-      body:credentials
-    })
-    if(response?.status === 200){
+      method: "POST",
+      route: "auth/login",
+      body: credentials,
+    });
+    if (response?.status === 200) {
       dispatch(
         loggedIn({
-          _id:response.data.user._id,
-          email:response.data.user.email,
-          name:response.data.user.name,
-          profile_picture:response.data.user.profile_picture,
+          _id: response.data.user._id,
+          email: response.data.user.email,
+          name: response.data.user.name,
+          profile_picture: response.data.user.profile_picture,
         })
-      )
+      );
       navigate("/main");
-    }
-    else{
-      setError(response?.response.data.message)
+    } else {
+      setError(response?.response.data.message);
     }
   };
 
