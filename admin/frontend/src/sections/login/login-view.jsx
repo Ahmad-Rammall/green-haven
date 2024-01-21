@@ -39,7 +39,7 @@ export default function LoginView() {
     setError("");
     const response = await sendRequest({
       method: "POST",
-      route: "auth/login",
+      route: "auth/adminLogin",
       body: credentials,
     });
     if (response?.status === 200) {
