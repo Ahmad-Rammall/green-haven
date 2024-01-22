@@ -13,15 +13,20 @@ import {postsDataSource} from "../../../core/remoteDataSource/post";
 
 export default function BlogView() {
   const [posts, setPosts] = useState([]);
+  const [refresh, setRefresh] = useState(false)
 
   const getAllPosts = async () => {
     const response = await postsDataSource.getAllPosts();
     setPosts(response.data)
   }
+
+  const refreshPage = () => {
+    setRefresh(!refresh)
+  }
   
   useEffect(() => {
     getAllPosts()
-  }, []);
+  }, [refresh]);
 
   return (
     <Container>
@@ -31,7 +36,7 @@ export default function BlogView() {
 
       <Grid container spacing={3}>
         {posts.map((post, index) => (
-          <PostCard key={post._id} post={post} index={index} />
+          <PostCard key={post._id} post={post} index={index} refreshPage={refreshPage}/>
         ))}
       </Grid>
 

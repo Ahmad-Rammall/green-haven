@@ -17,12 +17,13 @@ import SvgColor from "src/components/svg-color";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
 import DeleteModal from "../../components/modal/DeleteModal";
+import { postsDataSource } from "../../core/remoteDataSource/post";
 
 import { useState } from "react";
 
 // ----------------------------------------------------------------------
 
-export default function PostCard({ post, index }) {
+export default function PostCard({ post, refreshPage }) {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const { description, image, likes, comments, user, createdAt } = post;
@@ -37,6 +38,12 @@ export default function PostCard({ post, index }) {
 
   const handleCloseModal = () => {
     setDeleteModalOpen(false);
+  };
+
+  const deletePost = async () => {
+    await postsDataSource.deletePost(post._id)
+    handleCloseModal()
+    refreshPage()
   };
 
   const renderAvatar = (
@@ -184,7 +191,7 @@ export default function PostCard({ post, index }) {
         </Box>
       </Card>
 
-      <DeleteModal isOpen={isDeleteModalOpen} onClose={handleCloseModal}/>
+      <DeleteModal isOpen={isDeleteModalOpen} onClose={handleCloseModal} onClick={deletePost}/>
     </Grid>
   );
 }

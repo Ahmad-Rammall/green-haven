@@ -10,7 +10,7 @@ export const postsDataSource = {
 
   deletePost: async (postId) => {
     const response = await sendRequest({
-      route: `admin/${postId}`,
+      route: `admin/post/${postId}`,
       method: "DELETE",
     });
     return response;

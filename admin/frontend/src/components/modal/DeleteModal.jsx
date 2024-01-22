@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./Modal.css";
 
-const DeleteModal = ({ isOpen, onClose }) => {
+const DeleteModal = ({ isOpen, onClose, onClick }) => {
   const handleClose = () => {
     onClose();
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    onClick();
   };
 
   return (
@@ -26,7 +26,7 @@ const DeleteModal = ({ isOpen, onClose }) => {
               </div>
               <div className="buttons">
                 <button className="cancel-btn" onClick={onClose}>Cancel</button>
-                <button className="delete-btn">Delete</button>
+                <button className="delete-btn" onClick={handleSubmit}>Delete</button>
               </div>
             </div>
           </div>
