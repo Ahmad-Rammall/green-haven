@@ -56,7 +56,6 @@ const Modal = ({ isOpen, onClose, refreshPage, user }) => {
   const updateUser = async () => {
     setError("");
     const response = await userDataSource.updateUser(formData);
-    console.log(response);
     if (response?.status === 200) {
       refreshPage();
       handleClose();
@@ -85,11 +84,6 @@ const Modal = ({ isOpen, onClose, refreshPage, user }) => {
     setFormData((prevData) => ({ ...prevData, status: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
-
   return (
     <>
       {isOpen && (
@@ -101,7 +95,7 @@ const Modal = ({ isOpen, onClose, refreshPage, user }) => {
               </button>
             </div>
             <div className="modal-content">
-              <form onSubmit={handleSubmit}>
+              <form>
                 <div className="input">
                   Name:
                   <input

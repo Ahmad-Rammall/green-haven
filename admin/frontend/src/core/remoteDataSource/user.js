@@ -23,4 +23,11 @@ export const userDataSource = {
     });
     return response
   },
+  deleteUser: async (userId) => {
+    const response = await sendRequest({
+      route: `admin/users/${userId}`,
+      method:"DELETE",
+    });
+    return response
+  },
 };
