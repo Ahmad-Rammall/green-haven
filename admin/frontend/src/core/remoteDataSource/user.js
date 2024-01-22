@@ -15,4 +15,12 @@ export const userDataSource = {
     });
     return response
   },
+  updateUser: async (data) => {
+    const response = await sendRequest({
+      route: "admin/users",
+      method:"PUT",
+      body: data
+    });
+    return response
+  },
 };
