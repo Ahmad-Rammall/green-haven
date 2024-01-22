@@ -13,11 +13,11 @@ const ChatBot = ({ messages, setMessages }) => {
 
     // send to openAI and get response message
     const response = await getGeneratedMessage(userMessage);
-
+    console.log(response)
     // save bot message
     const botMessage = {
       _id: new Date().getTime(),
-      text: `${response.data.choices[0].message.content}`,
+      text: `${response}`,
       user: {
         _id: 1,
         name: "ChatBot",
