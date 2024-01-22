@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Modal.css";
 import { userDataSource } from "../../core/remoteDataSource/user";
 
-const Modal = ({ isOpen, onClose, add }) => {
+const Modal = ({ isOpen, onClose, add, user }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,8 +13,23 @@ const Modal = ({ isOpen, onClose, add }) => {
     role: "seller",
     status: "active",
   });
+
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        bio: user.bio,
+        phone_number: user.phone_number,
+        location: user.location,
+        role: user.role,
+        status: user.status,
+      });
+    }
+  } , [])
   const [isValid, setIsValid] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const handleClose = () => {
     onClose();
@@ -26,18 +41,16 @@ const Modal = ({ isOpen, onClose, add }) => {
   };
 
   const addUser = async () => {
-    setError("")
+    setError("");
     const response = await userDataSource.addUser(formData);
-    console.log(response)
+    console.log(response);
 
-    if(response.status !== 200){
-      setError("Email Already Exists!")
+    if (response.status !== 200) {
+      setError("Email Already Exists!");
     }
-  }
+  };
 
-  const updateUser = async () => {
-    
-  }
+  const updateUser = async () => {};
 
   useEffect(() => {
     if (

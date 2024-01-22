@@ -178,6 +178,7 @@ export default function UserPage() {
                       avatarUrl={row.profile_picture}
                       phone={row.phone_number}
                       selected={selected.indexOf(row.name) !== -1}
+                      user={row}
                       handleClick={(event) => handleClick(event, row.name)}
                     />
                   ))}
