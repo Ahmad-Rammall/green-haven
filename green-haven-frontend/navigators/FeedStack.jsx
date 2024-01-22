@@ -12,6 +12,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useSelector, useDispatch } from "react-redux";
 import { loggedInClient } from "../core/dataSource/localDataSource/client";
 import flatted from "flatted";
+import { PUBLIC_FOLDER } from "@env";
 
 const FeedStack = createNativeStackNavigator();
 
@@ -54,10 +55,12 @@ const screenOptions = ({ route, navigation }) => ({
 const FeedStackNavigator = ({ navigation }) => {
   const currentUser = useSelector((state) => state.User);
   const dispatch = useDispatch();
+  const userProfilePicture = `${PUBLIC_FOLDER}profile-pics/${currentUser.profilePicture}`;
+  const publicChannelImg = `${PUBLIC_FOLDER}public-channel.jpg`;
 
   dispatch(
     loggedInClient({
-      client : flatted.stringify(client)
+      client: flatted.stringify(client),
     })
   );
   useEffect(() => {
@@ -66,13 +69,14 @@ const FeedStackNavigator = ({ navigation }) => {
         {
           id: currentUser._id.toString(),
           name: currentUser.username,
-          image: "https://i.imgur.com/fR9Jz14.png",
+          image: userProfilePicture,
         },
         currentUser.streamToken
       );
 
       const channel = client.channel("livestream", "public", {
         name: "Public",
+        image: publicChannelImg,
       });
 
       await channel.create();
