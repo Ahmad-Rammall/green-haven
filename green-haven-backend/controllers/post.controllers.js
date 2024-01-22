@@ -105,10 +105,29 @@ const getUserPosts = async (req, res) => {
   }
 };
 
+const getOwnPosts = async (req,res) => {
+  try{
+    const ownPosts = await Post.find({ user: req.user._id }).populate({
+      path: "user",
+      select: ["-cart", "-garden", "-password"],
+    }).populate({
+      path: "comments.user",
+      select: ["name", "profile_picture"],
+    });
+
+    return ownPosts;
+
+  }catch(error){
+    console.log("error in get own")
+  }
+}
+
 const getFollowingPosts = async (req, res) => {
   try {
-    const x =[];
-    const followingPosts = await Promise.all(
+    let allPosts =[];
+    const ownPosts = await getOwnPosts(req,res);
+    allPosts = [...ownPosts];
+    await Promise.all(
       req.user.following.map(async(followingId) => {
         const postArray = await Post.find({ user: followingId }).populate({
           path: "user",
@@ -119,11 +138,11 @@ const getFollowingPosts = async (req, res) => {
         });
 
         postArray.forEach((post) => {
-          x.push(post)
+          allPosts.push(post)
         })
       })
     );
-    const sorted = x.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    const sorted = allPosts.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     return res.status(200).json(sorted);
   } catch (error) {
