@@ -7,4 +7,12 @@ export const postsDataSource = {
     });
     return response;
   },
+
+  deletePost: async (postId) => {
+    const response = await sendRequest({
+      route: `admin/${postId}`,
+      method: "DELETE",
+    });
+    return response;
+  }
 };
