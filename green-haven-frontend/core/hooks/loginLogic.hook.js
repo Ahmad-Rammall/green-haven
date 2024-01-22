@@ -40,9 +40,9 @@ export const useLogic = () => {
       );
 
       if (user.role === "user") {
-        navigation.navigate("Main");
+        navigation.replace("Main");
       } else if (user.role === "seller") {
-        navigation.navigate("Seller");
+        navigation.replace("Seller");
       }
     } catch (error) {
       console.log(error);
