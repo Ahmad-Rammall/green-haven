@@ -9,12 +9,11 @@ export const productsDataSource = {
     return response;
   },
 
-  deleteProduct: async (data) => {
+  deleteProduct: async (productId) => {
     const response = await sendRequest({
-      route: `product/${data}`,
+      route: `admin/product/${productId}`,
       method: "DELETE",
     });
-
     return response;
-  },
+  }
 };
