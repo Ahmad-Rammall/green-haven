@@ -17,9 +17,6 @@ export default function BlogView() {
   const getAllPosts = async () => {
     const response = await postsDataSource.getAllPosts();
     setPosts(response.data)
-    console.log('====================================');
-    console.log(response.data);
-    console.log('====================================');
   }
   
   useEffect(() => {
@@ -37,6 +34,7 @@ export default function BlogView() {
           <PostCard key={post._id} post={post} index={index} />
         ))}
       </Grid>
+
     </Container>
   );
 }

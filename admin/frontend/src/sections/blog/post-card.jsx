@@ -16,15 +16,28 @@ import SvgColor from "src/components/svg-color";
 
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
+import DeleteModal from "../../components/modal/DeleteModal";
+
+import { useState } from "react";
 
 // ----------------------------------------------------------------------
 
 export default function PostCard({ post, index }) {
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+
   const { description, image, likes, comments, user, createdAt } = post;
   const publicFolder = import.meta.env.VITE_REACT_APP_PUBLIC_FOLDER;
 
   const user_profile = publicFolder + "/profile-pics/" + user.profile_picture;
   const post_image = publicFolder + "/posts-pics/" + image;
+
+  const handleOpenModal = () => {
+    setDeleteModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setDeleteModalOpen(false);
+  };
 
   const renderAvatar = (
     <Avatar
@@ -66,7 +79,7 @@ export default function PostCard({ post, index }) {
         alignItems: "center",
       }}
     >
-      <IconButton style={{ cursor: "pointer" }}>
+      <IconButton style={{ cursor: "pointer" }} onClick={handleOpenModal}>
         <DeleteOutlineIcon sx={{ color: "red" }} />
       </IconButton>
       <Stack
@@ -170,6 +183,8 @@ export default function PostCard({ post, index }) {
           {renderInfo}
         </Box>
       </Card>
+
+      <DeleteModal isOpen={isDeleteModalOpen} onClose={handleCloseModal}/>
     </Grid>
   );
 }
