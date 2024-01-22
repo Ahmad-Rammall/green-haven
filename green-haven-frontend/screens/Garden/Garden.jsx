@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  RefreshControl,
-} from "react-native";
+import { Text, View, ScrollView, RefreshControl } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { GardenItem, BottomSheet } from "../../components";
 import styles from "./garden.styles";
@@ -12,6 +6,7 @@ import { gardenDataSource } from "../../core/dataSource/remoteDataSource/garden"
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
+  BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
@@ -22,7 +17,7 @@ const Garden = () => {
   const [modalStyle, setModalStyle] = useState(styles.modalClose);
   const [modalOpen, setModalOpen] = useState(false);
   const [refresh, setRefresh] = useState(false);
-  const snapPoints = ["75%"];
+  const snapPoints = ["70%"];
 
   const getPlants = async () => {
     const response = await gardenDataSource.getAllPlants();
@@ -70,22 +65,6 @@ const Garden = () => {
               ))}
             </View>
           </ScrollView>
-
-          <GestureHandlerRootView style={modalStyle}>
-            <BottomSheetModalProvider>
-              <BottomSheetModal
-                ref={bottomSheetModalRef}
-                index={0}
-                snapPoints={snapPoints}
-                onDismiss={() => {
-                  setModalOpen(false);
-                  setModalStyle(styles.modalClose);
-                }}
-              >
-                <BottomSheet plant={selectedPlant} garden />
-              </BottomSheetModal>
-            </BottomSheetModalProvider>
-          </GestureHandlerRootView>
         </View>
       ) : (
         <View style={styles.noPlants}>
@@ -100,6 +79,22 @@ const Garden = () => {
           </ScrollView>
         </View>
       )}
+
+      <GestureHandlerRootView style={modalStyle}>
+        <BottomSheetModalProvider>
+          <BottomSheetModal
+            ref={bottomSheetModalRef}
+            index={0}
+            snapPoints={snapPoints}
+            onDismiss={() => {
+              setModalOpen(false);
+              setModalStyle(styles.modalClose);
+            }}
+          >
+            <BottomSheet plant={selectedPlant} garden />
+          </BottomSheetModal>
+        </BottomSheetModalProvider>
+      </GestureHandlerRootView>
     </View>
   );
 };

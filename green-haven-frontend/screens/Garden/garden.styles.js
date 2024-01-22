@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     width: SIZES.width,
-    height: 1100,
+    height:"100%",
   },
   scrollViewContainer: {
     flex: 1,

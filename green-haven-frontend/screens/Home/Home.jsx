@@ -6,15 +6,17 @@ import styles from "./home.styles";
 
 const Home = () => {
   const [gardenScreen, setGardenScreen] = useState(true);
-  const [messages, setMessages] = useState([{
-    _id:1,
-    text: "Hello, how can I help you ?",
-    createdAt: new Date(),
-    user: {
+  const [messages, setMessages] = useState([
+    {
       _id: 1,
-      name: "ChatBot",
+      text: "Hello, how can I help you ?",
+      createdAt: new Date(),
+      user: {
+        _id: 1,
+        name: "ChatBot",
+      },
     },
-  },]);
+  ]);
   return (
     <View style={styles.container}>
       <View style={styles.buttonsContainer}>
@@ -36,7 +38,11 @@ const Home = () => {
         </TouchableOpacity>
       </View>
 
-      {gardenScreen ? <Garden /> : <ChatBot messages={messages} setMessages={setMessages}/>}
+      {gardenScreen ? (
+        <Garden />
+      ) : (
+        <ChatBot messages={messages} setMessages={setMessages} />
+      )}
     </View>
   );
 };

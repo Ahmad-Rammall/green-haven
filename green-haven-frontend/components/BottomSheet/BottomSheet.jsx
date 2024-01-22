@@ -4,10 +4,9 @@ import { ScrollView } from "react-native-gesture-handler";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
 import { gardenDataSource } from "../../core/dataSource/remoteDataSource/garden";
 import styles from "./sheet.styles";
-import Toast from "react-native-simple-toast"
+import Toast from "react-native-simple-toast";
 
 const BottomSheet = ({ plant, garden }) => {
-
   const addPlantToGarden = async () => {
     const data = new FormData();
     // Append each piece of information to the form data
@@ -19,8 +18,8 @@ const BottomSheet = ({ plant, garden }) => {
       name: "user.jpg",
     });
     const response = gardenDataSource.addPlantToGarden(data);
-    console.log(response)
-    Toast.show("Plant Added", Toast.LONG)
+    console.log(response);
+    Toast.show("Plant Added", Toast.LONG);
   };
 
   return (
@@ -30,7 +29,7 @@ const BottomSheet = ({ plant, garden }) => {
           <Text style={styles.emptyResultText}>Plant Not Found</Text>
         </View>
       ) : (
-        <ScrollView>
+        <ScrollView contentContainerStyle={{}}>
           <Text style={styles.title}>{plant.plant_name}</Text>
           <View style={styles.descriptionContainer}>
             <Text style={styles.descTitle}>About the Plant :</Text>
@@ -39,7 +38,10 @@ const BottomSheet = ({ plant, garden }) => {
 
           {garden ?? (
             <View style={styles.buttons}>
-              <TouchableOpacity style={styles.optionBtn} onPress={()=>addPlantToGarden()}>
+              <TouchableOpacity
+                style={styles.optionBtn}
+                onPress={() => addPlantToGarden()}
+              >
                 <Text style={styles.optText}> + Garden</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.optionBtn}>

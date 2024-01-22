@@ -4,7 +4,8 @@ import { COLORS, SIZES } from "../../assets/constants";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.offwhite
+    backgroundColor: COLORS.offwhite,
+    height: SIZES.height
   },
   buttonsContainer: {
     flexDirection: "row",
