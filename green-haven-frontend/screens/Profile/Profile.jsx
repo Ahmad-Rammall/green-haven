@@ -8,15 +8,19 @@ import { ImageContainer } from "../../components";
 import { useSelector } from "react-redux";
 import { PUBLIC_FOLDER } from "@env";
 import { local } from "../../core/helpers/localStorage";
+import { STREAM_KEY } from "@env";
+import { StreamChat } from "stream-chat";
 
 const Profile = ({ navigation }) => {
   const currentUser = useSelector((state) => state.User);
 
   const userProfilePicture = `${PUBLIC_FOLDER}profile-pics/${currentUser.profilePicture}`;
+  const client = StreamChat.getInstance(STREAM_KEY);
 
   const handleLogout = async () => {
     local("token", "");
     navigation.replace('Login');
+    await client.disconnectUser();
   }
 
   return (
