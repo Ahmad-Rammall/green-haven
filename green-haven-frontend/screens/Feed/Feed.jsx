@@ -121,11 +121,16 @@ const Feed = ({ navigation }) => {
   }, [searchInput]);
 
   const navigateToUserProfile = (user) => {
-    navigation.navigate("User Profile", {
-      user,
-      profilePicture: PUBLIC_FOLDER + "profile-pics/" + user.profile_picture,
-      refreshPage,
-    });
+    if(currentUser._id.toString() === user._id.toString()){
+      navigation.navigate("ProfilePage");
+    }
+    else{
+      navigation.navigate("User Profile", {
+        user,
+        profilePicture: PUBLIC_FOLDER + "profile-pics/" + user.profile_picture,
+        refreshPage,
+      });
+    }
   };
 
   return (

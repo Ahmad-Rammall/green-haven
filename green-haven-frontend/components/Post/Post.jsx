@@ -47,18 +47,22 @@ const Post = ({ post, refreshPage, handleOpenModal, setCommentsObject }) => {
   const handleCommentClick = () => {
     setCommentsObject({
       postId: post._id,
-      postComments: post.comments
+      postComments: post.comments,
     });
     handleOpenModal();
-  }
+  };
 
   // when user clicks on the post's owner profile picture
   const navigateToUserProfile = () => {
-    navigation.navigate("User Profile", {
-      user: post.user,
-      profilePicture: userProfilePic,
-      refreshPage,
-    });
+    if (post.user._id.toString() === currentUser._id.toString()) {
+      navigation.navigate("ProfilePage");
+    } else {
+      navigation.navigate("User Profile", {
+        user: post.user,
+        profilePicture: userProfilePic,
+        refreshPage,
+      });
+    }
   };
   return (
     <View style={styles.container}>
