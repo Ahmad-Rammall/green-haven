@@ -186,7 +186,20 @@ const updateUser = async (req, res) => {
     await user.save({ new: true, runValidators: true });
     if (!user) return res.status(400).json({ message: "Error Updating User" });
 
-    return res.status(200).json({ message: "User Added", user });
+    return res.status(200).json({ message: "User Updated", user });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const user = await User.findOneAndDelete({ _id: userId });
+    if (!user) {
+      return res.status(400).json({ message: "Error Deleting User" });
+    }
+    return res.status(200).json({ message: "User Deleted", user });
   } catch (error) {
     return res.status(500).json(error);
   }
@@ -199,5 +212,6 @@ module.exports = {
   deletePost,
   deleteProduct,
   addUser,
-  updateUser
+  updateUser,
+  deleteUser
 };
