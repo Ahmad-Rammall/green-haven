@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Modal.css";
+import { userDataSource } from "../../core/remoteDataSource/user";
 
-const Modal = ({ isOpen, onClose }) => {
+const Modal = ({ isOpen, onClose, add }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,6 +14,7 @@ const Modal = ({ isOpen, onClose }) => {
     status: "active",
   });
   const [isValid, setIsValid] = useState(false);
+  const [error, setError] = useState("")
 
   const handleClose = () => {
     onClose();
@@ -22,6 +24,20 @@ const Modal = ({ isOpen, onClose }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+
+  const addUser = async () => {
+    setError("")
+    const response = await userDataSource.addUser(formData);
+    console.log(response)
+
+    if(response.status !== 200){
+      setError("Email Already Exists!")
+    }
+  }
+
+  const updateUser = async () => {
+    
+  }
 
   useEffect(() => {
     if (
@@ -152,10 +168,13 @@ const Modal = ({ isOpen, onClose }) => {
                   </select>
                 </div>
 
+                <div>{error}</div>
+
                 <button
                   type="submit"
                   disabled={!isValid}
                   className={!isValid ? "disabled-btn" : ""}
+                  onClick={add ? addUser : updateUser}
                 >
                   Submit
                 </button>

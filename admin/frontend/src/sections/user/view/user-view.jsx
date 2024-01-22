@@ -204,7 +204,7 @@ export default function UserPage() {
         />
       </Card>
 
-      <Modal isOpen={modalOpen} onClose={handleCloseModal}/>
+      <Modal isOpen={modalOpen} onClose={handleCloseModal} add/>
 
     </Container>
   );
