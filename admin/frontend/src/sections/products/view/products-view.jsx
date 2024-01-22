@@ -12,6 +12,11 @@ import { productsDataSource } from "../../../core/remoteDataSource/product";
 
 export default function ProductsView() {
   const [products, setProducts] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+
+  const refreshPage = () => {
+    setRefresh(!refresh);
+  };
 
   const getAllProducts = async () => {
     const response = await productsDataSource.getAllProducts();
@@ -20,7 +25,7 @@ export default function ProductsView() {
 
   useEffect(() => {
     getAllProducts();
-  }, []);
+  }, [refresh]);
 
   return (
     <Container>
@@ -31,7 +36,7 @@ export default function ProductsView() {
       <Grid container spacing={3}>
         {products.map((product) => (
           <Grid key={product._id} xs={12} sm={6} md={3}>
-            <ProductCard product={product} />
+            <ProductCard product={product} refreshPage={refreshPage}/>
           </Grid>
         ))}
       </Grid>
