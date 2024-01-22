@@ -14,6 +14,8 @@ import Label from "src/components/label";
 import Iconify from "src/components/iconify";
 
 import Modal from "../../components/modal/modal";
+import DeleteModal from "../../components/modal/DeleteModal";
+import { userDataSource } from "../../core/remoteDataSource/user";
 
 // ----------------------------------------------------------------------
 
@@ -27,12 +29,13 @@ export default function UserTableRow({
   status,
   handleClick,
   user,
-  refreshPage
+  refreshPage,
 }) {
   const profile_picture =
     import.meta.env.VITE_REACT_APP_PUBLIC_FOLDER + "/profile-pics/" + avatarUrl;
   const [open, setOpen] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const handleEditClick = () => {
     setModalOpen(true);
@@ -41,6 +44,7 @@ export default function UserTableRow({
 
   const handleCloseModal = () => {
     setModalOpen(false);
+    setDeleteModalOpen(false);
   };
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
@@ -48,6 +52,15 @@ export default function UserTableRow({
 
   const handleCloseMenu = () => {
     setOpen(null);
+  };
+
+  const deleteUser = async () => {
+    const response = await userDataSource.deleteUser(user._id);
+    console.log(response);
+    if (response?.status === 200) {
+      refreshPage();
+      handleCloseModal()
+    }
   };
 
   return (
@@ -96,13 +109,26 @@ export default function UserTableRow({
           Edit
         </MenuItem>
 
-        <MenuItem onClick={handleCloseMenu} sx={{ color: "error.main" }}>
+        <MenuItem
+          onClick={() => setDeleteModalOpen(true)}
+          sx={{ color: "error.main" }}
+        >
           <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
           Delete
         </MenuItem>
       </Popover>
 
-      <Modal isOpen={modalOpen} onClose={handleCloseModal} user={user} refreshPage={refreshPage}/>
+      <Modal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        user={user}
+        refreshPage={refreshPage}
+      />
+      <DeleteModal
+        isOpen={deleteModalOpen}
+        onClick={deleteUser}
+        onClose={handleCloseModal}
+      />
     </>
   );
 }
