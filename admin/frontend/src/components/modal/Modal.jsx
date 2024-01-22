@@ -7,10 +7,10 @@ const Modal = ({ isOpen, onClose }) => {
     email: "",
     password: "",
     bio: "",
-    phoneNumber: "",
-    address: "",
-    role: "",
-    status: "",
+    phone_number: "",
+    location: "",
+    role: "seller",
+    status: "active",
   });
   const [isValid, setIsValid] = useState(false);
 
@@ -103,8 +103,8 @@ const Modal = ({ isOpen, onClose }) => {
                   Phone Nb:
                   <input
                     type="number"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
+                    name="phone_number"
+                    value={formData.phone_number}
                     onChange={handleInputChange}
                     className="input-field"
                   />
@@ -120,11 +120,11 @@ const Modal = ({ isOpen, onClose }) => {
                   />
                 </div>
                 <div className="input">
-                  Address:
+                  Location:
                   <input
                     type="text"
-                    name="address"
-                    value={formData.address}
+                    name="location"
+                    value={formData.location}
                     onChange={handleInputChange}
                     className="input-field"
                   />
@@ -152,7 +152,11 @@ const Modal = ({ isOpen, onClose }) => {
                   </select>
                 </div>
 
-                <button type="submit" disabled={!isValid} className={!isValid ? "disabled-btn" : ""}>
+                <button
+                  type="submit"
+                  disabled={!isValid}
+                  className={!isValid ? "disabled-btn" : ""}
+                >
                   Submit
                 </button>
               </form>

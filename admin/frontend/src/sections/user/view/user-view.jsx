@@ -21,6 +21,8 @@ import UserTableToolbar from "../user-table-toolbar";
 import { emptyRows, applyFilter, getComparator } from "../utils";
 
 import { userDataSource } from "../../../core/remoteDataSource/user";
+import Modal from "../../../components/modal/modal";
+
 
 // ----------------------------------------------------------------------
 
@@ -38,6 +40,16 @@ export default function UserPage() {
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const [users, setUsers] = useState([]);
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
 
   const getAllUsers = async () => {
     const response = await userDataSource.getAllUsers();
@@ -120,6 +132,7 @@ export default function UserPage() {
           variant="contained"
           color="inherit"
           startIcon={<Iconify icon="eva:plus-fill" />}
+          onClick={handleOpenModal}
         >
           New User
         </Button>
@@ -190,6 +203,9 @@ export default function UserPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Card>
+
+      <Modal isOpen={modalOpen} onClose={handleCloseModal}/>
+
     </Container>
   );
 }
