@@ -1,6 +1,6 @@
 const User = require("../models/user.model");
 const Order = require("../models/order.model");
-const Posts = require("../models/post.model")
+const Post = require("../models/post.model")
 
 const getCounts = async (req, res) => {
   try {
@@ -49,9 +49,28 @@ const getAllUsers = async (req,res) => {
 
 const getAllPosts = async (req,res) => {
   try{
-    const posts = await Post.find({});
+    const posts = await Post.find({}).populate({
+      path: "user",
+      select: ["name", "profile_picture"],
+    });
     if(!posts) return res.status(400).json({message: "error"});
     res.status(200).json(posts);
+  }
+  catch(error){
+    return res.status(500).json(error);
+  }
+}
+
+const deletePost = async (req,res) => {
+  try{
+    const postId = req.params.postId;
+    const isDeleted = await Post.findOneAndDelete({ _id: postId });
+
+    if(!isDeleted){
+      res.status(400).json({ message: "Error Deleting Post" });
+    }
+    console.log(isDeleted)
+    res.status(200).json({ message: "Post Deleted" });
   }
   catch(error){
     return res.status(500).json(error);
@@ -62,4 +81,5 @@ module.exports = {
   getCounts,
   getAllUsers,
   getAllPosts,
+  deletePost,
 };
