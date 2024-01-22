@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
@@ -23,7 +23,6 @@ import { emptyRows, applyFilter, getComparator } from "../utils";
 import { userDataSource } from "../../../core/remoteDataSource/user";
 import Modal from "../../../components/modal/modal";
 
-
 // ----------------------------------------------------------------------
 
 export default function UserPage() {
@@ -43,6 +42,8 @@ export default function UserPage() {
 
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [refresh, setRefresh] = useState(false);
+
   const handleCloseModal = () => {
     setModalOpen(false);
   };
@@ -53,7 +54,7 @@ export default function UserPage() {
 
   const getAllUsers = async () => {
     const response = await userDataSource.getAllUsers();
-    console.log(response)
+    console.log(response);
     setUsers(response.data);
   };
 
@@ -74,9 +75,13 @@ export default function UserPage() {
     setSelected([]);
   };
 
+  const refreshPage = () => {
+    setRefresh(!refresh);
+  };
+
   useEffect(() => {
-    getAllUsers()
-  }, [])
+    getAllUsers();
+  }, [refresh]);
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
@@ -180,6 +185,7 @@ export default function UserPage() {
                       selected={selected.indexOf(row.name) !== -1}
                       user={row}
                       handleClick={(event) => handleClick(event, row.name)}
+                      refreshPage={refreshPage}
                     />
                   ))}
 
@@ -205,8 +211,7 @@ export default function UserPage() {
         />
       </Card>
 
-      <Modal isOpen={modalOpen} onClose={handleCloseModal} add/>
-
+      <Modal isOpen={modalOpen} onClose={handleCloseModal} add refreshPage={refreshPage}/>
     </Container>
   );
 }

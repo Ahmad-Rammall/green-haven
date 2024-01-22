@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Modal.css";
 import { userDataSource } from "../../core/remoteDataSource/user";
 
-const Modal = ({ isOpen, onClose, add, user }) => {
+const Modal = ({ isOpen, onClose, refreshPage, user }) => {
   const [formData, setFormData] = useState({
     _id: "",
     name: "",
@@ -29,7 +29,7 @@ const Modal = ({ isOpen, onClose, add, user }) => {
         status: user.status,
       });
     }
-  } , [])
+  }, []);
   const [isValid, setIsValid] = useState(false);
   const [error, setError] = useState("");
 
@@ -45,9 +45,10 @@ const Modal = ({ isOpen, onClose, add, user }) => {
   const addUser = async () => {
     setError("");
     const response = await userDataSource.addUser(formData);
-    console.log(response);
-
-    if (response.status !== 200) {
+    if (response?.status === 200) {
+      refreshPage();
+      handleClose();
+    } else {
       setError("Email Already Exists!");
     }
   };
@@ -56,8 +57,10 @@ const Modal = ({ isOpen, onClose, add, user }) => {
     setError("");
     const response = await userDataSource.updateUser(formData);
     console.log(response);
-
-    if (response.status !== 200) {
+    if (response?.status === 200) {
+      refreshPage();
+      handleClose();
+    } else {
       setError("Error");
     }
   };
@@ -197,7 +200,7 @@ const Modal = ({ isOpen, onClose, add, user }) => {
                   type="submit"
                   disabled={!isValid}
                   className={!isValid ? "disabled-btn" : ""}
-                  onClick={add ? addUser : updateUser}
+                  onClick={user ? updateUser : addUser}
                 >
                   {user ? "Update" : "Add User"}
                 </button>

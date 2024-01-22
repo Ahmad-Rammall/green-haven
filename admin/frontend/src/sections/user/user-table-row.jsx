@@ -26,7 +26,8 @@ export default function UserTableRow({
   role,
   status,
   handleClick,
-  user
+  user,
+  refreshPage
 }) {
   const profile_picture =
     import.meta.env.VITE_REACT_APP_PUBLIC_FOLDER + "/profile-pics/" + avatarUrl;
@@ -101,7 +102,7 @@ export default function UserTableRow({
         </MenuItem>
       </Popover>
 
-      <Modal isOpen={modalOpen} onClose={handleCloseModal} user={user}/>
+      <Modal isOpen={modalOpen} onClose={handleCloseModal} user={user} refreshPage={refreshPage}/>
     </>
   );
 }
