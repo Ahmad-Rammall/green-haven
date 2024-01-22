@@ -29,8 +29,6 @@ const Modal = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    // You can access the form data using the formData state
     console.log("Form submitted:", formData);
   };
 
@@ -74,7 +72,7 @@ const Modal = ({ isOpen, onClose }) => {
                   />
                 </label>
                 <label>
-                  Confirm Password:
+                  Phone Nb:
                   <input
                     type="password"
                     name="confirmPassword"
@@ -83,7 +81,7 @@ const Modal = ({ isOpen, onClose }) => {
                   />
                 </label>
                 <label>
-                  Phone Number:
+                  Bio:
                   <input
                     type="tel"
                     name="phoneNumber"
@@ -109,6 +107,17 @@ const Modal = ({ isOpen, onClose }) => {
                   >
                     <option value="seller">Seller</option>
                     <option value="user">User</option>
+                  </select>
+                </label>
+                <label>
+                  Status:
+                  <select
+                    name="status"
+                    value={formData.status}
+                    onChange={handleRoleChange}
+                  >
+                    <option value="active">Active</option>
+                    <option value="banned">Banned</option>
                   </select>
                 </label>
 
