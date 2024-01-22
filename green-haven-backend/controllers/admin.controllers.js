@@ -135,6 +135,63 @@ const addUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  try {
+    console.log(req.body);
+    const {
+      email,
+      password,
+      name,
+      bio,
+      phone_number,
+      location,
+      role,
+      status,
+      _id,
+    } = req.body;
+    let hashedPassword = "";
+
+    if (
+      email === "" ||
+      password === "" ||
+      name === "" ||
+      role === "" ||
+      status === "" ||
+      email === undefined ||
+      password === undefined ||
+      name === undefined ||
+      role === undefined ||
+      status === undefined
+    ) {
+      return res.status(400).json({ message: "All Details required" });
+    }
+
+    const user = await User.findOne({ _id });
+    if (user.password === password) {
+      hashedPassword = password;
+    } else {
+      const salt = await bcrypt.genSalt(10);
+      hashedPassword = await bcrypt.hash(password, salt);
+    }
+
+    user.email = email;
+    user.password = hashedPassword;
+    user.status = status;
+    user.role = role;
+    user.bio = bio;
+    user.name = name;
+    user.phone_number = phone_number;
+    user.location = location;
+
+    await user.save({ new: true, runValidators: true });
+    if (!user) return res.status(400).json({ message: "Error Updating User" });
+
+    return res.status(200).json({ message: "User Added", user });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+
 module.exports = {
   getCounts,
   getAllUsers,
@@ -142,4 +199,5 @@ module.exports = {
   deletePost,
   deleteProduct,
   addUser,
+  updateUser
 };

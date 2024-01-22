@@ -6,12 +6,14 @@ const {
   deletePost,
   deleteProduct,
   addUser,
+  updateUser
 } = require("../controllers/admin.controllers");
 
 router.get("/", getCounts);
 
 router.get("/users", getAllUsers);
 router.post("/users", addUser);
+router.put("/users", updateUser);
 
 router.get("/posts", getAllPosts);
 router.delete("/post/:postId", deletePost);
