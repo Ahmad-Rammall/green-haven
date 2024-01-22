@@ -4,6 +4,7 @@ import { userDataSource } from "../../core/remoteDataSource/user";
 
 const Modal = ({ isOpen, onClose, add, user }) => {
   const [formData, setFormData] = useState({
+    _id: "",
     name: "",
     email: "",
     password: "",
@@ -17,6 +18,7 @@ const Modal = ({ isOpen, onClose, add, user }) => {
   useEffect(() => {
     if (user) {
       setFormData({
+        _id: user._id,
         name: user.name,
         email: user.email,
         password: user.password,
@@ -50,7 +52,15 @@ const Modal = ({ isOpen, onClose, add, user }) => {
     }
   };
 
-  const updateUser = async () => {};
+  const updateUser = async () => {
+    setError("");
+    const response = await userDataSource.updateUser(formData);
+    console.log(response);
+
+    if (response.status !== 200) {
+      setError("Error");
+    }
+  };
 
   useEffect(() => {
     if (
@@ -189,7 +199,7 @@ const Modal = ({ isOpen, onClose, add, user }) => {
                   className={!isValid ? "disabled-btn" : ""}
                   onClick={add ? addUser : updateUser}
                 >
-                  Submit
+                  {user ? "Update" : "Add User"}
                 </button>
               </form>
             </div>
