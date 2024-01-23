@@ -117,44 +117,23 @@ const Login = ({ navigation }) => {
                 )}
               </View>
               <Button
-                onPress={isValid ? handleSubmit : () => {  }}
+                onPress={isValid ? handleSubmit : () => {}}
                 isValid={isValid}
                 btnText="Submit"
                 color={COLORS.primary}
               />
 
-              <Text style={styles.registerText} onPress={() => navigation.navigate("Register")}>
+              <Text
+                style={styles.registerText}
+                onPress={() => navigation.navigate("Register")}
+              >
                 Don't Have An Account?
                 <Text style={styles.registerBtn}> Sign up.</Text>
               </Text>
             </View>
           )}
         </Formik>
-
-        <View style={styles.otherOptionsContainer}>
-          <View style={styles.line} />
-          <Text style={styles.text}>Or Sign in with</Text>
-          <View style={styles.line} />
-        </View>
-
-        <View style={styles.optionsContainer}>
-          <TouchableOpacity style={styles.googleOption}>
-            <Image
-              source={require("../../assets/images/googleLogo.png")}
-              style={styles.logoImage}
-            />
-            <Text style={styles.optionText(COLORS.gray)}>Google</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.option(COLORS.blue)}>
-            <Image
-              source={require("../../assets/images/facebookLogo.png")}
-              style={styles.logoImage}
-            />
-            <Text style={styles.optionText(COLORS.white)}>Facebook</Text>
-          </TouchableOpacity>
-        </View>
-        </ScrollView>
+      </ScrollView>
     </SafeAreaView>
   );
 };

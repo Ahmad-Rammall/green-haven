@@ -12,11 +12,11 @@ const styles = StyleSheet.create({
   image: {
     height: SIZES.height / 2.9,
     resizeMode: "contain",
-    marginBottom: SIZES.xLarge,
+    marginVertical: SIZES.xLarge,
     alignSelf: "center",
   },
   inputs: {
-    marginBottom: SIZES.large,
+    marginBottom: 30,
   },
   label: {
     fontFamily: "regular",

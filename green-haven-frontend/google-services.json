@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "793151322037-a6lncrd6l50j55kk6bvqti7nijvpf01m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anonymous.greenhavenfrontend",
+            "certificate_hash": "859293d2cbd2ce096626ccda5230522ad899dec2"
+          }
+        },
+        {
           "client_id": "793151322037-o2sde8t3ubue4v7el04hmof97fojl5af.apps.googleusercontent.com",
           "client_type": 3
         }
