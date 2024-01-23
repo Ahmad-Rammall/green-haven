@@ -18,9 +18,12 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.greenhavenfrontend"
     },
-    "web": {
-    }
+    "web": {},
+    "plugins": [
+      "expo-font"
+    ]
   }
 }

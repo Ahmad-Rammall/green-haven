@@ -42,7 +42,7 @@ const screenOptions = ({ route, navigation }) => ({
         }}
       >
         <Ionicons
-          name="ios-chatbubbles-outline"
+          name="chatbubbles-outline"
           size={24}
           color={COLORS.offwhite}
         />

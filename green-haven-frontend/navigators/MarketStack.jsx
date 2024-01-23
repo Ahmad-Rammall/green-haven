@@ -33,7 +33,7 @@ const userScreenOptions = ({navigation}) => ({
           navigation.navigate("Cart");
         }}
       >
-        <Ionicons name="ios-cart-outline" size={24} color={COLORS.offwhite} />
+        <Ionicons name="cart-outline" size={24} color={COLORS.offwhite} />
       </TouchableOpacity>
     </View>
   ),
