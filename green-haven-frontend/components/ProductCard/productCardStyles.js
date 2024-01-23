@@ -4,18 +4,19 @@ import { COLORS, SIZES } from "../../assets/constants";
 const styles = StyleSheet.create({
   container: {
     width: SIZES.width / 2.4,
-    height: 200,
     borderRadius: SIZES.medium,
     backgroundColor: COLORS.secondary,
     marginBottom: SIZES.large,
+    justifyContent: "space-between"
   },
   image: {
-    resizeMode: "contain",
+    resizeMode: "cover",
     borderRadius: SIZES.small,
     aspectRatio:1
   },
   details: {
     paddingHorizontal: 10,
+    paddingTop: 5
   },
   title: {
     fontFamily: "light",
