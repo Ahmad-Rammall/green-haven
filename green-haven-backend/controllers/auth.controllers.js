@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const StreamChat = require("stream-chat");
 const topUsedPasswords = require("../topUsedPasswords");
-const zxcvbn = require('zxcvbn');
+const zxcvbn = require("zxcvbn");
 
 const { STREAM_API_KEY, STREAM_API_SECRET } = process.env;
 
@@ -11,6 +11,19 @@ const client = StreamChat.StreamChat.getInstance(
   STREAM_API_KEY,
   STREAM_API_SECRET
 );
+
+const checkPassword = (password) => {
+  if (topUsedPasswords.includes(password.toLowerCase())) {
+    return "Very Common Password. Please Change It!";
+  }
+  const passwordResult = zxcvbn(password);
+
+  if (passwordResult <= 2) {
+    return `Password Score : ${passwordResult.score} Suggestions: ${passwordResult.feedback.suggestions}`;
+  }
+
+  return 1
+};
 
 const register = async (req, res) => {
   const { email, password, name, role } = req.body;
@@ -22,17 +35,9 @@ const register = async (req, res) => {
     return res.status(403).json(`Can't register as ${role}`);
   }
 
-  if (topUsedPasswords.includes(password.toLowerCase())) {
-    return res
-      .status(400)
-      .json({ message: "Very Common Password. Please Change It!" });
-  }
-  const passwordResult = zxcvbn(password);
-
-  if(passwordResult <= 2){
-    return res
-      .status(400)
-      .json({ message: `Password Score : ${passwordResult.score} Suggestions: ${passwordResult.feedback.suggestions}` });
+  const checkedPassword = checkPassword(password);
+  if(checkedPassword !== 1){
+    res.status(400).json({ message: checkedPassword })
   }
 
   const salt = await bcrypt.genSalt(10);
