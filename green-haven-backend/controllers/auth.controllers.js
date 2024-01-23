@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const StreamChat = require("stream-chat");
 const topUsedPasswords = require("../topUsedPasswords");
+const zxcvbn = require('zxcvbn');
 
 const { STREAM_API_KEY, STREAM_API_SECRET } = process.env;
 
@@ -25,6 +26,13 @@ const register = async (req, res) => {
     return res
       .status(400)
       .json({ message: "Very Common Password. Please Change It!" });
+  }
+  const passwordResult = zxcvbn(password);
+
+  if(passwordResult <= 2){
+    return res
+      .status(400)
+      .json({ message: `Password Score : ${passwordResult.score} Suggestions: ${passwordResult.feedback.suggestions}` });
   }
 
   const salt = await bcrypt.genSalt(10);
