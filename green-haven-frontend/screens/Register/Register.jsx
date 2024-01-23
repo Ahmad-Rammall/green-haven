@@ -239,8 +239,6 @@ const Register = ({ navigation }) => {
                 color={COLORS.primary}
               />
 
-              <Text style={styles.errorMsg}>{responseError}</Text>
-
               <Text
                 style={styles.registerText}
                 onPress={() => navigation.navigate("Login")}

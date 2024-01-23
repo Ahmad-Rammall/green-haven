@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 
   // Register Option
   registerWrapper: {
-    height: SIZES.height - 100,
+    height: SIZES.height - SIZES.height/10,
     justifyContent: "space-evenly",
   },
   registerTitle: {
