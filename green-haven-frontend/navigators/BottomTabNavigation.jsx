@@ -17,7 +17,7 @@ const bottomTabScreenOptions = {
   headerShown: false,
 };
 
-const gardenScreenOptions = () => ({
+const homeScreenOptions = () => ({
   headerShown: true,
   headerStyle: {
     backgroundColor: COLORS.primary,
@@ -27,7 +27,7 @@ const gardenScreenOptions = () => ({
   headerTitleStyle: {
     fontWeight: "light",
   },
-  headerTitle:"Garden",
+  headerTitle:"Home",
   tabBarIcon: ({ focused }) => {
     return (
       <Ionicons
@@ -77,9 +77,9 @@ const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="GardenPage"
+        name="HomePage"
         component={Home}
-        options={gardenScreenOptions}
+        options={homeScreenOptions}
       />
       <Tab.Screen
         name="FeedPage"
