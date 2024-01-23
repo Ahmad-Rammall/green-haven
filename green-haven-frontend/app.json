@@ -19,11 +19,13 @@
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.greenhavenfrontend"
+      "package": "com.anonymous.greenhavenfrontend",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {},
     "plugins": [
-      "expo-font"
+      "expo-font",
+      "@react-native-google-signin/google-signin"
     ]
   }
 }

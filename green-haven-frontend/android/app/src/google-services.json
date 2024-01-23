@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "793151322037",
+    "project_id": "green-haven-e7f51",
+    "storage_bucket": "green-haven-e7f51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793151322037:android:46fd7626328e93fd99cbfc",
+        "android_client_info": {
+          "package_name": "com.anonymous.greenhavenfrontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793151322037-o2sde8t3ubue4v7el04hmof97fojl5af.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnjJ4H6XIY70EUZL59uviCptgSFDgMcMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793151322037-o2sde8t3ubue4v7el04hmof97fojl5af.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
