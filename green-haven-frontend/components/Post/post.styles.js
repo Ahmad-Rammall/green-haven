@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     height: 250,
   },
   postImage: {
-    resizeMode: "contain",
+    resizeMode: "cover",
     width: "100%",
     height: "100%",
     borderRadius: 5,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   profilePic: {
     width: 40,
     height: 40,
-    resizeMode: "contain",
+    resizeMode: "cover",
     borderRadius: 1000,
   },
   userName: {

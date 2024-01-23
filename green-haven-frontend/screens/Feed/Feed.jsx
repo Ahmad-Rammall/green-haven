@@ -55,8 +55,8 @@ const Feed = ({ navigation }) => {
   };
 
   useEffect(() => {
-    console.log(modalStyle)
-  }, [modalStyle])
+    console.log(modalStyle);
+  }, [modalStyle]);
 
   const getPosts = async () => {
     setLoading(true);
@@ -125,10 +125,9 @@ const Feed = ({ navigation }) => {
   }, [searchInput]);
 
   const navigateToUserProfile = (user) => {
-    if(currentUser._id.toString() === user._id.toString()){
+    if (currentUser._id.toString() === user._id.toString()) {
       navigation.navigate("ProfilePage");
-    }
-    else{
+    } else {
       navigation.navigate("User Profile", {
         user,
         profilePicture: PUBLIC_FOLDER + "profile-pics/" + user.profile_picture,
@@ -206,7 +205,6 @@ const Feed = ({ navigation }) => {
             snapPoints={snapPoints}
             onDismiss={() => {
               setModalOpen(false);
-              // setModalStyle(styles.modalClose);
             }}
             handleComponent={null}
           >
