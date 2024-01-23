@@ -2,6 +2,7 @@ const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const StreamChat = require("stream-chat");
+const topUsedPasswords = require("../topUsedPasswords");
 
 const { STREAM_API_KEY, STREAM_API_SECRET } = process.env;
 
@@ -18,6 +19,12 @@ const register = async (req, res) => {
 
   if (role != "user" && role != "seller") {
     return res.status(403).json(`Can't register as ${role}`);
+  }
+
+  if (topUsedPasswords.includes(password.toLowerCase())) {
+    return res
+      .status(400)
+      .json({ message: "Very Common Password. Please Change It!" });
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -49,10 +56,10 @@ const login = async (req, res) => {
   const user = await User.findOne({ email });
   if (!user)
     return res.status(400).json({ message: "Invalid username/password" });
-  
-    if(user.status === "banned"){
-      return res.status(403).json({message: "Banned Account"});
-    }
+
+  if (user.status === "banned") {
+    return res.status(403).json({ message: "Banned Account" });
+  }
 
   // check if password is correct
   const isValidPassword = await bcrypt.compare(password, user.password);
