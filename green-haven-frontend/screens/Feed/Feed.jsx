@@ -54,6 +54,10 @@ const Feed = ({ navigation }) => {
     setModalStyle(styles.modalOpen);
   };
 
+  useEffect(() => {
+    console.log(modalStyle)
+  }, [modalStyle])
+
   const getPosts = async () => {
     setLoading(true);
     const response = await postDataSource.getPosts();
@@ -202,7 +206,7 @@ const Feed = ({ navigation }) => {
             snapPoints={snapPoints}
             onDismiss={() => {
               setModalOpen(false);
-              setModalStyle(styles.modalClose);
+              // setModalStyle(styles.modalClose);
             }}
             handleComponent={null}
           >
