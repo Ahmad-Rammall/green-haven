@@ -80,7 +80,7 @@ const ChangePassword = () => {
                 <Text style={styles.label}>Old Password</Text>
                 <View
                   style={styles.inputWrapper(
-                    touched.oldPassword ? COLORS.primary : COLORS.white
+                    touched.oldPassword ? COLORS.primary : COLORS.gray2
                   )}
                 >
                   <MaterialCommunityIcons
@@ -117,7 +117,7 @@ const ChangePassword = () => {
                 <Text style={styles.label}>New Password</Text>
                 <View
                   style={styles.inputWrapper(
-                    touched.newPassword ? COLORS.primary : COLORS.white
+                    touched.newPassword ? COLORS.primary : COLORS.gray2
                   )}
                 >
                   <MaterialCommunityIcons
@@ -148,7 +148,7 @@ const ChangePassword = () => {
                 <Text style={styles.label}>Confirm New Password</Text>
                 <View
                   style={styles.inputWrapper(
-                    touched.confirmNewPassword ? COLORS.primary : COLORS.white
+                    touched.confirmNewPassword ? COLORS.primary : COLORS.gray2
                   )}
                 >
                   <MaterialCommunityIcons
@@ -157,7 +157,7 @@ const ChangePassword = () => {
                     color={COLORS.gray}
                   />
                   <TextInput
-                    placeholder="confirm New Password"
+                    placeholder="Confirm New Password"
                     onFocus={() => setFieldTouched("confirmNewPassword")}
                     onBlur={() => setFieldTouched("confirmNewPassword", "")}
                     autoCapitalize="none"

@@ -44,7 +44,7 @@ const BottomTabNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={bottomTabScreenOptions}
-      initialRouteName="GardenPage"
+      initialRouteName="HomePage"
     >
       <Tab.Screen
         name="MarketPage"

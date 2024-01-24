@@ -61,9 +61,7 @@ const EditProfile = () => {
               value={credentials.phone}
               style={styles.input}
               onChangeText={(text) => handleFormChange("phone", text)}
-              keyboardType={
-                Platform.OS === "android" ? "numeric" : "number-pad"
-              }
+              keyboardType="numeric"
             />
           </View>
 
