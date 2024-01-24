@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   optionBtn: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: COLORS.gray2,
+    backgroundColor: COLORS.secondary,
     padding: 10,
     borderRadius: 10,
     marginVertical: 15,
