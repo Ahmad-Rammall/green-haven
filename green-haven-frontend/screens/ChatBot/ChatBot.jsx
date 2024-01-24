@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { GiftedChat } from "react-native-gifted-chat";
-import { getGeneratedMessage } from "../../core/dataSource/remoteDataSource/chatBot";
+import { geminiDataSource } from "../../core/dataSource/remoteDataSource/geminiAI";
 
 const ChatBot = ({ messages, setMessages }) => {
   const onSend = useCallback(async (messages) => {
@@ -12,12 +12,12 @@ const ChatBot = ({ messages, setMessages }) => {
     );
 
     // send to openAI and get response message
-    const response = await getGeneratedMessage(userMessage);
-    console.log(response)
+    const response = await geminiDataSource.getResponse({message: userMessage});
+    
     // save bot message
     const botMessage = {
       _id: new Date().getTime(),
-      text: `${response}`,
+      text: `${response.data.message}`,
       user: {
         _id: 1,
         name: "ChatBot",
