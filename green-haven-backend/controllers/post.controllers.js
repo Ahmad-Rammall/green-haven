@@ -78,7 +78,6 @@ const likePost = async (req, res) => {
       post.likes = post.likes.filter(
         (like) => String(like._id) !== String(user._id)
       );
-      console.log(post.likes);
       await post.save();
       res.status(200).json("You disliked this post");
     } else {
@@ -118,7 +117,7 @@ const getOwnPosts = async (req,res) => {
     return ownPosts;
 
   }catch(error){
-    console.log("error in get own")
+    return res.status(500).send(error);
   }
 }
 

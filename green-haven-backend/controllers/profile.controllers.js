@@ -83,7 +83,6 @@ const followUser = async (req, res) => {
         return res.status(403).json("Wrong Ids");
       }
     } catch (error) {
-      console.log(error);
       return res.status(500).json(error);
     }
   } else {
@@ -116,7 +115,6 @@ const unfollowUser = async (req, res) => {
         return res.status(403).json("Wrong Ids");
       }
     } catch (error) {
-      console.log(error);
       return res.status(500).json(error);
     }
   } else {

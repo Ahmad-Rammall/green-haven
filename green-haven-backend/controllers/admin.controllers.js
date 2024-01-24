@@ -69,7 +69,6 @@ const deletePost = async (req, res) => {
     if (!isDeleted) {
       return res.status(400).json({ message: "Error Deleting Post" });
     }
-    console.log(isDeleted);
     return res.status(200).json({ message: "Post Deleted" });
   } catch (error) {
     return res.status(500).json(error);
@@ -84,7 +83,6 @@ const deleteProduct = async (req, res) => {
     if (!isDeleted) {
       return res.status(400).json({ message: "Error Deleting Product" });
     }
-    console.log(isDeleted);
     return res.status(200).json({ message: "Product Deleted" });
   } catch (error) {
     return res.status(500).json(error);
@@ -93,7 +91,6 @@ const deleteProduct = async (req, res) => {
 
 const addUser = async (req, res) => {
   try {
-    console.log(req.body);
     const { email, password, name, bio, phone_number, location, role, status } =
       req.body;
 
@@ -137,7 +134,6 @@ const addUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    console.log(req.body);
     const {
       email,
       password,
