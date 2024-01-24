@@ -58,7 +58,7 @@ const register = async (req, res) => {
 
     res.status(200).json({ user });
   } catch (e) {
-    res.status(500).json({ error: e });
+    res.status(500).json({ message: "Email Already Exists" });
   }
 };
 

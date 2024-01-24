@@ -58,6 +58,10 @@ app.use("/order", authMiddleware, orderRoutes);
 const userRoutes = require("./routes/user.routes");
 app.use("/users", authMiddleware, userRoutes);
 
+// User Routes
+const chatRoutes = require("./routes/chat.routes");
+app.use("/chat", authMiddleware, chatRoutes);
+
 app.listen(8000, () => {
   console.log("Server listining on PORT: ", 8000);
   connectToMongoDB();
