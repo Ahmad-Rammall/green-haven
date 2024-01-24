@@ -61,7 +61,7 @@ const BottomTabNavigation = () => {
           tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
-                name={focused ? "ios-basket" : "ios-basket-outline"}
+                name={focused ? "basket" : "basket-outline"}
                 size={27}
                 color={focused ? COLORS.primary : COLORS.gray2}
               />
@@ -77,7 +77,7 @@ const BottomTabNavigation = () => {
           tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
-                name={focused ? "md-people" : "md-people-outline"}
+                name={focused ? "people" : "people-outline"}
                 size={30}
                 color={focused ? COLORS.primary : COLORS.gray2}
               />

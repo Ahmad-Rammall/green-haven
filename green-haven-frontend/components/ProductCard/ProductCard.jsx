@@ -4,6 +4,7 @@ import React from "react";
 import styles from "./productCardStyles";
 import { useNavigation } from "@react-navigation/native";
 import { PUBLIC_FOLDER } from "@env";
+PUBLIC_FOLDER
 
 const ProductCard = ({ product }) => {
   process.env.PUBLIC_FOLDER;

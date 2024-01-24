@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { SIZES } from "../../assets/constants";
 import { PUBLIC_FOLDER } from "@env";
 import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
+PUBLIC_FOLDER
 
 const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
   const [isZero, setIsZero] = useState(true);
@@ -89,7 +90,7 @@ const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
                 />
               ) : (
                 <Ionicons
-                  name="ios-remove"
+                  name="remove"
                   size={24}
                   style={styles.quantityBtn}
                 />

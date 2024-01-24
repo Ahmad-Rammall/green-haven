@@ -194,9 +194,7 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
                     onBlur={() => setFieldTouched("price", "")}
                     value={values.price}
                     onChangeText={handleChange("price")}
-                    keyboardType={
-                      Platform.OS === "android" ? "numeric" : "number-pad"
-                    }
+                    keyboardType={"numeric"}
                     style={styles.input}
                   />
                 </View>
@@ -211,7 +209,10 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity>
-                  <Text style={styles.button(COLORS.primary)} onPress={handleSubmit}>
+                  <Text
+                    style={styles.button(COLORS.primary)}
+                    onPress={handleSubmit}
+                  >
                     Add
                   </Text>
                 </TouchableOpacity>
