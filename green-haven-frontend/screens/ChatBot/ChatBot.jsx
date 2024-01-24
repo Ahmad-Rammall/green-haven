@@ -1,10 +1,17 @@
-import React, { useCallback } from "react";
-import { GiftedChat } from "react-native-gifted-chat";
+import React, { useCallback, useState } from "react";
+import { GiftedChat, Send } from "react-native-gifted-chat";
 import { geminiDataSource } from "../../core/dataSource/remoteDataSource/geminiAI";
+import { View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { COLORS } from "../../assets/constants";
 
 const ChatBot = ({ messages, setMessages }) => {
+  const [isTyping, setIsTyping] = useState(false);
+
   const onSend = useCallback(async (messages) => {
+    setIsTyping(true);
     // get user's message
+    console.log(messages.text);
     const userMessage = messages[0].text;
 
     setMessages((previousMessages) =>
@@ -12,8 +19,10 @@ const ChatBot = ({ messages, setMessages }) => {
     );
 
     // send to openAI and get response message
-    const response = await geminiDataSource.getResponse({message: userMessage});
-    
+    const response = await geminiDataSource.getResponse({
+      message: userMessage,
+    });
+
     // save bot message
     const botMessage = {
       _id: new Date().getTime(),
@@ -27,7 +36,20 @@ const ChatBot = ({ messages, setMessages }) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, botMessage)
     );
+    setIsTyping(false);
   }, []);
+
+  const renderSend = (props) => {
+    return (
+      <Send {...props}>
+        <View
+          style={{ justifyContent: "center", height: "100%", marginRight: 10 }}
+        >
+          <MaterialIcons name="send" size={24} color={COLORS.primary} />
+        </View>
+      </Send>
+    );
+  };
 
   return (
     <GiftedChat
@@ -37,6 +59,8 @@ const ChatBot = ({ messages, setMessages }) => {
         _id: 2,
         createdAt: new Date(),
       }}
+      renderSend={renderSend}
+      isTyping={isTyping}
     />
   );
 };

@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around",
-    margin: SIZES.medium,
+    justifyContent: "space-between",
+    margin: SIZES.xLarge,
   },
   modalClose: {
     display: "none",

@@ -68,7 +68,7 @@ const EditProfile = () => {
           {/* Location */}
           <View style={styles.inputWrapper}>
             <Ionicons
-              name="ios-location-outline"
+              name="location-outline"
               size={25}
               color={COLORS.gray}
             />
