@@ -13,6 +13,7 @@ export const sendRequest = async ({
 
   try {
     process.env.API_HOST;
+    console.log(API_HOST)
     const response = await axios.request({
       url: `${API_HOST}/${route}`,
       method,

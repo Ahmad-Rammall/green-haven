@@ -37,7 +37,7 @@ const register = async (req, res) => {
 
   const checkedPassword = checkPassword(password);
   if(checkedPassword !== 1){
-    res.status(400).json({ message: checkedPassword })
+    return res.status(400).json({ message: checkedPassword })
   }
 
   const salt = await bcrypt.genSalt(10);

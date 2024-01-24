@@ -13,7 +13,7 @@ import { StreamChat } from "stream-chat";
 
 const Profile = ({ navigation }) => {
   const currentUser = useSelector((state) => state.User);
-
+  console.log(PUBLIC_FOLDER)
   const userProfilePicture = `${PUBLIC_FOLDER}profile-pics/${currentUser.profilePicture}`;
   const client = StreamChat.getInstance(STREAM_KEY);
 
