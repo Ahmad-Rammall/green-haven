@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { GiftedChat, Send } from "react-native-gifted-chat";
+import { GiftedChat, Send, Bubble } from "react-native-gifted-chat";
 import { geminiDataSource } from "../../core/dataSource/remoteDataSource/geminiAI";
 import { View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -51,6 +51,24 @@ const ChatBot = ({ messages, setMessages }) => {
     );
   };
 
+  const renderBubble = (props) => {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          right: {
+            backgroundColor: COLORS.primary,
+          },
+        }}
+        textStyle={{
+          right: {
+            color: COLORS.offwhite,
+          },
+        }}
+      />
+    );
+  };
+
   return (
     <GiftedChat
       messages={messages}
@@ -61,6 +79,7 @@ const ChatBot = ({ messages, setMessages }) => {
       }}
       renderSend={renderSend}
       isTyping={isTyping}
+      renderBubble={renderBubble}
     />
   );
 };
