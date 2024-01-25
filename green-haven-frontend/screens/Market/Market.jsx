@@ -37,7 +37,7 @@ const Market = () => {
 
   useEffect(() => {
     searchItem();
-  }, [searchInput]);
+  }, [searchInput, refresh]);
 
   // get all market's products
   const getAllProducts = async () => {
