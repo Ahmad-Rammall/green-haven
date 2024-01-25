@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loggedInClient } from "../core/dataSource/localDataSource/client";
 import flatted from "flatted";
 import { PUBLIC_FOLDER } from "@env";
+PUBLIC_FOLDER
 
 const FeedStack = createNativeStackNavigator();
 

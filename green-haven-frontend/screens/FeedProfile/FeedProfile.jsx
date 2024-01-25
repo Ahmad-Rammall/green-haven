@@ -17,6 +17,7 @@ import { profileDataSource } from "../../core/dataSource/remoteDataSource/profil
 import { useSelector } from "react-redux";
 import { STREAM_KEY } from "@env";
 import { StreamChat } from "stream-chat";
+STREAM_KEY
 
 const FeedProfile = () => {
   const route = useRoute();

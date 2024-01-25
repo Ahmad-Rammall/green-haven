@@ -6,6 +6,7 @@ import styles from "./comment.styles";
 import { PUBLIC_FOLDER } from "@env";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 import { useSelector } from "react-redux";
+PUBLIC_FOLDER
 
 const Comment = ({ comment, postId, refreshPage }) => {
   const currentUser = useSelector((state) => state.User);
