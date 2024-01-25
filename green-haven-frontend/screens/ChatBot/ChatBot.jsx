@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { GiftedChat, Send, Bubble } from "react-native-gifted-chat";
-import { geminiDataSource } from "../../core/dataSource/remoteDataSource/geminiAI";
 import { View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
+import { postMessage } from "../../core/dataSource/remoteDataSource/geminiAI";
 
 const ChatBot = ({ messages, setMessages }) => {
   const [isTyping, setIsTyping] = useState(false);
@@ -11,7 +11,6 @@ const ChatBot = ({ messages, setMessages }) => {
   const onSend = useCallback(async (messages) => {
     setIsTyping(true);
     // get user's message
-    console.log(messages.text);
     const userMessage = messages[0].text;
 
     setMessages((previousMessages) =>
@@ -19,14 +18,12 @@ const ChatBot = ({ messages, setMessages }) => {
     );
 
     // send to openAI and get response message
-    const response = await geminiDataSource.getResponse({
-      message: userMessage,
-    });
+    const response = await postMessage(userMessage);
 
     // save bot message
     const botMessage = {
       _id: new Date().getTime(),
-      text: `${response.data.message}`,
+      text: `${response}`,
       user: {
         _id: 1,
         name: "ChatBot",
