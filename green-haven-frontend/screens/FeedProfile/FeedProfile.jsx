@@ -107,7 +107,7 @@ const FeedProfile = () => {
               >
                 <Ionicons
                   name="paper-plane-outline"
-                  size={24}
+                  size={23}
                   color={COLORS.offwhite}
                 />
               </TouchableOpacity>

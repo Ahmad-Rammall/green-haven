@@ -60,14 +60,14 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     padding: 10,
     borderRadius: 100,
-    width: "40%"
+    width: "40%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   resultBtnText: {
     fontWeight: "bold",
     fontSize: 16,
     color: "#E9730F",
-    marginLeft: 10,
-    textAlign: "center",
   },
 });
 

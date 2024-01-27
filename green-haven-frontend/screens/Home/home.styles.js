@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
     gap: 10,
-    marginTop: SIZES.large,
-    justifyContent: "center"
+    paddingVertical: SIZES.large,
+    justifyContent: "center",
   },
   button: {
     backgroundColor: COLORS.primary,

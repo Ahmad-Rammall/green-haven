@@ -5,8 +5,11 @@ import { TouchableOpacity } from "@gorhom/bottom-sheet";
 import { gardenDataSource } from "../../core/dataSource/remoteDataSource/garden";
 import styles from "./sheet.styles";
 import Toast from "react-native-simple-toast";
+import {useNavigation} from "@react-navigation/native"
 
 const BottomSheet = ({ plant, garden }) => {
+  const navigation = useNavigation();
+
   const addPlantToGarden = async () => {
     const data = new FormData();
     // Append each piece of information to the form data
@@ -18,7 +21,9 @@ const BottomSheet = ({ plant, garden }) => {
       name: "user.jpg",
     });
     const response = gardenDataSource.addPlantToGarden(data);
-    console.log(response);
+
+    navigation.navigate("HomePage")
+
     Toast.show("Plant Added", Toast.LONG);
   };
 
@@ -44,12 +49,7 @@ const BottomSheet = ({ plant, garden }) => {
               >
                 <Text style={styles.optText}> + Garden</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.optionBtn}>
-                <Text style={styles.optText}>Post</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.optionBtn}>
-                <Text style={styles.optText}>Send to</Text>
-              </TouchableOpacity>
+              
             </View>
           )}
         </ScrollView>

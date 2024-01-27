@@ -45,8 +45,10 @@ const styles = StyleSheet.create({
         color: COLORS.offwhite
     },
     messageBtn:{
-        backgroundColor: COLORS.blue,
-        width: 50,
+        backgroundColor: COLORS.primary,
+        width: 40,
+        alignItems: "center",
+        justifyContent: "center"
     },
     bottomContainer:{
         flexDirection: "row",

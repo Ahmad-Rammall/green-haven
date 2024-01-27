@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loggedInClient } from "../core/dataSource/localDataSource/client";
 import flatted from "flatted";
 import { PUBLIC_FOLDER } from "@env";
-PUBLIC_FOLDER
+PUBLIC_FOLDER;
 
 const FeedStack = createNativeStackNavigator();
 
@@ -95,17 +95,7 @@ const FeedStackNavigator = ({ navigation }) => {
               name="Chat"
               component={ChatPage}
               options={{
-                headerRight: () => (
-                  <View>
-                    <TouchableOpacity
-                      onPress={() => {
-                        navigation.navigate("Conversation");
-                      }}
-                    >
-                      <Feather name="edit" size={24} color={COLORS.offwhite} />
-                    </TouchableOpacity>
-                  </View>
-                ),
+                headerRight: undefined,
               }}
             />
             <FeedStack.Screen

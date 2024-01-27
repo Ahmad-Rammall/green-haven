@@ -66,7 +66,7 @@ const ProductDetails = () => {
             <View style={styles.titleRow}>
               <Text style={styles.title}>{name}</Text>
               <View style={styles.priceWrapper}>
-                <Text style={styles.price}>$ {price}</Text>
+                <Text style={styles.price}>${price}</Text>
               </View>
             </View>
 
@@ -79,7 +79,7 @@ const ProductDetails = () => {
           {currentUser.role !== "seller" ? (
             <View style={styles.fixedBottomContainer}>
               <Button
-                btnText="Add To Cart"
+                btnText="Add to Cart"
                 isValid={true}
                 onPress={addToCart}
               />

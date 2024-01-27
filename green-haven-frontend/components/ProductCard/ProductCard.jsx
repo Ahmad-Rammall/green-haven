@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
           <Image source={{ uri: imageUrl }} style={styles.image} />
         </View>
         <View style={styles.details}>
-          <Text style={styles.price}>$ {price}</Text>
+          <Text style={styles.price}>${price}</Text>
           <Text style={styles.title}>{name}</Text>
         </View>
       </View>

@@ -21,7 +21,7 @@ export const postMessage = async (userMessage) => {
         },
       ],
       generationConfig: {
-        maxOutputTokens: 500,
+        maxOutputTokens: 1000,
       },
     });
 

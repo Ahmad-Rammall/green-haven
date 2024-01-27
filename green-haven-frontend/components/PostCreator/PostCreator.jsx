@@ -47,7 +47,7 @@ const PostCreator = ({ refresh }) => {
           <Image source={{ uri: profilePic }} style={styles.profilePic} />
           <TextInput
             style={styles.input}
-            placeholder={`What's on your mind ${currentUser.username}?`}
+            placeholder={`What's on your mind ${currentUser.username?.split(" ")[0]}?`}
             onChangeText={(text) => setDescription(text)}
             value={description}
           />

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "flex-start",
-    margin: SIZES.medium + 2,
+    marginHorizontal: SIZES.medium + 2,
   },
   modalClose: {
     display: "none",

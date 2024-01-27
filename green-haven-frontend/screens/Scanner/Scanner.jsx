@@ -45,7 +45,6 @@ export default function Scanner() {
       const base64Image = await FileSystem.readAsStringAsync(uri, {
         encoding: FileSystem.EncodingType.Base64,
       });
-      console.log(base64Image);
       setEncodedImage(base64Image);
     } catch (error) {
       console.log("Error Encoding Image");
@@ -55,7 +54,8 @@ export default function Scanner() {
   const handlePresentModal = async () => {
     // Post Encoded Image to API
     const response = await postImage(encodedImage);
-    if (response.data.result.is_plant.probability >= 0.7) {
+    console.log(response.data.result.is_plant.probability)
+    if (response.data.result.is_plant.probability >= 0.95) {
       const details = await getImageDetails(response.data.access_token);
       const res_details = details.data.result.classification.suggestions[0];
       setPlantDetails({
@@ -70,7 +70,6 @@ export default function Scanner() {
         plant_image: "",
       });
     }
-    console.log(response);
 
     bottomSheetModalRef.current?.present();
     setModalOpen(true);

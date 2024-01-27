@@ -4,6 +4,7 @@ import styles from "./cart.styles";
 import React, { useState, useEffect } from "react";
 import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
 import Toast from "react-native-simple-toast";
+import {useNavigation} from "@react-navigation/native"
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
@@ -13,6 +14,8 @@ const Cart = () => {
   const [quantities, setQuantities] = useState({});
   const [location, setLocation] = useState("");
   const [orderFinished, setOrderFinished] = useState(false);
+
+  const navigation = useNavigation()
 
   const updateQuantity = (productId, quantity, sellerId) => {
     if (quantity == 0) {
@@ -50,9 +53,9 @@ const Cart = () => {
 
       try {
         const response = await cartDataSource.createOrder(order);
-        console.log(response);
         if (response?.status === 200 && orderFinished === false) {
           setOrderFinished(true);
+          navigation.navigate("Market")
         }
       } catch (error) {
         console.log(error);
@@ -94,8 +97,8 @@ const Cart = () => {
 
       <View style={styles.bottomContainer}>
         <View style={styles.totalAmountContainer}>
-          <Text style={styles.totalAmount}>Total Amount : </Text>
-          <Text style={styles.totalAmount}>$ {totalAmount}</Text>
+          <Text style={styles.totalAmount}>Total Amount: </Text>
+          <Text style={styles.totalAmount}>${totalAmount}</Text>
         </View>
         <Button
           btnText="Checkout"

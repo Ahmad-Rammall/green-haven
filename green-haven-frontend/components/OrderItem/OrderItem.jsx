@@ -39,7 +39,6 @@ const OrderItem = ({ order, refresh }) => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.orderId}>{_id}</Text>
       <Detail title="Product Name" detail={product.name} />
       <Detail title="Client Name" detail={client.name} />
       <Detail title="Client Phone" detail={client.phone_number} />

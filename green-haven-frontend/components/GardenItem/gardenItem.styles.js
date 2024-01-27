@@ -8,8 +8,6 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 10,
     overflow:"hidden",
-    borderWidth: 1,
-    borderColor: COLORS.primary,
     marginBottom: 10,
   },
   image: {

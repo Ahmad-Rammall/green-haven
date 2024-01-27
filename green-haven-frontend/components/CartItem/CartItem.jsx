@@ -76,7 +76,7 @@ const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
             {product.product.name}
           </Text>
           <Text style={styles.text("semibold", SIZES.small)}>
-            $ {product.product.price}
+            ${product.product.price}
           </Text>
         </View>
         <View style={styles.buttons}>
