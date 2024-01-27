@@ -1,36 +1,37 @@
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Unstable_Grid2";
 
-import AppCurrentVisits from '../app-current-visits';
-import AppWidgetSummary from '../app-widget-summary';
+import AppCurrentVisits from "../app-current-visits";
+import AppWidgetSummary from "../app-widget-summary";
 
-import {dashboardDataSource} from "../../../core/remoteDataSource/dashboard";
+import { dashboardDataSource } from "../../../core/remoteDataSource/dashboard";
 
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react";
 
 // ----------------------------------------------------------------------
 
 export default function AppView() {
   const [counts, setcounts] = useState({
-    seller:0,
-    user:0,
-    order:0
+    seller: 0,
+    user: 0,
+    order: 0,
   });
 
   const getCounts = async () => {
     const response = await dashboardDataSource.getCounts();
-    if(response?.status === 200){
+    if (response?.status === 200) {
       const { user_result, orders_result } = response.data;
-        setcounts({
-          seller: user_result.find(item => item._id === 'seller')?.count || 0,
-          user: user_result.find(item => item._id === 'user')?.count || 0,
-          order: orders_result[0].count
-        });
+      const orders_result_length = orders_result.length;
+      setcounts({
+        seller: user_result.find((item) => item._id === "seller")?.count || 0,
+        user: user_result.find((item) => item._id === "user")?.count || 0,
+        order: orders_result_length === 0 ? "0" : orders_result[0]?.count,
+      });
     }
-  }
+  };
 
   useEffect(() => {
-    getCounts()
+    getCounts();
   }, []);
 
   return (
@@ -41,7 +42,9 @@ export default function AppView() {
             title="Total Users"
             total={counts.seller + counts.user}
             color="info"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
+            icon={
+              <img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />
+            }
           />
         </Grid>
 
@@ -77,8 +80,8 @@ export default function AppView() {
             title="Users Chart"
             chart={{
               series: [
-                { label: 'Users', value: counts.user },
-                { label: 'Sellers', value: counts.seller },
+                { label: "Users", value: counts.user },
+                { label: "Sellers", value: counts.seller },
               ],
             }}
           />

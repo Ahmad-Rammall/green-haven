@@ -42,9 +42,11 @@ const Modal = ({ isOpen, onClose, refreshPage, user }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const addUser = async () => {
+  const addUser = async (e) => {
+    e.preventDefault()
     setError("");
     const response = await userDataSource.addUser(formData);
+    console.log(response.data)
     if (response?.status === 200) {
       refreshPage();
       handleClose();
@@ -53,11 +55,12 @@ const Modal = ({ isOpen, onClose, refreshPage, user }) => {
     }
   };
 
-  const updateUser = async () => {
+  const updateUser = async (e) => {
+    e.preventDefault()
     setError("");
     const response = await userDataSource.updateUser(formData);
     if (response?.status === 200) {
-      refreshPage();
+      // refreshPage();
       handleClose();
     } else {
       setError("Error");
