@@ -11,8 +11,8 @@ const getOneProduct = async (req, res) => {
 };
 
 const getAllProducts = async (req, res) => {
-  const products = await Product.find({}).populate("user");
-  return res.status(200).json({ products });
+  const products = await Product.find({});
+  return res.status(200).json({ products: products.reverse() });
 };
 
 const getAllSellerProducts = async (req, res) => {
@@ -22,7 +22,7 @@ const getAllSellerProducts = async (req, res) => {
     // Get Seller's Products
     const products = await Product.find({ user: sellerId });
 
-    return res.status(200).json({ products });
+    return res.status(200).json({ products: products.reverse() });
   } catch (error) {
     return res.status(500).send(error);
   }
