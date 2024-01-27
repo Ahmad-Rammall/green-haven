@@ -8,7 +8,7 @@ export const postMessage = async (userMessage) => {
   try {
     // For text-only input, use the gemini-pro model
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
+    
     const chat = model.startChat({
       history: [
         {
@@ -21,9 +21,12 @@ export const postMessage = async (userMessage) => {
         },
       ],
       generationConfig: {
-        maxOutputTokens: 1000,
+        maxOutputTokens: 300,
       },
     });
+    userMessage =
+      "Act as a plant enthusiast, asnwer questions related to plants only, if you are asked about a topic other than plants don't answer. Answers should be brief and clear (5 sentences). Always return a text. Topic is : " +
+      userMessage;
 
     const result = await chat.sendMessage(userMessage);
     const response = await result.response;
