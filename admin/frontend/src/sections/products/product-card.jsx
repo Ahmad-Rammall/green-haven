@@ -88,7 +88,7 @@ export default function ShopProductCard({ product, refreshPage }) {
 
   return (
     <>
-      <Card>
+      <Card sx={{width : 200}}>
         <Box sx={{ pt: "100%", position: "relative" }}>
           {product.status && renderStatus}
 
