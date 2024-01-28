@@ -33,7 +33,7 @@ const Profile = ({ navigation }) => {
         <View style={styles.buttons}>
           <View style={styles.optionButtons}>
             <TouchableOpacity
-              style={[styles.optionBtn, styles.shadow]}
+              style={[styles.optionBtn]}
               onPress={() => navigation.navigate("Edit Profile", {userProfilePicture})}
             >
               <Text style={styles.optionTxt}>Edit Profile</Text>
@@ -41,7 +41,7 @@ const Profile = ({ navigation }) => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={[styles.optionBtn, styles.shadow]}
+              style={[styles.optionBtn]}
               onPress={() => navigation.navigate("Change Password")}
             >
               <Text style={styles.optionTxt}>Change Password</Text>
