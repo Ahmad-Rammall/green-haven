@@ -51,9 +51,7 @@ const OrderItem = ({ order, refresh }) => {
           style={styles.checkBtn}
           onPress={() => setModalVisible(true)}
         >
-          <Text style={styles.checkBtnText}>
-            <Ionicons name="checkmark" size={15} /> Done
-          </Text>
+          <Text style={styles.checkBtnText}>Done</Text>
         </TouchableOpacity>
       </View>
 
