@@ -53,9 +53,9 @@
 
 ### Mockups
 
-| Home screen                             | Menu Screen                           | Order Screen                          |
+| Home screen                             | Market Screen                           | Scanner Screen                          |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![fsdaf](./readme/mockups/Home.png) | ![fsdaf](./readme/mockups/Market.png) | ![fsdaf](./readme/mockups/Scan.png) |
 
 <br><br>
 
