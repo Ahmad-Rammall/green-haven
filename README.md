@@ -124,9 +124,9 @@ So, these collections help us organize and manage different types of information
 | :---------------: | :------------------: | :-----------: |
 | ![Market](./readme/mobile/sellerMarket.jpg) | ![Product Options](./readme/mobile/seller-plantOptions.jpg) | ![Add Plant](./readme/mobile/seller-addPlant.jpg) |
 
-| **Orders Screen** |
-| :--------------: |
- ![Orders](./readme/mobile/OrderScreen.jpg) |
+| **Orders Screen** |               |             | | | | | |  | | | |  | | | | | |
+| :--------------: | :------------: | :------------: | :------------: | :------------: |:------------: |:------------: |:------------: |:------------: |:------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: |
+| ![Orders](./readme/mobile/OrderScreen.jpg) | |
 
 
 ### Admin Screens (Desktop App)
