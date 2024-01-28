@@ -75,9 +75,27 @@
 
 | Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
 | ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| ![Landing](./readme/mobile/login.jpg) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| Garden screen                               | Chatbot Screen                             | Chatbot Result                            | Checkout Screen                         |
+| ![Landing](./readme/mobile/garden.jpg) | ![fsdaf](./readme/mobile/chatbot1.jpg) | ![fsdaf](./readme/mobile/chatbot3.jpg) | ![fsdaf](https://placehold.co/900x1600) |
+| Market screen                              | Plant details screen                         | Cart screen                          | Location modal                          
+| ![Landing](./readme/mobile/market.jpg) | ![fsdaf](./readme/mobile/plantDetails.jpg) | ![fsdaf](./readme/mobile/cart.jpg) | ![fsdaf](./readme/mobile/LocationModal.jpg)
+| Scanner screen         |Scanner Options      | Plant detected                        | No plant detected                        | 
+| ![Landing](./readme/mobile/Camera.jpg) | ![fsdaf](./readme/mobile/Scanner.jpg) | ![fsdaf](./readme/mobile/scan-result.jpg) | ![fsdaf](./readme/mobile/scan-result2.jpg) |
+| Feed screen                              | Comments                       | Add Post                           | Profile screen                          |
+| ![Landing](./readme/mobile/feed.jpg) | ![fsdaf](./readme/mobile/comments.jpg) | ![fsdaf](./readme/mobile/Add%20Post.jpg) | ![fsdaf](./readme/mobile/User%20Profile.jpg) |
+| Chat screen                              | Conversation                                | Options
+| ![Landing](./readme/mobile/login.jpg) | ![fsdaf](./readme/mobile/conversation.jpg) | ![fsdaf](./readme/mobile/conversation2.jpg) 
+| Profile screen                              | Edit Profile                                | Change Password
+| ![Landing](./readme/mobile/Profile.jpg) | ![fsdaf](./readme/mobile/editProfile.jpg) | ![fsdaf](./readme/mobile/editPassword.jpg) 
+
+<br>
+
+### Seller Screens
+
+| Market screen                              | Product options                         | Add Plant                           | Orders screen                          |
+| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| ![Landing](./readme/mobile/sellerMarket.jpg) | ![fsdaf](./readme/mobile/seller-plantOptions.jpg) | ![fsdaf](./readme/mobile/seller-addPlant.jpg) | ![fsdaf](./readme/mobile/OrderScreen.jpg) |
 
 ### Admin Screens (Web)
 
