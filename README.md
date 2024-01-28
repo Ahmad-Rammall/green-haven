@@ -73,21 +73,21 @@
 
 ### User Screens (Mobile)
 
-| Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
+| Login screen                              | Register screen                         |                            |                            |
 | ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](./readme/mobile/login.jpg) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Garden screen                               | Chatbot Screen                             | Chatbot Result                            | Checkout Screen                         |
-| ![Landing](./readme/mobile/garden.jpg) | ![fsdaf](./readme/mobile/chatbot1.jpg) | ![fsdaf](./readme/mobile/chatbot3.jpg) | ![fsdaf](https://placehold.co/900x1600) |
+| <img src="./readme/mobile/login.jpg" width="200" height="400"> | <img src="./readme/mobile/register.jpg" width="200" height="400">
+| Garden screen                               | Chatbot Screen                             | Chatbot Result                            | 
+| <img src="./readme/mobile/garden.jpg" width="200" height="400"> | <img src="./readme/mobile/chatbot1.jpg" width="200" height="400"> | <img src="./readme/mobile/chatbot3.jpg" width="200" height="400"> |
 | Market screen                              | Plant details screen                         | Cart screen                          | Location modal                          
-| ![Landing](./readme/mobile/market.jpg) | ![fsdaf](./readme/mobile/plantDetails.jpg) | ![fsdaf](./readme/mobile/cart.jpg) | ![fsdaf](./readme/mobile/LocationModal.jpg)
+| <img src="./readme/mobile/market.jpg" width="200" height="400"> | <img src="./readme/mobile/plantDetails.jpg" width="200" height="400"> | <img src="./readme/mobile/cart.jpg" width="200" height="400"> | <img src="./readme/mobile/LocationModal.jpg" width="200" height="400"> |
 | Scanner screen         |Scanner Options      | Plant detected                        | No plant detected                        | 
-| ![Landing](./readme/mobile/Camera.jpg) | ![fsdaf](./readme/mobile/Scanner.jpg) | ![fsdaf](./readme/mobile/scan-result.jpg) | ![fsdaf](./readme/mobile/scan-result2.jpg) |
+| <img src="./readme/mobile/Camera.jpg" width="200" height="400"> | <img src="./readme/mobile/Scanner.jpg" width="200" height="400"> | <img src="./readme/mobile/scan-result.jpg" width="200" height="400"> | <img src="./readme/mobile/scan-result2.jpg" width="200" height="400"> |
 | Feed screen                              | Comments                       | Add Post                           | Profile screen                          |
-| ![Landing](./readme/mobile/feed.jpg) | ![fsdaf](./readme/mobile/comments.jpg) | ![fsdaf](./readme/mobile/Add%20Post.jpg) | ![fsdaf](./readme/mobile/User%20Profile.jpg) |
+| <img src="./readme/mobile/feed.jpg" width="200" height="400"> | <img src="./readme/mobile/comments.jpg" width="200" height="400"> | <img src="./readme/mobile/Add%20Post.jpg" width="200" height="400"> | <img src="./readme/mobile/User%20Profile.jpg" width="200" height="400"> |
 | Chat screen                              | Conversation                                | Options
-| ![Landing](./readme/mobile/login.jpg) | ![fsdaf](./readme/mobile/conversation.jpg) | ![fsdaf](./readme/mobile/conversation2.jpg) 
+| <img src="./readme/mobile/login.jpg" width="200" height="400"> | <img src="./readme/mobile/conversation.jpg" width="200" height="400"> | <img src="./readme/mobile/conversation2.jpg" width="200" height="400"> |
 | Profile screen                              | Edit Profile                                | Change Password
-| ![Landing](./readme/mobile/Profile.jpg) | ![fsdaf](./readme/mobile/editProfile.jpg) | ![fsdaf](./readme/mobile/editPassword.jpg) 
+| <img src="./readme/mobile/Profile.jpg" width="200" height="400"> | <img src="./readme/mobile/editProfile.jpg" width="200" height="400"> | <img src="./readme/mobile/editPassword.jpg" width="200" height="400"> |
 
 <br>
 
@@ -95,7 +95,8 @@
 
 | Market screen                              | Product options                         | Add Plant                           | Orders screen                          |
 | ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](./readme/mobile/sellerMarket.jpg) | ![fsdaf](./readme/mobile/seller-plantOptions.jpg) | ![fsdaf](./readme/mobile/seller-addPlant.jpg) | ![fsdaf](./readme/mobile/OrderScreen.jpg) |
+| <img src="./readme/mobile/sellerMarket.jpg" width="200" height="400"> | <img src="./readme/mobile/seller-plantOptions.jpg" width="200" height="400"> | <img src="./readme/mobile/seller-addPlant.jpg" width="200" height="400"> | <img src="./readme/mobile/OrderScreen.jpg" width="200" height="400"> |
+
 
 ### Admin Screens (Web)
 
