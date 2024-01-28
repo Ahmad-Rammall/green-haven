@@ -140,7 +140,7 @@ export default function Scanner() {
           ref={cameraRef}
           flashMode={flash}
         >
-          <View style={{ paddingHorizontal: SIZES.small }}>
+          <View style={{ padding: 10 }}>
             <Button
               onPress={() =>
                 setFlash(
