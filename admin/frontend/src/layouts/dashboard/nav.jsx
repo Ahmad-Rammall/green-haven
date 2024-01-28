@@ -16,7 +16,6 @@ import { useResponsive } from "src/hooks/use-responsive";
 
 import { account } from "src/_mock/account";
 
-import Logo from "src/components/logo";
 import Scrollbar from "src/components/scrollbar";
 
 import { NAV } from "./config-layout";
@@ -90,7 +89,7 @@ export default function Nav({ openNav, onCloseNav }) {
     >
       <img
         src="../../../assets/icons/greenHaven-Logo.png"
-        style={{ width: 120, alignSelf: "center", paddingTop: 10 }}
+        style={{ width: 120, alignSelf: "center", paddingTop: 10, marginBottom: -30 }}
       />
 
       {renderAccount}

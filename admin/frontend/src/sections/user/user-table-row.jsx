@@ -59,14 +59,14 @@ export default function UserTableRow({
     console.log(response);
     if (response?.status === 200) {
       refreshPage();
-      handleCloseModal()
+      handleCloseModal();
     }
   };
 
   return (
     <>
       <TableRow hover tabIndex={-1} role="checkbox" selected={selected}>
-        <TableCell component="th" scope="row" padding="none">
+        <TableCell component="th" scope="row" padding="10">
           <Stack direction="row" alignItems="center" spacing={2}>
             <Avatar alt={name} src={profile_picture} />
             <Typography variant="subtitle2" noWrap>
@@ -87,11 +87,13 @@ export default function UserTableRow({
           </Label>
         </TableCell>
 
-        <TableCell align="right">
-          <IconButton onClick={handleOpenMenu}>
-            <Iconify icon="eva:more-vertical-fill" />
-          </IconButton>
-        </TableCell>
+        {user.role !== "admin" && (
+          <TableCell align="right">
+            <IconButton onClick={handleOpenMenu}>
+              <Iconify icon="eva:more-vertical-fill" />
+            </IconButton>
+          </TableCell>
+        )}
       </TableRow>
 
       <Popover

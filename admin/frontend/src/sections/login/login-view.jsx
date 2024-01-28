@@ -13,7 +13,6 @@ import { sendRequest } from "../../core/request";
 
 import { bgGradient } from "src/theme/css";
 
-import Logo from "src/components/logo";
 import Iconify from "src/components/iconify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";

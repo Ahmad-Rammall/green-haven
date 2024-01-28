@@ -83,6 +83,7 @@ export default function AppView() {
                 { label: "Users", value: counts.user },
                 { label: "Sellers", value: counts.seller },
               ],
+              colors: ["#008F32", "#C1C0C8"],
             }}
           />
         </Grid>
