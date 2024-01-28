@@ -105,6 +105,7 @@ export default function LoginView() {
         variant="contained"
         color="inherit"
         onClick={handleClick}
+        sx={{backgroundColor: '#008F32'}}
       >
         Login
       </LoadingButton>
