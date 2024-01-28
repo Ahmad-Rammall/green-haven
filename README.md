@@ -11,19 +11,19 @@
 
 ### User Stories
 
-#### User :
+#### User
 
 - As a user, I want to scan images of plants, aiming to gather more information about them and store them in my garden.
 - As a user, I want to engage with fellow plant enthusiasts through posts and live chatting.
 - As a user, I want to purchase real plants from the marketplace.
 
-#### Seller :
+#### Seller
 
 - As a seller, I want to utilize the market section to showcase and sell my products.
 - As a seller, I want to facilitate receiving and managing buyers' orders.
 - As a seller, I want to engage with individuals to gain insights into their interests.
 
-#### Admin :
+#### Admin
 
 - As an admin, I want a dashboard where I can manipulate crucial data.
 - As an admin, I want to manage all users, products, and posts with ease.
@@ -84,50 +84,65 @@ So, these collections help us organize and manage different types of information
 
 ### User Screens (Mobile)
 
-| Login screen                              | Register screen                         |                            |                            |
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Login](./readme/mobile/login.jpg)       | ![Register](./readme/mobile/register.jpg) |                            |                            |
+| **Login Screen** | **Register Screen** |                            |
+| :--------------: | :-----------------: | :------------------------: |
+| ![Login](./readme/mobile/login.jpg) | ![Register](./readme/mobile/register.jpg) |                            |
 
-| Garden screen                               | Chatbot Screen                             | Chatbot Result                            | 
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Garden](./readme/mobile/garden.jpg)     | ![Chatbot Screen](./readme/mobile/chatbot1.jpg) | ![Chatbot Result](./readme/mobile/chatbot3.jpg) |
+| **Garden Screen** | **Chatbot Screen** | **Chatbot Result** |
+| :---------------: | :-----------------: | :-----------------: |
+| ![Garden](./readme/mobile/garden.jpg) | ![Chatbot Screen](./readme/mobile/chatbot1.jpg) | ![Chatbot Result](./readme/mobile/chatbot3.jpg) |
 
-| Market screen                              | Plant details screen                         | Cart screen                          | Location modal                          
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Market](./readme/mobile/market.jpg)     | ![Plant Details](./readme/mobile/plantDetails.jpg) | ![Cart](./readme/mobile/cart.jpg) | ![Location Modal](./readme/mobile/LocationModal.jpg) |
+| **Market Screen** | **Plant Details Screen** | **Cart Screen** |
+| :---------------: | :----------------------: | :-------------: |
+| ![Market](./readme/mobile/market.jpg) | ![Plant Details](./readme/mobile/plantDetails.jpg) | ![Cart](./readme/mobile/cart.jpg) |
 
-| Scanner screen         |Scanner Options      | Plant detected                        | No plant detected                        | 
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Scanner](./readme/mobile/Camera.jpg)    | ![Scanner Options](./readme/mobile/Scanner.jpg) | ![Plant Detected](./readme/mobile/scan-result.jpg) | ![No Plant Detected](./readme/mobile/scan-result2.jpg) |
+| **Location Modal** | **Scanner Screen** | **Scanner Options** |
+| :-----------------: | :---------------: | :-----------------: |
+| ![Location Modal](./readme/mobile/LocationModal.jpg) | ![Scanner](./readme/mobile/Camera.jpg) | ![Scanner Options](./readme/mobile/Scanner.jpg) |
 
-| Feed screen                              | Comments                       | Add Post                           | Profile screen                          |
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Feed](./readme/mobile/feed.jpg)         | ![Comments](./readme/mobile/comments.jpg) | ![Add Post](./readme/mobile/Add%20Post.jpg) | ![Profile](./readme/mobile/User%20Profile.jpg) |
+| **Plant Detected** | **No Plant Detected** | **Feed Screen** |
+| :-----------------: | :---------------------: | :------------: |
+| ![Plant Detected](./readme/mobile/scan-result.jpg) | ![No Plant Detected](./readme/mobile/scan-result2.jpg) | ![Feed](./readme/mobile/feed.jpg) |
 
-| Chat screen                              | Conversation                                | Options
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Chat](./readme/mobile/login.jpg)       | ![Conversation](./readme/mobile/conversation.jpg) | ![Options](./readme/mobile/conversation2.jpg) |
+| **Comments** | **Add Post** | **Profile Screen** |
+| :----------: | :-----------: | :-----------------: |
+| ![Comments](./readme/mobile/comments.jpg) | ![Add Post](./readme/mobile/Add%20Post.jpg) | ![Profile](./readme/mobile/User%20Profile.jpg) |
 
-| Profile screen                              | Edit Profile                                | Change Password
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Profile](./readme/mobile/Profile.jpg)   | ![Edit Profile](./readme/mobile/editProfile.jpg) | ![Change Password](./readme/mobile/editPassword.jpg) |
+| **Chat Screen** | **Conversation** | **Options** |
+| :-------------: | :--------------: | :---------: |
+| ![Chat](./readme/mobile/login.jpg) | ![Conversation](./readme/mobile/conversation.jpg) | ![Options](./readme/mobile/conversation2.jpg) |
+
+| **Profile Screen** | **Edit Profile** | **Change Password** |
+| :-----------------: | :--------------: | :------------------: |
+| ![Profile](./readme/mobile/Profile.jpg) | ![Edit Profile](./readme/mobile/editProfile.jpg) | ![Change Password](./readme/mobile/editPassword.jpg) |
 
 ---
 
 ### Seller Screens
 
-| Market screen                              | Product options                         | Add Plant                           | Orders screen                          |
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Market](./readme/mobile/sellerMarket.jpg) | ![Product Options](./readme/mobile/seller-plantOptions.jpg) | ![Add Plant](./readme/mobile/seller-addPlant.jpg) | ![Orders](./readme/mobile/OrderScreen.jpg) |
+| **Market Screen** | **Product Options** | **Add Plant** |
+| :---------------: | :------------------: | :-----------: |
+| ![Market](./readme/mobile/sellerMarket.jpg) | ![Product Options](./readme/mobile/seller-plantOptions.jpg) | ![Add Plant](./readme/mobile/seller-addPlant.jpg) |
+
+| **Orders Screen** |
+| :--------------: |
+ ![Orders](./readme/mobile/OrderScreen.jpg) |
 
 
 ### Admin Screens (Desktop App)
 
-| Login screen                            | Dashboard screen                       | Users screen                        
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/admin/login.png) | ![fsdaf](./readme/admin/overview.png) | ![fsdaf](./readme/admin/users.png) |
-| Posts screen                             | Products Screen                           |
-| ![Landing](./readme/admin/posts.png) | ![fsdaf](./readme/admin/products.png)
+| **Login Screen**                        | **Dashboard Screen**                  |
+| :-------------------------------------: | :-----------------------------------: |
+| ![Login](./readme/admin/login.png)      | ![Dashboard](./readme/admin/overview.png) |
+
+| **Users Screen**                        | **Posts Screen**                      |
+| :-------------------------------------: | :-----------------------------------: |
+| ![Users](./readme/admin/users.png)      | ![Posts](./readme/admin/posts.png)    |
+
+| **Products Screen**                     |
+| :-------------------------------------: |
+| ![Products](./readme/admin/products.png) |
+
 
 <br><br>
 
