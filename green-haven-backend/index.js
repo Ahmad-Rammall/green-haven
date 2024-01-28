@@ -65,3 +65,5 @@ app.use("/chat", authMiddleware, chatRoutes);
 app.listen(process.env.PORT, () => {
   connectToMongoDB();
 });
+
+module.exports = app
