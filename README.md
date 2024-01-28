@@ -7,104 +7,174 @@
 
 > A mobile app where plant enthusiasts come together, trade knowledge, and nurture a shared love for all things green.
 >
-> Green Haven allows users to scan plants, get more details about them through AI and add them to their own virtual garden. Also it contains a market where owners can buy real plants, a feed section where users can share stories and posts with their followers and a live-chat section.
+> Green Haven provides users with the ability to scan plants, access comprehensive details through AI, and include them in their personalized virtual gardens. Additionally, the platform incorporates a marketplace for owners to acquire real plants, a feed section enabling users to share stories and posts with their followers, a live-chat section, and a chatbot area that enhances users' knowledge of plants through AI.
 
 ### User Stories
 
-#### As a plant owner, I want to :
-- Scan plants images to know more about them (name / native ...) and to add them to my garden.
-- Buy more plants from the market and add them to my garden.
-- Have a feed section to interact with other plants lovers.
-- Chat section where I can join groups and communities, share my garden elements with them.
+#### User :
 
-#### As a plant seller, I want to :
-- Sell my products through the market section.
-- Be able to update my products.
-- Get money through safe payment methods.
-- Join groups and interact with people to know more about their interests.
+- As a user, I want to scan images of plants, aiming to gather more information about them and store them in my garden.
+- As a user, I want to engage with fellow plant enthusiasts through posts and live chatting.
+- As a user, I want to purchase real plants from the marketplace.
 
-<br><br>
+#### Seller :
 
-<!-- Prototyping -->
-<img src="./readme/title3.svg"/>
+- As a seller, I want to utilize the market section to showcase and sell my products.
+- As a seller, I want to facilitate receiving and managing buyers' orders.
+- As a seller, I want to engage with individuals to gain insights into their interests.
 
-> We designed Coffee Express using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
+#### Admin :
 
-### Wireframes
-| Login screen  | Register screen |  Landing screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
-### Mockups
-| Home screen  | Menu Screen | Order Screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
-<br><br>
-
-<!-- Implementation -->
-<img src="./readme/title4.svg"/>
-
-> Using the wireframes and mockups as a guide, we implemented the Coffee Express app with the following features:
-
-### User Screens (Mobile)
-| Login screen  | Register screen | Landing screen | Loading screen |
-| ---| ---| ---| ---|
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen  | Menu Screen | Order Screen | Checkout Screen |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-
-### Admin Screens (Web)
-| Login screen  | Register screen |  Landing screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen  | Menu Screen | Order Screen |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+- As an admin, I want a dashboard where I can manipulate crucial data.
+- As an admin, I want to manage all users, products, and posts with ease.
 
 <br><br>
 
 <!-- Tech stack -->
+<img src="./readme/title3.svg"/>
+
+### Green Haven is built using the following technologies:
+
+- Green Haven uses the [React Native Framework](https://reactnative.dev). React Native is a popular open-source framework for building cross-platform mobile applications.
+- For the database, Green Haven uses [MongoDB](https://www.mongodb.com), a widely used open-source NoSQL database management system.
+- For the backend, Green Haven uses [Node.js](https://nodejs.org/en), an open-source, cross-platform JavaScript runtime environment that allows developers to execute server-side code using JavaScript.
+- Green Haven uses [getstream](https://getstream.io/), a cloud service that provides scalable and customizable chat APIs for building real-time applications.
+- Green Haven uses [Google Gemini](https://geminiai.ai), the latest and most advanced artificial intelligence created by Google.
+- Green Haven uses [Plant.id](https://web.plant.id/), a machine learning service that can identify more than 33,000 plants including houseplants, garden plants, trees ...
+
+<br><br>
+
+<!-- UI UX -->
+<img src="./readme/title4.svg"/>
+
+> I created the layout for Green Haven by developing wireframes and mockups, continually improving the design to achieve an optimal structure that ensures simple navigation and a smooth user experience.
+
+- Project Figma design [figma](https://www.figma.com/file/UcPApMAbvQb6ywzZUHfuKT/Green-Haven?type=design&node-id=10-34&mode=design&t=Um47dNCuDYXxz87V-0)
+
+### Mockups
+
+| Home screen                             | Menu Screen                           | Order Screen                          |
+| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+
+<br><br>
+
+<!-- Database Design -->
 <img src="./readme/title5.svg"/>
 
-###  Coffee Express is built using the following technologies:
+### Architecting Data Excellence: Innovative Database Design Strategies:
 
-- This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
-- To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
-  - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+- Insert ER Diagram here
+
+<br><br>
+
+<!-- Implementation -->
+<img src="./readme/title6.svg"/>
+
+### User Screens (Mobile)
+
+| Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
+| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
+| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+
+### Admin Screens (Web)
+
+| Login screen                            | Register screen                       | Landing screen                        |
+| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Home screen                             | Menu Screen                           | Order Screen                          |
+| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+
+<br><br>
+
+<!-- Prompt Engineering -->
+<img src="./readme/title7.svg"/>
+
+### Mastering AI Interaction: Unveiling the Power of Prompt Engineering:
+
+- This project uses advanced prompt engineering techniques to optimize the interaction with natural language processing models. By skillfully crafting input instructions, we tailor the behavior of the models to achieve precise and efficient language understanding and generation for various tasks and preferences.
+
+<br><br>
+
+<!-- AWS Deployment -->
+<img src="./readme/title8.svg"/>
+
+### Efficient AI Deployment: Unleashing the Potential with AWS Integration:
+
+- This project leverages AWS deployment strategies to seamlessly integrate and deploy natural language processing models. With a focus on scalability, reliability, and performance, we ensure that AI applications powered by these models deliver robust and responsive solutions for diverse use cases.
+
+<br><br>
+
+<!-- Unit Testing -->
+<img src="./readme/title9.svg"/>
+
+### Precision in Development: Harnessing the Power of Unit Testing:
+
+- This project employs rigorous unit testing methodologies to ensure the reliability and accuracy of code components. By systematically evaluating individual units of the software, we guarantee a robust foundation, identifying and addressing potential issues early in the development process.
 
 <br><br>
 
 <!-- How to run -->
-<img src="./readme/title6.svg"/>
+<img src="./readme/title10.svg"/>
 
-> To set up Coffee Express locally, follow these steps:
+> To set up Green Haven locally, follow these steps:
 
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+
+- npm
   ```sh
   npm install npm@latest -g
   ```
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+#### Mobile App
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Get a free Pant.id API Key at [Plant.id](https://www.plant.id/)
+2. Get a free Gemini API Key at [Google Gemini](https://ai.google.dev/tutorials/setup)
+3. Clone the repo
+   git clone [github](https://github.com/Ahmad-Rammall/green-haven.git)
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/Ahmad-Rammall/green-haven.git
    ```
-3. Install NPM packages
+4. Install NPM packages
    ```sh
+   cd green-haven
    npm install
    ```
-4. Enter your API in `config.js`
+5. Create a .env file and add your APIs:
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   GOOGLE_API = "your api key";
+   PLANT_API_KEY = "your api key";
+   ```
+6. Start server:
+   ```sh
+   npx expo start
+   ```
+7. Open Expo Go on your phone and scan the QR code.
+
+#### Admin Pannel
+
+1. Navigate to admin directory:
+   ```sh
+   cd admin
    ```
 
-Now, you should be able to run Coffee Express locally and explore its features.
+2. Run electron:
+   ```sh
+   npm run electron
+   ```
+3. Navigate to admin/frontend directory:
+   ```sh
+   cd admin\frontend
+   ```
+6. Run Server:
+   ```sh
+   npm run dev
+   ```
+
+Now, you should be able to run Green Haven locally and explore its features.
