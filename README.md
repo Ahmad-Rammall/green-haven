@@ -62,8 +62,6 @@
 <!-- Database Design -->
 <img src="./readme/title5.svg"/>
 
-### Architecting Data Excellence: Innovative Database Design Strategies:
-
 MongoDB is like a digital storage space where we keep information. In this system, there are four main groups of information called collections. These collections are like folders for different types of things.
 
 Inside each collection, there are documents. Documents are like individual files, and they store data in a format called BSON (Binary JSON).
@@ -82,58 +80,32 @@ So, these collections help us organize and manage different types of information
 <!-- Implementation -->
 <img src="./readme/title6.svg"/>
 
-### User Screens (Mobile)
+| **Login Screen** | **Garden Screen** | **Chatbot Screen** |
+| :---------------: | :---------------: | :-----------------: |
+| ![Login](./readme/mobile/login.jpg) | ![Garden](./readme/mobile/garden.jpg) | ![Chatbot Screen](./readme/mobile/chatbot1.jpg) |
 
-|          **Login Screen**           |            **Register Screen**            |           **Garden Screen**           |
-| :---------------------------------: | :---------------------------------------: | :-----------------------------------: |
-| ![Login](./readme/mobile/login.jpg) | ![Register](./readme/mobile/register.jpg) | ![Garden](./readme/mobile/garden.jpg) |
+| **Chatbot Result** | **Market Screen** | **Plant Details Screen** |
+| :-----------------: | :---------------: | :-----------------------: |
+| ![Chatbot Result](./readme/mobile/chatbot3.jpg) | ![Market](./readme/mobile/market.jpg) | ![Plant Details](./readme/mobile/plantDetails.jpg) |
 
----
+| **Cart Screen** | **Scanner Screen** | **Scanner Options** |
+| :-------------: | :-----------------: | :------------------: |
+| ![Cart](./readme/mobile/cart.jpg) | ![Scanner](./readme/mobile/Camera.jpg) | ![Scanner Options](./readme/mobile/Scanner.jpg) |
 
-|               **Chatbot Screen**                |               **Chatbot Result**                |           **Market Screen**           |
-| :---------------------------------------------: | :---------------------------------------------: | :-----------------------------------: |
-| ![Chatbot Screen](./readme/mobile/chatbot1.jpg) | ![Chatbot Result](./readme/mobile/chatbot3.jpg) | ![Market](./readme/mobile/market.jpg) |
+| **Plant Detected** | **No Plant Detected** | **Feed Screen** |
+| :-----------------: | :---------------------: | :--------------: |
+| ![Plant Detected](./readme/mobile/scan-result.jpg) | ![No Plant Detected](./readme/mobile/scan-result2.jpg) | ![Feed](./readme/mobile/feed.jpg) |
 
----
+| **Comments** | **Profile Screen** | **Conversation** |
+| :-----------: | :-----------------: | :--------------: |
+| ![Comments](./readme/mobile/comments.jpg) | ![Profile](./readme/mobile/User%20Profile.jpg) | ![Conversation](./readme/mobile/conversation.jpg) |
 
-|              **Plant Details Screen**              |          **Cart Screen**          |                  **Location Modal**                  |
-| :------------------------------------------------: | :-------------------------------: | :--------------------------------------------------: |
-| ![Plant Details](./readme/mobile/plantDetails.jpg) | ![Cart](./readme/mobile/cart.jpg) | ![Location Modal](./readme/mobile/LocationModal.jpg) |
+| **Options** | **Profile Screen** | **Seller's Market** |
+| :---------: | :-----------------: | :------------------: |
+| ![Options](./readme/mobile/conversation2.jpg) | ![Profile](./readme/mobile/Profile.jpg) | ![Market](./readme/mobile/sellerMarket.jpg) |
 
----
-
-|           **Scanner Screen**           |               **Scanner Options**               |                 **Plant Detected**                 |
-| :------------------------------------: | :---------------------------------------------: | :------------------------------------------------: |
-| ![Scanner](./readme/mobile/Camera.jpg) | ![Scanner Options](./readme/mobile/Scanner.jpg) | ![Plant Detected](./readme/mobile/scan-result.jpg) |
-
----
-
-|                 **No Plant Detected**                  |          **Feed Screen**          |               **Comments**                |
-| :----------------------------------------------------: | :-------------------------------: | :---------------------------------------: |
-| ![No Plant Detected](./readme/mobile/scan-result2.jpg) | ![Feed](./readme/mobile/feed.jpg) | ![Comments](./readme/mobile/comments.jpg) |
-
----
-
-|                **Add Post**                 |               **Profile Screen**               |          **Chat Screen**          |
-| :-----------------------------------------: | :--------------------------------------------: | :-------------------------------: |
-| ![Add Post](./readme/mobile/Add%20Post.jpg) | ![Profile](./readme/mobile/User%20Profile.jpg) | ![Chat](./readme/mobile/Chat.jpg) |
-
----
-
-|                 **Conversation**                  |                  **Options**                  |           **Profile Screen**            |
-| :-----------------------------------------------: | :-------------------------------------------: | :-------------------------------------: |
-| ![Conversation](./readme/mobile/conversation.jpg) | ![Options](./readme/mobile/conversation2.jpg) | ![Profile](./readme/mobile/Profile.jpg) |
-
----
-
-|                 **Edit Profile**                 |                 **Change Password**                  |             **Seller's Market**             |
-| :----------------------------------------------: | :--------------------------------------------------: | :-----------------------------------------: |
-| ![Edit Profile](./readme/mobile/editProfile.jpg) | ![Change Password](./readme/mobile/editPassword.jpg) | ![Market](./readme/mobile/sellerMarket.jpg) |
-
----
-
-|                    **Seller's Products**                    |                   **Add Plant**                   |             **Orders Screen**              |
-| :---------------------------------------------------------: | :-----------------------------------------------: | :----------------------------------------: |
+| **Seller's Products** | **Add Plant** | **Orders Screen** |
+| :---------------------: | :-----------: | :---------------: |
 | ![Product Options](./readme/mobile/seller-plantOptions.jpg) | ![Add Plant](./readme/mobile/seller-addPlant.jpg) | ![Orders](./readme/mobile/OrderScreen.jpg) |
 
 ### Admin Screens (Desktop App)
@@ -155,8 +127,6 @@ So, these collections help us organize and manage different types of information
 <!-- Prompt Engineering -->
 <img src="./readme/title7.svg"/>
 
-### Mastering AI Interaction: Unveiling the Power of Prompt Engineering:
-
 - This project uses advanced prompt engineering techniques to optimize the interaction with natural language processing models. By skillfully crafting input instructions, we tailor the behavior of the models to achieve precise and efficient language understanding and generation for various tasks and preferences.
 
 - This AI specializes in plant-related queries, providing concise and clear responses specifically tailored to questions about plants. It may not offer information on topics unrelated to plants.
@@ -166,8 +136,6 @@ So, these collections help us organize and manage different types of information
 <!-- AWS Deployment -->
 <img src="./readme/title8.svg"/>
 
-### Efficient AI Deployment: Unleashing the Potential with AWS Integration:
-
 - I deployed my Node.js server using Amazon Web Services (AWS) Elastic Compute Cloud (EC2). AWS EC2 provides scalable and flexible virtual servers in the cloud.
 - Utilizing EC2 for deploying applications offers several advantages, including the ability to easily scale resources based on demand, and benefit from AWS's global infrastructure for improved performance and reliability.
 - EC2 instances are configurable, allowing users to choose the instance type, operating system, and storage options that best suit their application requirements. This flexibility and scalability make AWS EC2 a popular choice for hosting and running diverse workloads, including web servers, applications, and databases.
@@ -175,8 +143,6 @@ So, these collections help us organize and manage different types of information
 
 <!-- Unit Testing -->
 <img src="./readme/title9.svg"/>
-
-### Precision in Development: Harnessing the Power of Unit Testing:
 
 - This project ensures the dependability and precision of its code components through rigorous unit testing methodologies. By systematically assessing individual units within the software, we establish a solid foundation, proactively identifying and resolving potential issues early in the development process.
 
