@@ -84,49 +84,58 @@ So, these collections help us organize and manage different types of information
 
 ### User Screens (Mobile)
 
-| **Login Screen** | **Register Screen** |                            |
-| :--------------: | :-----------------: | :------------------------: |
-| ![Login](./readme/mobile/login.jpg) | ![Register](./readme/mobile/register.jpg) |                            |
-
-| **Garden Screen** | **Chatbot Screen** | **Chatbot Result** |
-| :---------------: | :-----------------: | :-----------------: |
-| ![Garden](./readme/mobile/garden.jpg) | ![Chatbot Screen](./readme/mobile/chatbot1.jpg) | ![Chatbot Result](./readme/mobile/chatbot3.jpg) |
-
-| **Market Screen** | **Plant Details Screen** | **Cart Screen** |
-| :---------------: | :----------------------: | :-------------: |
-| ![Market](./readme/mobile/market.jpg) | ![Plant Details](./readme/mobile/plantDetails.jpg) | ![Cart](./readme/mobile/cart.jpg) |
-
-| **Location Modal** | **Scanner Screen** | **Scanner Options** |
-| :-----------------: | :---------------: | :-----------------: |
-| ![Location Modal](./readme/mobile/LocationModal.jpg) | ![Scanner](./readme/mobile/Camera.jpg) | ![Scanner Options](./readme/mobile/Scanner.jpg) |
-
-| **Plant Detected** | **No Plant Detected** | **Feed Screen** |
-| :-----------------: | :---------------------: | :------------: |
-| ![Plant Detected](./readme/mobile/scan-result.jpg) | ![No Plant Detected](./readme/mobile/scan-result2.jpg) | ![Feed](./readme/mobile/feed.jpg) |
-
-| **Comments** | **Add Post** | **Profile Screen** |
-| :----------: | :-----------: | :-----------------: |
-| ![Comments](./readme/mobile/comments.jpg) | ![Add Post](./readme/mobile/Add%20Post.jpg) | ![Profile](./readme/mobile/User%20Profile.jpg) |
-
-| **Chat Screen** | **Conversation** | **Options** |
-| :-------------: | :--------------: | :---------: |
-| ![Chat](./readme/mobile/login.jpg) | ![Conversation](./readme/mobile/conversation.jpg) | ![Options](./readme/mobile/conversation2.jpg) |
-
-| **Profile Screen** | **Edit Profile** | **Change Password** |
-| :-----------------: | :--------------: | :------------------: |
-| ![Profile](./readme/mobile/Profile.jpg) | ![Edit Profile](./readme/mobile/editProfile.jpg) | ![Change Password](./readme/mobile/editPassword.jpg) |
+| **Login Screen** | **Register Screen** | **Garden Screen** |
+| :--------------: | :-----------------: | :---------------: |
+| ![Login](./readme/mobile/login.jpg) | ![Register](./readme/mobile/register.jpg) | ![Garden](./readme/mobile/garden.jpg) |
 
 ---
 
-### Seller Screens
+| **Chatbot Screen** | **Chatbot Result** | **Market Screen** |
+| :-----------------: | :-----------------: | :---------------: |
+| ![Chatbot Screen](./readme/mobile/chatbot1.jpg) | ![Chatbot Result](./readme/mobile/chatbot3.jpg) | ![Market](./readme/mobile/market.jpg) |
 
-| **Market Screen** | **Product Options** | **Add Plant** |
-| :---------------: | :------------------: | :-----------: |
-| ![Market](./readme/mobile/sellerMarket.jpg) | ![Product Options](./readme/mobile/seller-plantOptions.jpg) | ![Add Plant](./readme/mobile/seller-addPlant.jpg) |
+---
 
-| **Orders Screen** |               |             | | | | | |  | | | |  | | | | | |
-| :--------------: | :------------: | :------------: | :------------: | :------------: |:------------: |:------------: |:------------: |:------------: |:------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: |
-| ![Orders](./readme/mobile/OrderScreen.jpg) | |
+| **Plant Details Screen** | **Cart Screen** | **Location Modal** |
+| :----------------------: | :-------------: | :-----------------: |
+| ![Plant Details](./readme/mobile/plantDetails.jpg) | ![Cart](./readme/mobile/cart.jpg) | ![Location Modal](./readme/mobile/LocationModal.jpg) |
+
+---
+
+| **Scanner Screen** | **Scanner Options** | **Plant Detected** |
+| :---------------: | :-----------------: | :-----------------: |
+| ![Scanner](./readme/mobile/Camera.jpg) | ![Scanner Options](./readme/mobile/Scanner.jpg) | ![Plant Detected](./readme/mobile/scan-result.jpg) |
+
+---
+
+| **No Plant Detected** | **Feed Screen** | **Comments** |
+| :---------------------: | :------------: | :----------: |
+| ![No Plant Detected](./readme/mobile/scan-result2.jpg) | ![Feed](./readme/mobile/feed.jpg) | ![Comments](./readme/mobile/comments.jpg) |
+
+---
+
+| **Add Post** | **Profile Screen** | **Chat Screen** |
+| :-----------: | :-----------------: | :-------------: |
+| ![Add Post](./readme/mobile/Add%20Post.jpg) | ![Profile](./readme/mobile/User%20Profile.jpg) | ![Chat](./readme/mobile/Chat.jpg) |
+
+---
+
+| **Conversation** | **Options** | **Profile Screen** |
+| :--------------: | :---------: | :-----------------: |
+| ![Conversation](./readme/mobile/conversation.jpg) | ![Options](./readme/mobile/conversation2.jpg) | ![Profile](./readme/mobile/Profile.jpg) |
+
+---
+
+| **Edit Profile** | **Change Password** | **Market Screen** |
+| :--------------: | :------------------: | :---------------: |
+| ![Edit Profile](./readme/mobile/editProfile.jpg) | ![Change Password](./readme/mobile/editPassword.jpg) | ![Market](./readme/mobile/sellerMarket.jpg) |
+
+---
+
+| **Product Options** | **Add Plant** | **Orders Screen** |
+| :------------------: | :-----------: | :--------------: |
+| ![Product Options](./readme/mobile/seller-plantOptions.jpg) | ![Add Plant](./readme/mobile/seller-addPlant.jpg) | ![Orders](./readme/mobile/OrderScreen.jpg) |
+
 
 
 ### Admin Screens (Desktop App)
@@ -187,6 +196,7 @@ So, these collections help us organize and manage different types of information
 
 This is an example of how to list things you need to use the software and how to install them.
 
+Download [Node.js](https://nodejs.org/en)
 - npm
   ```sh
   npm install npm@latest -g
