@@ -111,7 +111,7 @@ const Market = () => {
             <LoadingModal />
           ) : (
             searchedProducts.map((product) => (
-              <ProductCard key={product._id} product={product} />
+              <ProductCard key={product._id} product={product} refresh={handleRefresh}/>
             ))
           )}
         </View>

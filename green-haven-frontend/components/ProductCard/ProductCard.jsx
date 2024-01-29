@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { PUBLIC_FOLDER } from "@env";
 PUBLIC_FOLDER
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, refresh }) => {
   process.env.PUBLIC_FOLDER;
   const navigation = useNavigation();
   const { user, image, name, description, price } = product;
@@ -20,6 +20,7 @@ const ProductCard = ({ product }) => {
       description,
       price,
       productId,
+      refresh
     });
   };
   return (

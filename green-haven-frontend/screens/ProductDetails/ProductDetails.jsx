@@ -18,7 +18,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const ProductDetails = () => {
   const route = useRoute();
-  const { imageUrl, name, description, price, productId } = route.params;
+  const { imageUrl, name, description, price, productId, refresh } = route.params;
   const currentUser = useSelector((state) => state.User);
   const [isVisible, setIsVisible] = useState(false);
   const [isDeleteVisible, setIsDeleteVisible] = useState(false);
@@ -46,6 +46,7 @@ const ProductDetails = () => {
       console.log(response);
       if (response?.status === 200) {
         Toast.show("Product Deleted !", Toast.LONG);
+        refresh()
         navigation.navigate("Market");
       }
     } catch (error) {
@@ -104,6 +105,7 @@ const ProductDetails = () => {
                 isVisible={isVisible}
                 onClose={onClose}
                 details={route.params}
+                refresh={refresh}
               />
 
               <DeleteModal

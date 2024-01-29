@@ -9,9 +9,11 @@ import ImageContainer from "../ImageContainer/ImageContainer";
 import { PUBLIC_FOLDER } from "@env";
 import { marketDataSource } from "../../core/dataSource/remoteDataSource/market";
 import Toast from "react-native-simple-toast";
+import {useNavigation} from "@react-navigation/native"
 
 const ProductModal = ({ isVisible, onClose, refresh, details }) => {
   const [image, setImage] = useState({});
+  const navigation = useNavigation()
   console.log(details);
 
   // if plant has no image
@@ -83,8 +85,10 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
       const response = await marketDataSource.updateProduct(data);
       console.log(response);
       if (response?.status === 200) {
-        Toast.show("Product Updated !", Toast.LONG);
         onClose();
+        refresh();
+        navigation.navigate("Market")
+        Toast.show("Product Updated !", Toast.LONG);
       }
     } catch (error) {
       console.log(error);
