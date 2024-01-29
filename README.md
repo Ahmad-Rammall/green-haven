@@ -165,6 +165,9 @@ So, these collections help us organize and manage different types of information
 7. Obtain the public IP by using `curl ipinfo.io`.
 8. Incorporate this public IP in the frontend to establish the connection.
 
+Finally, our server is working:
+![server](./readme/server.png)
+
 <br>
 
 <!-- Unit Testing -->
