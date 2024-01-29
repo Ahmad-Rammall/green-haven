@@ -126,13 +126,13 @@ So, these collections help us organize and manage different types of information
 
 ---
 
-| **Edit Profile** | **Change Password** | **Market Screen** |
+| **Edit Profile** | **Change Password** | **Seller's Market** |
 | :--------------: | :------------------: | :---------------: |
 | ![Edit Profile](./readme/mobile/editProfile.jpg) | ![Change Password](./readme/mobile/editPassword.jpg) | ![Market](./readme/mobile/sellerMarket.jpg) |
 
 ---
 
-| **Product Options** | **Add Plant** | **Orders Screen** |
+| **Seller's Products** | **Add Plant** | **Orders Screen** |
 | :------------------: | :-----------: | :--------------: |
 | ![Product Options](./readme/mobile/seller-plantOptions.jpg) | ![Add Plant](./readme/mobile/seller-addPlant.jpg) | ![Orders](./readme/mobile/OrderScreen.jpg) |
 
