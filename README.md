@@ -124,23 +124,14 @@ So, these collections help us organize and manage different types of information
 
 ### App Demo
 
-<div style="display: flex; justify-content: space-around;">
-<div>Login</div>
-<div>Chatbot</div>
-<div>Livechat</div>
-</div>
-<hr>
+| Login | Chatbot | Livechat |
+| ----- | ------- | -------- |
+| [![Login Demo](./readme/gifs/login-gif.gif)](./readme/demo/login-demo.mp4) | [![Chatbot Demo](./readme/gifs/chatbot-gif.gif)](./readme/demo/chatbot-demo.mp4) | ![Livechat Demo](./readme/gifs/chat-gif.gif) |
 
-<div style="display: flex; justify-content: space-between;">
-| <video width="30%" height="360" controls> |
-    <source src="./readme/demo/login-demo.mp4" type="video/mp4">
-</video> | <video width="30%" height="360" controls>
-<source src="./readme/demo/chatbot-demo.mp4" type="video/mp4">
-</video> | <video width="30%" height="360" controls>
-<source src="./readme/demo/chat-demo.mp4" type="video/mp4">
-</video> |
+| Add Plant | Update Plant | Delete Plant |
+| ----- | ------- | -------- |
+| ![Add Plant Demo](./readme/gifs/addPlant-gif.gif) | ![Update Plant Demo](./readme/gifs//updatePlant-gif.gif)| ![Delete Plant Demo](./readme/gifs/deletePlant-gif.gif) |
 
-</div>
 
 <br><br>
 
