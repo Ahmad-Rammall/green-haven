@@ -173,6 +173,8 @@ So, these collections help us organize and manage different types of information
 
 - This project employs rigorous unit testing methodologies to ensure the reliability and accuracy of code components. By systematically evaluating individual units of the software, we guarantee a robust foundation, identifying and addressing potential issues early in the development process.
 
+![testing](./readme/unitTesting.png)
+
 <br><br>
 
 <!-- How to run -->
