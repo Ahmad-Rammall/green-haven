@@ -39,7 +39,7 @@
 - For the database, Green Haven uses [MongoDB](https://www.mongodb.com), a widely used open-source NoSQL database management system.
 - For the backend, Green Haven uses [Node.js](https://nodejs.org/en), an open-source, cross-platform JavaScript runtime environment that allows developers to execute server-side code using JavaScript.
 - Green Haven uses [getstream](https://getstream.io/), a cloud service that provides scalable and customizable chat APIs for building real-time applications.
-- Green Haven uses [Google Gemini](https://geminiai.ai), the latest and most advanced artificial intelligence created by Google.
+- Green Haven uses [Google Gemini](https://geminiai.ai), the latest and most advanced artificial intelligence created by Google. It can answer anything related to plants, and it will provide the user with useful details to help him learn more about plants.
 - Green Haven uses [Plant.id](https://web.plant.id/), a machine learning service that can identify more than 33,000 plants including houseplants, garden plants, trees ...
 
 <br><br>
@@ -80,32 +80,32 @@ So, these collections help us organize and manage different types of information
 <!-- Implementation -->
 <img src="./readme/title6.svg"/>
 
-| **Login Screen** | **Garden Screen** | **Chatbot Screen** |
-| :---------------: | :---------------: | :-----------------: |
+|          **Login Screen**           |           **Garden Screen**           |               **Chatbot Screen**                |
+| :---------------------------------: | :-----------------------------------: | :---------------------------------------------: |
 | ![Login](./readme/mobile/login.jpg) | ![Garden](./readme/mobile/garden.jpg) | ![Chatbot Screen](./readme/mobile/chatbot1.jpg) |
 
-| **Chatbot Result** | **Market Screen** | **Plant Details Screen** |
-| :-----------------: | :---------------: | :-----------------------: |
+|               **Chatbot Result**                |           **Market Screen**           |              **Plant Details Screen**              |
+| :---------------------------------------------: | :-----------------------------------: | :------------------------------------------------: |
 | ![Chatbot Result](./readme/mobile/chatbot3.jpg) | ![Market](./readme/mobile/market.jpg) | ![Plant Details](./readme/mobile/plantDetails.jpg) |
 
-| **Cart Screen** | **Scanner Screen** | **Scanner Options** |
-| :-------------: | :-----------------: | :------------------: |
+|          **Cart Screen**          |           **Scanner Screen**           |               **Scanner Options**               |
+| :-------------------------------: | :------------------------------------: | :---------------------------------------------: |
 | ![Cart](./readme/mobile/cart.jpg) | ![Scanner](./readme/mobile/Camera.jpg) | ![Scanner Options](./readme/mobile/Scanner.jpg) |
 
-| **Plant Detected** | **No Plant Detected** | **Feed Screen** |
-| :-----------------: | :---------------------: | :--------------: |
+|                 **Plant Detected**                 |                 **No Plant Detected**                  |          **Feed Screen**          |
+| :------------------------------------------------: | :----------------------------------------------------: | :-------------------------------: |
 | ![Plant Detected](./readme/mobile/scan-result.jpg) | ![No Plant Detected](./readme/mobile/scan-result2.jpg) | ![Feed](./readme/mobile/feed.jpg) |
 
-| **Comments** | **Profile Screen** | **Conversation** |
-| :-----------: | :-----------------: | :--------------: |
+|               **Comments**                |               **Profile Screen**               |                 **Conversation**                  |
+| :---------------------------------------: | :--------------------------------------------: | :-----------------------------------------------: |
 | ![Comments](./readme/mobile/comments.jpg) | ![Profile](./readme/mobile/User%20Profile.jpg) | ![Conversation](./readme/mobile/conversation.jpg) |
 
-| **Options** | **Profile Screen** | **Seller's Market** |
-| :---------: | :-----------------: | :------------------: |
+|                  **Options**                  |           **Profile Screen**            |             **Seller's Market**             |
+| :-------------------------------------------: | :-------------------------------------: | :-----------------------------------------: |
 | ![Options](./readme/mobile/conversation2.jpg) | ![Profile](./readme/mobile/Profile.jpg) | ![Market](./readme/mobile/sellerMarket.jpg) |
 
-| **Seller's Products** | **Add Plant** | **Orders Screen** |
-| :---------------------: | :-----------: | :---------------: |
+|                    **Seller's Products**                    |                   **Add Plant**                   |             **Orders Screen**              |
+| :---------------------------------------------------------: | :-----------------------------------------------: | :----------------------------------------: |
 | ![Product Options](./readme/mobile/seller-plantOptions.jpg) | ![Add Plant](./readme/mobile/seller-addPlant.jpg) | ![Orders](./readme/mobile/OrderScreen.jpg) |
 
 ### Admin Screens (Desktop App)
@@ -122,6 +122,26 @@ So, these collections help us organize and manage different types of information
 | :--------------------------------------: |
 | ![Products](./readme/admin/products.png) |
 
+### App Demo
+
+<div style="display: flex; justify-content: space-around;">
+<div>Login</div>
+<div>Chatbot</div>
+<div>Livechat</div>
+</div>
+<hr>
+
+<div style="display: flex; justify-content: space-between;">
+| <video width="30%" height="360" controls> |
+    <source src="./readme/demo/login-demo.mp4" type="video/mp4">
+</video> | <video width="30%" height="360" controls>
+<source src="./readme/demo/chatbot-demo.mp4" type="video/mp4">
+</video> | <video width="30%" height="360" controls>
+<source src="./readme/demo/chat-demo.mp4" type="video/mp4">
+</video> |
+
+</div>
+
 <br><br>
 
 <!-- Prompt Engineering -->
@@ -131,6 +151,10 @@ So, these collections help us organize and manage different types of information
 
 - This AI specializes in plant-related queries, providing concise and clear responses specifically tailored to questions about plants. It may not offer information on topics unrelated to plants.
 
+- This AI helps people learn more about plants. You can ask it any questions you have about plants, and it will give you useful information to help you understand more about them.
+
+![Prompt](./readme/prompt.png)
+
 <br><br>
 
 <!-- AWS Deployment -->
@@ -139,7 +163,18 @@ So, these collections help us organize and manage different types of information
 - I deployed my Node.js server using Amazon Web Services (AWS) Elastic Compute Cloud (EC2). AWS EC2 provides scalable and flexible virtual servers in the cloud.
 - Utilizing EC2 for deploying applications offers several advantages, including the ability to easily scale resources based on demand, and benefit from AWS's global infrastructure for improved performance and reliability.
 - EC2 instances are configurable, allowing users to choose the instance type, operating system, and storage options that best suit their application requirements. This flexibility and scalability make AWS EC2 a popular choice for hosting and running diverse workloads, including web servers, applications, and databases.
-  <br><br>
+- To host the server, the following steps are taken:
+
+1. Connect to the EC2 instance using SSH.
+2. Download necessary stacks on the instance, including `Node.js and MongoDB`.
+3. Clone the server repository from GitHub.
+4. Install the required dependencies and libraries using `npm install`.
+5. Utilize tools like `screen` to create a terminal session within the EC2 instance.
+6. Start the server by running the command `node index.js`.
+7. Obtain the public IP by using `curl ipinfo.io`.
+8. Incorporate this public IP in the frontend to establish the connection.
+
+<br>
 
 <!-- Unit Testing -->
 <img src="./readme/title9.svg"/>
@@ -154,7 +189,7 @@ So, these collections help us organize and manage different types of information
 4. **Test Validation:** After implementing the code, tests are rerun to ensure its safety and functionality.
 5. **Code Refactoring:** The code may undergo refinement to enhance its structure without compromising the test validations.
 
-![testing](./readme/unitTesting.png)
+![testing](./readme/tests.png)
 
 <br><br>
 
@@ -230,7 +265,7 @@ Download [Node.js](https://nodejs.org/en)
    VITE_REACT_APP_API_HOST=http://52.47.132.223:80
    VITE_REACT_APP_PUBLIC_FOLDER=http://52.47.132.223:80/    public/images
    ```
-4. Run Server:
+5. Run Server:
    ```sh
    npm run dev
    ```
@@ -256,6 +291,7 @@ _Our server is hosted on AWS, but if you want to run it locally follow these ste
    npm install
    ```
 4. Create a .env file and add:
+
    ```js
 
    MONGODB_URL = mongodb://127.0.0.1:27017/green-haven-db
@@ -263,7 +299,8 @@ _Our server is hosted on AWS, but if you want to run it locally follow these ste
    STREAM_API_SECRET='your api secret'
    PORT='choose an available port'
    ```
-4. Run Server:
+
+5. Run Server:
    ```sh
    npm run dev
    ```
