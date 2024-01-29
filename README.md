@@ -181,7 +181,15 @@ So, these collections help us organize and manage different types of information
 
 ### Precision in Development: Harnessing the Power of Unit Testing:
 
-- This project employs rigorous unit testing methodologies to ensure the reliability and accuracy of code components. By systematically evaluating individual units of the software, we guarantee a robust foundation, identifying and addressing potential issues early in the development process.
+- This project ensures the dependability and precision of its code components through rigorous unit testing methodologies. By systematically assessing individual units within the software, we establish a solid foundation, proactively identifying and resolving potential issues early in the development process.
+
+- It's worth highlighting the utilization of the Test-Driven Development (TDD) approach, where tests are created before actual code implementation. This process involves:
+
+1. **Initial Test Authoring:** We start by writing tests before any development code is written.
+2. **Test Execution:** The tests are then executed, deliberately designed to fail initially, as expected.
+3. **Code Implementation:** The actual development code is written to meet the requirements of the tests.
+4. **Test Validation:** After implementing the code, tests are rerun to ensure its safety and functionality.
+5. **Code Refactoring:** The code may undergo refinement to enhance its structure without compromising the test validations.
 
 ![testing](./readme/unitTesting.png)
 
