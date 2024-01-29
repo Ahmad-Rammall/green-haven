@@ -153,6 +153,8 @@ So, these collections help us organize and manage different types of information
 
 - This project uses advanced prompt engineering techniques to optimize the interaction with natural language processing models. By skillfully crafting input instructions, we tailor the behavior of the models to achieve precise and efficient language understanding and generation for various tasks and preferences.
 
+- This AI specializes in plant-related queries, providing concise and clear responses specifically tailored to questions about plants. It may not offer information on topics unrelated to plants.
+
 <br><br>
 
 <!-- AWS Deployment -->
