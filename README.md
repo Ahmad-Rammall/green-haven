@@ -53,8 +53,8 @@
 
 ### Mockups
 
-| Home screen                             | Market Screen                           | Scanner Screen                          |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| Home screen                         | Market Screen                         | Scanner Screen                      |
+| ----------------------------------- | ------------------------------------- | ----------------------------------- |
 | ![fsdaf](./readme/mockups/Home.png) | ![fsdaf](./readme/mockups/Market.png) | ![fsdaf](./readme/mockups/Scan.png) |
 
 <br><br>
@@ -64,7 +64,7 @@
 
 ### Architecting Data Excellence: Innovative Database Design Strategies:
 
-MongoDB is like a digital storage space where we keep information. In this system, there are four main groups of information called collections. These collections are like folders for different types of things. 
+MongoDB is like a digital storage space where we keep information. In this system, there are four main groups of information called collections. These collections are like folders for different types of things.
 
 Inside each collection, there are documents. Documents are like individual files, and they store data in a format called BSON (Binary JSON).
 
@@ -84,74 +84,71 @@ So, these collections help us organize and manage different types of information
 
 ### User Screens (Mobile)
 
-| **Login Screen** | **Register Screen** | **Garden Screen** |
-| :--------------: | :-----------------: | :---------------: |
+|          **Login Screen**           |            **Register Screen**            |           **Garden Screen**           |
+| :---------------------------------: | :---------------------------------------: | :-----------------------------------: |
 | ![Login](./readme/mobile/login.jpg) | ![Register](./readme/mobile/register.jpg) | ![Garden](./readme/mobile/garden.jpg) |
 
 ---
 
-| **Chatbot Screen** | **Chatbot Result** | **Market Screen** |
-| :-----------------: | :-----------------: | :---------------: |
+|               **Chatbot Screen**                |               **Chatbot Result**                |           **Market Screen**           |
+| :---------------------------------------------: | :---------------------------------------------: | :-----------------------------------: |
 | ![Chatbot Screen](./readme/mobile/chatbot1.jpg) | ![Chatbot Result](./readme/mobile/chatbot3.jpg) | ![Market](./readme/mobile/market.jpg) |
 
 ---
 
-| **Plant Details Screen** | **Cart Screen** | **Location Modal** |
-| :----------------------: | :-------------: | :-----------------: |
+|              **Plant Details Screen**              |          **Cart Screen**          |                  **Location Modal**                  |
+| :------------------------------------------------: | :-------------------------------: | :--------------------------------------------------: |
 | ![Plant Details](./readme/mobile/plantDetails.jpg) | ![Cart](./readme/mobile/cart.jpg) | ![Location Modal](./readme/mobile/LocationModal.jpg) |
 
 ---
 
-| **Scanner Screen** | **Scanner Options** | **Plant Detected** |
-| :---------------: | :-----------------: | :-----------------: |
+|           **Scanner Screen**           |               **Scanner Options**               |                 **Plant Detected**                 |
+| :------------------------------------: | :---------------------------------------------: | :------------------------------------------------: |
 | ![Scanner](./readme/mobile/Camera.jpg) | ![Scanner Options](./readme/mobile/Scanner.jpg) | ![Plant Detected](./readme/mobile/scan-result.jpg) |
 
 ---
 
-| **No Plant Detected** | **Feed Screen** | **Comments** |
-| :---------------------: | :------------: | :----------: |
+|                 **No Plant Detected**                  |          **Feed Screen**          |               **Comments**                |
+| :----------------------------------------------------: | :-------------------------------: | :---------------------------------------: |
 | ![No Plant Detected](./readme/mobile/scan-result2.jpg) | ![Feed](./readme/mobile/feed.jpg) | ![Comments](./readme/mobile/comments.jpg) |
 
 ---
 
-| **Add Post** | **Profile Screen** | **Chat Screen** |
-| :-----------: | :-----------------: | :-------------: |
+|                **Add Post**                 |               **Profile Screen**               |          **Chat Screen**          |
+| :-----------------------------------------: | :--------------------------------------------: | :-------------------------------: |
 | ![Add Post](./readme/mobile/Add%20Post.jpg) | ![Profile](./readme/mobile/User%20Profile.jpg) | ![Chat](./readme/mobile/Chat.jpg) |
 
 ---
 
-| **Conversation** | **Options** | **Profile Screen** |
-| :--------------: | :---------: | :-----------------: |
+|                 **Conversation**                  |                  **Options**                  |           **Profile Screen**            |
+| :-----------------------------------------------: | :-------------------------------------------: | :-------------------------------------: |
 | ![Conversation](./readme/mobile/conversation.jpg) | ![Options](./readme/mobile/conversation2.jpg) | ![Profile](./readme/mobile/Profile.jpg) |
 
 ---
 
-| **Edit Profile** | **Change Password** | **Seller's Market** |
-| :--------------: | :------------------: | :---------------: |
+|                 **Edit Profile**                 |                 **Change Password**                  |             **Seller's Market**             |
+| :----------------------------------------------: | :--------------------------------------------------: | :-----------------------------------------: |
 | ![Edit Profile](./readme/mobile/editProfile.jpg) | ![Change Password](./readme/mobile/editPassword.jpg) | ![Market](./readme/mobile/sellerMarket.jpg) |
 
 ---
 
-| **Seller's Products** | **Add Plant** | **Orders Screen** |
-| :------------------: | :-----------: | :--------------: |
+|                    **Seller's Products**                    |                   **Add Plant**                   |             **Orders Screen**              |
+| :---------------------------------------------------------: | :-----------------------------------------------: | :----------------------------------------: |
 | ![Product Options](./readme/mobile/seller-plantOptions.jpg) | ![Add Plant](./readme/mobile/seller-addPlant.jpg) | ![Orders](./readme/mobile/OrderScreen.jpg) |
-
-
 
 ### Admin Screens (Desktop App)
 
-| **Login Screen**                        | **Dashboard Screen**                  |
-| :-------------------------------------: | :-----------------------------------: |
-| ![Login](./readme/admin/login.png)      | ![Dashboard](./readme/admin/overview.png) |
+|          **Login Screen**          |           **Dashboard Screen**            |
+| :--------------------------------: | :---------------------------------------: |
+| ![Login](./readme/admin/login.png) | ![Dashboard](./readme/admin/overview.png) |
 
-| **Users Screen**                        | **Posts Screen**                      |
-| :-------------------------------------: | :-----------------------------------: |
-| ![Users](./readme/admin/users.png)      | ![Posts](./readme/admin/posts.png)    |
+|          **Users Screen**          |          **Posts Screen**          |
+| :--------------------------------: | :--------------------------------: |
+| ![Users](./readme/admin/users.png) | ![Posts](./readme/admin/posts.png) |
 
-| **Products Screen**                     |
-| :-------------------------------------: |
+|           **Products Screen**            |
+| :--------------------------------------: |
 | ![Products](./readme/admin/products.png) |
-
 
 <br><br>
 
@@ -171,10 +168,10 @@ So, these collections help us organize and manage different types of information
 
 ### Efficient AI Deployment: Unleashing the Potential with AWS Integration:
 
-- I deployed my Node.js server using Amazon Web Services (AWS) Elastic Compute Cloud (EC2). AWS EC2 provides scalable and flexible virtual servers in the cloud. 
-- Utilizing EC2 for deploying applications offers several advantages, including the ability to easily scale resources based on demand, and benefit from AWS's global infrastructure for improved performance and reliability. 
+- I deployed my Node.js server using Amazon Web Services (AWS) Elastic Compute Cloud (EC2). AWS EC2 provides scalable and flexible virtual servers in the cloud.
+- Utilizing EC2 for deploying applications offers several advantages, including the ability to easily scale resources based on demand, and benefit from AWS's global infrastructure for improved performance and reliability.
 - EC2 instances are configurable, allowing users to choose the instance type, operating system, and storage options that best suit their application requirements. This flexibility and scalability make AWS EC2 a popular choice for hosting and running diverse workloads, including web servers, applications, and databases.
-<br><br>
+  <br><br>
 
 <!-- Unit Testing -->
 <img src="./readme/title9.svg"/>
@@ -205,6 +202,7 @@ So, these collections help us organize and manage different types of information
 This is an example of how to list things you need to use the software and how to install them.
 
 Download [Node.js](https://nodejs.org/en)
+
 - npm
   ```sh
   npm install npm@latest -g
@@ -216,32 +214,40 @@ Download [Node.js](https://nodejs.org/en)
 
 1. Get a free Pant.id API Key at [Plant.id](https://www.plant.id/)
 2. Get a free Gemini API Key at [Google Gemini](https://ai.google.dev/tutorials/setup)
-3. Clone the repo
+3. Get a free Stream API Key at [getStream.io](https://getstream.io/)
+4. Clone the repo
    git clone [github](https://github.com/Ahmad-Rammall/green-haven.git)
    ```sh
    git clone https://github.com/Ahmad-Rammall/green-haven.git
    ```
-4. Install NPM packages
+5. Install NPM packages
    ```sh
-   cd green-haven
+   cd green-haven\green-haven-frontend
    npm install
    ```
-5. Create a .env file and add your APIs:
+6. Create a .env file and add your APIs:
+
    ```js
    GOOGLE_API = "your api key";
    PLANT_API_KEY = "your api key";
+   STREAM_KEY='your api key'
+   API_HOST = http://52.47.132.223:80;
+   PUBLIC_FOLDER=http://52.47.132.223:80/public/images/
    ```
-6. Start server:
+
+7. Start server:
    ```sh
    npx expo start
    ```
-7. Open Expo Go on your phone and scan the QR code.
+8. Open Expo Go on your phone and scan the QR code.
 
 #### Admin Pannel
 
 1. Navigate to admin directory:
+
    ```sh
    cd admin
+   npm install
    ```
 
 2. Run electron:
@@ -251,8 +257,47 @@ Download [Node.js](https://nodejs.org/en)
 3. Navigate to admin/frontend directory:
    ```sh
    cd admin\frontend
+   npm install
    ```
-6. Run Server:
+4. Create a .env file and add:
+   ```js
+   VITE_REACT_APP_API_HOST=http://52.47.132.223:80
+   VITE_REACT_APP_PUBLIC_FOLDER=http://52.47.132.223:80/    public/images
+   ```
+4. Run Server:
+   ```sh
+   npm run dev
+   ```
+
+#### Server
+
+_Our server is hosted on AWS, but if you want to run it locally follow these steps:_
+
+1. Navigate to admin directory:
+
+   ```sh
+   cd green-haven-backend
+   npm install
+   ```
+
+2. Run electron:
+   ```sh
+   npm run electron
+   ```
+3. Navigate to admin/frontend directory:
+   ```sh
+   cd admin\frontend
+   npm install
+   ```
+4. Create a .env file and add:
+   ```js
+
+   MONGODB_URL = mongodb://127.0.0.1:27017/green-haven-db
+   STREAM_API_KEY='your api key'
+   STREAM_API_SECRET='your api secret'
+   PORT='choose an available port'
+   ```
+4. Run Server:
    ```sh
    npm run dev
    ```
