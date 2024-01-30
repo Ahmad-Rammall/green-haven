@@ -42,22 +42,24 @@
 - Green Haven uses [Google Gemini](https://geminiai.ai), the latest and most advanced artificial intelligence created by Google. It can answer anything related to plants, and it will provide the user with useful details to help him learn more about plants.
 - Green Haven uses [Plant.id](https://web.plant.id/), a machine learning service that can identify more than 33,000 plants including houseplants, garden plants, trees ...
 
-<br><br>
+<br>
 
 <!-- UI UX -->
 <img src="./readme/title4.svg"/>
 
 > I created the layout for Green Haven by developing wireframes and mockups, continually improving the design to achieve an optimal structure that ensures simple navigation and a smooth user experience.
 
-- Project Figma design [figma](https://www.figma.com/file/UcPApMAbvQb6ywzZUHfuKT/Green-Haven?type=design&node-id=10-34&mode=design&t=Um47dNCuDYXxz87V-0)
+> I completed the wireframes and mockups using Figma, a cloud-based design and prototyping tool used for creating user interfaces, interactive prototypes, and collaborative design projects.
 
-### Mockups
+### Mockups Examples
 
 | Home screen                         | Market Screen                         | Scanner Screen                      |
 | ----------------------------------- | ------------------------------------- | ----------------------------------- |
 | ![fsdaf](./readme/mockups/Home.png) | ![fsdaf](./readme/mockups/Market.png) | ![fsdaf](./readme/mockups/Scan.png) |
 
-<br><br>
+> Check more **Mockups** on [figma](https://www.figma.com/file/UcPApMAbvQb6ywzZUHfuKT/Green-Haven?type=design&node-id=10-34&mode=design&t=Um47dNCuDYXxz87V-0)
+
+<br>
 
 <!-- Database Design -->
 <img src="./readme/title5.svg"/>
