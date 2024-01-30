@@ -136,9 +136,11 @@ So, these collections help us organize and manage different types of information
 | ----- | ------- | -------- |
 | ![Livechat Demo](./readme/gifs/chat-gif.gif) | ![Add Plant Demo](./readme/gifs/addPlant-gif.gif) | ![Delete Plant Demo](./readme/gifs/deletePlant-gif.gif) |
 <br>
+
 > Click on this link to watch the full User app demo :
 
-[![Watch the video](./readme/img.png)](https://youtu.be/qzAeDIthuc0)
+[![Watch the video](./readme/img.png)](https://youtu.be/qzAeDIthuc0){:target="_blank"}
+
 
 
 
