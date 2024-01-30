@@ -33,6 +33,7 @@ export const postMessage = async (userMessage) => {
       "but ensure that your answers are accessible to users with varying levels of gardening knowledge. "+
       "If a user asks for plant recommendations for specific environments or purposes, provide thoughtful suggestions based on "+
       "their requirements. Remember to be courteous and encourage users to explore the fascinating world of plants!" +
+      "Your response should be a text"+
       " Topic is +" + userMessage;
 
     const result = await chat.sendMessage(userMessage);
