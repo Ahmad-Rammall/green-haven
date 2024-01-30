@@ -36,6 +36,8 @@
 ### Green Haven is built using the following technologies:
 
 - Green Haven uses the [React Native Framework](https://reactnative.dev). React Native is a popular open-source framework for building cross-platform mobile applications.
+- Green Haven uses [Redux](https://redux-toolkit.js.org/) as a state management library.
+- The admin desktop app is constructed using [Electron.js](https://www.electronjs.org/), an open-source framework that allows developers to build cross-platform desktop applications.
 - For the database, Green Haven uses [MongoDB](https://www.mongodb.com), a widely used open-source NoSQL database management system.
 - For the backend, Green Haven uses [Node.js](https://nodejs.org/en), an open-source, cross-platform JavaScript runtime environment that allows developers to execute server-side code using JavaScript.
 - Green Haven uses [getstream](https://getstream.io/), a cloud service that provides scalable and customizable chat APIs for building real-time applications.
