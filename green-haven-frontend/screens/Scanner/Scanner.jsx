@@ -3,11 +3,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
-import { CameraButton as Button, BottomSheet } from "../../components";
+import {
+  CameraButton as Button,
+  BottomSheet,
+  LoadingModal,
+} from "../../components";
 import styles from "./scanner.styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
-import { SIZES } from "../../assets/constants";
 import * as FileSystem from "expo-file-system";
 import {
   postImage,
@@ -24,6 +27,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function Scanner() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
+  const [loader, setLoader] = useState(false);
   const [filesPermission, setFilesPermission] = useState(null);
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
@@ -53,8 +57,11 @@ export default function Scanner() {
 
   const handlePresentModal = async () => {
     // Post Encoded Image to API
+
+    // turn on loading
+    setLoader(true);
     const response = await postImage(encodedImage);
-    console.log(response.data.result.is_plant.probability)
+    console.log(response.data.result.is_plant.probability);
     if (response.data.result.is_plant.probability >= 0.95) {
       const details = await getImageDetails(response.data.access_token);
       const res_details = details.data.result.classification.suggestions[0];
@@ -70,7 +77,10 @@ export default function Scanner() {
         plant_image: "",
       });
     }
+    // turn off loading
+    setLoader(false);
 
+    // present result modal
     bottomSheetModalRef.current?.present();
     setModalOpen(true);
     setModalStyle(styles.modalOpen);
@@ -209,6 +219,7 @@ export default function Scanner() {
           </View>
         )}
       </View>
+      <LoadingModal isVisible={loader} />
     </SafeAreaView>
   );
 }

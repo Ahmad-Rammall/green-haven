@@ -1,5 +1,6 @@
 import axios from "axios";
 import { PLANT_API_KEY } from "@env";
+PLANT_API_KEY
 
 const apiUrl = "https://plant.id/api/v3/identification";
 
