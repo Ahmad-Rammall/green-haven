@@ -139,10 +139,7 @@ So, these collections help us organize and manage different types of information
 
 > Click on this link to watch the full User app demo :
 
-[![Watch the video](./readme/img.png)](https://youtu.be/qzAeDIthuc0){:target="_blank"}
-
-
-
+[![Watch the video](./readme/img.png)](https://youtu.be/qzAeDIthuc0)
 
 
 <br>
