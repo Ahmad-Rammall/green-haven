@@ -124,13 +124,13 @@ So, these collections help us organize and manage different types of information
 
 ### App Demo
 
-| Login | Chatbot | Livechat |
+| Valid Scan | Invalid Scan | ChatBot |
 | ----- | ------- | -------- |
-| [![Login Demo](./readme/gifs/login-gif.gif)](./readme/demo/login-demo.mp4) | [![Chatbot Demo](./readme/gifs/chatbot-gif.gif)](./readme/demo/chatbot-demo.mp4) | ![Livechat Demo](./readme/gifs/chat-gif.gif) |
+| ![Scan Demo](./readme/gifs/scan-gif.gif) | ![Invalid Scan Demo](./readme/gifs/scan-no-gif.gif) | ![Livechat Demo](./readme/gifs/chatbot-gif.gif) |
 
-| Add Plant | Update Plant | Delete Plant |
+| Livechat | Add Plant | Delete Plant |
 | ----- | ------- | -------- |
-| ![Add Plant Demo](./readme/gifs/addPlant-gif.gif) | ![Update Plant Demo](./readme/gifs//updatePlant-gif.gif)| ![Delete Plant Demo](./readme/gifs/deletePlant-gif.gif) |
+| ![Livechat Demo](./readme/gifs/chat-gif.gif) | ![Add Plant Demo](./readme/gifs/addPlant-gif.gif) | ![Delete Plant Demo](./readme/gifs/deletePlant-gif.gif) |
 
 
 <br><br>
