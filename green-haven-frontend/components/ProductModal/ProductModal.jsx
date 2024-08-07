@@ -17,7 +17,7 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
   console.log(details);
 
   // if plant has no image
-  const noProductImage = PUBLIC_FOLDER + "products-pics/noProductImage.jpg";
+  const noProductImage = process.env.PUBLIC_FOLDER + "products-pics/noProductImage.jpg";
 
   const validationSchema = Yup.object({
     description: Yup.string()

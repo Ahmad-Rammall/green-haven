@@ -131,7 +131,7 @@ const Feed = ({ navigation }) => {
     } else {
       navigation.navigate("User Profile", {
         user,
-        profilePicture: PUBLIC_FOLDER + "profile-pics/" + user.profile_picture,
+        profilePicture: process.env.PUBLIC_FOLDER + "profile-pics/" + user.profile_picture,
         refreshPage,
       });
     }
@@ -166,7 +166,7 @@ const Feed = ({ navigation }) => {
                   <Image
                     source={{
                       uri:
-                        PUBLIC_FOLDER + "profile-pics/" + user.profile_picture,
+                      process.env.PUBLIC_FOLDER + "profile-pics/" + user.profile_picture,
                     }}
                     style={styles.userSearchImg}
                   />

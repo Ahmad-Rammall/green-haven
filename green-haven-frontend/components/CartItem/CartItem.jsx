@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { SIZES } from "../../assets/constants";
 import { PUBLIC_FOLDER } from "@env";
 import { cartDataSource } from "../../core/dataSource/remoteDataSource/cart";
-PUBLIC_FOLDER
+
 
 const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
   const [isZero, setIsZero] = useState(true);
@@ -65,7 +65,7 @@ const CartItem = ({ product, setRefresh, setTotalAmount, updateQuantity}) => {
         <Image
           style={styles.image}
           source={{
-            uri: PUBLIC_FOLDER + "products-pics/" + product.product.image,
+            uri: process.env.PUBLIC_FOLDER + "products-pics/" + product.product.image,
           }}
         />
       </View>

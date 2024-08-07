@@ -2,7 +2,6 @@ import axios from "axios";
 import { local } from "./localStorage";
 import { API_HOST } from "@env";
 import Toast from "react-native-simple-toast";
-API_HOST
 
 export const sendRequest = async ({
   route,
@@ -11,10 +10,10 @@ export const sendRequest = async ({
   contentType = "application/json",
 }) => {
   const token = await local("token");
-
+  // console.log(API_HOST);
   try {
     const response = await axios.request({
-      url: `${API_HOST}/${route}`,
+      url: `${process.env.API_HOST}/${route}`,
       method,
       data: body,
       headers: {

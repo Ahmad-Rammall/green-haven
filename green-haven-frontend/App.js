@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigation from "./navigators/BottomTabNavigation";
 import SellerTabNavigation from "./navigators/SellerTabNavigation";
 import { Login, Register } from "./screens";
-import {StatusBar} from "expo-status-bar"
+import { StatusBar } from "expo-status-bar";
 
 import { Provider } from "react-redux";
 import { store } from "./core/dataSource/localDataSource/store";

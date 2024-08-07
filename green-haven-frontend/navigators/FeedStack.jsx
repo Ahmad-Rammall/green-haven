@@ -13,7 +13,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { loggedInClient } from "../core/dataSource/localDataSource/client";
 import flatted from "flatted";
 import { PUBLIC_FOLDER } from "@env";
-PUBLIC_FOLDER;
 
 const FeedStack = createNativeStackNavigator();
 
@@ -56,8 +55,8 @@ const screenOptions = ({ route, navigation }) => ({
 const FeedStackNavigator = ({ navigation }) => {
   const currentUser = useSelector((state) => state.User);
   const dispatch = useDispatch();
-  const userProfilePicture = `${PUBLIC_FOLDER}profile-pics/${currentUser.profilePicture}`;
-  const publicChannelImg = `${PUBLIC_FOLDER}public-channel.jpg`;
+  const userProfilePicture = `${process.env.PUBLIC_FOLDER}profile-pics/${currentUser.profilePicture}`;
+  const publicChannelImg = `${process.env.PUBLIC_FOLDER}public-channel.jpg`;
 
   dispatch(
     loggedInClient({

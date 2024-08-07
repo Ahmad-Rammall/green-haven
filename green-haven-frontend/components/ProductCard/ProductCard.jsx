@@ -4,15 +4,12 @@ import React from "react";
 import styles from "./productCardStyles";
 import { useNavigation } from "@react-navigation/native";
 import { PUBLIC_FOLDER } from "@env";
-PUBLIC_FOLDER
 
 const ProductCard = ({ product, refresh }) => {
-  process.env.PUBLIC_FOLDER;
   const navigation = useNavigation();
   const { user, image, name, description, price } = product;
   const productId = product._id;
-  const imageUrl = PUBLIC_FOLDER + "products-pics/" + image;
-
+  const imageUrl = process.env.PUBLIC_FOLDER + "products-pics/" + image;
   const gotoProductDetails = () => {
     navigation.navigate("Product Details", {
       imageUrl,

@@ -1,11 +1,10 @@
 import axios from "axios";
 import { PLANT_API_KEY } from "@env";
-PLANT_API_KEY
 
 const apiUrl = "https://plant.id/api/v3/identification";
 
 const headers = {
-  "Api-Key": PLANT_API_KEY,
+  "Api-Key": process.env.PLANT_API_KEY,
   "Content-Type": "application/json",
 };
 

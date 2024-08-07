@@ -15,7 +15,7 @@ const Post = ({ post, refreshPage, handleOpenModal, setCommentsObject }) => {
   const [commentCounter, setCommentCounter] = useState(post.comments.length);
   const [timeAgoValue, setTimeAgoValue] = useState("");
   const navigation = useNavigation();
-  PUBLIC_FOLDER
+  PUBLIC_FOLDER;
   // get current loggedin user
   const currentUser = useSelector((state) => state.User);
 
@@ -31,8 +31,14 @@ const Post = ({ post, refreshPage, handleOpenModal, setCommentsObject }) => {
   }, [post.likes]);
 
   const postImage = process.env.PUBLIC_FOLDER + "posts-pics/" + post.image;
-  const userProfilePic =
-    PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture;
+  let userProfilePic;
+  if (!post.user.profile_picture) {
+    userProfilePic = "../../assets/noUserImage.jpg";
+    console.log("noooooooooo")
+  } else {
+    userProfilePic =
+      process.env.PUBLIC_FOLDER + "profile-pics/" + post.user.profile_picture;
+  }
 
   const handleLike = async () => {
     if (isLiked) {
