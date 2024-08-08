@@ -16,7 +16,7 @@ import { PUBLIC_FOLDER } from "@env";
 
 const FeedStack = createNativeStackNavigator();
 
-const client = StreamChat.getInstance(STREAM_KEY);
+const client = StreamChat.getInstance(process.env.STREAM_KEY);
 
 const screenOptions = ({ route, navigation }) => ({
   headerShown: true,

@@ -4,27 +4,32 @@ import {
   Channel,
   MessageList,
   MessageInput,
+  InputButtons,
 } from "stream-chat-expo";
 import { useRoute } from "@react-navigation/native";
 import { STREAM_KEY } from "@env";
 import { StreamChat } from "stream-chat";
 import { useSelector } from "react-redux";
+import { Text } from "react-native";
 
 const Chat = () => {
   const [channel, setChannel] = useState();
   const route = useRoute();
   const channelId = route.params?.channelId;
-  const client = StreamChat.getInstance(STREAM_KEY);
+  const client = StreamChat.getInstance(process.env.STREAM_KEY);
   const currentUser = useSelector((state) => state.User);
-  const privatChannels = {type: 'messaging', members: { $in: [currentUser._id.toString()] } }
-  const publicChannels = {type: 'livestream'}
+  const privatChannels = {
+    type: "messaging",
+    members: { $in: [currentUser._id.toString()] },
+  };
+  const publicChannels = { type: "livestream" };
 
   if (channelId) {
     const channel = client.channel("messaging", channelId);
     return (
       <Channel channel={channel}>
         <MessageList />
-        <MessageInput />
+        <MessageInput InputButtons="" />
       </Channel>
     );
   }
@@ -33,7 +38,7 @@ const Chat = () => {
     return (
       <Channel channel={channel}>
         <MessageList />
-        <MessageInput />
+        <MessageInput InputButtons="" />
       </Channel>
     );
   }

@@ -17,7 +17,6 @@ import { profileDataSource } from "../../core/dataSource/remoteDataSource/profil
 import { useSelector } from "react-redux";
 import { STREAM_KEY } from "@env";
 import { StreamChat } from "stream-chat";
-STREAM_KEY
 
 const FeedProfile = () => {
   const route = useRoute();
@@ -31,7 +30,7 @@ const FeedProfile = () => {
   const [posts, setPosts] = useState([]);
 
   // get client instance
-  const client = StreamChat.getInstance(STREAM_KEY);
+  const client = StreamChat.getInstance(process.env.STREAM_KEY);
 
   const createNewChannel = async () => {
     if (user._id !== currentUser._id) {

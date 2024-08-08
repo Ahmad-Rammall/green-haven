@@ -11,7 +11,7 @@ import { marketDataSource } from "../../core/dataSource/remoteDataSource/market"
 import Toast from "react-native-simple-toast";
 import {useNavigation} from "@react-navigation/native"
 
-const ProductModal = ({ isVisible, onClose, refresh, details }) => {
+const ProductModal = ({ isVisible, onClose, refresh, details, update=false }) => {
   const [image, setImage] = useState({});
   const navigation = useNavigation()
   console.log(details);
@@ -57,6 +57,7 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
         Toast.show("Product Added !", Toast.LONG);
         onClose();
         refresh();
+        setImage(noProductImage)
       }
     } catch (error) {
       console.log(error);
@@ -217,7 +218,7 @@ const ProductModal = ({ isVisible, onClose, refresh, details }) => {
                     style={styles.button(COLORS.primary)}
                     onPress={handleSubmit}
                   >
-                    Add
+                    {update ? "Update" : "Add"}
                   </Text>
                 </TouchableOpacity>
               </View>

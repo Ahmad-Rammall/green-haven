@@ -106,6 +106,7 @@ const ProductDetails = () => {
                 onClose={onClose}
                 details={route.params}
                 refresh={refresh}
+                update={true}
               />
 
               <DeleteModal

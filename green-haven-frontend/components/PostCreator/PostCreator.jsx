@@ -7,7 +7,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import styles from "./postCreator.styles";
 import { postDataSource } from "../../core/dataSource/remoteDataSource/post";
 import Toast from "react-native-simple-toast";
-PUBLIC_FOLDER
 
 const PostCreator = ({ refresh }) => {
   const currentUser = useSelector((state) => state.User);

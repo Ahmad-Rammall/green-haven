@@ -28,7 +28,7 @@ import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
 import { COLORS } from "../../assets/constants";
 import { useSelector } from "react-redux";
-PUBLIC_FOLDER
+
 
 const Feed = ({ navigation }) => {
   const [posts, setPosts] = useState([]);

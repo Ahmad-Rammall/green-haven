@@ -15,7 +15,7 @@ const Profile = ({ navigation }) => {
   const currentUser = useSelector((state) => state.User);
   const userProfilePicture = `${process.env.PUBLIC_FOLDER}profile-pics/${currentUser.profilePicture}`;
   console.log(userProfilePicture)
-  const client = StreamChat.getInstance(STREAM_KEY);
+  const client = StreamChat.getInstance(process.env.STREAM_KEY);
   console.log(userProfilePicture);
   const handleLogout = async () => {
     local("token", "");

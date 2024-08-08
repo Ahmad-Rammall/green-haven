@@ -15,7 +15,7 @@ const Post = ({ post, refreshPage, handleOpenModal, setCommentsObject }) => {
   const [commentCounter, setCommentCounter] = useState(post.comments.length);
   const [timeAgoValue, setTimeAgoValue] = useState("");
   const navigation = useNavigation();
-  PUBLIC_FOLDER;
+
   // get current loggedin user
   const currentUser = useSelector((state) => state.User);
 

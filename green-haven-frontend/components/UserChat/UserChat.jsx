@@ -9,7 +9,7 @@ import {useNavigation} from "@react-navigation/native";
 
 const UserChat = ({ user }) => {
   // get client instance
-  const client = StreamChat.getInstance(STREAM_KEY);
+  const client = StreamChat.getInstance(process.env.STREAM_KEY);
 
   const navigation = useNavigation();
 

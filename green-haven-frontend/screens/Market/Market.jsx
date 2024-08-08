@@ -84,11 +84,7 @@ const Market = () => {
   };
 
   useEffect(() => {
-    if (user.role === "user") {
-      getAllProducts();
-    } else if (user.role === "seller") {
-      getAllSellerProducts();
-    }
+    handleRefresh()
   }, [user]);
 
   return (
